@@ -7,22 +7,31 @@ public class Player {
 		magicPower = number;
 	}
 	
-	public Tower buildTower(char c, Tile t, int shoot, int distance, int damage) {
+	public Tower buildTower(Tile t) {
 		if(isBuildTower(t)) {
-			return new Tower(c, t.getPos(), shoot, distance, damage);
+			magicPower = magicPower - 10;
+			if(magicPower > 0) {
+				System.out.println("The tower has successfully been putting off.");
+				return new Tower(t.getBeepitheto(), t.getPos());
+			}
+			else {
+				System.out.println("No more magicPower.");
+				return null;
+			}
 		}
-		else return null;
+		System.out.println("This tile can not be built.");
+		return null;
 	}
 	
-	public Obstacle buildObstacle(char c, Tile t, int slow) {
+	public Obstacle buildObstacle(Tile t) {
 		if(isBuildObstacle(t)) {
-			return new Obstacle(c, t.getPos(), slow);
+			return new Obstacle(t.getBeepitheto(), t.getPos());
 		}
 		else return null;
 	}
 	
 	public boolean isBuildTower(Tile t) {
-		if(t.getBeepitheto() == 0) return true;
+		if(t.getBeepitheto() == '0') return true;
 		else return false;
 	}
 	

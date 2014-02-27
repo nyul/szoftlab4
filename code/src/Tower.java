@@ -4,11 +4,11 @@ public class Tower extends Tile{
 	private int distance;
 	private int damagePower;
 	
-	public Tower(char c, Position p, int s, int dis, int dam) {
+	public Tower(char c, Position p) {
 		super(c, p);
-		shootPeriod = s;
-		distance = dis;
-		damagePower = dam;
+		shootPeriod = 1000;
+		distance = 1;
+		damagePower = 20;
 		// TODO Auto-generated constructor stub
 	}
 	

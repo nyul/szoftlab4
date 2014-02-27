@@ -3,9 +3,9 @@ public class Obstacle extends Tile{
 	
 	private int slowingFactor;
 	
-	public Obstacle(char c, Position p, int slow) {
+	public Obstacle(char c, Position p) {
 		super(c, p);
-		slowingFactor = slow;
+		slowingFactor = 2;
 		// TODO Auto-generated constructor stub
 	}
 	

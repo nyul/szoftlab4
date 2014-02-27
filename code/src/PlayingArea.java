@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 
 public class PlayingArea {
+	private ArrayList<Tile> tile;
 	private ArrayList<Source> source;
 	private ArrayList<Road> roadOne;
 	private ArrayList<Road> roadTwo;
@@ -10,6 +11,7 @@ public class PlayingArea {
 	private Mountain mountain;
 	
 	public PlayingArea() {
+		tile = new ArrayList<Tile>();
 		source = new ArrayList<Source>();
 		roadOne = new ArrayList<Road>();
 		roadTwo = new ArrayList<Road>();
@@ -18,6 +20,12 @@ public class PlayingArea {
 	}
 	
 	public void initialize() {
+		
+		for(int i = 0; i < 5; i++) {
+			for(int j = 0; j < 5; j++) {
+				tile.add(new Tile('0', new Position(i, j)));
+			}
+		}
 		
 		source.add(new Source('2', new Position(0, 4), new Position(0, 3)));
 		source.add(new Source('2', new Position(3, 4), new Position(3, 3)));
@@ -66,7 +74,18 @@ public class PlayingArea {
 		tower.add(t);
 	}
 	
-	public void addObstacle(Obstacle t) {
-		obstacle.add(t);
+	public void addObstacle(Obstacle o) {
+		obstacle.add(o);
+	}
+	
+	public ArrayList<Tile> getTileList() {
+		return tile;
+	}
+	
+	public Tile getTile(Position p) {
+		for(int i = 0; i < tile.size(); i++) {
+			if(tile.get(i).getPos() == p) return tile.get(i);
+		}
+		return null;
 	}
 }

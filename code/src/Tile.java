@@ -15,4 +15,8 @@ public class Tile {
 	public char getBeepitheto() {
 		return beepitheto;
 	}
+	
+	public void setBeepitheto(char c) {
+		beepitheto = c;
+	}
 }
