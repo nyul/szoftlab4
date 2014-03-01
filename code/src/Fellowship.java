@@ -13,7 +13,7 @@ public class Fellowship {
 	}
 	
 	public void addWave(Wave w) {
-		for(int i = 0; i < number; i++) {
+		if(isAddWave()) {
 			wave.add(w);
 		}
 	}
@@ -25,7 +25,6 @@ public class Fellowship {
 	
 	public void removeWave(Wave w) {
 		wave.remove(w);
-		number--;
 	}
 	
 	public int getNumber() {

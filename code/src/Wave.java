@@ -15,7 +15,6 @@ public class Wave {
 	public void addPassiveEnemy(Enemy e) {
 		if(isAddPassiveEnemy()) {
 			passive.add(e);
-			number++;
 		}
 	}
 	
@@ -26,7 +25,6 @@ public class Wave {
 	
 	public void removePassiveEnemy(Enemy e) {
 		passive.remove(e);
-		number--;
 	}
 	
 	public void addActiveEnemy(Enemy e) {
