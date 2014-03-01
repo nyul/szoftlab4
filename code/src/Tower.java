@@ -2,13 +2,23 @@
 public class Tower extends Tile{
 	private int shootPeriod;
 	private int distance;
-	private int damagePower;
+	private int damagePowerHuman;
+	private int damagePowerHobbit;
+	private int damagePowerDwarf;
+	private int damagePowerElf;
+	private int magicRockNumber;
+	
 	
 	public Tower(char c, Position p) {
 		super(c, p);
-		shootPeriod = 1000;
+		price = 20;
+		shootPeriod = 1;
 		distance = 1;
-		damagePower = 20;
+		damagePowerHuman = 20;
+		damagePowerHobbit = 20;
+		damagePowerDwarf = 20;
+		damagePowerElf = 20;
+		magicRockNumber = 0;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -28,11 +38,43 @@ public class Tower extends Tile{
 		distance = number;
 	}
 	
-	public int getDamagePower() {
-		return damagePower;
+	public int getDamagePowerHuman() {
+		return damagePowerHuman;
 	}
 	
-	public void setDamagePower(int number) {
-		damagePower = number;
+	public void setDamagePowerHuman(int number) {
+		damagePowerHuman = number;
+	}
+	
+	public int getDamagePowerHobbit() {
+		return damagePowerHobbit;
+	}
+	
+	public void setDamagePowerHobbit(int number) {
+		damagePowerHobbit = number;
+	}
+	
+	public int getDamagePowerDwarf() {
+		return damagePowerDwarf;
+	}
+	
+	public void setDamagePowerDwarf(int number) {
+		damagePowerDwarf = number;
+	}
+	
+	public int getDamagePowerElf() {
+		return damagePowerElf;
+	}
+	
+	public void setDamagePowerElf(int number) {
+		damagePowerElf = number;
+	}
+	
+	public int getMagicRockNumber() {
+		return magicRockNumber;
+	}
+	
+	public void setMagicRockNumber(int number) {
+		magicRockNumber = number;
 	}
 }

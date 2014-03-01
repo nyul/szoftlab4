@@ -88,4 +88,16 @@ public class PlayingArea {
 		}
 		return null;
 	}
+	
+	public ArrayList<Road> getRoadOneList() {
+		return roadOne;
+	}
+	
+	public ArrayList<Road> getRoadTwoList() {
+		return roadTwo;
+	}
+	
+	public ArrayList<Source> getSourceList() {
+		return source;
+	}
 }

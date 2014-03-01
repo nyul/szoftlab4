@@ -28,4 +28,8 @@ public class Position {
 		if(p1.x == p2.x && p1.y == p2.y) return true;
 		else return false;
 	}
+	
+	public double distance(Position p1, Position p2) {
+		return Math.sqrt((p1.x - p2.x) * (p1.x - p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
+	}
 }

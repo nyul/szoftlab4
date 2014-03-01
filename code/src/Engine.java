@@ -1,13 +1,14 @@
 
 public class Engine extends Thread{
 	private Player player;
-	private Enemy enemy;
+	private Fellowship fellowship;
 	
-	public Engine(Player p) {
+	public Engine(Player p, Fellowship f) {
 		player = p;
-		enemy = new Enemy(100, 10, new Position(0, 4), new Position(0, 3));
+		fellowship = f;
+		//human = new Human(100, 10, new Position(0, 4), new Position(0, 3));
 	}
-	
+ 	
 	public void stepHandler() {
 		
 	}
@@ -19,11 +20,15 @@ public class Engine extends Thread{
 		return player;
 	}
 	
+	public Fellowship getFellowShip() {
+		return fellowship;
+	}
+	
 	public void run() {
 		while(true) {
 			stepHandler();
 			towerHandler();
-			enemy.move();
+			//human.move();
 			System.out.println("Hello");
 		
 			try {

@@ -1,13 +1,14 @@
 
 public class Road extends Tile{
-	private Position nextRoad;
+	private Position nextRoadPos;
 	
 	public Road(char c, Position p1, Position p2) {
 		super(c, p1);
-		nextRoad = p2;
+		this.price = 0;
+		nextRoadPos = p2;
 	}
 	
-	public Position getNextRoad() {
-		return nextRoad;
+	public Position getNextRoadPos() {
+		return nextRoadPos;
 	}
 }

@@ -1,10 +1,12 @@
 
 public class Tile {
-	protected char beepitheto;
+	protected char type;
+	protected int price;
 	protected Position pos;
 	
 	public Tile(char c, Position p) {
-		beepitheto = c;
+		type = c;
+		price = 0;
 		pos = p;
 	}
 	
@@ -12,11 +14,15 @@ public class Tile {
 		return pos;
 	}
 	
-	public char getBeepitheto() {
-		return beepitheto;
+	public char getType() {
+		return type;
 	}
 	
-	public void setBeepitheto(char c) {
-		beepitheto = c;
+	public void setType(char c) {
+		type = c;
+	}
+	
+	public int getPrice() {
+		return price;
 	}
 }
