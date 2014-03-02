@@ -1,6 +1,6 @@
 void stepHandler(){
 	
-	for(Iterator<Enemy> i = association.member.active.iterator(); i.hasNext(); ) {
+	for(Iterator<Enemy> i = fellowship.wave.active.iterator(); i.hasNext(); ) {
 	    Enemy e = i.next();
 	    Pos p = i.currentPos();
 
@@ -9,12 +9,12 @@ void stepHandler(){
 	    	case 0: { //ha nincs lassitva
 		    	if(playingArea.area[p.x][p.y].getType == Obstacle){ //es akadalyon all akkor
 		    		i.stepTimer+=playingArea.area[p.x][p.y].getSlowingFactor();  //noveljuk meg a stepTimeret az akadaly lassitasanak mertekevel
-		    		// ezt nem lattam az Obstacle osztalyban, ezert neveztem igy, de lenyegeben 
-		    		// a lassitas merteke a varazskovet is beleszamitva ha van
 		    		i.isSlowed = 1; //es a vegen allitsuk be a flaget, hogy lassitva van
-		    	} else {
-		    		i.move(); //ha nem akadalyon all akkor (de nincs lassitva ugye, mert az isSlowed itt meg mindig 0) akkor lepjen egyet
-		    	}
+		    	} else if(playingArea.area[p.x][p.y].getType == Mountain){ //a hegyre lép
+				defeat(); //ez egy engine osztalybeli metodus, megallitja a futast és kiirja, hogy vesztettel		    		
+		    	} else { 
+				i.move(); //ha nem akadalyon all akkor (de nincs lassitva ugye, mert az isSlowed itt meg mindig 0) akkor lepjen egyet
+			}
 		    	break;
 	    	}
 	    	
