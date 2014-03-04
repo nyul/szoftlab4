@@ -9,14 +9,15 @@ char source = 4;
 	for(Iterator<Enemy> i = fellowship.wave.active.iterator(); i.hasNext(); ) {
 	    Enemy e = i.next(); //aktualis ellenseg
 	    Pos cp = i.currentPos(); //currentPos
+	    Tile type = area.tiles.get(p.x).get(p.y).getType();
 
 	    switch (i.isSlowed) { //vizsgáljuk lassitva van-e egy ellenseg
 	    
 	    	case 0: { //ha nincs lassitva
-		    	if(playingArea.area[p.x][p.y].getType == akadaly){ //es akadalyon all akkor
+		    	if(tpye == akadaly){ //es akadalyon all akkor
 		    		i.stepTimer+=playingArea.area[p.x][p.y].getSlowingFactor();  //noveljuk meg a stepTimeret az akadaly lassitasanak mertekevel
 		    		i.isSlowed = 1; //es a vegen allitsuk be a flaget, hogy lassitva van
-		    	} else if(playingArea.area[p.x][p.y].getType == hegy){ //a hegyre lép
+		    	} else if(type == hegy){ //a hegyre lép
 				defeat(); //ez egy engine osztalybeli metodus, megallitja a futast és kiirja, hogy vesztettel		    		
 		    	} else {
 				i.move(np); //ha nem akadalyon all akkor (de nincs lassitva ugye, mert az isSlowed itt meg mindig 0) akkor lepjen egyet
