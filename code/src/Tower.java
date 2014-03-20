@@ -10,7 +10,7 @@ public class Tower extends Tile{
 	
 	
 	public Tower(char c, Position p) {
-		super(c, p);
+		super(c, p); // trolo
 		price = 20;
 		shootPeriod = 1;
 		distance = 1;
