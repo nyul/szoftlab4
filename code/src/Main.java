@@ -10,7 +10,7 @@ public class Main {
 	public void menu() {
 		switch(number) {
 		case 0:
-			indítás();
+			inditas();
 			break;
 		case 1:
 			break;
@@ -39,8 +39,8 @@ public class Main {
 		}
 	}
 	
-	public void indítás() {
-		
+	public void inditas() {
+		System.out.println("Inditas use-case is running");
 	}
 	
 	public static void main(String[] args) throws IOException {
