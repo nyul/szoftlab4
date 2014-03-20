@@ -1,14 +1,9 @@
+
 public class Position {
-	public int getX(){
-		
-		System.out.println("getX \n");
-		
-		return 0;		
+	public void getX(){		
+		System.out.println("getX() \n");					
 	}
-	public int getY(){
-		
-		System.out.println("getY \n");
-		
-		return 0;				
+	public void getY(){		
+		System.out.println("getY() \n");							
 	}
 }
