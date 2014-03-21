@@ -6,7 +6,7 @@ public class Road extends Tile{
 		System.out.println("Road()");
 	}
 	
-	public void getNextRoadPos() {
-		System.out.println("getNextRoadPos");
+	public void requestDestination() {
+		System.out.println("requestDestination()");
 	}
 }
