@@ -1,9 +1,5 @@
 
 public class Player {
-		
-	public Player() {
-		System.out.println("Player()");
-	}
 	
 	public void chooseUpgrade() {
 		System.out.println("chooseUpgrade()");
