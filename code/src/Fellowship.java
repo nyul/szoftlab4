@@ -1,12 +1,16 @@
 
 public class Fellowship {	
 	
+	public Fellowship() {
+		System.out.println("Fellowship constructor");
+	}
+
 	public void produceAllEnemy(){
 		System.out.println("produceAllEnemy()");
 	}
 	
 	public void startWave(){
-		System.out.println("startWave()");
+		System.out.println("startWave(number)");
 	}
 	
 	public void getNumber(){
@@ -22,7 +26,7 @@ public class Fellowship {
 	}
 
 	public void moveAllActiveEnemy(){
-		System.out.println("moveAllActiveEnemy");
+		System.out.println("moveAllActiveEnemy()");
 	}	
 
 }
