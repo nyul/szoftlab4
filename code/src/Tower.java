@@ -3,18 +3,18 @@ import java.util.ArrayList;
 
 public class Tower extends Tile implements Defense{
 	
-	Geometry geometry;
-	Enemy enemy;
-	ArrayList<MagicRock> choosable;
+	private Geometry geometry;
+	private Enemy enemy;
+	private ArrayList<MagicRock> choosable;
 	
-	int shootPeriod;
-	int range;
-	int damagePowerHuman;
-	int damagePowerHobbit;
-	int damagePowerDwarf;
-	int damagePowerElf;
-	ArrayList<MagicRock> magicRock;
-	int magicRockNumber;	
+	private int shootPeriod;
+	private int range;
+	private int damagePowerHuman;
+	private int damagePowerHobbit;
+	private int damagePowerDwarf;
+	private int damagePowerElf;
+	private ArrayList<MagicRock> magicRock;
+	private int magicRockNumber;	
 	
 	public Tower() {
 		geometry = new Geometry();
