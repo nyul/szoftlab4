@@ -7,37 +7,38 @@ public abstract class Enemy {
 	protected boolean isActive;
 	protected boolean isSlowed;
 	
-	public Enemy(int l, int stepT) { // start = 0, akkor 0.source, start = 1, akkor 1.source
-		lifePower = l;
-		stepTime = stepT;
-		isActive = false;
-		stepTime = 10;
-		counter = 0;
+	/**
+	 * Enemy konstruktor
+	 */
+	public Enemy(int lifePower, int stepTime) {
 	}
 	
-	// ellenseg forrasra helyezese
+	/**
+	 * Ellenség forrásra helyezése.
+	 * 
+	 */
 	public void firstStep(Position p) {
-		if(isActive == false) {
-			isActive = true;
-			currentPos = p;
-		}
-		else System.out.println("Mar a palyan van az ellenseg.");
 	}
 	
+	/**
+	 * A paraméterként kapott pozícióra lépteti
+	 * az ellenséget.
+	 */
 	public void move(Position p) {
-		if(counter >= stepTime) {
-			currentPos = p;
-			System.out.println("Enemy lep egyet elore.");
-			counter = 0;
-		}
-		else {
-			counter = counter + 1;
-		}
 		
 	}
 	
+	/**
+	 * A paraméterlistán kapott toronytól leolvasott,
+	 * erre az ellenség típusra vonatkozó sebzés értéket
+	 * levonja az aktuális életerõbõl.
+	 */
 	public abstract void lifePowerReduce(Tower t);
 	
+	/**
+	 * Visszatér egy boolean értékkel,
+	 * ami megadja, hogy az adott ellenség lassítva van-e.
+	 */
 	public boolean getIsSlowed() {
 		return isSlowed;
 	}
