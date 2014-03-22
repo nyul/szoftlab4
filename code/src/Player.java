@@ -1,6 +1,10 @@
 
 public class Player {
 	
+	public Player() {
+		System.out.println("Player constructor called.");
+	}
+
 	public void chooseUpgrade() {
 		System.out.println("chooseUpgrade()");
 	}
