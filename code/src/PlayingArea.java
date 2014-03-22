@@ -1,5 +1,12 @@
+import java.util.ArrayList;
+
 
 public class PlayingArea {
+	
+	ArrayList<Source> source;
+	ArrayList<Tower> tower;
+	ArrayList<Obstacle> obstacle;
+	Mountain mountain;
 	
 	public PlayingArea() {
 		
@@ -10,24 +17,38 @@ public class PlayingArea {
 		Writer.asynchronexit();
 	}
 	
-	public void getObstacleList() {
-		
+	public ArrayList<Source> getSourceList() {
+		Writer.entry();
+		Writer.synchronexit();
+		return source;
 	}
 	
-	public void getTowerList() {
-		
+	public ArrayList<Obstacle> getObstacleList() {
+		Writer.entry();
+		Writer.synchronexit();
+		return obstacle;
 	}
 	
-	public void getMountain() {
-		
-	}
-		
-	public void addTower() {
-		
+	public ArrayList<Tower> getTowerList() {
+		Writer.entry();
+		Writer.synchronexit();
+		return tower;
 	}
 	
-	public void addObstacle() {
+	public Mountain getMountain() {
+		Writer.entry();
+		Writer.synchronexit();
+		return mountain;
+	}
 		
+	public void addTower(Tower t) {
+		Writer.entry();
+		Writer.asynchronexit();
+	}
+	
+	public void addObstacle(Obstacle o) {
+		Writer.entry();
+		Writer.asynchronexit();
 	}
 	
 }
