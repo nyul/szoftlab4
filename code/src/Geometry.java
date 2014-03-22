@@ -2,10 +2,12 @@
 public class Geometry {
 	
 	public Geometry() {
-		System.out.println("Geometry() constructor");
+		
 	}
 
-	public void isInRange(){
-		System.out.println("isInRange(enemy, tower)");
+	public boolean isInRange(Enemy enemy, Tower tower){
+		Writer.entry();
+		Writer.synchronexit();
+		return true;
 	}	
 }

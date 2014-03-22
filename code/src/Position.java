@@ -1,14 +1,32 @@
 
 public class Position {
 	
+	int x;
+	int y;
+	
 	public Position() {
 		System.out.println("Position() constructor");
 	}
 
-	public void getX(){		
-		System.out.println("getX()");					
+	public int getX(){
+		Writer.entry();
+		Writer.synchronexit();
+		return x;					
 	}
-	public void getY(){		
-		System.out.println("getY()");							
+	public int getY(){
+		Writer.entry();
+		Writer.synchronexit();
+		return y;							
+	}
+	
+	public void setX(int xx){
+		Writer.entry();
+		Writer.asynchronexit();
+		x = xx;
+	}
+	public void setY(int yy){
+		Writer.entry();
+		Writer.asynchronexit();
+		y = yy;
 	}
 }
