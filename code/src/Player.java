@@ -1,20 +1,32 @@
+import java.util.ArrayList;
+
 
 public class Player {
 	
-	public Player() {
-		System.out.println("Player() constructor");
+	PlayingArea playingArea;
+	
+	int magicPower;
+	
+	public Player(int magicPower) {
+		playingArea = null;
+		this.magicPower = magicPower;
 	}
 
-	public void chooseUpgrade() {
-		System.out.println("chooseUpgrade(magicRockCollection)");
+	public void chooseUpgrade(ArrayList<MagicRock> magicRockList) {
+		Writer.entry();
+		Writer.exit();
 	}
 		
 	public void startGame() {
-		System.out.println("startGame()");
+		Writer.entry();
+		playingArea = new PlayingArea();
+		playingArea.initialize();
+		Writer.exit();
 	}
 	
-	public void reduceMagicPower() {
-		System.out.println("reduceMagicPower(price)");
+	public void reduceMagicPower(int price) {
+		Writer.entry();
+		Writer.exit();
 	}
 	
 }

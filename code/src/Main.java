@@ -6,6 +6,12 @@ import java.io.InputStreamReader;
 public class Main {
 	
 	private static int number;
+	private static int tab = 0;
+	Engine engine;
+	
+	public Main() {
+		engine = null;
+	}
 	
 	public void menu() {
 		switch(number) {
@@ -40,7 +46,8 @@ public class Main {
 	}
 	
 	public void inditas() {
-		System.out.println("Inditas use-case is running");
+		engine = new Engine();
+		
 	}
 	
 	public static void main(String[] args) throws IOException {
