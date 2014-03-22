@@ -2,7 +2,7 @@
 public class Engine extends Thread{
  	
 	public Engine() {
-		System.out.println("Engine constructor");
+		System.out.println("Engine() constructor");
 	}
 
 	public void attackHandler() {
