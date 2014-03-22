@@ -1,19 +1,18 @@
 
 public class Tower extends Tile implements Defense{
 
-	public Tower(char c, Position p) {
-		super(c, p);
-		// TODO Auto-generated constructor stub
+	public Tower() {
+		System.out.println("Tower constructor");
 	}
 	
-	public void attack(){
-		System.out.println("attack() \n");
+	public void attack() {
+		System.out.println("attack(enemyList)");
 	}
 	public void wantToUpgrade(){
-		System.out.println("wantToUpgrade() \n");
+		System.out.println("wantToUpgrade(player)");
 	}
 	
 	public void upgrade(){
-		System.out.println("upgrade() \n");
+		System.out.println("upgrade(magicRock)");
 	}
 }
