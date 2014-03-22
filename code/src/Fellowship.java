@@ -1,10 +1,6 @@
 
 public class Fellowship {	
 	
-	public Fellowship() {
-		System.out.println("Fellowship()");
-	}
-	
 	public void produceAllEnemy(){
 		System.out.println("produceAllEnemy()");
 	}

@@ -1,8 +1,6 @@
 
 public class PlayingArea {
 	
-	public PlayingArea() {}
-	
 	public void initialize() {
 		System.out.println("initialize()");
 	}
