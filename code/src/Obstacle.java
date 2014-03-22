@@ -1,25 +1,22 @@
 
 public class Obstacle extends Tile{
 	
-	
 	public Obstacle() {
-		System.out.println("Obstacle()");
-		
+		System.out.println("Obstacle() constructor");
 	}
 	
-	public void getSlowingFactor() {
-		System.out.println("getSlowingFactor()");
+	public void attack() {
+		System.out.println("attack(enemyList)");
+	}
+	public void wantToUpgrade(){
+		System.out.println("wantToUpgrade(player)");
 	}
 	
-	public void setSlowingFactor() {
-		System.out.println("setSlowingFactor()");
+	public void upgrade(){
+		System.out.println("upgrade(magicRock)");
 	}
-	
-	public void getMagicRockNumber() {
-		System.out.println("getMagicRockNumber()");
-	}
-	
-	public void setMagicRockNumber() {
-		System.out.println("setMagicRockNumber()");
+
+	public void slowMe(){
+		System.out.println("slowMe(enemy)");
 	}
 }

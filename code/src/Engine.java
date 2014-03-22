@@ -1,41 +1,35 @@
 
 public class Engine extends Thread{
-	private Player player;
-	private Fellowship fellowship;
-	
-	public Engine(Player p, Fellowship f) {
-		player = p;
-		fellowship = f;
-		//human = new Human(100, 10, new Position(0, 4), new Position(0, 3));
-	}
  	
+	public Engine() {
+		System.out.println("Engine() constructor");
+	}
+
+	public void attackHandler() {
+		System.out.println("attackHandler()");
+	}
+	
 	public void stepHandler() {
-		
-	}
-	public void towerHandler() {
-		
+		System.out.println("stepHandler()");
 	}
 	
-	public Player getPlayer() {
-		return player;
-	}
-	
-	public Fellowship getFellowShip() {
-		return fellowship;
+	public void takeToArea() {
+		System.out.println("takeToArea()");
 	}
 	
 	public void run() {
-		while(true) {
-			stepHandler();
-			towerHandler();
-			//human.move();
-			System.out.println("Hello");
-		
-			try {
-				Thread.sleep(100);
-			} catch(Exception ex) {
-				ex.printStackTrace();
-			}
-		}
+		System.out.println("run()");
+	}
+	
+	public void defeat() {
+		System.out.println("defeat()");
+	}
+	
+	public void victory() {
+		System.out.println("victory()");
+	}
+	
+	public void getPlayer() {
+		System.out.println("getPlayer()");
 	}
 }

@@ -1,28 +1,27 @@
 
 public class Tile {
-	protected char type;
-	protected int price;
-	protected Position pos;
 	
-	public Tile(char c, Position p) {
-		type = c;
-		price = 0;
-		pos = p;
+	public Tile() {
+		System.out.println("Tile(pos) constructor");
 	}
 	
-	public Position getPos() {
-		return pos;
+	public void buildTower() {
+		System.out.println("buildTower(player)");
 	}
-	
-	public char getType() {
-		return type;
+
+	public void buildObstacle() {
+		System.out.println("buildObstacle(player)");
 	}
-	
-	public void setType(char c) {
-		type = c;
+
+	public void getPos() {
+		System.out.println("getPos()");
 	}
-	
-	public int getPrice() {
-		return price;
+
+	public void setPos() {
+		System.out.println("setPos(pos)");
+	}
+
+	public void distance() {
+		System.out.println("distance(pos1, pos2)");
 	}
 }
