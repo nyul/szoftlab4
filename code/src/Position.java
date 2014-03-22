@@ -21,12 +21,14 @@ public class Position {
 	
 	public void setX(int xx){
 		Writer.entry();
-		Writer.asynchronexit();
 		x = xx;
+		Writer.asynchronexit();
+		
 	}
 	public void setY(int yy){
 		Writer.entry();
-		Writer.asynchronexit();
 		y = yy;
+		Writer.asynchronexit();
+		
 	}
 }

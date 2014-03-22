@@ -46,8 +46,8 @@ public class Tower extends Tile implements Defense{
 	
 	public void setSootPeriod(int sp){
 		Writer.entry();
-		Writer.asynchronexit();
 		shootPeriod = sp;
+		Writer.asynchronexit();		
 	}
 	
 	public int getRange(){
@@ -58,8 +58,8 @@ public class Tower extends Tile implements Defense{
 
 	public void setRange(int r){
 		Writer.entry();
-		Writer.asynchronexit();
 		range = r;
+		Writer.asynchronexit();		
 	}
 	
 	public int getDamagePowerHuman(){
@@ -70,8 +70,8 @@ public class Tower extends Tile implements Defense{
 
 	public void setDamagePowerHuman(int p){
 		Writer.entry();
-		Writer.asynchronexit();
 		damagePowerHuman = p;
+		Writer.asynchronexit();
 	}
 	
 	public int getDamagePowerHobbit(){
@@ -82,8 +82,8 @@ public class Tower extends Tile implements Defense{
 
 	public void setDamagePowerHobbit(int p){
 		Writer.entry();
-		Writer.asynchronexit();
 		damagePowerHobbit = p;
+		Writer.asynchronexit();
 	}
 	
 	public int getDamagePowerDwarf(){
@@ -94,8 +94,8 @@ public class Tower extends Tile implements Defense{
 
 	public void setDamagePowerDwarf(int p){
 		Writer.entry();
-		Writer.asynchronexit();
 		damagePowerDwarf = p;
+		Writer.asynchronexit();
 	}
 	
 	public int getDamagePowerElf(){
@@ -106,8 +106,8 @@ public class Tower extends Tile implements Defense{
 
 	public void setDamagePowerElf(int p){
 		Writer.entry();
-		Writer.asynchronexit();
 		damagePowerElf = p;
+		Writer.asynchronexit();
 	}
 	
 	public int getMagicRockNumber(){
@@ -118,8 +118,8 @@ public class Tower extends Tile implements Defense{
 	
 	public void setMagicRockNumber(int m){
 		Writer.entry();
-		Writer.asynchronexit();
 		magicRockNumber = m;
+		Writer.asynchronexit();		
 	}
 
 }
