@@ -2,7 +2,7 @@
 public class MagicRock {
 	
 	public MagicRock(){
-		System.out.println("MagicRock()");
+		System.out.println("MagicRock constructor");
 	}
 
 }

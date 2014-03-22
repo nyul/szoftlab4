@@ -2,10 +2,10 @@
 public class Mountain extends Road{
 
 	public Mountain() {
-		System.out.println("Mountain constructor called");
+		System.out.println("Mountain constructor");
 	}
 	
-	public void requestDestination(enemy){
+	public void requestDestination(){
 		System.out.println("requestDestination(enemy)");
 	};
 	

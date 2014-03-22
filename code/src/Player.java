@@ -2,11 +2,11 @@
 public class Player {
 	
 	public Player() {
-		System.out.println("Player constructor called.");
+		System.out.println("Player constructor");
 	}
 
 	public void chooseUpgrade() {
-		System.out.println("chooseUpgrade()");
+		System.out.println("chooseUpgrade(magicRockCollection)");
 	}
 		
 	public void startGame() {
@@ -14,7 +14,7 @@ public class Player {
 	}
 	
 	public void reduceMagicPower() {
-		System.out.println("reduceMagicPower()");
+		System.out.println("reduceMagicPower(price)");
 	}
 	
 }
