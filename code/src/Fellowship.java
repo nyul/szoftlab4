@@ -1,32 +1,40 @@
+import java.util.ArrayList;
+
 
 public class Fellowship {	
+	
+	ArrayList<Enemy> passive;
+	ArrayList<Enemy> active;
+	private int number;
+	
 	
 	public Fellowship() {
 		
 	}
 
 	public void produceAllEnemy(){
+		Writer.entry();
+		Writer.asynchronexit();
+	}
+	
+	public void startWave(int number){
 		
 	}
 	
-	public void startWave(){
+	public int getNumber(){
+		return number;
+	}
+	
+	public void killEnemy(Enemy enemy){
 		
 	}
 	
-	public void getNumber(){
-		
-	}
-	
-	public void killEnemy(){
-		
-	}
-	
-	public void getActiveEnemies(){
-		
+	public ArrayList<Enemy> getActiveEnemies(){
+		return active;
 	}
 
-	public void moveAllActiveEnemy(){
-		
+	public ArrayList<Enemy> moveAllActiveEnemy(){
+		return active;
 	}	
 
 }

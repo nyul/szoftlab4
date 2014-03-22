@@ -3,30 +3,29 @@ import java.util.ArrayList;
 
 public class Player {
 	
-	PlayingArea playingArea;
-	
-	int magicPower;
+	private PlayingArea playingArea;
+	private int magicPower;
 	
 	public Player(int magicPower) {
-		playingArea = null;
+		playingArea = new PlayingArea();
 		this.magicPower = magicPower;
 	}
 
 	public void chooseUpgrade(ArrayList<MagicRock> magicRockList) {
 		Writer.entry();
-		Writer.exit();
+		Writer.asynchronexit();
 	}
 		
 	public void startGame() {
 		Writer.entry();
 		playingArea = new PlayingArea();
 		playingArea.initialize();
-		Writer.exit();
+		Writer.asynchronexit();
 	}
 	
 	public void reduceMagicPower(int price) {
 		Writer.entry();
-		Writer.exit();
+		Writer.asynchronexit();
 	}
 	
 }

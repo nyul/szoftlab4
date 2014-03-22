@@ -5,7 +5,8 @@ public class Engine extends Thread{
 	Fellowship fellowship;
 	
 	public Engine() {
-
+		player = new Player(0);
+		fellowship = new Fellowship();
 	}
 	
 	public void attackHandler() {
@@ -22,7 +23,7 @@ public class Engine extends Thread{
 	
 	public void run() {
 		Writer.entry();
-		Writer.exit();
+		Writer.asynchronexit();
 	}
 	
 	public void defeat() {

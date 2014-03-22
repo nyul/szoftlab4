@@ -16,9 +16,9 @@ public class Main {
 	public void menu() {
 		switch(number) {
 		case 0:
-			inditas();
 			break;
 		case 1:
+			inditas();
 			break;
 		case 2:
 			break;
@@ -46,8 +46,11 @@ public class Main {
 	}
 	
 	public void inditas() {
+		System.out.print("Engine");
 		engine = new Engine();
-		
+		engine.player.startGame();
+		engine.fellowship.produceAllEnemy();
+		engine.run();
 	}
 	
 	public static void main(String[] args) throws IOException {
