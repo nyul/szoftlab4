@@ -2,7 +2,7 @@
 public class Geometry {
 	
 	public Geometry() {
-		System.out.println("Geometry constructor");
+		System.out.println("Geometry() constructor");
 	}
 
 	public void isInRange(){

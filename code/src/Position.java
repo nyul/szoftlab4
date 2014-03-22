@@ -2,7 +2,7 @@
 public class Position {
 	
 	public Position() {
-		System.out.println("Position constructor");
+		System.out.println("Position() constructor");
 	}
 
 	public void getX(){		

@@ -2,7 +2,7 @@
 public class Tower extends Tile implements Defense{
 
 	public Tower() {
-		System.out.println("Tower constructor");
+		System.out.println("Tower() constructor");
 	}
 	
 	public void attack() {

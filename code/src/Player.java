@@ -2,7 +2,7 @@
 public class Player {
 	
 	public Player() {
-		System.out.println("Player constructor");
+		System.out.println("Player() constructor");
 	}
 
 	public void chooseUpgrade() {

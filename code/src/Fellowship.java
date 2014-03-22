@@ -2,7 +2,7 @@
 public class Fellowship {	
 	
 	public Fellowship() {
-		System.out.println("Fellowship constructor");
+		System.out.println("Fellowship() constructor");
 	}
 
 	public void produceAllEnemy(){

@@ -2,7 +2,7 @@
 public class PlayingArea {
 	
 	public PlayingArea() {
-		System.out.println("PlayingArea constructor");
+		System.out.println("PlayingArea() constructor");
 	}
 
 	public void initialize() {
