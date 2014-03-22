@@ -41,10 +41,9 @@ public class Fellowship {
 		return active;
 	}
 
-	public ArrayList<Enemy> moveAllActiveEnemy(){
+	public void moveAllActiveEnemy(){
 		Writer.entry();
-		Writer.synchronexit();
-		return active;
+		Writer.asynchronexit();
 	}	
 
 }
