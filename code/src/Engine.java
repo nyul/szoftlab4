@@ -6,26 +6,26 @@ public class Engine extends Thread{
 	}
 	
 	public void stepHandler() {
-		
+		System.out.println("stepHandler()");
 	}
 	
 	public void takeToArea() {
-		
+		System.out.println("takeToArea()");
 	}
 	
 	public void run() {
-		
+		System.out.println("run()");
 	}
 	
 	public void defeat() {
-		
+		System.out.println("defeat()");
 	}
 	
 	public void victory() {
-		
+		System.out.println("victory()");
 	}
 	
-	public Player getPlayer() {
-		return new Player(10);
+	public void getPlayer() {
+		System.out.println("getPlayer()");
 	}
 }
