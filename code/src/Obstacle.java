@@ -1,30 +1,22 @@
 
 public class Obstacle extends Tile{
 	
-	private int slowingFactor;
-	private int magicRockNumber;
-	
-	public Obstacle(char c, Position p) {
-		super(c, p);
-		price = 10;
-		slowingFactor = 2;
-		magicRockNumber = 0;
-		// TODO Auto-generated constructor stub
+	public Obstacle() {
+		System.out.println("Obstacle() constructor");
 	}
 	
-	public int getSlowingFactor() {
-		return slowingFactor;
+	public void attack() {
+		System.out.println("attack(enemyList)");
+	}
+	public void wantToUpgrade(){
+		System.out.println("wantToUpgrade(player)");
 	}
 	
-	public void setSlowingFactor(int number) {
-		slowingFactor = number;
+	public void upgrade(){
+		System.out.println("upgrade(magicRock)");
 	}
-	
-	public int getMagicRockNumber() {
-		return magicRockNumber;
-	}
-	
-	public void setMagicRockNumber(int number) {
-		magicRockNumber = number;
+
+	public void slowMe(){
+		System.out.println("slowMe(enemy)");
 	}
 }
