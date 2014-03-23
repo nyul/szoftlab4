@@ -31,6 +31,7 @@ public class Main {
 		
 		System.out.print("Player");
 		engine.player.tile.buildTower(engine.player);
+		engine.player.playingArea.addTower(engine.player.tile.tower);
 		
 	}
 	
@@ -41,8 +42,10 @@ public class Main {
 		
 		System.out.print("Player");
 		engine.player.tile.buildObstacle(engine.player);
+		engine.player.playingArea.addObstacle(engine.player.tile.obstacle);
 		
 	}
+	
 	
 	public void torony_fejlesztes() {
 		
