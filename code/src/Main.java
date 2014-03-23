@@ -91,8 +91,7 @@ public class Main {
 		engine.fellowship.getNumber();		
 		if(Writer.kerdes("Az ellenségek száma 0?")){
 			engine.victory();
-			}
-						
+			}						
 	}
 	
 	public void menu() {
