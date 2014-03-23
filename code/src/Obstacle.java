@@ -34,6 +34,7 @@ public class Obstacle extends Tile implements Defense{
 
 	public void slowMe(Enemy e){
 		Writer.entry();
+		enemy.increasePause(0);
 		Writer.asynchronexit();
 	}
 }
