@@ -46,7 +46,7 @@ public class Tower extends Tile implements Defense{
 		Writer.asynchronexit();		
 	}
 	
-	/**
+	/**a
 	 * Enemy konstruktor
 	 */
 	
