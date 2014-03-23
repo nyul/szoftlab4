@@ -2,14 +2,15 @@
 public abstract class Enemy {
 	
 	Road road;
-
+	
 	/**
 	 * A paraméterként kapott poziciora lepteti az ellenseget.
 	 * 
 	 * @param p A leptetes celpozicioja
 	 */
 	public void move() {
-		Writer.entry();	
+		Writer.entry();
+		road.requestDestination(this);
 		Writer.asynchronexit();
 	}
 

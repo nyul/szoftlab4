@@ -49,13 +49,13 @@ public class Main {
 	}
 	
 	public void ellenseg_lassitasa() {
+		Human e;
 		engine.createObject();
 		engine.fellowship.createObject();
+		engine.fellowship.active.add(e);
 		
 		System.out.print("Fellowship");
 		engine.fellowship.enemy.move();
-		engine.fellowship.enemy.road.requestDestination(engine.fellowship.enemy);
-		engine.fellowship.enemy.setRoad(engine.fellowship.enemy.road.nextroad);
 	}
 	
 	public void vereseg() {

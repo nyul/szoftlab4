@@ -9,6 +9,7 @@ public class Road extends Tile{
 	 */
 	public void requestDestination(Enemy e) {
 		Writer.entry();
+		e.setRoad(nextroad);
 		Writer.asynchronexit();
 	}
 }
