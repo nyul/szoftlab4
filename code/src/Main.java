@@ -13,9 +13,14 @@ public class Main {
 	}
 	
 	public void inditas() {
+		// szukseges objektumok letrehozasa
+		engine.createObject();
+		engine.player.createObject();
+		engine.fellowship.createObject();
+		
 		System.out.print("Engine");
-		engine.getPlayer().startGame();
-		engine.getFellowship().produceAllEnemy();
+		engine.player.startGame();
+		engine.fellowship.produceAllEnemy();
 		engine.run();
 	}
 	
