@@ -23,6 +23,46 @@ public class Main {
 		
 	}
 	
+	public void akadaly_epites() {
+		
+	}
+	
+	public void torony_fejlesztes() {
+		
+	}
+	
+	public void akadaly_fejlesztes() {
+		
+	}
+	
+	public void ellenseg_palyara_helyezese() {
+		
+	}
+	
+	public void ellenseg_leptetese() {
+		
+	}
+	
+	public void ellenseg_lassitasa() {
+		
+	}
+	
+	public void vereseg() {
+		
+	}
+	
+	public void tuzeles() {
+		
+	}
+	
+	public void ellenseg_elpusztulasa() {
+		
+	}
+	
+	public void gyozelem() {
+		
+	}
+	
 	public void menu() {
 		boolean isRun = true;
 		
@@ -68,24 +108,34 @@ public class Main {
 				torony_epites();
 				break;
 			case 3:
+				akadaly_epites();
 				break;
 			case 4:
+				torony_fejlesztes();
 				break;
 			case 5:
+				akadaly_fejlesztes();
 				break;
 			case 6:
+				ellenseg_palyara_helyezese();
 				break;
 			case 7:
+				ellenseg_leptetese();
 				break;
 			case 8:
+				ellenseg_lassitasa();
 				break;
 			case 9:
+				vereseg();
 				break;
 			case 10:
+				tuzeles();
 				break;
 			case 11:
+				ellenseg_elpusztulasa();
 				break;
 			case 12:
+				gyozelem();
 				break;
 			default:
 				System.out.println("Nincs ilyen menupont. Probald meg ujra.");
