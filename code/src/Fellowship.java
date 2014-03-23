@@ -10,13 +10,16 @@ import java.util.ArrayList;
 public class Fellowship {	
 	
 	ArrayList<Enemy> active;
+	Enemy enemy;
 	
 	public Fellowship() {
 		active = null;
+		enemy = null;
 	}
 	
 	public void createObject() {
 		active = new ArrayList<Enemy>();
+		enemy = new Human();
 	}
 	
 
@@ -35,6 +38,7 @@ public class Fellowship {
 	 */
 	public void startWave(int number){
 		Writer.entry();
+		enemy.goToSource(0);
 		Writer.asynchronexit();
 	}
 	
@@ -66,6 +70,7 @@ public class Fellowship {
 	 */
 	public void moveAllActiveEnemy(){
 		Writer.entry();
+		enemy.move();
 		Writer.asynchronexit();
 	}	
 

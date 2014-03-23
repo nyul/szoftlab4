@@ -1,14 +1,22 @@
 
 public abstract class Enemy {
 
-	/**
-	 * A paraméterként kapott pozícióra lépteti az ellenséget.
-	 * 
-	 * @param p A léptetés célpozíciója
-	 */
+	Source source;
+	Road road;
+	
+	public Enemy() {
+		source = null;
+		road = null;
+	}
+	
+	public void createObject() {
+		source = new Source();
+		road = new Road();
+	}
 
 	public void move() {
 		Writer.entry();	
+		road.requestDestination(this);
 		Writer.asynchronexit();
 	}
 	
@@ -26,6 +34,7 @@ public abstract class Enemy {
 
 	public void goToSource(int pause){
 		Writer.entry();
+		source.requestDestination(this);
 		Writer.asynchronexit();
 	}
 
@@ -43,6 +52,11 @@ public abstract class Enemy {
 	}
 	
 	public void setActivity(boolean a) {
+		Writer.entry();
+		Writer.asynchronexit();
+	}
+	
+	public void setRoad(Road r) {
 		Writer.entry();
 		Writer.asynchronexit();
 	}
