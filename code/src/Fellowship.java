@@ -9,16 +9,16 @@ import java.util.ArrayList;
  */
 public class Fellowship {	
 	
-	ArrayList<Enemy> passive;
 	ArrayList<Enemy> active;
-	private int number;
-	
 	
 	public Fellowship() {
-		passive = new ArrayList<Enemy>();
-		active = new ArrayList<Enemy>();
-		this.number = 0;
+		active = null;
 	}
+	
+	public void createObject() {
+		active = new ArrayList<Enemy>();
+	}
+	
 
 	/**
 	 * Létrehozza az összes ellenséget és hozzáadja õket a passive listához.
@@ -36,16 +36,6 @@ public class Fellowship {
 	public void startWave(int number){
 		Writer.entry();
 		Writer.asynchronexit();
-	}
-	
-	/**
-	 * Visszatér az összes még élõ ellenség számával (aktív + passzív)
-	 * @return fennmaradó ellenségek száma (aki már meghalt az nincs benne)
-	 */
-	public int getNumber(){
-		Writer.entry();
-		Writer.synchronexit();
-		return number;
 	}
 	
 	/**

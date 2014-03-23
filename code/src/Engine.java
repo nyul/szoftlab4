@@ -1,10 +1,15 @@
 
 public class Engine extends Thread{
  	
-	private Player player;
-	private Fellowship fellowship;
+	Player player;
+	Fellowship fellowship;
 	
 	public Engine() {
+		player = null;
+		fellowship = null;
+	}
+	
+	public void createObject() {
 		player = new Player();
 		fellowship = new Fellowship();
 	}
@@ -40,17 +45,5 @@ public class Engine extends Thread{
 	public void victory() {
 		Writer.entry();
 		Writer.asynchronexit();
-	}
-	
-	public Player getPlayer() {
-		Writer.entry();
-		Writer.synchronexit();
-		return player;
-	}
-	
-	public Fellowship getFellowship() {
-		Writer.entry();
-		Writer.synchronexit();
-		return fellowship;
 	}
 }
