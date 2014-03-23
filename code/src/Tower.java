@@ -45,7 +45,7 @@ public class Tower extends Tile implements Defense{
 		player.chooseUpgrade(choosable);
 		Writer.asynchronexit();		
 	}
-	
+
 	/**
 	 * Enemy konstruktor
 	 */
