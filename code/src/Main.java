@@ -56,7 +56,6 @@ public class Main {
 		engine.fellowship.enemy.move();
 		engine.fellowship.enemy.road.requestDestination(engine.fellowship.enemy);
 		engine.fellowship.enemy.setRoad(engine.fellowship.enemy.road.nextroad);
-		
 	}
 	
 	public void vereseg() {

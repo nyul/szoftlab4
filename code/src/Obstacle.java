@@ -5,6 +5,7 @@ public class Obstacle extends Tile{
 	
 	Enemy enemy;
 	ArrayList<MagicRock> choosable;
+	int slowingFactor = 0;
 	
 	public Obstacle() {
 		enemy = null;
@@ -34,6 +35,7 @@ public class Obstacle extends Tile{
 
 	public void slowMe(Enemy e){
 		Writer.entry();
+		e.increasePause(slowingFactor);
 		Writer.asynchronexit();
 	}
 }
