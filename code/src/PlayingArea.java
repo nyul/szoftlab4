@@ -5,14 +5,14 @@
  * Felelossege: A palya inicializalasa.
  * Felelos azert, hogy informaciot szolgaltasson a terkep egyes mezoinek tulajdonsagairol,
  * ilyen informaciaszolgaltatas peldaul a jatekos informalasa a mezo beepithetosegrol 
- * vagy az ellenseg informalasa az ut következo mezojerol.
+ * vagy az ellenseg informalasa az ut kÃ¶vetkezo mezojerol.
  */
 public class PlayingArea {
 
 	/**
 	 * A palyat inicializalja.
 	 * 
-	 * Az ut / utak betöltese amin az ellensegek haladnak.
+	 * Az ut / utak betÃ¶ltese amin az ellensegek haladnak.
 	 * Hegy koordinatajanak megadasa, forras(ok) megadasa.
 	 */
 	public void initialize() {

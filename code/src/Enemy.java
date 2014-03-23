@@ -18,7 +18,7 @@ public abstract class Enemy {
 	}
 	
 	/**
-	 * A paraméterként kapott poziciora lepteti az ellenseget.
+	 * A parameterkent kapott poziciora lepteti az ellenseget.
 	 * 
 	 * @param p A leptetes celpozicioja
 	 */
@@ -87,5 +87,4 @@ public abstract class Enemy {
 		}
 		Writer.asynchronexit();
 	}
-
 }
