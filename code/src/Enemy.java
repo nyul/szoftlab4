@@ -43,4 +43,8 @@ public abstract class Enemy {
 	public boolean getIsSlowed() {
 		return isSlowed;
 	}
+	
+	public int hit(Obstacle t) {
+		return 0;
+	}
 }
