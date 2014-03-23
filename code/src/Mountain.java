@@ -1,12 +1,12 @@
 
 public class Mountain extends Road{
 
-	public Mountain() {
-		System.out.println("Mountain() constructor");
-	}
+	public Mountain() {};
 	
-	public void requestDestination(){
-		System.out.println("requestDestination(enemy)");
+	public void requestDestination(Enemy e){
+		Writer.entry();
+		
+		Writer.asynchronexit();
 	};
 	
 }
