@@ -22,29 +22,48 @@ public abstract class Enemy {
 	 */
 	public abstract void lifePowerReduce(Tower t);
 
+	/**
+	 * Ellenseg forras poticiora helyezese
+	 * @param pause A kesleltetes erteke, ami megadja a palyara lepes sorrendjet
+	 */
 	public void goToSource(int pause){
 		Writer.entry();
 		Writer.asynchronexit();
 	}
 
-
+	/**
+	 * A varakozas ertekenek novelese (palyara helyezeskor vagy lassitaskor fordul elo)
+	 * @param slowingFactor Az akadaly lassito tenyezoje
+	 */
 	public void increasePause(int slowingFactor){
 		Writer.entry();
 		Writer.asynchronexit();
 	}		
 
-
+	/**
+	 * Az ellenseget sebzi
+	 * @param t
+	 * @return
+	 */
 	public int hit(Tower t){
 		Writer.entry();
 		Writer.synchronexit();
 		return 0;
 	}
 	
+	/**
+	 * Az ellenseg aktivitasat allitja (~kirajzolas)
+	 * @param a Ha true akkor aktiv lesz, ha false akkor passziv
+	 */
 	public void setActivity(boolean a) {
 		Writer.entry();
 		Writer.asynchronexit();
 	}
 	
+	/**
+	 * Beallitja az ellenseg poziciojat, amin allnia kell
+	 * @param nextroad A kovetkezo ut, ahova lepnie kell
+	 */
 	public void setRoad(Road nextroad) {
 		Writer.entry();
 		Writer.asynchronexit();
