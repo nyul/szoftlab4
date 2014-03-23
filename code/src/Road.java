@@ -1,11 +1,7 @@
 
 public class Road extends Tile{
 	
-	Road nextRoad;
-	
-	public Road() {
-		nextRoad = new Road();
-	}
+	private Road nextRoad;
 	
 	public void requestDestination(Enemy e) {
 		Writer.entry();
