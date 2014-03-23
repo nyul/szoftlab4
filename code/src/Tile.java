@@ -12,15 +12,14 @@ public class Tile {
 	}
 	
 	public void createObject() {
-		tower = new Tower();
 		obstacle = new Obstacle();
 		pos = new Position();
 	}
 	
 	public Tower buildTower(Player p) {
 		Writer.entry();
-		createObject();
-		if(Writer.kerdes("Van elég varázserõ a akadályépítéshez?")){
+		if(Writer.kerdes("Van elég varázserõ a toronyépítéshez?")){
+			tower = new Tower();
 			tower.setPos(pos);
 			Writer.synchronexit();
 			return tower;

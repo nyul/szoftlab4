@@ -30,8 +30,7 @@ public class Main {
 		engine.player.tile.createObject();
 		
 		System.out.print("Player");
-		engine.player.tile.buildTower(engine.player);
-		engine.player.playingArea.addTower(engine.player.tile.tower);
+		engine.player.playingArea.addTower(engine.player.tile.buildTower(engine.player));
 		
 	}
 	
