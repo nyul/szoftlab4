@@ -37,7 +37,7 @@ public class Tower extends Tile implements Defense{
 	
 	public void wantToUpgrade(Player player){
 		Writer.entry();
-		player.chooseUpgrade(choosable);
+		player.chooseUpgrade(choosable,this);
 		Writer.asynchronexit();		
 	}
 

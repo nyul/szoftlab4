@@ -33,11 +33,24 @@ public class Main {
 	}
 	
 	public void torony_fejlesztes() {
+		// szukseges objektumok letrehozasa
+		engine.createObject();
+		engine.player.createObject();
+		engine.tower.createObject();
+		
+		System.out.print("Player");
+		engine.player.tower.wantToUpgrade(engine.player);		
 		
 	}
 	
 	public void akadaly_fejlesztes() {
+		//szükséges objektumok létrehozása
+		engine.createObject();
+		engine.player.createObject();
+		engine.player.obstacle.createObject();
 		
+		System.out.print("Player");
+		engine.player.obstacle.wantToUpgrade(engine.player);		
 	}
 	
 	public void ellenseg_palyara_helyezese() {
@@ -49,17 +62,7 @@ public class Main {
 	}
 	
 	public void ellenseg_lassitasa() {
-		// szukseges objektumok letrehozasa
-		engine.createObject();
-		engine.fellowship.createObject();
 		
-		engine.fellowship.enemy.createObject();
-		
-		engine.fellowship.enemy.road.createObject();
-		engine.fellowship.enemy.obstacle.createObject();
-		
-		System.out.print("Enemy");
-		engine.fellowship.enemy.move();
 	}
 	
 	public void vereseg() {
@@ -67,7 +70,13 @@ public class Main {
 	}
 	
 	public void tuzeles() {
+		// szukseges objektumok letrehozasa
+		engine.createObject();
+		engine.fellowship.createObject();
+		engine.tower.createObject();
 		
+		System.out.print("Engine");
+		engine.attackHandler();
 	}
 	
 	public void ellenseg_elpusztulasa() {
@@ -75,7 +84,14 @@ public class Main {
 	}
 	
 	public void gyozelem() {
+		// szukseges objektumok letrehozasa
+		engine.createObject();
+		engine.fellowship.createObject();
 		
+		engine.fellowship.getNumber();		
+		if(Writer.kerdes("Az ellenségek száma 0?")){
+			engine.victory();		
+			}						
 	}
 	
 	public void menu() {
