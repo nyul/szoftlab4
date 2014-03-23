@@ -3,16 +3,17 @@ import java.util.ArrayList;
 
 public class Obstacle extends Tile{
 	
-	private int slowingFactor;
-	private ArrayList<MagicRock> choosable;
-	private int magicRockNumber;
-	private Geometry geometry;
-	private Enemy enemy;
+	Enemy enemy;
+	ArrayList<MagicRock> choosable;
 	
 	public Obstacle() {
-		slowingFactor = 0;
-		magicRockNumber = 0;
-		geometry = new Geometry();
+		enemy = null;
+		choosable = null;
+	}
+	
+	public void createObject() {
+		enemy = new Human();
+		choosable = new ArrayList<MagicRock>();
 	}
 	
 	public Enemy attack(ArrayList<Enemy> enemies) {

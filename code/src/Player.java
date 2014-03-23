@@ -3,7 +3,15 @@ import java.util.ArrayList;
 
 public class Player {
 	
-	private PlayingArea playingArea;
+	PlayingArea playingArea;
+	
+	public Player() {
+		playingArea = null;
+	}
+	
+	public void createObject() {
+		playingArea = new PlayingArea();
+	}
 
 	public void chooseUpgrade(ArrayList<MagicRock> magicRockList) {
 		Writer.entry();
@@ -12,7 +20,6 @@ public class Player {
 		
 	public void startGame() {
 		Writer.entry();
-		playingArea = new PlayingArea();
 		playingArea.initialize();
 		Writer.asynchronexit();
 	}
