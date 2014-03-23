@@ -84,7 +84,13 @@ public class Main {
 	}
 	
 	public void gyozelem() {
+		// szukseges objektumok letrehozasa
+		engine.createObject();
+		engine.fellowship.createObject();
 		
+		System.out.print("Engine");
+		engine.fellowship.getNumber();
+		engine.victory();				
 	}
 	
 	public void menu() {

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Fellowship {	
 	
 	ArrayList<Enemy> active;
-	
+	int number;
 	public Fellowship() {
 		active = null;
 	}
@@ -67,6 +67,12 @@ public class Fellowship {
 	public void moveAllActiveEnemy(){
 		Writer.entry();
 		Writer.asynchronexit();
-	}	
+	}
+	
+	public int getNumber(){
+		Writer.entry();
+		Writer.synchronexit();
+		return number;
+	}
 
 }
