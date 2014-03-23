@@ -1,22 +1,41 @@
+import java.util.ArrayList;
+
 
 public class Obstacle extends Tile{
 	
-	public Obstacle() {
-		System.out.println("Obstacle() constructor");
+	private int slowingFactor;
+	private ArrayList<MagicRock> choosable;
+	private int magicRockNumber;
+	private Geometry geometry;
+	private Enemy enemy;
+	
+	public Obstacle(Position pos) {
+		super(pos);
+		slowingFactor = 0;
+		magicRockNumber = 0;
+		geometry = new Geometry();
 	}
 	
-	public void attack() {
-		System.out.println("attack(enemyList)");
+	public Enemy attack(ArrayList<Enemy> enemies) {
+		Writer.entry();
+		geometry.isInRange(enemy,this);
+		enemy.hit(this);
+		Writer.synchronexit();		
+		return enemy;
 	}
-	public void wantToUpgrade(){
-		System.out.println("wantToUpgrade(player)");
+	public void wantToUpgrade(Player player){
+		Writer.entry();
+		player.chooseUpgrade(choosable);
+		Writer.asynchronexit();		
 	}
 	
-	public void upgrade(){
-		System.out.println("upgrade(magicRock)");
+	public void upgrade(MagicRock magicRock){
+		Writer.entry();
+		Writer.asynchronexit();
 	}
 
-	public void slowMe(){
-		System.out.println("slowMe(enemy)");
+	public void slowMe(Enemy e){
+		Writer.entry();
+		Writer.asynchronexit();
 	}
 }

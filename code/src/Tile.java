@@ -1,27 +1,43 @@
 
 public class Tile {
 	
-	public Tile() {
-		System.out.println("Tile(pos) constructor");
+	private Position pos;
+	private Tower tower;
+	private Obstacle obstacle;
+	
+	public Tile(Position pos) {
+		this.pos = pos;
 	}
 	
-	public void buildTower() {
-		System.out.println("buildTower(player)");
+	public Tower buildTower(Player p) {
+		Writer.entry();
+		tower = new Tower(this.pos);
+		Writer.synchronexit();
+		return tower;
 	}
 
-	public void buildObstacle() {
-		System.out.println("buildObstacle(player)");
+	public Obstacle buildObstacle(Player p) {
+		Writer.entry();
+		obstacle = new Obstacle(this.pos);
+		Writer.synchronexit();
+		return obstacle;
 	}
 
-	public void getPos() {
-		System.out.println("getPos()");
+	public Position getPos() {
+		Writer.entry();
+		Writer.synchronexit();
+		return pos;
 	}
 
-	public void setPos() {
-		System.out.println("setPos(pos)");
+	public void setPos(Position p1) {
+		Writer.entry();
+		pos = p1;
+		Writer.asynchronexit();
 	}
 
-	public void distance() {
-		System.out.println("distance(pos1, pos2)");
+	public double distance(Position p1, Position p2) {
+		Writer.entry();
+		Writer.asynchronexit();
+		return 0.0f;
 	}
 }

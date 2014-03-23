@@ -5,7 +5,8 @@ public class Geometry {
 		System.out.println("Geometry() constructor");
 	}
 
-	public void isInRange(){
+	public boolean isInRange(){
 		System.out.println("isInRange(enemy, tower)");
+		return false;
 	}	
 }
