@@ -1,45 +1,31 @@
 
 public class Tile {
-	
-	Tower tower;
-	Obstacle obstacle;
 	Position pos;
 	
 	public Tile() {
-		tower = null;
-		obstacle = null;
 		pos = null;
 	}
 	
 	public void createObject() {
-		obstacle = new Obstacle();
-		pos = new Position();
+		pos = new Position();		
 	}
 	
 	public Tower buildTower(Player p) {
 		Writer.entry();
-		if(Writer.kerdes("Van elég varázserõ a toronyépítéshez?")){
-			tower = new Tower();
-			tower.setPos(pos);
+		createObject();
+			Tower twr = new Tower(); 
+			twr.setPos(pos);
 			Writer.synchronexit();
-			return tower;
-		}
-		else 
-			return null;
-		
+			return twr;			
 	}
 
 	public Obstacle buildObstacle(Player p) {
 		Writer.entry();
 		createObject();
-		if(Writer.kerdes("Van elég varázserõ a akadályépítéshez?")){
+			Obstacle obstacle = new Obstacle();
 			obstacle.setPos(pos);
 			Writer.synchronexit();
-			return obstacle;
-		}
-		else 
-			return null;
-		
+			return obstacle;	
 	}
 
 	public double distance(Position p1, Position p2) {

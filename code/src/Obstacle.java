@@ -37,5 +37,10 @@ public class Obstacle extends Tile{
 		Writer.asynchronexit();
 	}
 	
+	public void setPos(Position pos){
+		Writer.entry();
+		Writer.asynchronexit();
+	};
+	
 	
 }
