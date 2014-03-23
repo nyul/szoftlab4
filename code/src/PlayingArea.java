@@ -21,8 +21,8 @@ public class PlayingArea {
 	}
 	
 	/**
-	 * Hozzáad egy tornyot a tornyok listájához.
-	 * @param t A hozzáadni kívánt torony referenciája
+	 * Hozzaad egy tornyot a tornyok listajahoz.
+	 * @param t A hozzaadni kivant torony referenciaja
 	 */
 	public void addTower(Tower t) {
 		Writer.entry();
