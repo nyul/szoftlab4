@@ -40,20 +40,20 @@ public class Main {
 		MagicRock magicRock = null;
 		
 		System.out.print("Player");
-		engine.tower.wantToUpgrade(engine.player);		
-		engine.tower.upgrade(magicRock);
+		engine.player.tower.wantToUpgrade(engine.player);		
+		engine.player.tower.upgrade(magicRock);
 		
 	}
 	
 	public void akadaly_fejlesztes() {
 		engine.createObject();
 		engine.player.createObject();
-		engine.obsctacle.createObject();
+		engine.player.obstacle.createObject();
 		MagicRock magicRock = null;
 		
 		System.out.print("Player");
-		engine.obsctacle.wantToUpgrade(engine.player);		
-		engine.obsctacle.upgrade(magicRock);
+		engine.player.obstacle.wantToUpgrade(engine.player);		
+		engine.player.obstacle.upgrade(magicRock);
 		
 	}
 	

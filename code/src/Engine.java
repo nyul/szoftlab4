@@ -4,20 +4,18 @@ public class Engine extends Thread{
 	Player player;
 	Fellowship fellowship;
 	Tower tower;
-	Obstacle obsctacle;
+	
 	
 	public Engine() {
 		player = null;
 		fellowship = null;
-		tower = null;
-		obsctacle = null;
+		tower = null;		
 	}
 	
 	public void createObject() {
 		player = new Player();
 		fellowship = new Fellowship();
 		tower = new Tower();
-		obsctacle = new Obstacle();
 	}
 	
 	public void attackHandler() {
