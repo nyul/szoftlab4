@@ -9,70 +9,96 @@ public class Main {
 	Engine engine;
 	
 	public Main() {
-		engine = null;
-	}
-	
-	public void menu() {
-		switch(number) {
-		case 0:
-			break;
-		case 1:
-			inditas();
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		case 4:
-			break;
-		case 5:
-			break;
-		case 6:
-			break;
-		case 7:
-			break;
-		case 8:
-			break;
-		case 9:
-			break;
-		case 10:
-			break;
-		case 11:
-			break;
-		case 12:
-			break;
-		}
+		engine = new Engine();
 	}
 	
 	public void inditas() {
 		System.out.print("Engine");
-		engine = new Engine();
-		engine.player.startGame();
-		engine.fellowship.produceAllEnemy();
+		engine.getPlayer().startGame();
+		engine.getFellowship().produceAllEnemy();
 		engine.run();
+	}
+	
+	public void torony_epites() {
+		
+	}
+	
+	public void menu() {
+		boolean isRun = true;
+		
+		while(isRun) {
+			System.out.println("Use-case menu");
+			System.out.println("1.Inditas");
+			System.out.println("2.Torony epites");
+			System.out.println("3.Akadaly epites");
+			System.out.println("4.Torony fejlesztes");
+			System.out.println("5.Akadaly fejlesztes");
+			System.out.println("6.Ellenseg palyara helyezese");
+			System.out.println("7.Ellenseg leptetese");
+			System.out.println("8.Ellenseg lassitasa");
+			System.out.println("9.Vereseg");
+			System.out.println("10.Tuzeles");
+			System.out.println("11.Ellenseg elpusztulasa");
+			System.out.println("12.Gyozelem");
+			System.out.println("0.Kilepes");
+			System.out.println("");
+			System.out.println("Valassz egy use-case-t!");
+			InputStreamReader read = new InputStreamReader(System.in);
+			BufferedReader in = new BufferedReader(read);
+			
+			try {
+				number = Integer.parseInt(in.readLine());
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        
+			switch(number) {
+			case 0:
+				isRun = false;
+				System.out.println("Kilepes a programbol.");
+				break;
+			case 1:
+				inditas();
+				break;
+			case 2:
+				torony_epites();
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+			case 9:
+				break;
+			case 10:
+				break;
+			case 11:
+				break;
+			case 12:
+				break;
+			default:
+				System.out.println("Nincs ilyen menupont. Probald meg ujra.");
+			}
+			
+			System.out.println("---------------------");
+			System.out.println("");
+		}
+        
 	}
 	
 	public static void main(String[] args) throws IOException {
 		Main main = new Main();
-		System.out.println("Use-case menu");
-		System.out.println("1.Inditas");
-		System.out.println("2.Torony epites");
-		System.out.println("3.Akadaly epites");
-		System.out.println("4.Torony fejlesztes");
-		System.out.println("5.Akadaly fejlesztes");
-		System.out.println("6.Ellenseg palyara helyezese");
-		System.out.println("7.Ellenseg leptetese");
-		System.out.println("8.Ellenseg lassitasa");
-		System.out.println("9.Vereseg");
-		System.out.println("10.Tuzeles");
-		System.out.println("11.Ellenseg elpusztulasa");
-		System.out.println("12.Gyozelem");
-		System.out.println("0.Kilepes");
-		System.out.println("");
-		System.out.println("Choose a use-case!");
-		InputStreamReader read = new InputStreamReader(System.in);
-        BufferedReader in = new BufferedReader(read);
-        number = Integer.parseInt(in.readLine());
 		main.menu();
 	}
 }

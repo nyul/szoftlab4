@@ -1,8 +1,8 @@
 
 public class Engine extends Thread{
  	
-	Player player;
-	Fellowship fellowship;
+	private Player player;
+	private Fellowship fellowship;
 	
 	public Engine() {
 		player = new Player();
@@ -46,5 +46,11 @@ public class Engine extends Thread{
 		Writer.entry();
 		Writer.synchronexit();
 		return player;
+	}
+	
+	public Fellowship getFellowship() {
+		Writer.entry();
+		Writer.synchronexit();
+		return fellowship;
 	}
 }

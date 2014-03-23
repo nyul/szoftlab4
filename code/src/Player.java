@@ -4,11 +4,6 @@ import java.util.ArrayList;
 public class Player {
 	
 	private PlayingArea playingArea;
-	private int magicPower;
-	
-	public Player() {
-		this.magicPower = 0;
-	}
 
 	public void chooseUpgrade(ArrayList<MagicRock> magicRockList) {
 		Writer.entry();

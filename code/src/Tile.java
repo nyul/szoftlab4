@@ -5,9 +5,6 @@ public class Tile {
 	private Tower tower;
 	private Obstacle obstacle;
 	
-	public Tile() {
-	}
-	
 	public Tower buildTower(Player p) {
 		Writer.entry();
 		tower = new Tower();

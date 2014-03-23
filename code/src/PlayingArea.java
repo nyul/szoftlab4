@@ -14,10 +14,6 @@ public class PlayingArea {
 	ArrayList<Tower> tower;
 	ArrayList<Obstacle> obstacle;
 	Mountain mountain;
-	
-	public PlayingArea() {
-
-	}
 
 	/**
 	 * A pályát inicializálja.

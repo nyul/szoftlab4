@@ -17,8 +17,6 @@ public class Obstacle extends Tile{
 	
 	public Enemy attack(ArrayList<Enemy> enemies) {
 		Writer.entry();
-		geometry.isInRange(enemy,this);
-		enemy.hit(this);
 		Writer.synchronexit();		
 		return enemy;
 	}
