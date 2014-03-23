@@ -1,19 +1,19 @@
 
 /**
- * A játékteret reprezentáló objektum. A pályát felépítõ elemtípusok csoportjait tartalmazza. 
+ * A jatekteret reprezentalo objektum. A palyat felepito elemtipusok csoportjait tartalmazza. 
  * 
- * Felelõssége: A pálya inicializálása.
- * Felelõs azért, hogy információt szolgáltasson a térkép egyes mezõinek tulajdonságairól,
- * ilyen információszolgáltatás például a játékos informálása a mezõ beépíthetõségrõl 
- * vagy az ellenség informálása az út következõ mezõjérõl.
+ * Felelossege: A palya inicializalasa.
+ * Felelos azert, hogy informaciot szolgaltasson a terkep egyes mezoinek tulajdonsagairol,
+ * ilyen informaciaszolgaltatas peldaul a jatekos informalasa a mezo beepithetosegrol 
+ * vagy az ellenseg informalasa az ut kÃ¶vetkezo mezojerol.
  */
 public class PlayingArea {
 
 	/**
-	 * A pályát inicializálja.
+	 * A palyat inicializalja.
 	 * 
-	 * Az út / utak betöltése amin az ellenségek haladnak.
-	 * Hegy koordinátájának megadása, forrás(ok) megadása.
+	 * Az ut / utak betÃ¶ltese amin az ellensegek haladnak.
+	 * Hegy koordinatajanak megadasa, forras(ok) megadasa.
 	 */
 	public void initialize() {
 		Writer.entry();
@@ -21,8 +21,8 @@ public class PlayingArea {
 	}
 	
 	/**
-	 * Hozzáad egy tornyot a tornyok listájához.
-	 * @param t A hozzáadni kívánt torony referenciája
+	 * Hozzaad egy tornyot a tornyok listajahoz.
+	 * @param t A hozzaadni kivant torony referenciaja
 	 */
 	public void addTower(Tower t) {
 		Writer.entry();
@@ -30,8 +30,8 @@ public class PlayingArea {
 	}
 	
 	/**
-	 * Hozzáad egy akadályt az akadályok listájához.
-	 * @param o A hozzáadni kívánt akadály referenciája
+	 * Hozzaad egy akadalyt az akadalyok listajahoz.
+	 * @param o A hozzaadni kivant akadaly referenciaja
 	 */	
 	public void addObstacle(Obstacle o) {
 		Writer.entry();
