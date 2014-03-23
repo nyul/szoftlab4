@@ -25,11 +25,25 @@ public class Main {
 	}
 	
 	public void torony_epites() {
-		
+		engine.createObject();
+		engine.player.createObject();
+		engine.player.tile.createObject();
+				
+		if(Writer.kerdes("Van elég varázserõ a toronyépítéshez?")) {
+			System.out.print("Player");
+			engine.player.playingArea.addTower(engine.player.tile.buildTower(engine.player));
+		}
 	}
 	
 	public void akadaly_epites() {
+		engine.createObject();
+		engine.player.createObject();
+		engine.player.tile.createObject();
 		
+		if(Writer.kerdes("Van elég varázserõ a akadályépítéshez?")) {
+			System.out.print("Player");
+			engine.player.playingArea.addObstacle(engine.player.tile.buildObstacle(engine.player));
+		}
 	}
 	
 	public void torony_fejlesztes() {
@@ -104,7 +118,17 @@ public class Main {
 	}
 	
 	public void ellenseg_elpusztulasa() {
-		
+		// szukseges objektumok letrehozasa
+		engine.createObject();
+		engine.fellowship.createObject();
+				
+		engine.fellowship.enemy.createObject();
+				
+		engine.fellowship.enemy.road.createObject();
+		engine.fellowship.enemy.obstacle.createObject();
+				
+		System.out.print("Enemy");
+		engine.fellowship.enemy.move();
 	}
 	
 	public void gyozelem() {
@@ -113,7 +137,7 @@ public class Main {
 		engine.fellowship.createObject();
 		
 		engine.fellowship.getNumber();		
-		if(Writer.kerdes("Az ellensï¿½gek szï¿½ma 0?")){
+		if(Writer.kerdes("Az ellensegek szama 0?")){
 			engine.victory();		
 			}						
 	}
