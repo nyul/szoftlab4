@@ -17,19 +17,26 @@ public class Tile {
 	public Tower buildTower(Player p) {
 		Writer.entry();
 		createObject();
-		p.reduceMagicPower(int price);
-		tower.setPos(pos);
-		Writer.synchronexit();
-		return tower;
+		if(Writer.kerdes("Van elég varázserõ a akadályépítéshez?")){
+			Writer.synchronexit();
+			return tower;
+		}
+		else 
+			return null;
+		
 	}
 
 	public Obstacle buildObstacle(Player p) {
 		Writer.entry();
 		createObject();
-		p.reduceMagicPower(int price);
-		obstacle.setPos(pos);
-		Writer.synchronexit();
-		return obstacle;
+		if(Writer.kerdes("Van elég varázserõ a akadályépítéshez?")){
+			setPos();
+			Writer.synchronexit();
+			return obstacle;
+		}
+		else 
+			return null;
+		
 	}
 
 	public double distance(Position p1, Position p2) {
