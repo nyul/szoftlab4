@@ -29,11 +29,7 @@ public abstract class Enemy {
 	 * @param t A torony amelyik éppen lö erre az ellenségre
 	 */
 	
-	public abstract void lifePowerReduce(Tower t){
-		Writer.enty();
-		Writer.asynchronexit();
-	}
-
+	public abstract void lifePowerReduce(Tower t);
 
 	public void goToSource(int pause){
 		Writer.entry();
@@ -50,7 +46,7 @@ public abstract class Enemy {
 	public int hit(Tower t){
 		Writer.entry();
 		Writer.synchronexit();
-		return ;
+		return 0;
 	}
 	
 
