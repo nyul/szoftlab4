@@ -33,10 +33,27 @@ public class Main {
 	}
 	
 	public void torony_fejlesztes() {
+		// szukseges objektumok letrehozasa
+		engine.createObject();
+		engine.player.createObject();
+		engine.tower.createObject();
+		MagicRock magicRock = null;
+		
+		System.out.print("Player");
+		engine.tower.wantToUpgrade(engine.player);		
+		engine.tower.upgrade(magicRock);
 		
 	}
 	
 	public void akadaly_fejlesztes() {
+		engine.createObject();
+		engine.player.createObject();
+		engine.obsctacle.createObject();
+		MagicRock magicRock = null;
+		
+		System.out.print("Player");
+		engine.obsctacle.wantToUpgrade(engine.player);		
+		engine.obsctacle.upgrade(magicRock);
 		
 	}
 	
@@ -57,7 +74,13 @@ public class Main {
 	}
 	
 	public void tuzeles() {
+		// szukseges objektumok letrehozasa
+		engine.createObject();
+		engine.fellowship.createObject();
+		engine.tower.createObject();
 		
+		System.out.print("Engine");
+		engine.attackHandler();
 	}
 	
 	public void ellenseg_elpusztulasa() {
