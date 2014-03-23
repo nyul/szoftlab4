@@ -37,7 +37,6 @@ public class Main {
 		engine.createObject();
 		engine.player.createObject();
 		engine.tower.createObject();
-		MagicRock magicRock = null;
 		
 		System.out.print("Player");
 		engine.player.tower.wantToUpgrade(engine.player);		
@@ -49,7 +48,6 @@ public class Main {
 		engine.createObject();
 		engine.player.createObject();
 		engine.player.obstacle.createObject();
-		MagicRock magicRock = null;	
 		
 		System.out.print("Player");
 		engine.player.obstacle.wantToUpgrade(engine.player);		
