@@ -1,27 +1,25 @@
 
 public abstract class Enemy {
+	
+	Road road;
 
 	/**
-	 * A paraméterként kapott pozícióra lépteti az ellenséget.
+	 * A paraméterként kapott poziciora lepteti az ellenseget.
 	 * 
-	 * @param p A léptetés célpozíciója
+	 * @param p A leptetes celpozicioja
 	 */
-
 	public void move() {
 		Writer.entry();	
 		Writer.asynchronexit();
 	}
-	
-
 
 	/**
-	 * A paraméterlistán kapott toronytól leolvasott,
-	 * erre az ellenség típusra vonatkozó sebzés értéket
-	 * levonja az aktuális életerõbõl.
+	 * A parameterlistan kapott toronytol leolvasott,
+	 * erre az ellenseg tipusra vonatkozo sebzes erteket
+	 * levonja az aktualis eleterobol.
 	 * 
-	 * @param t A torony amelyik éppen lö erre az ellenségre
+	 * @param t A torony amelyik eppen lo erre az ellensegre
 	 */
-	
 	public abstract void lifePowerReduce(Tower t);
 
 	public void goToSource(int pause){
@@ -43,6 +41,11 @@ public abstract class Enemy {
 	}
 	
 	public void setActivity(boolean a) {
+		Writer.entry();
+		Writer.asynchronexit();
+	}
+	
+	public void setRoad(Road nextroad) {
 		Writer.entry();
 		Writer.asynchronexit();
 	}

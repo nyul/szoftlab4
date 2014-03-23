@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 /**
- *  *
  * A szovetseget reprezentalo objektum, aminek celja az ellenseges hullamok nyilvantartasa. 
  * A hullamok ellensegekbol allnak (torpok, hobbitok, stb.), es a jatek elorehaladtaval egyre novekvo szamu ellenseget tartalmaz.
  * A Fellowship dolga a hullamok es azok szamanak nyilvantartasaert, illetve az egyes hullamok kozotti idoert is.
@@ -10,6 +9,7 @@ import java.util.ArrayList;
 public class Fellowship {	
 	
 	ArrayList<Enemy> active;
+	Enemy enemy;
 	
 	public Fellowship() {
 		active = null;

@@ -49,6 +49,13 @@ public class Main {
 	}
 	
 	public void ellenseg_lassitasa() {
+		engine.createObject();
+		engine.fellowship.createObject();
+		
+		System.out.print("Fellowship");
+		engine.fellowship.enemy.move();
+		engine.fellowship.enemy.road.requestDestination(engine.fellowship.enemy);
+		engine.fellowship.enemy.setRoad(engine.fellowship.enemy.road.nextroad);
 		
 	}
 	
