@@ -16,6 +16,7 @@ public class Tile {
 	
 	public Tower buildTower(Player p) {
 		Writer.entry();
+		p.reduceMagicPower(int price);
 		Writer.synchronexit();
 		return tower;
 	}

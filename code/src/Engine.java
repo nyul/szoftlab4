@@ -4,14 +4,17 @@ public class Engine extends Thread{
 	Player player;
 	Fellowship fellowship;
 	
+	
 	public Engine() {
 		player = null;
 		fellowship = null;
+		
 	}
 	
 	public void createObject() {
 		player = new Player();
 		fellowship = new Fellowship();
+		
 	}
 	
 	public void attackHandler() {

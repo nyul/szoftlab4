@@ -25,10 +25,22 @@ public class Main {
 	}
 	
 	public void torony_epites() {
+		engine.createObject();
+		engine.player.createObject();
+		engine.player.tile.createObject();
+		
+		System.out.print("Player");
+		engine.player.tile.buildTower(engine.player);
 		
 	}
 	
 	public void akadaly_epites() {
+		engine.createObject();
+		engine.player.createObject();
+		engine.player.tile.createObject();
+		
+		System.out.print("Player");
+		engine.player.tile.buildObstacle(engine.player);
 		
 	}
 	
