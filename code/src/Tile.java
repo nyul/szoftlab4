@@ -5,20 +5,19 @@ public class Tile {
 	private Tower tower;
 	private Obstacle obstacle;
 	
-	public Tile(Position pos) {
-		this.pos = pos;
+	public Tile() {
 	}
 	
 	public Tower buildTower(Player p) {
 		Writer.entry();
-		tower = new Tower(this.pos);
+		tower = new Tower();
 		Writer.synchronexit();
 		return tower;
 	}
 
 	public Obstacle buildObstacle(Player p) {
 		Writer.entry();
-		obstacle = new Obstacle(this.pos);
+		obstacle = new Obstacle();
 		Writer.synchronexit();
 		return obstacle;
 	}

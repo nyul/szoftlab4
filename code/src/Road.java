@@ -2,8 +2,7 @@
 public class Road extends Tile{
 	
 	
-	public Road(Position pos) {
-		super(pos);
+	public Road() {
 		System.out.println("Road() constructor");
 	}
 	

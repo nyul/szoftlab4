@@ -5,8 +5,8 @@ public class Engine extends Thread{
 	Fellowship fellowship;
 	
 	public Engine() {
-		player = new Player(0);
-		fellowship = new Fellowship(0);
+		player = new Player();
+		fellowship = new Fellowship();
 	}
 	
 	public void attackHandler() {

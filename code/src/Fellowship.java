@@ -14,10 +14,10 @@ public class Fellowship {
 	private int number;
 	
 	
-	public Fellowship(int number) {
+	public Fellowship() {
 		passive = new ArrayList<Enemy>();
 		active = new ArrayList<Enemy>();
-		this.number = number;
+		this.number = 0;
 	}
 
 	/**

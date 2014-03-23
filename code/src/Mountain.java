@@ -1,8 +1,7 @@
 
 public class Mountain extends Road{
 
-	public Mountain(Position pos) {
-		super(pos);
+	public Mountain() {
 		System.out.println("Mountain() constructor");
 	}
 	

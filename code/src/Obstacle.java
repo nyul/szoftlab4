@@ -9,8 +9,7 @@ public class Obstacle extends Tile{
 	private Geometry geometry;
 	private Enemy enemy;
 	
-	public Obstacle(Position pos) {
-		super(pos);
+	public Obstacle() {
 		slowingFactor = 0;
 		magicRockNumber = 0;
 		geometry = new Geometry();

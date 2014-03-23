@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 public class Main {
 	
 	private static int number;
-	private static int tab = 0;
 	Engine engine;
 	
 	public Main() {

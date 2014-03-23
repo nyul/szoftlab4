@@ -6,9 +6,8 @@ public class Player {
 	private PlayingArea playingArea;
 	private int magicPower;
 	
-	public Player(int magicPower) {
-		playingArea = new PlayingArea();
-		this.magicPower = magicPower;
+	public Player() {
+		this.magicPower = 0;
 	}
 
 	public void chooseUpgrade(ArrayList<MagicRock> magicRockList) {
