@@ -13,19 +13,21 @@ public class Tile {
 	public Tower buildTower(Player p) {
 		Writer.entry();
 		createObject();
-			Tower twr = new Tower(); 
-			twr.setPos(pos);
-			Writer.synchronexit();
-			return twr;			
+		p.reduceMagicPower(0);
+		Tower twr = new Tower(); 
+		twr.setPos(pos);
+		Writer.synchronexit();
+		return twr;			
 	}
 
 	public Obstacle buildObstacle(Player p) {
 		Writer.entry();
 		createObject();
-			Obstacle obstacle = new Obstacle();
-			obstacle.setPos(pos);
-			Writer.synchronexit();
-			return obstacle;	
+		p.reduceMagicPower(0);
+		Obstacle obstacle = new Obstacle();
+		obstacle.setPos(pos);
+		Writer.synchronexit();
+		return obstacle;	
 	}
 
 	public double distance(Position p1, Position p2) {
