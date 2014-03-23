@@ -7,7 +7,7 @@ public class Source extends Road{
 	
 	public void requestDestination(Enemy e){
 		Writer.entry();
-		enemy.setRoad(this);
+		e.setRoad(this);
 		Writer.asynchronexit();
 	};
 

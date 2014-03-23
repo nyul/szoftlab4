@@ -63,7 +63,17 @@ public class Main {
 	}
 	
 	public void ellenseg_lassitasa() {
-		
+		// szukseges objektumok letrehozasa
+		engine.createObject();
+		engine.fellowship.createObject();
+				
+		engine.fellowship.enemy.createObject();
+				
+		engine.fellowship.enemy.road.createObject();
+		engine.fellowship.enemy.obstacle.createObject();
+				
+		System.out.print("Enemy");
+		engine.fellowship.enemy.move();
 	}
 	
 	public void vereseg() {

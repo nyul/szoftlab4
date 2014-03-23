@@ -3,15 +3,18 @@ public abstract class Enemy {
 
 	Source source;
 	Road road;
+	Obstacle obstacle;
 	
 	public Enemy() {
 		source = null;
 		road = null;
+		obstacle = null;
 	}
 	
 	public void createObject() {
 		source = new Source();
 		road = new Road();
+		obstacle = new Obstacle();
 	}
 
 	public void move() {
@@ -58,6 +61,9 @@ public abstract class Enemy {
 	
 	public void setRoad(Road r) {
 		Writer.entry();
+		if(Writer.kerdes("Kovetkezo ut-csempe akadaly-e?")) {
+			obstacle.slowMe(this);
+		}
 		Writer.asynchronexit();
 	}
 
