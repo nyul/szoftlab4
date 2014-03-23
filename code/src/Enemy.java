@@ -1,15 +1,18 @@
 
 public abstract class Enemy {
 	
+	Source source;
 	Road road;
 	Obstacle obstacle;
 	
 	public Enemy() {
+		source = null;
 		road = null;
 		obstacle = null;
 	}
 	
 	public void createObject() {
+		source = new Source();
 		road = new Road();
 		obstacle = new Obstacle();
 	}
@@ -40,6 +43,7 @@ public abstract class Enemy {
 	 */
 	public void goToSource(int pause){
 		Writer.entry();
+		source.requestDestination(this);
 		Writer.asynchronexit();
 	}
 
@@ -76,7 +80,7 @@ public abstract class Enemy {
 	 * Beallitja az ellenseg poziciojat, amin allnia kell
 	 * @param nextroad A kovetkezo ut, ahova lepnie kell
 	 */
-	public void setRoad(Road nextroad) {
+	public void setRoad(Road r) {
 		Writer.entry();
 		if(Writer.kerdes("Kovetkezo ut-csempe akadaly-e?")) {
 			obstacle.slowMe(this);
