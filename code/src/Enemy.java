@@ -78,7 +78,7 @@ public abstract class Enemy {
 	
 	/**
 	 * Beallitja az ellenseg poziciojat, amin allnia kell
-	 * @param nextroad A kovetkezo ut, ahova lepnie kell
+	 * @param nextroad A kovetkezo ut, ahova lepnie kell 
 	 */
 	public void setRoad(Road r) {
 		Writer.entry();
