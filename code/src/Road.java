@@ -1,12 +1,11 @@
 
 public class Road extends Tile{
 	
+	private Road nextRoad;
 	
-	public Road() {
-		System.out.println("Road() constructor");
-	}
-	
-	public void requestDestination() {
-		System.out.println("requestDestination(enemy)");
+	public void requestDestination(Enemy e) {
+		Writer.entry();
+		
+		Writer.asynchronexit();
 	}
 }
