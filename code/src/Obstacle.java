@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 
-public class Obstacle extends Tile implements Defense{
+public class Obstacle extends Road implements Defense{
 	
 	Enemy enemy;
 	ArrayList<MagicRock> choosable;
@@ -34,7 +34,7 @@ public class Obstacle extends Tile implements Defense{
 
 	public void slowMe(Enemy e){
 		Writer.entry();
-		enemy.increasePause(0);
+		e.increasePause(0);
 		Writer.asynchronexit();
 	}
 }
