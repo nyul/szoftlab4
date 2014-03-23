@@ -16,10 +16,7 @@ public class PlayingArea {
 	Mountain mountain;
 	
 	public PlayingArea() {
-		source = new ArrayList<Source>();
-		tower = new ArrayList<Tower>();
-		obstacle = new ArrayList<Obstacle>();
-		mountain = new Mountain();
+
 	}
 
 	/**
