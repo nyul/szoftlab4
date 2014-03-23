@@ -52,7 +52,9 @@ public class Main {
 		// szukseges objektumok letrehozasa
 		engine.createObject();
 		engine.fellowship.createObject();
+		
 		engine.fellowship.enemy.createObject();
+		
 		engine.fellowship.enemy.road.createObject();
 		engine.fellowship.enemy.obstacle.createObject();
 		
