@@ -1,7 +1,7 @@
 
 public class Road extends Tile{
 	
-	Road nextroad;
+	Obstacle nextroad;
 	
 	/**
 	 * Atadja a hivonak az ut kovetkezo poziciojat (ahova lepnie kell)
