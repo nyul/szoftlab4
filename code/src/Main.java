@@ -54,11 +54,25 @@ public class Main {
 	}
 	
 	public void ellenseg_palyara_helyezese() {
+		// szukseges objektumok letrehozasa
+		engine.createObject();
+		engine.fellowship.createObject();
+		engine.fellowship.enemy.createObject();
+		engine.fellowship.enemy.source.createObject();
 		
+		System.out.print("Engine");
+		engine.takeToArea();
 	}
 	
 	public void ellenseg_leptetese() {
+		// szukseges objektumok letrehozasa
+		engine.createObject();
+		engine.fellowship.createObject();
+		engine.fellowship.enemy.createObject();
+		engine.fellowship.enemy.road.createObject();
 		
+		System.out.print("Engine");
+		engine.stepHandler();
 	}
 	
 	public void ellenseg_lassitasa() {

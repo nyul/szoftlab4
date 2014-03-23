@@ -26,19 +26,18 @@ public class Engine extends Thread{
 	
 	public void stepHandler() {
 		Writer.entry();
+		fellowship.moveAllActiveEnemy();
 		Writer.asynchronexit();
 	}
 	
 	public void takeToArea() {
 		Writer.entry();
+		fellowship.startWave(0);
 		Writer.asynchronexit();
 	}
 	
 	public void run() {
 		Writer.entry();
-		attackHandler();
-		stepHandler();
-		takeToArea();
 		Writer.asynchronexit();
 	}
 	

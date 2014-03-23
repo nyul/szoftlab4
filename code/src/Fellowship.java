@@ -39,6 +39,7 @@ public class Fellowship {
 	 */
 	public void startWave(int number){
 		Writer.entry();
+		enemy.goToSource(0);
 		Writer.asynchronexit();
 	}
 	
@@ -70,6 +71,7 @@ public class Fellowship {
 	 */
 	public void moveAllActiveEnemy(){
 		Writer.entry();
+		enemy.move();
 		Writer.asynchronexit();
 	}
 	
