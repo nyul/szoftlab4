@@ -8,7 +8,7 @@ public class Hobbit extends Enemy{
 
 	@Override
 	public void lifePowerReduce(Tower t) {
-		// TODO Auto-generated method stub
-		//lifePower = lifePower - t.getDamagePowerHobbit();
+		Writer.entry();	
+		Writer.asynchronexit();
 	}
 }
