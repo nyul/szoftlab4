@@ -44,7 +44,7 @@ public class Main {
 	}
 	
 	public void akadaly_fejlesztes() {
-		//szükséges objektumok létrehozása
+		//szï¿½ksï¿½ges objektumok lï¿½trehozï¿½sa
 		engine.createObject();
 		engine.player.createObject();
 		engine.player.obstacle.createObject();
@@ -62,7 +62,17 @@ public class Main {
 	}
 	
 	public void ellenseg_lassitasa() {
+		// szukseges objektumok letrehozasa
+		engine.createObject();
+		engine.fellowship.createObject();
 		
+		engine.fellowship.enemy.createObject();
+		
+		engine.fellowship.enemy.road.createObject();
+		engine.fellowship.enemy.obstacle.createObject();
+		
+		System.out.print("Enemy");
+		engine.fellowship.enemy.move();
 	}
 	
 	public void vereseg() {
@@ -89,7 +99,7 @@ public class Main {
 		engine.fellowship.createObject();
 		
 		engine.fellowship.getNumber();		
-		if(Writer.kerdes("Az ellenségek száma 0?")){
+		if(Writer.kerdes("Az ellensï¿½gek szï¿½ma 0?")){
 			engine.victory();		
 			}						
 	}
