@@ -19,8 +19,10 @@ public class Player {
 		tower = new Tower();
 	}
 
-	public void chooseUpgrade(ArrayList<MagicRock> magicRockList) {
+	public void chooseUpgrade(ArrayList<MagicRock> magicRockList, Defense defense) {
 		Writer.entry();
+		MagicRock magicRock = null;
+		defense.upgrade(magicRock);
 		Writer.asynchronexit();
 	}
 		

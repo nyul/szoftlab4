@@ -41,20 +41,18 @@ public class Main {
 		
 		System.out.print("Player");
 		engine.player.tower.wantToUpgrade(engine.player);		
-		engine.player.tower.upgrade(magicRock);
 		
 	}
 	
 	public void akadaly_fejlesztes() {
+		//szükséges objektumok létrehozása
 		engine.createObject();
 		engine.player.createObject();
 		engine.player.obstacle.createObject();
-		MagicRock magicRock = null;
+		MagicRock magicRock = null;	
 		
 		System.out.print("Player");
 		engine.player.obstacle.wantToUpgrade(engine.player);		
-		engine.player.obstacle.upgrade(magicRock);
-		
 	}
 	
 	public void ellenseg_palyara_helyezese() {
