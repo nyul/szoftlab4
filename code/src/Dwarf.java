@@ -8,7 +8,7 @@ public class Dwarf extends Enemy{
 
 	@Override
 	public void lifePowerReduce(Tower t) {
-		// TODO Auto-generated method stub
-		//lifePower = lifePower - t.getDamagePowerDwarf();
+		Writer.entry();	
+		Writer.asynchronexit();
 	}
 }
