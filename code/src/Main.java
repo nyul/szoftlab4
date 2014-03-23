@@ -49,12 +49,16 @@ public class Main {
 	}
 	
 	public void ellenseg_lassitasa() {
-		Human e;
+		// szukseges objektumok letrehozasa
 		engine.createObject();
 		engine.fellowship.createObject();
-		engine.fellowship.active.add(e);
 		
-		System.out.print("Fellowship");
+		engine.fellowship.enemy.createObject();
+		
+		engine.fellowship.enemy.road.createObject();
+		engine.fellowship.enemy.obstacle.createObject();
+		
+		System.out.print("Enemy");
 		engine.fellowship.enemy.move();
 	}
 	

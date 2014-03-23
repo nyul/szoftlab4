@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 
 
-public class Obstacle extends Tile{
+public class Obstacle extends Road implements Defense{
 	
 	Enemy enemy;
 	ArrayList<MagicRock> choosable;
-	int slowingFactor = 0;
 	
 	public Obstacle() {
 		enemy = null;
@@ -35,7 +34,7 @@ public class Obstacle extends Tile{
 
 	public void slowMe(Enemy e){
 		Writer.entry();
-		e.increasePause(slowingFactor);
+		enemy.increasePause(0);
 		Writer.asynchronexit();
 	}
 }
