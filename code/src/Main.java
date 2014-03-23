@@ -44,6 +44,7 @@ public class Main {
 		if(Writer.kerdes("Van elég varázserõ a akadályépítéshez?")){
 			engine.player.playingArea.addObstacle(engine.player.tile.buildObstacle(engine.player));}
 		
+		
 	}
 	
 	
