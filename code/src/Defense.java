@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+
 
 public interface Defense {
 
-	public void attack();
-	public void wantToUpgrade();
-	public void upgrade();
+	Enemy attack(ArrayList<Enemy> e);
+	void wantToUpgrade(Player p);
+	void upgrade(MagicRock m);
 }
