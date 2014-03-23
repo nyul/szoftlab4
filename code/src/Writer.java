@@ -10,59 +10,66 @@ public class Writer {
 		belepes = 0;
 	}
 
-	// Függvénybe való belépéskor hívandó, a megfelelő tabnyi behúzás után
-	// kiírja az objektum osztályát és a metódus nevét.
+	/**
+	 * Fuggvenybe valo belepeskor hivando, a megfelelo tabnyi behuzas utan
+	 * kiirja az objektum osztalyat es a metodus nevet.
+	 */
 	public static void entry() {
-		// Behúzás növelése
+		// Behuzas novelese
 		belepes++;
-		// Tabok kiírása
+		// Tabok kiirasa
 		for (int i = 0; i < belepes; i++) {
 			System.out.print('\t');
 		}
-		// Osztály és metódus név kiírása
+		// Osztaly es metodus nev kiirasa
 		System.out.println("-->"
 				+ Thread.currentThread().getStackTrace()[2].getClassName()
 				+ "."
 				+ Thread.currentThread().getStackTrace()[2].getMethodName());
 	}
 
-	// Függvényből való visszatéréskor hívandó, a megfelelő tabnyi behúzás után
-	// kiírja az objektum osztályát és a metódus nevét.
+	/**
+	 * Szinkron fuggvenybol valo visszatereskor hivando, a megfelelo tabnyi behuzas utan
+	 * kiirja az objektum osztalyat es a metodus nevet.
+	 */
 	public static void synchronexit() {
-		// Megfelelő számú tab kiírása
+		// Megfelelo szamu tab kiirasa
 		for (int i = 0; i < belepes; i++) {
 			System.out.print('\t');
 		}
-		// Osztály és metódus név kiírása
+		// Osztaly es metodus nev kiirasa
 		System.out.println("<--"
 				+ Thread.currentThread().getStackTrace()[2].getClassName()
 				+ "."
 				+ Thread.currentThread().getStackTrace()[2].getMethodName());
-		// Behúzás csökkentése
+		// Behuzas csokkentese
 		belepes--;
 	}
 	
 	public static void asynchronexit() {
-		// Behúzás csökkentése
+		// Behuzas csokkentese
 		belepes--;
 	}
 
-	// Kiíra és feldolgozza a use case-ek közben felmerülõ felhasználónak szóló
-	// kérdéseket.
+	/**
+	 * Kiirja es feldolgozza a use case-ek kozben felmerulo felhasznalonak szolo kerdeseket.
+	 * @param kerdes A kiirando kerdes
+	 * @return ha a valasz igen akkor true, ha nem akkor false
+	 */
 	public static boolean kerdes(String kerdes) {
 
-		// Kiírja a kérdést
+		// Kirja a kerdest
 		System.out.println(kerdes);
 		System.out.println("I:Igen N:Nem");
 		while (true) {
 			try {
-				// Felhasználótól elkérjük a bemenetet
+				// Felhasznalotol elkerjuk a bemenetet
 				System.out.print(">");
 				BufferedReader br = new BufferedReader(new InputStreamReader(
 						System.in));
 				String beolvas = br.readLine();
 
-				// Ha I-vel kezdõdik, akkor Igennek vesszük.
+				// Ha I-vel kezdodik akkor igennek vesszuk
 				if (beolvas.startsWith("I") || beolvas.startsWith("i")) {
 					return true;
 				}
@@ -72,8 +79,8 @@ public class Writer {
 					return false;
 				}
 
-				// Ha mást ad meg, akkor kiírjuk, hogy rossz opciót adott meg és
-				// újra megkérdezzük..
+				// Ha mast ad meg akkor kiirjuk, hogy rossz opciot adott meg
+				// es ujra megkerdezzuk
 				System.out.println("? Nem megfelelo opciot adtal meg");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
