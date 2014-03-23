@@ -8,7 +8,7 @@ public class Human extends Enemy{
 
 	@Override
 	public void lifePowerReduce(Tower t) {
-		// TODO Auto-generated method stub
-		//lifePower = lifePower - t.getDamagePowerHuman();
+		Writer.entry();	
+		Writer.asynchronexit();
 	}
 }
