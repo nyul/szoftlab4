@@ -14,11 +14,19 @@ public class Tower extends Tile implements Defense{
 	private int damagePowerDwarf;
 	private int damagePowerElf;
 	private ArrayList<MagicRock> magicRock;
-	private int magicRockNumber;	
+	private int magicRockNumber;
+	
+	/**
+	 * Tower konstruktor
+	 */
 	
 	public Tower() {
 		geometry = new Geometry();
 	}
+	
+	/**
+	 * Enemy konstruktor
+	 */
 	
 	public Enemy attack(ArrayList<Enemy> enemies) {
 		Writer.entry();
@@ -27,16 +35,29 @@ public class Tower extends Tile implements Defense{
 		Writer.synchronexit();		
 		return enemy;
 	}
+	
+	/**
+	 * Enemy konstruktor
+	 */
+	
 	public void wantToUpgrade(Player player){
 		Writer.entry();
 		player.chooseUpgrade(choosable);
 		Writer.asynchronexit();		
 	}
 	
+	/**
+	 * Enemy konstruktor
+	 */
+	
 	public void upgrade(MagicRock magicRock){
 		Writer.entry();
 		Writer.asynchronexit();
 	}
+	
+	/**
+	 * Setterek és Getterek
+	 */
 	
 	public int getSootPeriod(){
 		Writer.entry();
