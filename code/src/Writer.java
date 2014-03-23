@@ -46,6 +46,10 @@ public class Writer {
 		belepes--;
 	}
 	
+	/**
+	 * Aszinkron fuggveny hivasakor hasznalando, a megfelelo tabnyi behuzas utan
+	 * kiirja az objektum osztalyat es a metodus nevet.
+	 */
 	public static void asynchronexit() {
 		// Behuzas csokkentese
 		belepes--;
