@@ -49,9 +49,6 @@ public class Tower extends Tile implements Defense{
 		Writer.asynchronexit();
 	}
 	
-	public void setPos(Position p) {
-		Writer.entry();
-		Writer.asynchronexit();
-	}
+	
 }
 

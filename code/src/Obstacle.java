@@ -36,4 +36,6 @@ public class Obstacle extends Tile{
 		Writer.entry();
 		Writer.asynchronexit();
 	}
+	
+	
 }
