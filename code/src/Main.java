@@ -88,9 +88,11 @@ public class Main {
 		engine.createObject();
 		engine.fellowship.createObject();
 		
-		System.out.print("Engine");
-		engine.fellowship.getNumber();
-		engine.victory();				
+		engine.fellowship.getNumber();		
+		if(Writer.kerdes("Az ellenségek száma 0?")){
+			engine.victory();
+			}
+						
 	}
 	
 	public void menu() {
