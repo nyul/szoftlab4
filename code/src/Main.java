@@ -29,11 +29,7 @@ public class Main {
 		engine.player.createObject();
 		engine.player.tile.createObject();
 		
-		System.out.print("Player");
-		//engine.player.tile.buildTower(engine.player);
-		//if(Writer.kerdes("Van elég varázserõ a toronyépítéshez?")){
-		//engine.player.playingArea.addTower(engine.player.tile.tower);}
-		
+		System.out.print("Player");		
 		if(Writer.kerdes("Van elég varázserõ a toronyépítéshez?")){
 		engine.player.playingArea.addTower(engine.player.tile.buildTower(engine.player));}
 		
@@ -45,11 +41,6 @@ public class Main {
 		engine.player.tile.createObject();
 		
 		System.out.print("Player");
-		
-//		engine.player.tile.buildObstacle(engine.player);
-//		if(Writer.kerdes("Van elég varázserõ a akadályépítéshez?")){
-//			engine.player.playingArea.addObstacle(engine.player.tile.obstacle);}
-		
 		if(Writer.kerdes("Van elég varázserõ a akadályépítéshez?")){
 			engine.player.playingArea.addObstacle(engine.player.tile.buildObstacle(engine.player));}
 		
