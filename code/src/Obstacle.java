@@ -37,4 +37,9 @@ public class Obstacle extends Road implements Defense{
 		e.increasePause(0);
 		Writer.asynchronexit();
 	}
+	
+	public void setPos(Position pos){
+		Writer.entry();
+		Writer.asynchronexit();
+	};
 }

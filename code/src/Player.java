@@ -6,17 +6,20 @@ public class Player {
 	PlayingArea playingArea;
 	Obstacle obstacle;
 	Tower tower;
+	Tile tile;
 	
 	public Player() {
 		playingArea = null;
 		obstacle = null;
 		tower = null;
+		tile = null;
 	}
 	
 	public void createObject() {
 		playingArea = new PlayingArea();
 		obstacle = new Obstacle();
 		tower = new Tower();
+		tile = new Tile();
 	}
 
 	public void chooseUpgrade(ArrayList<MagicRock> magicRockList, Defense defense) {
