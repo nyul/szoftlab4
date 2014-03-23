@@ -1,30 +1,26 @@
 
 public abstract class Enemy {
-	protected int lifePower;
-	protected int stepTime;
+	private int lifePower;
+	private int stepTime;
 	
-	protected Position currentPos;
-	protected boolean isActive;
-	protected boolean isSlowed;
+	private Position currentPos;
+	private boolean isActive;
+	private boolean isSlowed;
 	
-	/**
-	 * Enemy konstruktor
-	 * 
-	 * @param lifePower ellenség életereje
-	 * @param stepTime léptetés sebessége
-	 */
-	public Enemy(int lifePower, int stepTime) {
-	}
-	
+
 	/**
 	 * A paraméterként kapott pozícióra lépteti az ellenséget.
 	 * 
 	 * @param p A léptetés célpozíciója
 	 */
+
 	public void move(Position p) {
-		
+		Writer.entry();	
+		Writer.asynchronexit();
 	}
 	
+
+
 	/**
 	 * A paraméterlistán kapott toronytól leolvasott,
 	 * erre az ellenség típusra vonatkozó sebzés értéket
@@ -32,15 +28,95 @@ public abstract class Enemy {
 	 * 
 	 * @param t A torony amelyik éppen lö erre az ellenségre
 	 */
-	public abstract void lifePowerReduce(Tower t);
 	
-	/**
-	 * Visszatér egy boolean értékkel,
-	 * ami megadja, hogy az adott ellenség lassítva van-e.
-	 * 
-	 * @return Ha az adott ellenség lassítva van true, egyébként false 
-	 */
+	public abstract void lifePowerReduce(Tower t){
+		Writer.enty();
+		Writer.asynchronexit();
+	}
+
+
+	public void goToSource(int pause){
+		Writer.entry();
+		Writer.asynchronexit();
+	}
+
+
+	public void increasePause(int slowingFactor){
+		Writer.entry();
+		Writer.asynchronexit();
+	}		
+
+
+	public int hit(Tower t){
+		Writer.entry();
+		Writer.synchronexit();
+		return ;
+	}
+	
+
+	public int getLifePower(){
+		Writer.entry();
+		Writer.synchronexit();
+		return this.lifePower;	
+	}
+
+	
+	public void setLifePower(int newLifePower){
+		Writer.entry();
+		Writer.asynchronexit();		
+	}
+	
+
+	public int getStepTime(){
+		Writer.entry();
+		Writer.synchronexit();
+		return this.stepTime;		
+	}
+	
+	
+	public void setStepTime(int newStepTime){
+		Writer.entry();
+		Writer.asynchronexit();
+	}
+	
+	
+	public Position getCurrentPos(){
+		Writer.entry();
+		Writer.synchronexit();
+		return this.currentPos;
+	}
+
+
+	public void setCurrentPos(Position newPos){
+		Writer.entry();
+		Writer.asynchronexit();
+	}
+
+
+	public boolean getIsActive(){
+		Writer.entry();
+		Writer.synchronexit();
+		return this.isActive;
+	}
+
+
+	public void setIsActive(boolean activity){
+		Writer.entry();
+		Writer.asynchronexit();
+	}
+
+	
 	public boolean getIsSlowed() {
+		Writer.entry();
+		Writer.synchronexit();
 		return isSlowed;
 	}
+	
+	
+	public void setIsSlowed(boolean isSlowed){
+		Writer.entry();
+		Writer.asynchronexit();
+	}	
+
+
 }
