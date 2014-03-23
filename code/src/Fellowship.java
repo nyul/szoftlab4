@@ -2,26 +2,30 @@ import java.util.ArrayList;
 
 /**
  *  *
- * A szövetséget reprezentáló objektum, aminek célja az ellenséges hullámok nyilvántartása. 
- * A hullámok ellenségekbõl állnak (törpök, hobbitok, stb.), és a játék elõrehaladtával egyre növekvõ számú ellenséget tartalmaz.
- * A Fellowship dolga a hullámok és azok számának nyilvántartásáért, illetve az egyes hullámok közötti idõért is.
+ * A szovetseget reprezentalo objektum, aminek celja az ellenseges hullamok nyilvantartasa. 
+ * A hullamok ellensegekbol allnak (torpok, hobbitok, stb.), es a jatek elorehaladtaval egyre novekvo szamu ellenseget tartalmaz.
+ * A Fellowship dolga a hullamok es azok szamanak nyilvantartasaert, illetve az egyes hullamok kozotti idoert is.
  *
  */
 public class Fellowship {	
 	
 	ArrayList<Enemy> active;
 	int number;
+	Enemy enemy;
+	
 	public Fellowship() {
 		active = null;
+		enemy = null;
 	}
 	
 	public void createObject() {
 		active = new ArrayList<Enemy>();
+		enemy = new Human();
 	}
 	
 
 	/**
-	 * Létrehozza az összes ellenséget és hozzáadja õket a passive listához.
+	 * Letrehozza az osszes ellenseget es hozzaadja oket a passive listahoz.
 	 */
 	public void produceAllEnemy(){
 		Writer.entry();
@@ -29,9 +33,9 @@ public class Fellowship {
 	}
 	
 	/**
-	 * Elindítja a következõ hullámot, ami annyi ellenségbõl fog állni amennyit paraméterként kapunk.
+	 * Elinditja a kovetkezo hullamot, ami annyi ellensegbol fog allni amennyit parameterkent kapunk.
 	 * 
-	 * @param number Ez a szám adja meg, hogy a következõ hullám hány Enemy-bõl fog állni
+	 * @param number Ez a szam adja meg, hogy a kovetkezo hullam hany Enemy-bol fog allni
 	 */
 	public void startWave(int number){
 		Writer.entry();
@@ -39,11 +43,11 @@ public class Fellowship {
 	}
 	
 	/**
-	 * Megsemmisíti a paraméterként kapott ellenséget.
+	 * Megsemmisiti a parameterkent kapott ellenseget.
 	 * 
-	 * Felszabadítja az erõforrásokat, törli az aktív listáról.
+	 * Felszabaditja az eroforrasokat, torli az aktiv listarol.
 	 * 
-	 * @param enemy A megsemmisítendõ ellenség referenciája
+	 * @param enemy A megsemmisitendo ellenseg referenciaja
 	 */
 	public void killEnemy(Enemy enemy){
 		Writer.entry();
@@ -51,8 +55,8 @@ public class Fellowship {
 	}
 	
 	/**
-	 * Megadja az aktív ellenségek listáját.
-	 * @return Az aktív ellenségek listája
+	 * Megadja az aktiv ellensegek listajat.
+	 * @return Az aktiv ellensegek listája
 	 */
 	public ArrayList<Enemy> getActiveEnemies(){
 		Writer.entry();
@@ -61,14 +65,18 @@ public class Fellowship {
 	}
 
 	/**
-	 * Minden ellenséget lépteti egyel aki nincs lassítva.
-	 * Aki lassítva van az addig vár ameddig le nem jár a lassítás.
+	 * Minden ellenseget lepteti egyel aki nincs lassitva.
+	 * Aki lassitva van az addig var ameddig le nem jar a lassitas.
 	 */
 	public void moveAllActiveEnemy(){
 		Writer.entry();
 		Writer.asynchronexit();
 	}
 	
+	/**
+	 * Vissaadja a fennmarado ellensegek szamat (aktiv + passziv)
+	 * @return Ellensegek szama (aki meghalt azt nem szamoljuk)
+	 */
 	public int getNumber(){
 		Writer.entry();
 		Writer.synchronexit();
