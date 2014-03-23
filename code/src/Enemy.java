@@ -2,6 +2,17 @@
 public abstract class Enemy {
 	
 	Road road;
+	Obstacle obstacle;
+	
+	public Enemy() {
+		road = null;
+		obstacle = null;
+	}
+	
+	public void createObject() {
+		road = new Road();
+		obstacle = new Obstacle();
+	}
 	
 	/**
 	 * A paraméterként kapott poziciora lepteti az ellenseget.
@@ -65,9 +76,11 @@ public abstract class Enemy {
 	 * Beallitja az ellenseg poziciojat, amin allnia kell
 	 * @param nextroad A kovetkezo ut, ahova lepnie kell
 	 */
-	public void setRoad(Tile nextroad) {
+	public void setRoad(Road nextroad) {
 		Writer.entry();
-		road.nextroad.slowMe(this);
+		if(Writer.kerdes("Kovetkezo ut-csempe akadaly-e?")) {
+			obstacle.slowMe(this);
+		}
 		Writer.asynchronexit();
 	}
 
