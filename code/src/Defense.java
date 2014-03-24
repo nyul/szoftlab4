@@ -14,7 +14,7 @@ public interface Defense {
 	/**
 	 * fejlesztest vegzo fuggveny 
 	 * @param m parameterkent a varazskovet kapja meg
-	 * amivel a a jatekos fejleszt
+	 * amivel a jatekos fejleszt
 	 */
 	void upgrade(MagicRock m);
 }

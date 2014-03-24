@@ -82,7 +82,7 @@ public abstract class Enemy {
 	 */
 	public void setRoad(Road r) {
 		Writer.entry();
-		if(Writer.kerdes("Kovetkezo ut-csempe akadaly-e?")) {
+		if(Writer.question("Kovetkezo ut-csempe akadaly-e?")) {
 			obstacle.slowMe(this);
 		}
 		Writer.asynchronexit();
