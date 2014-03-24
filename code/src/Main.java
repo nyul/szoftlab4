@@ -58,7 +58,7 @@ public class Main {
 	}
 	
 	public void akadaly_fejlesztes() {
-		//sz�ks�ges objektumok l�trehoz�sa
+		// szukseges objektumok letrehozasa
 		engine.createObject();
 		engine.player.createObject();
 		engine.player.obstacle.createObject();
@@ -121,14 +121,10 @@ public class Main {
 		// szukseges objektumok letrehozasa
 		engine.createObject();
 		engine.fellowship.createObject();
+		engine.tower.createObject();
 				
-		engine.fellowship.enemy.createObject();
-				
-		engine.fellowship.enemy.road.createObject();
-		engine.fellowship.enemy.obstacle.createObject();
-				
-		System.out.print("Enemy");
-		engine.fellowship.enemy.move();
+		System.out.print("Engine");
+		engine.attackHandler();
 	}
 	
 	public void gyozelem() {
@@ -136,10 +132,11 @@ public class Main {
 		engine.createObject();
 		engine.fellowship.createObject();
 		
+		System.out.print("Engine");
 		engine.fellowship.getNumber();		
-		if(Writer.kerdes("Az ellensegek szama 0?")){
+		if(Writer.kerdes("Az ellensegek szama 0?")) {
 			engine.victory();		
-			}						
+		}						
 	}
 	
 	public void menu() {
