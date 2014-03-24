@@ -24,7 +24,7 @@ public class Engine extends Thread{
 	public void attackHandler() {
 		Writer.entry();
 		enemy = tower.attack(fellowship.getActiveEnemies());
-		if(!Writer.question("Megsebzett enemy aktiv-e?")) {
+		if(!Writer.kerdes("Megsebzett enemy aktiv-e?")) {
 			fellowship.killEnemy(enemy);
 		}
 		Writer.asynchronexit();

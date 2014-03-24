@@ -37,7 +37,7 @@ public class Tower extends Tile implements Defense{
 		Writer.entry();
 		geometry.isInRange(enemy,this);
 		enemy.hit(this);
-		if(!Writer.question("Enemy eletereje nagyobb-e nullanal sebzes utan?")) {
+		if(!Writer.kerdes("Enemy eletereje nagyobb-e nullanal sebzes utan?")) {
 			enemy.setActivity(false);
 		}
 		Writer.synchronexit();		

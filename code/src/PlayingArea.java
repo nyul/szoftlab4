@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 /**
  * A jatekteret reprezentalo objektum. A palyat felepito elemtipusok csoportjait tartalmazza. 
@@ -8,11 +10,21 @@
  * vagy az ellenseg informalasa az ut következo mezojerol.
  */
 public class PlayingArea {
-
+	
+	Mountain mountain;
+	
+	public PlayingArea() {
+		mountain = null;
+	}
+	
+	public void createObject() {
+		mountain = new Mountain();
+	}
+	
 	/**
 	 * A palyat inicializalja.
 	 * 
-	 * Az ut / utak betöltese amin az ellensegek haladnak.
+	 * Az ut / utak betotese amin az ellensegek haladnak.
 	 * Hegy koordinatajanak megadasa, forras(ok) megadasa.
 	 */
 	public void initialize() {
@@ -22,7 +34,7 @@ public class PlayingArea {
 	
 	/**
 	 * Hozzaad egy tornyot a tornyok listajahoz.
-	 * @param t A hozzaadni kivant torony referenciaja
+	 * @param t - a hozzaadni kivant torony referenciaja
 	 */
 	public void addTower(Tower t) {
 		Writer.entry();
@@ -31,11 +43,23 @@ public class PlayingArea {
 	
 	/**
 	 * Hozzaad egy akadalyt az akadalyok listajahoz.
-	 * @param o A hozzaadni kivant akadaly referenciaja
+	 * @param o - a hozzaadni kivant akadaly referenciaja
 	 */	
 	public void addObstacle(Obstacle o) {
 		Writer.entry();
 		Writer.asynchronexit();
 	}
 	
+	/**
+	 * Megadja, hogy aktualis tickben van-e ellenseg a hegyen.
+	 * Ha igen akkor a parameterul kapott engine referencian meghivja a defeat() metodust tehat a jatek veget er.
+	 * @param e - az engine osztaly referenciaja
+	 */
+	public void isOnMountain(Engine e){
+		if(true){ 				// a szkeleton teszthez ennek igazat kell adnia,
+			Writer.entry();		// valojaban itt lesz implementalva a vizsgalat,
+			e.defeat(); 		// hogy valoban all-e a hegyen ellenseg.
+			Writer.asynchronexit();
+		}						
+	}
 }
