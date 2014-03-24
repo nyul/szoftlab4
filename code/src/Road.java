@@ -1,7 +1,7 @@
 
 public class Road extends Tile{
 
-	Road nextRoad;
+	Road nextRoad;	// referencia a kovetkezo ut-csempere
 	
 	public Road() {
 		nextRoad = null;

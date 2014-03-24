@@ -11,6 +11,11 @@ public class Tile {
 		pos = new Position();
 	}
 	
+	/**
+	 * Egy tornyot epit erre a csempere, ha a jatekosnak van eleg varazsereje.
+	 * @param p
+	 * @return
+	 */
 	public Tower buildTower(Player p) {
 		Writer.entry();
 		createObject();
@@ -21,6 +26,11 @@ public class Tile {
 		return twr;
 	}
 
+	/**
+	 * Egy akadalyt epit erre a csempere, ha a jatekosnak van eleg varazsereje.
+	 * @param p
+	 * @return
+	 */
 	public Obstacle buildObstacle(Player p) {
 		Writer.entry();
 		createObject();
@@ -31,6 +41,12 @@ public class Tile {
 		return obstacle;
 	}
 
+	/**
+	 * ket pozicio kozotti tavolsagot adja meg
+	 * @param p1
+	 * @param p2
+	 * @return
+	 */
 	public double distance(Position p1, Position p2) {
 		Writer.entry();
 		Writer.asynchronexit();
