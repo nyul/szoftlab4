@@ -30,7 +30,7 @@ public class Main {
 		engine.player.createObject();
 		engine.player.tile.createObject();
 				
-		if(Writer.kerdes("Van elég varázserõ a toronyépítéshez?")) {
+		if(Writer.question("Van elég varázserõ a toronyépítéshez?")) {
 			System.out.print("Player");
 			engine.player.playingArea.addTower(engine.player.tile.buildTower(engine.player));
 		}
@@ -42,7 +42,7 @@ public class Main {
 		engine.player.createObject();
 		engine.player.tile.createObject();
 		
-		if(Writer.kerdes("Van elég varázserõ a akadályépítéshez?")) {
+		if(Writer.question("Van elég varázserõ a akadályépítéshez?")) {
 			System.out.print("Player");
 			engine.player.playingArea.addObstacle(engine.player.tile.buildObstacle(engine.player));
 		}
@@ -140,7 +140,7 @@ public class Main {
 		
 		System.out.print("Engine");
 		engine.fellowship.getNumber();		
-		if(Writer.kerdes("Az ellensegek szama 0?")) {
+		if(Writer.question("Az ellensegek szama 0?")) {
 			engine.victory();		
 		}						
 	}

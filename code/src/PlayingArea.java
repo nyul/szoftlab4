@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 
 /**
  * A jatekteret reprezentalo objektum. A palyat felepito elemtipusok csoportjait tartalmazza. 
