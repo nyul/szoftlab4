@@ -4,23 +4,29 @@ public class Engine extends Thread{
 	Player player;
 	Fellowship fellowship;
 	Tower tower;
+	Enemy enemy;
 	
 	
 	public Engine() {
 		player = null;
 		fellowship = null;
-		tower = null;		
+		tower = null;	
+		enemy = null;
 	}
 	
 	public void createObject() {
 		player = new Player();
 		fellowship = new Fellowship();
 		tower = new Tower();
+		enemy = new Human();
 	}
 	
 	public void attackHandler() {
 		Writer.entry();
-		tower.attack(fellowship.getActiveEnemies());
+		enemy = tower.attack(fellowship.getActiveEnemies());
+		if(!Writer.kerdes("Megsebzett enemy aktiv-e?")) {
+			fellowship.killEnemy(enemy);
+		}
 		Writer.asynchronexit();
 	}
 	
