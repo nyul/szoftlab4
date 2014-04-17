@@ -102,8 +102,8 @@ public class Fellowship {
 	 * Aki lassitva van az addig var ameddig le nem jar a lassitas.
 	 */
 	public void moveAllActiveEnemy(){
-		for(Enemy e: this.active){
-			e.move();
+		for(int i = 0; i < active.size(); i++) {
+			active.get(i).move();
 		}
 	}
 	
