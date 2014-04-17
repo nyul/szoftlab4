@@ -56,13 +56,10 @@ public class Obstacle extends Road implements Defense{
 		return price;
 	}
 
-
-
-	public Enemy attack(ArrayList<Enemy> enemies) {
-		Writer.entry();
-		Writer.synchronexit();		
-		return enemy;
+	public Enemy attack(ArrayList<Enemy> enemies) {	
+		return null;
 	}
+	
 	public void wantToUpgrade(Player player){
 		player.chooseUpgrade(magicRock, this);	
 	}
