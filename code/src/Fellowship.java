@@ -65,9 +65,12 @@ public class Fellowship {
 	 * @param number Ez a szam adja meg, hogy a kovetkezo hullam hany Enemy-bol fog allni
 	 */
 	public void startWave(int number){
-		Writer.entry();
-		enemy.goToSource(0);
-		Writer.asynchronexit();
+		int j = this.passive.size() > number ? number : this.passive.size();
+		for(int i = 0; i < j ; i++){
+			this.active.add(this.passive.get(0));
+			this.active.get(this.active.size()-1).setPause(i);
+			this.passive.remove(0);
+		}
 	}
 	
 	/**
@@ -78,8 +81,12 @@ public class Fellowship {
 	 * @param enemy A megsemmisitendo ellenseg referenciaja
 	 */
 	public void killEnemy(Enemy enemy){
-		Writer.entry();
-		Writer.asynchronexit();
+		for(Enemy e: this.active){
+			if (e.equals(enemy)){
+				this.active.remove(e);
+				this.number--;
+			}
+		}
 	}
 	
 	/**
@@ -87,8 +94,6 @@ public class Fellowship {
 	 * @return Az aktiv ellensegek listája
 	 */
 	public ArrayList<Enemy> getActiveEnemies(){
-		Writer.entry();
-		Writer.synchronexit();
 		return active;
 	}
 
@@ -97,9 +102,9 @@ public class Fellowship {
 	 * Aki lassitva van az addig var ameddig le nem jar a lassitas.
 	 */
 	public void moveAllActiveEnemy(){
-		Writer.entry();
-		enemy.move();
-		Writer.asynchronexit();
+		for(Enemy e: this.active){
+			e.move();
+		}
 	}
 	
 	/**
@@ -107,8 +112,6 @@ public class Fellowship {
 	 * @return Ellensegek szama (aki meghalt azt nem szamoljuk)
 	 */
 	public int getNumber(){
-		Writer.entry();
-		Writer.synchronexit();
 		return number;
 	}
 
