@@ -8,15 +8,16 @@ public abstract class Enemy {
 	protected boolean isActive;
 	protected boolean isDuplicated;
 	
+	// palyara helyezeskor hivodik meg
 	public Enemy() {
 		lifePower = 100;
 		stepTime = 10;
 		pause = 0;
-		road = null;
+		road = new Road(new Position(-1, -1));
 		isActive = false;
 		isDuplicated = false;
 	}
-	
+	// ellenseg lerakasa egy tetszoleges ut-csempere
 	public Enemy(Position pos) {
 		lifePower = 100;
 		stepTime = 10;
@@ -146,11 +147,11 @@ public abstract class Enemy {
 	 * Beallitja az ellenseg poziciojat, amin allnia kell
 	 * @param nextroad A kovetkezo ut, ahova lepnie kell 
 	 */
-	public void setRoad(Road r) {
-		Writer.entry();
-		if(Writer.question("Kovetkezo ut-csempe akadaly-e?")) {
-			obstacle.slowMe(this);
-		}
-		Writer.asynchronexit();
+	public void setRoad(Road nextRoad) {
+		if(nextRoad instanceof Obstacle) {
+			Obstacle o = (Obstacle) nextRoad;
+			o.slowMe(this);
+		} 
+		road = nextRoad;
 	}
 }
