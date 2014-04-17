@@ -64,8 +64,8 @@ public class Fellowship {
 	 * 
 	 * @param number Ez a szam adja meg, hogy a kovetkezo hullam hany Enemy-bol fog allni
 	 */
-	public void startWave(int number){
-		int j = this.passive.size() > number ? number : this.passive.size();
+	public void startWave(int num){ // atirtam num-ra number helyett, mert az osztalynak is van egy number valtozoja
+		int j = this.passive.size() > num ? num : this.passive.size();
 		for(int i = 0; i < j ; i++){
 			this.active.add(this.passive.get(0));
 			this.active.get(this.active.size()-1).setPause(i);
