@@ -43,7 +43,7 @@ public class Player {
 	 */
 	public void chooseUpgrade(ArrayList<MagicRock> magicRockList, Defense defense) {
 		System.out.println("Select a number from the list!");
-		for(int i = 0; i<magicRockList.size(); i++) {
+		for(int i = 0; i < magicRockList.size(); i++) {
 			System.out.println(i + ": " + magicRockList.get(i).getName().get(magicRockList.get(i).getType()));   // hibalehetoseg
 		}
 		InputStreamReader read = new InputStreamReader(System.in);
@@ -51,14 +51,17 @@ public class Player {
 		int number = 0;
 		try {
 			number = Integer.parseInt(in.readLine());
-			if(number < 0 || number > 6) {        // meg nincs kesz
-				System.out.println("Wrong number");
+			for(int i = 0; i < magicRockList.size(); i++) {
+				if(number == magicRockList.get(i).getType()) {
+					if(magicPower < magicRockList.get(number).getPrice()) {
+						System.out.println("You don't have enough magicpower.");
+					}
+					magicPower = magicPower - magicRockList.get(number).getPrice();
+					defense.upgrade( magicRockList.get(number));
+				} else {
+					System.out.println("Wrong number.");
+				}
 			}
-			if(magicPower < magicRockList.get(number).getPrice()) {
-				System.out.println("You don't have enough magicpower.");
-			}
-			magicPower = magicPower - magicRockList.get(number).getPrice();
-			defense.upgrade( magicRockList.get(number));
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Not a number");
