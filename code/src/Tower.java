@@ -150,12 +150,18 @@ public class Tower extends Tile implements Defense{
 	 */
 	
 	public Enemy attack(ArrayList<Enemy> enemies) {
-		geometry.isInRange(enemy,this);
-		enemy.hit(this);
-		if(!Writer.question("Enemy eletereje nagyobb-e nullanal sebzes utan?")) {
-			enemy.setActivity(false);
+		for(int i = 0; i < enemies.size(); i++) {
+			if(geometry.isInRange(enemy,this)) {     // problema: nem tudom elerni a geometria osztalyt
+				if(enemies.get(i).hit(this) <= 0) {
+					enemies.get(i).setActivity(false);
+				}
+				return enemies.get(i);
+			}
+			else {
+				System.out.println("Nincs hatotavon beluli ellenseg.");
+			}
 		}	
-		return enemy;
+		return null;
 	}
 	
 	

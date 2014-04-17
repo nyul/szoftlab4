@@ -36,8 +36,11 @@ public class Engine extends Thread{
 
 
 	public void attackHandler() {
-		Enemy enemy = player.getArea().getTower()attack(fellowship.getActiveEnemies());
-		if(!Writer.question("Megsebzett enemy aktiv-e?")) {
+		Enemy enemy = null;
+		for(int i = 0; i < player.getArea().getTower().size(); i++) {
+			enemy = player.getArea().getTower().get(i).attack(fellowship.getActiveEnemies());
+		}
+		if(enemy.isActive() == false) {
 			fellowship.killEnemy(enemy);
 		}
 	}

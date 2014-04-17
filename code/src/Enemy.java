@@ -69,13 +69,6 @@ public abstract class Enemy {
 	}
 
 
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
-
-
 	public boolean isDuplicated() {
 		return isDuplicated;
 	}
@@ -137,9 +130,8 @@ public abstract class Enemy {
 	 * @return
 	 */
 	public int hit(Tower t){
-		Writer.entry();
-		Writer.synchronexit();
-		return 0;
+		this.lifePowerReduce(t);
+		return this.lifePower;
 	}
 	
 	/**
@@ -147,8 +139,7 @@ public abstract class Enemy {
 	 * @param a Ha true akkor aktiv lesz, ha false akkor passziv
 	 */
 	public void setActivity(boolean a) {
-		Writer.entry();
-		Writer.asynchronexit();
+		this.isActive = a;
 	}
 	
 	/**
