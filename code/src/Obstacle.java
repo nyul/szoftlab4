@@ -3,19 +3,63 @@ import java.util.ArrayList;
 
 public class Obstacle extends Road implements Defense{
 	
-	Enemy enemy;
-	ArrayList<MagicRock> choosable;
+	private int slowingFactor;
+	private ArrayList<MagicRock> magicRock;
+	private int magicRockNumber;
+	private static int price;
 	
-	public Obstacle() {
-		enemy = null;
-		choosable = null;
+	public Obstacle(Position pos) {
+		super(pos);
+		slowingFactor = 1;
+		magicRock = new ArrayList<MagicRock>();
+		MagicRock magic = new MagicRock(0, 10);
+		magicRock.add(magic);
+		magicRockNumber = 0;
+		this.type = 3;
 	}
 	
-	public void createObject() {
-		enemy = new Human();
-		choosable = new ArrayList<MagicRock>();
-	}
 	
+	
+	public int getSlowingFactor() {
+		return slowingFactor;
+	}
+
+
+
+	public void setSlowingFactor(int slowingFactor) {
+		this.slowingFactor = slowingFactor;
+	}
+
+
+
+	public ArrayList<MagicRock> getMagicRock() {
+		return magicRock;
+	}
+
+
+
+	public void setMagicRock(ArrayList<MagicRock> magicRock) {
+		this.magicRock = magicRock;
+	}
+
+
+
+	public int getMagicRockNumber() {
+		return magicRockNumber;
+	}
+
+
+
+	public void setMagicRockNumber(int magicRockNumber) {
+		this.magicRockNumber = magicRockNumber;
+	}
+
+	public static int getPrice() {
+		return price;
+	}
+
+
+
 	public Enemy attack(ArrayList<Enemy> enemies) {
 		Writer.entry();
 		Writer.synchronexit();		

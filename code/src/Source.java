@@ -5,8 +5,9 @@
  */
 public class Source extends Road{
 	
-	public Source() {
-		super();
+	public Source(Position pos) {
+		super(pos);
+		this.type = 4;
 	}
 	
 	public void requestDestination(Enemy e){

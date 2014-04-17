@@ -1,16 +1,20 @@
 
 public class Road extends Tile{
 
-	Road nextRoad;	// referencia a kovetkezo ut-csempere
+	protected Road nextRoad;	// referencia a kovetkezo ut-csempere
 	
-	public Road() {
-		nextRoad = null;
+	public Road(Position pos1) {
+		super(pos1);
+		nextRoad = new Road(pos1);
+		this.type = 2;
 	}
-	
-	public void createObject() {
-		nextRoad = new Road();
+
+	public void setNextRoad(Road nextRoad) {
+		this.nextRoad = nextRoad;
 	}
-	
+
+
+
 	/**
 	 * Atadja a hivonak az ut kovetkezo poziciojat (ahova lepnie kell)
 	 * @param e A lepni kivano enemy referenciaja

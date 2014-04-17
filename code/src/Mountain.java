@@ -5,8 +5,9 @@
  */
 public class Mountain extends Road{
 	
-	public Mountain() {
-		super();
+	public Mountain(Position pos) {
+		super(pos);
+		this.type = 5;
 	}
 	
 	

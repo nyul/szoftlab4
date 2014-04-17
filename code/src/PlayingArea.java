@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 /**
  * A jatekteret reprezentalo objektum. A palyat felepito elemtipusok csoportjait tartalmazza. 
@@ -9,16 +11,95 @@
  */
 public class PlayingArea {
 	
-	Mountain mountain;
+	private ArrayList<Source> source;
+	private ArrayList<Tower> tower;
+	private ArrayList<Obstacle> obstacle;
+	private ArrayList<Road> road;
+	private Mountain mountain;
+	private Geometry geometry;
 	
 	public PlayingArea() {
+		source = new ArrayList<Source>();
+		tower = new ArrayList<Tower>();
+		obstacle = new ArrayList<Obstacle>();
 		mountain = null;
+		geometry = new Geometry();
 	}
 	
-	public void createObject() {
-		mountain = new Mountain();
-	}
 	
+	
+	public ArrayList<Source> getSource() {
+		return source;
+	}
+
+
+
+	public void setSource(ArrayList<Source> source) {
+		this.source = source;
+	}
+
+
+
+	public ArrayList<Tower> getTower() {
+		return tower;
+	}
+
+
+
+	public void setTower(ArrayList<Tower> tower) {
+		this.tower = tower;
+	}
+
+
+
+	public ArrayList<Obstacle> getObstacle() {
+		return obstacle;
+	}
+
+
+
+	public void setObstacle(ArrayList<Obstacle> obstacle) {
+		this.obstacle = obstacle;
+	}
+
+	
+
+	public ArrayList<Road> getRoad() {
+		return road;
+	}
+
+
+
+	public void setRoad(ArrayList<Road> road) {
+		this.road = road;
+	}
+
+
+
+	public Mountain getMountain() {
+		return mountain;
+	}
+
+
+
+	public void setMountain(Mountain mountain) {
+		this.mountain = mountain;
+	}
+
+
+
+	public Geometry getGeometry() {
+		return geometry;
+	}
+
+
+
+	public void setGeometry(Geometry geometry) {
+		this.geometry = geometry;
+	}
+
+
+
 	/**
 	 * A palyat inicializalja.
 	 * 

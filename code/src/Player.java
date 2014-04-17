@@ -1,37 +1,71 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
 public class Player {
 	
-	PlayingArea playingArea;
-	Obstacle obstacle;
-	Tower tower;
-	Tile tile;
+	private int magicPower;
+	private PlayingArea area;
 	
-	public Player() {
-		playingArea = null;
-		obstacle = null;
-		tower = null;
-		tile = null;
+	public Player(int magicPower) {
+		this.magicPower = magicPower;
+		area = new PlayingArea();
 	}
 	
-	public void createObject() {
-		playingArea = new PlayingArea();
-		obstacle = new Obstacle();
-		tower = new Tower();
-		tile = new Tile();
+	public int getMagicPower() {
+		return magicPower;
 	}
-	
+
+	public void setMagicPower(int magicPower) {
+		this.magicPower = magicPower;
+	}
+
+
+
+	public PlayingArea getArea() {
+		return area;
+	}
+
+
+
+	public void setArea(PlayingArea area) {
+		this.area = area;
+	}
+
+
+
 	/**
 	 * Egy listaban megkapja a jatekos, hogy egy toronyra vagy akadalyra milyen varazskoveket lehet rakni.
 	 * @param magicRockList
 	 * @param defense
 	 */
 	public void chooseUpgrade(ArrayList<MagicRock> magicRockList, Defense defense) {
-		Writer.entry();
-		MagicRock magicRock = null;
-		defense.upgrade(magicRock);
-		Writer.asynchronexit();
+		System.out.println("Select a number from the list!");
+		for(int i = 0; i<magicRockList.size(); i++) {
+			System.out.println(i + ": " + magicRockList.get(i).getName().get(magicRockList.get(i).getType()));   // hibalehetoseg
+		}
+		InputStreamReader read = new InputStreamReader(System.in);
+		BufferedReader in = new BufferedReader(read);
+		int number = 0;
+		try {
+			number = Integer.parseInt(in.readLine());
+			if(number < 0 || number > 6) {        // meg nincs kesz
+				System.out.println("Wrong number");
+			}
+			if(magicPower < magicRockList.get(number).getPrice()) {
+				System.out.println("You don't have enough magicpower.");
+			}
+			magicPower = magicPower - magicRockList.get(number).getPrice();
+			defense.upgrade( magicRockList.get(number));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Not a number");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**

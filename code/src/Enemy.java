@@ -1,22 +1,99 @@
 
 public abstract class Enemy {
 	
-	Source source;
-	Road road;
-	Obstacle obstacle;
+	protected int lifePower;
+	protected int stepTime;
+	protected int pause;
+	protected Road road;
+	protected boolean isActive;
+	protected boolean isDuplicated;
 	
 	public Enemy() {
-		source = null;
+		lifePower = 100;
+		stepTime = 10;
+		pause = 0;
 		road = null;
-		obstacle = null;
+		isActive = false;
+		isDuplicated = false;
 	}
 	
-	public void createObject() {
-		source = new Source();
-		road = new Road();
-		obstacle = new Obstacle();
+	public Enemy(Position pos) {
+		lifePower = 100;
+		stepTime = 10;
+		pause = 0;
+		road = new Road(pos);
+		isActive = false;
+		isDuplicated = false;
 	}
+
 	
+	
+	public int getLifePower() {
+		return lifePower;
+	}
+
+
+
+	public void setLifePower(int lifePower) {
+		this.lifePower = lifePower;
+	}
+
+
+
+	public int getStepTime() {
+		return stepTime;
+	}
+
+
+
+	public void setStepTime(int stepTime) {
+		this.stepTime = stepTime;
+	}
+
+
+
+	public int getPause() {
+		return pause;
+	}
+
+
+
+	public void setPause(int pause) {
+		this.pause = pause;
+	}
+
+
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
+
+
+	public boolean isDuplicated() {
+		return isDuplicated;
+	}
+
+
+
+	public void setDuplicated(boolean isDuplicated) {
+		this.isDuplicated = isDuplicated;
+	}
+
+
+
+	public Road getRoad() {
+		return road;
+	}
+
+
+
 	/**
 	 * A parameterkent kapott poziciora lepteti az ellenseget.
 	 * 

@@ -9,20 +9,47 @@ import java.util.ArrayList;
  */
 public class Fellowship {	
 	
-	ArrayList<Enemy> active;
-	int number;
-	Enemy enemy;
+	private ArrayList<Enemy> active;
+	private ArrayList<Enemy> passive;
+	private int number;
 	
 	public Fellowship() {
-		active = null;
-		enemy = null;
-	}
-	
-	public void createObject() {
 		active = new ArrayList<Enemy>();
-		enemy = new Human();
+		passive = new ArrayList<Enemy>();
+		number = 0;
 	}
 	
+	
+	
+	public ArrayList<Enemy> getActive() {
+		return active;
+	}
+
+
+
+	public void setActive(ArrayList<Enemy> active) {
+		this.active = active;
+	}
+
+
+
+	public ArrayList<Enemy> getPassive() {
+		return passive;
+	}
+
+
+
+	public void setPassive(ArrayList<Enemy> passive) {
+		this.passive = passive;
+	}
+
+
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+
 
 	/**
 	 * Letrehozza az osszes ellenseget es hozzaadja oket a passive listahoz.
