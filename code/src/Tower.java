@@ -176,22 +176,22 @@ public class Tower extends Tile implements Defense{
 	 */
 	public void upgrade(MagicRock magicRock){
 		if(magicRock.getType() == 0) {
-			
+			this.range = this.range + 1;
 		}
 		else if(magicRock.getType() == 1) {
-			
+			this.shootPeriod = this.shootPeriod + 1;
 		}
 		if(magicRock.getType() == 2) {
-			
+			this.damagePowerHuman = this.damagePowerHuman + 10;
 		}
 		else if(magicRock.getType() == 3) {
-			
+			this.damagePowerHobbit = this.damagePowerHobbit + 10;
 		}
 		if(magicRock.getType() == 4) {
-			
+			this.damagePowerDwarf = this.damagePowerDwarf + 10;
 		}
 		else if(magicRock.getType() == 5) {
-			
+			this.damagePowerElf = this.damagePowerElf + 10;
 		}
 	}
 	

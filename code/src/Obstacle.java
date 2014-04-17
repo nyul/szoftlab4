@@ -12,8 +12,6 @@ public class Obstacle extends Road implements Defense{
 		super(pos);
 		slowingFactor = 1;
 		magicRock = new ArrayList<MagicRock>();
-		MagicRock magic = new MagicRock(0, 10);
-		magicRock.add(magic);
 		magicRockNumber = 0;
 		this.type = 3;
 	}
