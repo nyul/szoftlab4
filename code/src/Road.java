@@ -20,8 +20,6 @@ public class Road extends Tile{
 	 * @param e A lepni kivano enemy referenciaja
 	 */
 	public void requestDestination(Enemy e) {
-		Writer.entry();
 		e.setRoad(nextRoad);
-		Writer.asynchronexit();
 	}
 }

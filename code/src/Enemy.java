@@ -100,9 +100,7 @@ public abstract class Enemy {
 	 * @param p A leptetes celpozicioja
 	 */
 	public void move() {
-		Writer.entry();
 		road.requestDestination(this);
-		Writer.asynchronexit();
 	}
 
 	/**

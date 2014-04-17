@@ -66,14 +66,13 @@ public class Obstacle extends Road implements Defense{
 		return enemy;
 	}
 	public void wantToUpgrade(Player player){
-		Writer.entry();
-		player.chooseUpgrade(choosable,this);
-		Writer.asynchronexit();		
+		player.chooseUpgrade(magicRock, this);	
 	}
 	
 	public void upgrade(MagicRock magicRock){
-		Writer.entry();
-		Writer.asynchronexit();
+		if(magicRock.getType() == 6) {
+			slowingFactor = slowingFactor + 1;
+		}
 	}
 
 	public void slowMe(Enemy e){

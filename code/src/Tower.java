@@ -178,7 +178,19 @@ public class Tower extends Tile implements Defense{
 		if(magicRock.getType() == 0) {
 			
 		}
-		else if(magicRock.getType() == 0) {
+		else if(magicRock.getType() == 1) {
+			
+		}
+		if(magicRock.getType() == 2) {
+			
+		}
+		else if(magicRock.getType() == 3) {
+			
+		}
+		if(magicRock.getType() == 4) {
+			
+		}
+		else if(magicRock.getType() == 5) {
 			
 		}
 	}
