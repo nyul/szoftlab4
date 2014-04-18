@@ -131,11 +131,11 @@ public class PlayingArea {
 	 * Ha igen akkor a parameterul kapott engine referencian meghivja a defeat() metodust tehat a jatek veget er.
 	 * @param e - az engine osztaly referenciaja
 	 */
-	public void isOnMountain(Engine e){
-		if(true){ 				// a szkeleton teszthez ennek igazat kell adnia,
-			Writer.entry();		// valojaban itt lesz implementalva a vizsgalat,
-			e.defeat(); 		// hogy valoban all-e a hegyen ellenseg.
-			Writer.asynchronexit();
+	public void isOnMountain(Engine engine){
+		for(int i = 0; i < engine.getFellowship().getActive().size(); i++) {
+			if(engine.getFellowship().getActive().get(i).getRoad().equals(mountain)) {
+				engine.defeat();
+			}
 		}						
 	}
 }

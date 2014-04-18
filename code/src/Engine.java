@@ -56,6 +56,8 @@ public class Engine extends Thread{
 	public void run() {
 		stepHandler();
 		attackHandler();
+		if(fellowship.getNumber() == 0) victory();
+		player.getArea().isOnMountain(this);
 		try {
 			Thread.sleep(100);
 		} catch(Exception ex) {
@@ -64,10 +66,22 @@ public class Engine extends Thread{
 	}
 	
 	public void defeat() {
-		
+		fellowship.getActive().clear();
+		fellowship.getPassive().clear();
+		player.getArea().getObstacle().clear();
+		player.getArea().getRoad().clear();
+		player.getArea().getSource().clear();
+		player.getArea().getTower().clear();
+		System.out.println("Defeat! :(");
 	}
 	
 	public void victory() {
-		
+		fellowship.getActive().clear();
+		fellowship.getPassive().clear();
+		player.getArea().getObstacle().clear();
+		player.getArea().getRoad().clear();
+		player.getArea().getSource().clear();
+		player.getArea().getTower().clear();
+		System.out.println("Victory! :)");
 	}
 }
