@@ -76,7 +76,7 @@ public class Player {
 	 */
 	public void startGame() {
 		Writer.entry();
-		playingArea.initialize();
+		area.initialize();
 		Writer.asynchronexit();
 	}
 	

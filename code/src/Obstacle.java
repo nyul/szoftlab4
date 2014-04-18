@@ -56,7 +56,7 @@ public class Obstacle extends Road implements Defense{
 		return price;
 	}
 
-	public Enemy attack(ArrayList<Enemy> enemies) {	
+	public Enemy attack(ArrayList<Enemy> enemies, Geometry geometry) {	
 		return null;
 	}
 	

@@ -38,7 +38,7 @@ public class Engine extends Thread{
 	public void attackHandler() {
 		Enemy enemy = null;
 		for(int i = 0; i < player.getArea().getTower().size(); i++) {
-			enemy = player.getArea().getTower().get(i).attack(fellowship.getActiveEnemies());
+			enemy = player.getArea().getTower().get(i).attack(fellowship.getActiveEnemies(), player.getArea().getGeometry());
 		}
 		if(enemy.isActive() == false) {
 			fellowship.killEnemy(enemy);

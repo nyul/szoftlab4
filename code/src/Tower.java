@@ -149,9 +149,9 @@ public class Tower extends Tile implements Defense{
 	 * ami csokkenti az enemy erejet
 	 */
 	
-	public Enemy attack(ArrayList<Enemy> enemies) {
+	public Enemy attack(ArrayList<Enemy> enemies, Geometry geometry) {
 		for(int i = 0; i < enemies.size(); i++) {
-			if(geometry.isInRange(enemy,this)) {     // problema: nem tudom elerni a geometria osztalyt
+			if(geometry.isInRange(enemies.get(i),this)) {     // problema: nem tudom elerni a geometria osztalyt
 				if(enemies.get(i).hit(this) <= 0) {
 					enemies.get(i).setActivity(false);
 				}

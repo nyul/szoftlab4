@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public interface Defense {
 
-	Enemy attack(ArrayList<Enemy> e);
+	Enemy attack(ArrayList<Enemy> e, Geometry geometry);
 	/**
 	 * 
 	 * @param p a player ezen keresztul szol

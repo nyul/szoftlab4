@@ -27,7 +27,7 @@ public class Geometry {
 	 *            - megkapja a vizsgalando enemyt
 	 * @param tower
 	 *            - megkapja a vizsgalando tornyot
-	 * @return - visszaadja, hogy az enemy a torony hatotavan belul van-e
+	 * @return - visszaadja, hogy az enemy a torony hatotavolsagan belul van-e
 	 */
 	public boolean isInRange(Enemy enemy, Tower tower){ //TODO: azt vizsgalni kell vajon, hogy active-e az enemy?
 		if(tower.getPos().getX()+tower.getRange() > enemy.getRoad().getPos().getX() 

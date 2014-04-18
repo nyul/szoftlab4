@@ -127,8 +127,8 @@ public abstract class Enemy {
 
 	/**
 	 * Az ellenseget sebzi
-	 * @param t
-	 * @return
+	 * @param t - a torony ami sebzi az enemyt
+	 * @return - visszaadja a sebzes utani lifePower erteket
 	 */
 	public int hit(Tower t){
 		this.lifePowerReduce(t);
