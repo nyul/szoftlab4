@@ -134,5 +134,24 @@ public class Fellowship {
 	public int getNumber(){
 		return number;
 	}
+	
+	public void addToActiveEnemyList(Enemy enemy) {
+		if(enemy instanceof Human) {
+			Human h = new Human(enemy.getRoad().getPos());
+			h.setLifePower(enemy.getLifePower());
+		}
+		else if(enemy instanceof Hobbit) {
+			Hobbit h = new Hobbit(enemy.getRoad().getPos());
+			h.setLifePower(enemy.getLifePower());
+		}
+		else if(enemy instanceof Dwarf) {
+			Dwarf d = new Dwarf(enemy.getRoad().getPos());
+			d.setLifePower(enemy.getLifePower());
+		}
+		else if(enemy instanceof Elf) {
+			Elf elf = new Elf(enemy.getRoad().getPos());
+			elf.setLifePower(enemy.getLifePower());
+		}
+	}
 
 }

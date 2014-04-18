@@ -155,6 +155,11 @@ public class Tower extends Tile implements Defense{
 				if(enemies.get(i).hit(this) <= 0) {
 					enemies.get(i).setActivity(false);
 				}
+				int duplicate = (int)(Math.random()*5);
+				if(duplicate == 3) {
+					enemies.get(i).setDuplicated(true);
+					enemies.get(i).setLifePower((int)(enemies.get(i).getLifePower() / 2));
+				}
 				return enemies.get(i);
 			}
 			else {

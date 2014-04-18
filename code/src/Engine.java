@@ -39,9 +39,13 @@ public class Engine extends Thread{
 		Enemy enemy = null;
 		for(int i = 0; i < player.getArea().getTower().size(); i++) {
 			enemy = player.getArea().getTower().get(i).attack(fellowship.getActiveEnemies(), player.getArea().getGeometry());
-		}
-		if(enemy.isActive() == false) {
-			fellowship.killEnemy(enemy);
+			if(enemy.isActive() == false) {
+				fellowship.killEnemy(enemy);
+			}
+			if(enemy.isDuplicated() == true) {
+				fellowship.addToActiveEnemyList(enemy);
+				enemy.setDuplicated(false);
+			}
 		}
 	}
 	
