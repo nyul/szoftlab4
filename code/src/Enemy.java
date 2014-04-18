@@ -23,7 +23,7 @@ public abstract class Enemy {
 		stepTime = 10;
 		pause = 0;
 		road = new Road(pos);
-		isActive = false;
+		isActive = true;
 		isDuplicated = false;
 	}
 

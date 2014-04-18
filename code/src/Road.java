@@ -5,7 +5,7 @@ public class Road extends Tile{
 	
 	public Road(Position pos1) {
 		super(pos1);
-		nextRoad = new Road(pos1);
+		//nextRoad = new Road(pos1);
 		this.type = 2;
 	}
 

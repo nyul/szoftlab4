@@ -80,14 +80,14 @@ public class Main implements Serializable {
 				System.out.println("magicRockNumber: " + o.getMagicRockNumber());
 			}
 			else if(command[0].equals("getEnemyInfo")) {
-				Enemy e = engine.getFellowship().getActiveEnemies().get(Integer.parseInt(command[1]));
+				Enemy e = engine.getFellowship().getActiveEnemies().get(Integer.parseInt(command[1])-1);
 				if(e instanceof Human) {
 					Human h = (Human) e;
 					System.out.println("[" + Integer.parseInt(command[1]) + ":" + h.getClass().getName() + "]");
 					System.out.println("lifePower: " + h.getLifePower());
 					System.out.println("stepTime: " + h.getStepTime());
 					System.out.println("pause: " + h.getPause());
-					System.out.println("position: " + h.getRoad().getPos());
+					System.out.println("position: (" + h.getRoad().getPos().getX() + "," + h.getRoad().getPos().getY() + ")");
 					System.out.println("isActive: " + h.isActive());
 					System.out.println("isDuplicated: " + h.isDuplicated());
 				}
@@ -97,7 +97,7 @@ public class Main implements Serializable {
 					System.out.println("lifePower: " + h.getLifePower());
 					System.out.println("stepTime: " + h.getStepTime());
 					System.out.println("pause: " + h.getPause());
-					System.out.println("position: " + h.getRoad().getPos());
+					System.out.println("position: (" + h.getRoad().getPos().getX() + "," + h.getRoad().getPos().getY() + ")");
 					System.out.println("isActive: " + h.isActive());
 					System.out.println("isDuplicated: " + h.isDuplicated());
 				}
@@ -107,17 +107,17 @@ public class Main implements Serializable {
 					System.out.println("lifePower: " + d.getLifePower());
 					System.out.println("stepTime: " + d.getStepTime());
 					System.out.println("pause: " + d.getPause());
-					System.out.println("position: " + d.getRoad().getPos());
+					System.out.println("position: (" + d.getRoad().getPos().getX() + "," + d.getRoad().getPos().getY() + ")");
 					System.out.println("isActive: " + d.isActive());
 					System.out.println("isDuplicated: " + d.isDuplicated());
 				}
-				else if(e instanceof Dwarf) {
+				else if(e instanceof Elf) {
 					Elf elf = (Elf) e;
 					System.out.println("[" + Integer.parseInt(command[1]) + ":" + elf.getClass().getName() + "]");
 					System.out.println("lifePower: " + elf.getLifePower());
 					System.out.println("stepTime: " + elf.getStepTime());
 					System.out.println("pause: " + elf.getPause());
-					System.out.println("position: " + elf.getRoad().getPos());
+					System.out.println("position: (" + elf.getRoad().getPos().getX() + "," + elf.getRoad().getPos().getY() + ")");
 					System.out.println("isActive: " + elf.isActive());
 					System.out.println("isDuplicated: " + elf.isDuplicated());
 				}
@@ -149,7 +149,7 @@ public class Main implements Serializable {
 				FileReader fr = new FileReader(command[1].toString());
 				br = new BufferedReader(fr);
 				String row = br.readLine();
-				while(line!=null) {
+				while(row!=null) {
 					String[] word = row.split(" ");
 					if(word[0].equals("Tower")) {
 						Tower t = new Tower(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
@@ -164,9 +164,9 @@ public class Main implements Serializable {
 						engine.getPlayer().getArea().getSource().add(s);
 					}
 					else if(word[0].equals("Road")) {
-						Road r = new Road(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-						r.setNextRoad(new Road(new Position(Integer.parseInt(word[3]), Integer.parseInt(word[4]))));
-						engine.getPlayer().getArea().getRoad().add(r);
+						//Road r = new Road(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
+						//r.setNextRoad(new Road(new Position(Integer.parseInt(word[3]), Integer.parseInt(word[4]))));
+						//engine.getPlayer().getArea().getRoad().add(r);
 					}
 					else if(word[0].equals("Mountain")) {
 						Mountain m = new Mountain(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
