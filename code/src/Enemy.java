@@ -113,7 +113,7 @@ public abstract class Enemy {
 	public void goToSource(int pause){
 		int randValue = (int)(Math.random()*1);
 		
-		source.requestDestination(this);
+		//source.requestDestination(this);
 	}
 
 	/**
