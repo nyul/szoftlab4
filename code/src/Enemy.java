@@ -113,10 +113,9 @@ public abstract class Enemy {
 	 * @param pause A kesleltetes erteke, ami megadja a palyara lepes sorrendjet
 	 * @param source 
 	 */
-	public void goToSource(int pause, ArrayList<Source> source){
+	public void goToSource(ArrayList<Source> source){
 		int randValue = (int)(Math.random()*1);
-		
-		//source.requestDestination(this);
+		source.get(randValue).requestDestination(this);
 	}
 
 	/**
