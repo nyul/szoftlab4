@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-
+/**
+ * A palya osszes csempejet tarolja.
+ */
 public class Geometry {
 
 	private ArrayList<ArrayList<Tile>> tiles;
@@ -29,7 +31,7 @@ public class Geometry {
 	 *            - megkapja a vizsgalando tornyot
 	 * @return - visszaadja, hogy az enemy a torony hatotavolsagan belul van-e
 	 */
-	public boolean isInRange(Enemy enemy, Tower tower){ //TODO: azt vizsgalni kell vajon, hogy active-e az enemy?
+	public boolean isInRange(Enemy enemy, Tower tower) {
 		if(tower.getPos().getX()+tower.getRange() > enemy.getRoad().getPos().getX() 
 				&& tower.getPos().getX()-tower.getRange() < enemy.getRoad().getPos().getX() 
 				&& tower.getPos().getY()+tower.getRange() > enemy.getRoad().getPos().getY() 
