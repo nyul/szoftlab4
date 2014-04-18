@@ -44,7 +44,7 @@ public class Player {
 	public void chooseUpgrade(ArrayList<MagicRock> magicRockList, Defense defense) {
 		System.out.println("Select a number from the list!");
 		for(int i = 0; i < magicRockList.size(); i++) {
-			System.out.println(i + ": " + magicRockList.get(i).getName().get(magicRockList.get(i).getType()));   // hibalehetoseg
+			System.out.println(i + ": " + MagicRock.getName().get(magicRockList.get(i).getType())); 
 		}
 		InputStreamReader read = new InputStreamReader(System.in);
 		BufferedReader in = new BufferedReader(read);
