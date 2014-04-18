@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 public abstract class Enemy {
 	
@@ -109,8 +111,9 @@ public abstract class Enemy {
 	/**
 	 * Ellenseg forras poticiora helyezese
 	 * @param pause A kesleltetes erteke, ami megadja a palyara lepes sorrendjet
+	 * @param source 
 	 */
-	public void goToSource(int pause){
+	public void goToSource(int pause, ArrayList<Source> source){
 		int randValue = (int)(Math.random()*1);
 		
 		//source.requestDestination(this);

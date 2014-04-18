@@ -54,7 +54,7 @@ public class Engine extends Thread{
 	}
 	
 	public void takeToArea() {
-		fellowship.startWave(5);
+		fellowship.startWave(5,player.getArea().getSource());
 	}
 	
 	public void run() {
