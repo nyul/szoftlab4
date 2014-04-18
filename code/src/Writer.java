@@ -9,6 +9,10 @@ public class Writer {
 		writeText = new ArrayList<String>();
 	}
 	
+	public static ArrayList<String> getWriteText() {
+		return writeText;
+	}
+
 	public void addString(String text) {
 		writeText.add(text);
 	}

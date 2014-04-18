@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class Main implements Serializable {
 	}
 	
 	public void loadInputLanguage() throws IOException {
-		FileReader fileReader = new FileReader("map.txt");
+		FileReader fileReader = new FileReader("input.txt");
 		BufferedReader reader = new BufferedReader(fileReader);
 		String line = reader.readLine();
 		while(line!=null) {
@@ -200,5 +202,14 @@ public class Main implements Serializable {
 			line = reader.readLine();
 		}
 		reader.close();
+	}
+	
+	public void writeOutputLanguage() throws IOException {
+		FileWriter fileWriter = new FileWriter("output.txt");
+		BufferedWriter writer = new BufferedWriter(fileWriter);
+		for(int i = 0; i < Writer.getWriteText().size(); i++) {
+			writer.write(Writer.getWriteText().get(i));
+		}
+		writer.close();
 	}
 }
