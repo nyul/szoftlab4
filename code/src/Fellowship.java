@@ -55,8 +55,27 @@ public class Fellowship {
 	 * Letrehozza az osszes ellenseget es hozzaadja oket a passive listahoz.
 	 */
 	public void produceAllEnemy(){
-		Writer.entry();
-		Writer.asynchronexit();
+		int rand = 0;
+		for(int i = 0; i < 10; i++) {
+			rand = (int)(Math.random() * 4);
+			if(rand == 0) {
+				Human human = new Human();
+				passive.add(human);
+			}
+			else if(rand == 1) {
+				Hobbit hobbit = new Hobbit();
+				passive.add(hobbit);
+			}
+			else if(rand == 2) {
+				Dwarf dwarf = new Dwarf();
+				passive.add(dwarf);
+			}
+			else if(rand == 3) {
+				Elf elf = new Elf();
+				passive.add(elf);
+			}
+			number++;
+		}
 	}
 	
 	/**

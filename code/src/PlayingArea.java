@@ -107,8 +107,7 @@ public class PlayingArea {
 	 * Hegy koordinatajanak megadasa, forras(ok) megadasa.
 	 */
 	public void initialize() {
-		Writer.entry();
-		Writer.asynchronexit();
+		// loadMap kell ide
 	}
 	
 	/**
@@ -116,8 +115,7 @@ public class PlayingArea {
 	 * @param t - a hozzaadni kivant torony referenciaja
 	 */
 	public void addTower(Tower t) {
-		Writer.entry();
-		Writer.asynchronexit();
+		this.tower.add(t);
 	}
 	
 	/**
@@ -125,8 +123,7 @@ public class PlayingArea {
 	 * @param o - a hozzaadni kivant akadaly referenciaja
 	 */	
 	public void addObstacle(Obstacle o) {
-		Writer.entry();
-		Writer.asynchronexit();
+		this.obstacle.add(o);
 	}
 	
 	/**

@@ -11,7 +11,6 @@ public class Player {
 	
 	public Player(int magicPower) {
 		this.magicPower = magicPower;
-		area = new PlayingArea();
 	}
 	
 	public int getMagicPower() {
@@ -75,9 +74,8 @@ public class Player {
 	 * Jatekos elinditja a jatekot, ezzel egyutt inicializalodik a palya.
 	 */
 	public void startGame() {
-		Writer.entry();
+		area = new PlayingArea();
 		area.initialize();
-		Writer.asynchronexit();
 	}
 	
 	/**
@@ -85,8 +83,7 @@ public class Player {
 	 * @param price: megadja, hogy mennyivel csokkenti
 	 */
 	public void reduceMagicPower(int price) {
-		Writer.entry();
-		Writer.asynchronexit();
+		this.magicPower = this.magicPower - price;
 	}
 	
 }

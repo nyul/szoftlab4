@@ -151,7 +151,7 @@ public class Tower extends Tile implements Defense{
 	
 	public Enemy attack(ArrayList<Enemy> enemies, Geometry geometry) {
 		for(int i = 0; i < enemies.size(); i++) {
-			if(geometry.isInRange(enemies.get(i),this)) {     // problema: nem tudom elerni a geometria osztalyt
+			if(geometry.isInRange(enemies.get(i),this)) {
 				if(enemies.get(i).hit(this) <= 0) {
 					enemies.get(i).setActivity(false);
 				}
@@ -202,11 +202,12 @@ public class Tower extends Tile implements Defense{
 	}
 	
 	public void fogOn() {
-		
+		this.fogRange = this.range;
+		this.range = this.range - 1;
 	}
 	
 	public void fogOff() {
-		
+		this.range = this.fogRange;
 	}
 }
 

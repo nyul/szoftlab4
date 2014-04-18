@@ -68,14 +68,4 @@ public class Tile {
 		}
 		return null;
 	}
-
-	/**
-	 * ket pozicio kozotti tavolsagot adja meg
-	 * @param p1
-	 * @param p2
-	 * @return
-	 */
-	public double distance(Position p1, Position p2) {
-		return 0.0f;
-	}
 }
