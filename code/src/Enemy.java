@@ -1,8 +1,19 @@
 import java.util.ArrayList;
 
-
+/**
+ *Ez egy absztrakt osztaly, ami arra jo, hogy tarolja az ellenseg allapotait illetve megszabja a viselkedesuket, ami minden egyes
+ *ellenseg tipusra igaz. 
+ */
 public abstract class Enemy {
-	
+	/**
+	 * lifePower - ellenseg eleterejet tarolja
+	 * stepTime - ellenseg haladasanak sebesseget tarolja
+	 * pause - tarolja, hogy egy ellenseg hany lepesbol marad ki
+	 * road - tarolja azt az ut-csempet, amelyiken all
+	 * isActive - ellenseg aktivitasat vizsgalja, ha egy ellenseg passziv, akkor addig nem helyezheto a palyara, csak az aktiv
+	 * 			  ellensegeket lehet leptetni
+	 * isDuplicated - alapesetben false az erteke, true abban az esetben, ha az ellenseget a torony sebzese soran kettehasitotta
+	 */
 	protected int lifePower;
 	protected int stepTime;
 	protected int pause;
@@ -10,16 +21,21 @@ public abstract class Enemy {
 	protected boolean isActive;
 	protected boolean isDuplicated;
 	
-	// palyara helyezeskor hivodik meg
+	/**
+	 *  palyara helyezeskor hivodik meg
+	 */
 	public Enemy() {
 		lifePower = 100;
 		stepTime = 10;
 		pause = 0;
-		road = new Road(new Position(-1, -1));
+		road = new Road(new Position(-1, -1));  // meg nincs palyara helyezve (virtualis pozicio)
 		isActive = false;
 		isDuplicated = false;
 	}
-	// ellenseg lerakasa egy tetszoleges ut-csempere
+	/**
+	 *  ellenseg lerakasa egy tetszoleges ut-csempere
+	 * @param pos
+	 */
 	public Enemy(Position pos) {
 		lifePower = 100;
 		stepTime = 10;
@@ -30,70 +46,48 @@ public abstract class Enemy {
 	}
 
 	
-	
 	public int getLifePower() {
 		return lifePower;
 	}
-
-
 
 	public void setLifePower(int lifePower) {
 		this.lifePower = lifePower;
 	}
 
-
-
 	public int getStepTime() {
 		return stepTime;
 	}
-
-
 
 	public void setStepTime(int stepTime) {
 		this.stepTime = stepTime;
 	}
 
-
-
 	public int getPause() {
 		return pause;
 	}
-
-
 
 	public void setPause(int pause) {
 		this.pause = pause;
 	}
 
-
-
 	public boolean isActive() {
 		return isActive;
 	}
-
 
 	public boolean isDuplicated() {
 		return isDuplicated;
 	}
 
-
-
 	public void setDuplicated(boolean isDuplicated) {
 		this.isDuplicated = isDuplicated;
 	}
-
-
 
 	public Road getRoad() {
 		return road;
 	}
 
-
-
 	/**
-	 * A parameterkent kapott poziciora lepteti az ellenseget.
-	 * 
-	 * @param p A leptetes celpozicioja
+	 * Az ellenseget lepteteset kezdemenyezi, ugy hogy meghivja annak a road-nak a requestDestination metodusat, amelyiken eppen all. 
 	 */
 	public void move() {
 		road.requestDestination(this);
@@ -110,8 +104,7 @@ public abstract class Enemy {
 
 	/**
 	 * Ellenseg forras poticiora helyezese
-	 * @param pause A kesleltetes erteke, ami megadja a palyara lepes sorrendjet
-	 * @param source 
+	 * @param source - tobb forras kozul valamelyiket veletlenszeruen kisorsoljuk es erre helyezzuk ra az ellenseget
 	 */
 	public void goToSource(ArrayList<Source> source){
 		int randValue = (int)(Math.random()*1);
@@ -145,10 +138,12 @@ public abstract class Enemy {
 	}
 	
 	/**
-	 * Beallitja az ellenseg poziciojat, amin allnia kell
-	 * @param nextroad A kovetkezo ut, ahova lepnie kell 
+	 * Ez mar a konkret leptetes a kovetkezo ut-csempere. Ha az ellenseg elott all valaki, akkor is tud lepni, ugyanis semmilyen 
+	 * megkotes nincs arra, hogy hany ellenseg allhat egy adott ut-csempen.
+	 * @param nextroad A kovetkezo ut-csempe, ahova lepnie kell 
 	 */
 	public void setRoad(Road nextRoad) {
+		// ha a kovetkezo ut-csempe egy akadaly-csempe, akkor az ellenseget le kell lassitani, amit a slowMe metodus hajt vegre
 		if(nextRoad instanceof Obstacle) {
 			Obstacle o = (Obstacle) nextRoad;
 			o.slowMe(this);
