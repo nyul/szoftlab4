@@ -164,9 +164,11 @@ public class Main implements Serializable {
 						engine.getPlayer().getArea().getSource().add(s);
 					}
 					else if(word[0].equals("Road")) {
-						Road r = new Road(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-						r.addRoad(new Road(new Position(Integer.parseInt(word[3]), Integer.parseInt(word[4]))));
-						engine.getPlayer().getArea().getRoad().add(r);
+						Road road1 = new Road(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
+						Road road2 = new Road(new Position(Integer.parseInt(word[3]), Integer.parseInt(word[4])));
+						road1.addRoad(road2);
+						engine.getPlayer().getArea().getRoad().add(road1);
+						engine.getPlayer().getArea().getRoad().add(road2);
 					}
 					else if(word[0].equals("Mountain")) {
 						Mountain m = new Mountain(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));

@@ -13,6 +13,7 @@ public class Road extends Tile{
 
 	public void addRoad(Road r) {
 		nextRoad.add(r);
+		System.out.println(nextRoad.size());
 	}
 	
 	/**
@@ -20,7 +21,9 @@ public class Road extends Tile{
 	 * @param e A lepni kivano enemy referenciaja
 	 */
 	public void requestDestination(Enemy enemy) {
-		int randValue = (int)(Math.random()*nextRoad.size()+1);
+		//System.out.println("Hello");
+		int randValue = (int)(Math.random()*nextRoad.size());
+		System.out.println(nextRoad.size());
 		enemy.setRoad(nextRoad.get(randValue));
 	}
 }

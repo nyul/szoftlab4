@@ -32,7 +32,7 @@ public abstract class Enemy {
 		road = new Road(new Position(-1, -1));  // meg nincs palyara helyezve (virtualis pozicio)
 		isActive = false;
 		isDuplicated = false;
-		counter = 0;
+		counter = 1;
 	}
 	/**
 	 *  ellenseg lerakasa egy tetszoleges ut-csempere
@@ -45,6 +45,7 @@ public abstract class Enemy {
 		road = new Road(pos);
 		isActive = true;
 		isDuplicated = false;
+		counter = 1;
 	}
 
 	
@@ -94,7 +95,7 @@ public abstract class Enemy {
 	public void move() {
 		if(counter >= stepTime) {
 			road.requestDestination(this);
-			counter = 0;
+			counter = 1;
 		} else {
 			counter = counter + 1;
 		}
