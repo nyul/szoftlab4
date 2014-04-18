@@ -13,6 +13,7 @@ public class Engine extends Thread{
 	public Engine() {
 		player = new Player(100);
 		fellowship = new Fellowship();
+		player.startGame();
 	}
 	
 	public Player getPlayer() {

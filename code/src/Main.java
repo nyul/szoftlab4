@@ -57,7 +57,7 @@ public class Main implements Serializable {
 			}
 			else if(command[0].equals("step")) {
 				System.out.println("[Step: " + Integer.parseInt(command[1]) + "]");
-				for(int i=0; i<10*Integer.parseInt(command[1]); i++) {
+				for(int i=0; i < 10*Integer.parseInt(command[1]); i++) {
 					engine.run();
 				}
 			}
@@ -165,29 +165,33 @@ public class Main implements Serializable {
 					}
 					else if(word[0].equals("Road")) {
 						Road r = new Road(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-						r.setNextRoad(new Road(new Position(Integer.parseInt(word[3]), Integer.parseInt(word[4]))));
+						r.addRoad(new Road(new Position(Integer.parseInt(word[3]), Integer.parseInt(word[4]))));
 						engine.getPlayer().getArea().getRoad().add(r);
 					}
 					else if(word[0].equals("Mountain")) {
 						Mountain m = new Mountain(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-						m.setNextRoad(new Road(new Position(-1, -1)));
+						//m.setNextRoad(new Road(new Position(-1, -1)));
 						engine.getPlayer().getArea().setMountain(m);
 					}
 					else if(word[0].equals("Hobbit")) {
 						Hobbit h = new Hobbit(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
 						engine.getFellowship().getActive().add(h);
+						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
 					}
 					else if(word[0].equals("Human")) {
 						Human h = new Human(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
 						engine.getFellowship().getActive().add(h);
+						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
 					}
 					else if(word[0].equals("Dwarf")) {
 						Dwarf d = new Dwarf(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
 						engine.getFellowship().getActive().add(d);
+						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
 					}
 					else if(word[0].equals("Elf")) {
 						Elf e = new Elf(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
 						engine.getFellowship().getActive().add(e);
+						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
 					}
 					row = br.readLine();
 				}

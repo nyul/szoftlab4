@@ -20,6 +20,7 @@ public abstract class Enemy {
 	protected Road road;
 	protected boolean isActive;
 	protected boolean isDuplicated;
+	protected int counter;
 	
 	/**
 	 *  palyara helyezeskor hivodik meg
@@ -31,6 +32,7 @@ public abstract class Enemy {
 		road = new Road(new Position(-1, -1));  // meg nincs palyara helyezve (virtualis pozicio)
 		isActive = false;
 		isDuplicated = false;
+		counter = 0;
 	}
 	/**
 	 *  ellenseg lerakasa egy tetszoleges ut-csempere
@@ -90,7 +92,12 @@ public abstract class Enemy {
 	 * Az ellenseget lepteteset kezdemenyezi, ugy hogy meghivja annak a road-nak a requestDestination metodusat, amelyiken eppen all. 
 	 */
 	public void move() {
-		road.requestDestination(this);
+		if(counter >= stepTime) {
+			road.requestDestination(this);
+			counter = 0;
+		} else {
+			counter = counter + 1;
+		}
 	}
 
 	/**

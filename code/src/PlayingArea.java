@@ -22,6 +22,7 @@ public class PlayingArea {
 		source = new ArrayList<Source>();
 		tower = new ArrayList<Tower>();
 		obstacle = new ArrayList<Obstacle>();
+		road = new ArrayList<Road>();
 		mountain = null;
 		geometry = new Geometry();
 	}
