@@ -69,6 +69,7 @@ public class Fellowship {
 		for(int i = 0; i < j ; i++){
 			this.active.add(this.passive.get(0));
 			this.active.get(this.active.size()-1).setPause(i);
+			this.active.get(this.active.size()-1).goToSource(i);
 			this.passive.remove(0);
 		}
 	}

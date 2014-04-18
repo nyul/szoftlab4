@@ -50,7 +50,7 @@ public class Engine extends Thread{
 	}
 	
 	public void takeToArea() {
-		fellowship.startWave(0);
+		fellowship.startWave(5);
 	}
 	
 	public void run() {

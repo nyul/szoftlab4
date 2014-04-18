@@ -111,9 +111,7 @@ public abstract class Enemy {
 	 * @param pause A kesleltetes erteke, ami megadja a palyara lepes sorrendjet
 	 */
 	public void goToSource(int pause){
-		Writer.entry();
 		source.requestDestination(this);
-		Writer.asynchronexit();
 	}
 
 	/**
@@ -121,8 +119,7 @@ public abstract class Enemy {
 	 * @param slowingFactor Az akadaly lassito tenyezoje
 	 */
 	public void increasePause(int slowingFactor){
-		Writer.entry();
-		Writer.asynchronexit();
+		pause = pause + slowingFactor;
 	}		
 
 	/**
