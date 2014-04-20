@@ -108,7 +108,7 @@ public class PlayingArea {
 	 * Hegy koordinatajanak megadasa, forras(ok) megadasa.
 	 */
 	public void initialize() {
-		// loadMap kell ide
+		geometry.createAllTile(2, 3);
 	}
 	
 	/**

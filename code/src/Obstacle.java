@@ -71,6 +71,7 @@ public class Obstacle extends Road implements Defense{
 	}
 
 	public void slowMe(Enemy e){
+		e.increasePause(this.slowingFactor);
 		e.increasePause(slowingFactor);
 	}
 }
