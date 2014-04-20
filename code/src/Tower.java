@@ -21,7 +21,7 @@ public class Tower extends Tile implements Defense{
 	public Tower(Position pos) {
 		super(pos);
 		shootPeriod = 10;
-		range = 2;
+		range = 3;
 		fogRange = range;
 		damagePowerDwarf = 10;
 		damagePowerElf = 10;
@@ -151,11 +151,12 @@ public class Tower extends Tile implements Defense{
 	
 	public Enemy attack(ArrayList<Enemy> enemies, Geometry geometry) {
 		for(int i = 0; i < enemies.size(); i++) {
+			System.out.println("Hello");
 			if(geometry.isInRange(enemies.get(i),this)) {
 				if(enemies.get(i).hit(this) <= 0) {
 					enemies.get(i).setActivity(false);
 				}
-				int duplicate = (int)(Math.random()*5);
+				int duplicate = (int)(Math.random()*4);
 				if(duplicate == 3) {
 					enemies.get(i).setDuplicated(true);
 					enemies.get(i).setLifePower((int)(enemies.get(i).getLifePower() / 2));

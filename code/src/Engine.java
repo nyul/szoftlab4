@@ -9,11 +9,13 @@ public class Engine extends Thread{
 	 */
 	private Player player;
 	private Fellowship fellowship;
+	private int counter;
 	
 	public Engine() {
 		player = new Player(100);
 		fellowship = new Fellowship();
 		player.startGame();
+		counter = 1;
 	}
 	
 	public Player getPlayer() {
@@ -37,6 +39,7 @@ public class Engine extends Thread{
 	 * a tuzeles vegrehajtasat vegzi.
 	 */
 	public void attackHandler() {
+		if(counter >= 10) {
 		Enemy enemy = null;
 		for(int i = 0; i < player.getArea().getTower().size(); i++) {
 			// attack metodus visszadja azt az ellenseget, akit meglott, de ha nem lott senkire, akkor egy null-al ter vissza
@@ -55,6 +58,9 @@ public class Engine extends Thread{
 				// isDuplicate valtozot vissza kell allitani false-ra, kulonben minden lepesben klonozas tortenne
 				enemy.setDuplicated(false);
 			}
+		}
+		} else {
+			counter = counter + 1;
 		}
 	}
 	/**
