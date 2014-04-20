@@ -31,7 +31,7 @@ public class Main implements Serializable {
 	}
 	
 	public void loadInputLanguage() throws IOException {
-		FileReader fileReader = new FileReader("input04.txt");
+		FileReader fileReader = new FileReader("input07.txt");
 		BufferedReader reader = new BufferedReader(fileReader);
 		String line = reader.readLine();
 		while(line!=null) {
@@ -63,7 +63,7 @@ public class Main implements Serializable {
 				}
 			}
 			else if(command[0].equals("getTowerInfo")) {
-				Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
+				Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1])-1);
 				System.out.println("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 				System.out.println("range: " + t.getRange());
 				System.out.println("fogRange: " + t.getFogRange());
