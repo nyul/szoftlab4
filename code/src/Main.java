@@ -30,6 +30,7 @@ public class Main implements Serializable {
 		}
 	}
 
+
 	public void loadInputLanguage() throws IOException {
 
 		FileReader fileReader = new FileReader("input.txt");
@@ -42,13 +43,16 @@ public class Main implements Serializable {
 				
 				Tower t = engine.getPlayer().getArea().getGeometry().getTiles().get(Integer.parseInt(command[1])).get(Integer.parseInt(command[2])).buildTower(engine.getPlayer());
 				engine.getPlayer().getArea().addTower(t);
-				System.out.println("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "] has been built on the Tile(Position(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
+				System.out.println("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "] has been built on the Tile(Position(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + "))");
 			}
-			else if(command[0].equals("buildObstacle")) {
-				System.out.println(command[0] + " " + command[1] + " " + command[2]);
-				Obstacle o = engine.getPlayer().getArea().getGeometry().getTiles().get(Integer.parseInt(command[1])).get(Integer.parseInt(command[2])).buildObstacle(engine.getPlayer());
-				engine.getPlayer().getArea().addObstacle(o);
-				System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on the Road(Position(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
+			else if(command[0].equals("buildObstacle")) {			
+				for(int i = 0; i < engine.getPlayer().getArea().getRoad().size(); i++){
+					if(engine.getPlayer().getArea().getRoad().get(i).pos.getX() == Integer.parseInt(command[1]) && engine.getPlayer().getArea().getRoad().get(i).pos.getY() == Integer.parseInt(command[2])){
+						Obstacle o = engine.getPlayer().getArea().getRoad().get(i).buildObstacle(engine.getPlayer());
+						engine.getPlayer().getArea().addObstacle(o);
+						System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on the Road(Position(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
+					}
+				}				
 			}
 			else if(command[0].equals("upgradeTower")) {
 				Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
@@ -201,11 +205,7 @@ public class Main implements Serializable {
 						Elf e = new Elf(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
 						engine.getFellowship().getActive().add(e);
 						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
-					}
-					else if(word[0].equals("Tile")){
-						Tile t = new Tile(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-						engine.getPlayer().getArea().getGeometry().addTile(t);
-					}
+					}					
 					row = br.readLine();
 				}
 				br.close();	
