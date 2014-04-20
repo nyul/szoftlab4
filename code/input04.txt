@@ -1,0 +1,6 @@
+loadMap map04.txt
+getPlayerInfo 1
+buildTower 1 1
+getTowerInfo 1
+getPlayerInfo 1
+exit
