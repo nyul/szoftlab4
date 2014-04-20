@@ -127,8 +127,7 @@ public abstract class Enemy {
 	 * @param slowingFactor Az akadaly lassito tenyezoje
 	 */
 	public void increasePause(int slowingFactor){
-		Writer.entry();
-		Writer.asynchronexit();
+		pause = pause + slowingFactor;
 	}		
 
 	/**
@@ -156,10 +155,9 @@ public abstract class Enemy {
 	 * @param nextroad A kovetkezo ut, ahova lepnie kell 
 	 */
 	public void setRoad(Road r) {
-		Writer.entry();
-		if(Writer.question("Kovetkezo ut-csempe akadaly-e?")) {
-			obstacle.slowMe(this);
+		if(r instanceof (Obstacle)){
+			r = (Obstacle) r;
+			r.slowMe(this);
 		}
-		Writer.asynchronexit();
 	}
 }
