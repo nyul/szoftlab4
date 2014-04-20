@@ -149,13 +149,24 @@ public class Tower extends Tile implements Defense{
 	 * ami csokkenti az enemy erejet
 	 */
 	
-	public Enemy attack(ArrayList<Enemy> enemies) {
-		geometry.isInRange(enemy,this);
-		enemy.hit(this);
-		if(!Writer.question("Enemy eletereje nagyobb-e nullanal sebzes utan?")) {
-			enemy.setActivity(false);
+	public Enemy attack(ArrayList<Enemy> enemies, Geometry geometry) {
+		for(int i = 0; i < enemies.size(); i++) {
+			if(geometry.isInRange(enemies.get(i),this)) {
+				if(enemies.get(i).hit(this) <= 0) {
+					enemies.get(i).setActivity(false);
+				}
+				int duplicate = (int)(Math.random()*5);
+				if(duplicate == 3) {
+					enemies.get(i).setDuplicated(true);
+					enemies.get(i).setLifePower((int)(enemies.get(i).getLifePower() / 2));
+				}
+				return enemies.get(i);
+			}
+			else {
+				System.out.println("Nincs hatotavon beluli ellenseg.");
+			}
 		}	
-		return enemy;
+		return null;
 	}
 	
 	
@@ -176,31 +187,32 @@ public class Tower extends Tile implements Defense{
 	 */
 	public void upgrade(MagicRock magicRock){
 		if(magicRock.getType() == 0) {
-			
+			this.range = this.range + 1;
 		}
 		else if(magicRock.getType() == 1) {
-			
+			this.shootPeriod = this.shootPeriod + 1;
 		}
 		if(magicRock.getType() == 2) {
-			
+			this.damagePowerHuman = this.damagePowerHuman + 10;
 		}
 		else if(magicRock.getType() == 3) {
-			
+			this.damagePowerHobbit = this.damagePowerHobbit + 10;
 		}
 		if(magicRock.getType() == 4) {
-			
+			this.damagePowerDwarf = this.damagePowerDwarf + 10;
 		}
 		else if(magicRock.getType() == 5) {
-			
+			this.damagePowerElf = this.damagePowerElf + 10;
 		}
 	}
 	
 	public void fogOn() {
-		
+		this.fogRange = this.range;
+		this.range = this.range - 1;
 	}
 	
 	public void fogOff() {
-		
+		this.range = this.fogRange;
 	}
 }
 

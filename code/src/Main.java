@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,12 +31,13 @@ public class Main implements Serializable {
 	}
 	
 	public void loadInputLanguage() throws IOException {
-		FileReader fileReader = new FileReader("map.txt");
+		FileReader fileReader = new FileReader("input06.txt");
 		BufferedReader reader = new BufferedReader(fileReader);
 		String line = reader.readLine();
 		while(line!=null) {
 			String[] command = line.split(" ");
 			if(command[0].equals("buildTower")) {
+				System.out.println(command[0] + " " + command[1] + " " + command[2]);
 				Tower t = engine.getPlayer().getArea().getGeometry().getTiles().get(Integer.parseInt(command[1])).get(Integer.parseInt(command[2])).buildTower(engine.getPlayer());
 				engine.getPlayer().getArea().addTower(t);
 				System.out.println("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "] has been built on the Tile(Position(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
@@ -46,21 +49,21 @@ public class Main implements Serializable {
 			else if(command[0].equals("upgradeTower")) {
 				Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
 				t.upgrade(engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1])).getMagicRock().get(Integer.parseInt(command[2])));
-				System.out.println("[1:Player]" + " has been upgrade [" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
+				System.out.println("[1:Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 			}
 			else if(command[0].equals("upgradeObstacle")) {
 				Obstacle o = engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1]));
 				o.upgrade(engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1])).getMagicRock().get(Integer.parseInt(command[2])));
-				System.out.println("[1:Player]" + " has been upgrade [" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
+				System.out.println("[1:Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
 			}
 			else if(command[0].equals("step")) {
 				System.out.println("[Step: " + Integer.parseInt(command[1]) + "]");
-				for(int i=0; i<10*Integer.parseInt(command[1]); i++) {
+				for(int i=0; i < 10*Integer.parseInt(command[1]); i++) {
 					engine.run();
 				}
 			}
 			else if(command[0].equals("getTowerInfo")) {
-				Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
+				Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1])-1);
 				System.out.println("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 				System.out.println("range: " + t.getRange());
 				System.out.println("fogRange: " + t.getFogRange());
@@ -78,14 +81,14 @@ public class Main implements Serializable {
 				System.out.println("magicRockNumber: " + o.getMagicRockNumber());
 			}
 			else if(command[0].equals("getEnemyInfo")) {
-				Enemy e = engine.getFellowship().getActiveEnemies().get(Integer.parseInt(command[1]));
+				Enemy e = engine.getFellowship().getActiveEnemies().get(Integer.parseInt(command[1])-1);
 				if(e instanceof Human) {
 					Human h = (Human) e;
 					System.out.println("[" + Integer.parseInt(command[1]) + ":" + h.getClass().getName() + "]");
 					System.out.println("lifePower: " + h.getLifePower());
 					System.out.println("stepTime: " + h.getStepTime());
 					System.out.println("pause: " + h.getPause());
-					System.out.println("position: " + h.getRoad().getPos());
+					System.out.println("position: (" + h.getRoad().getPos().getX() + "," + h.getRoad().getPos().getY() + ")");
 					System.out.println("isActive: " + h.isActive());
 					System.out.println("isDuplicated: " + h.isDuplicated());
 				}
@@ -95,7 +98,7 @@ public class Main implements Serializable {
 					System.out.println("lifePower: " + h.getLifePower());
 					System.out.println("stepTime: " + h.getStepTime());
 					System.out.println("pause: " + h.getPause());
-					System.out.println("position: " + h.getRoad().getPos());
+					System.out.println("position: (" + h.getRoad().getPos().getX() + "," + h.getRoad().getPos().getY() + ")");
 					System.out.println("isActive: " + h.isActive());
 					System.out.println("isDuplicated: " + h.isDuplicated());
 				}
@@ -105,17 +108,17 @@ public class Main implements Serializable {
 					System.out.println("lifePower: " + d.getLifePower());
 					System.out.println("stepTime: " + d.getStepTime());
 					System.out.println("pause: " + d.getPause());
-					System.out.println("position: " + d.getRoad().getPos());
+					System.out.println("position: (" + d.getRoad().getPos().getX() + "," + d.getRoad().getPos().getY() + ")");
 					System.out.println("isActive: " + d.isActive());
 					System.out.println("isDuplicated: " + d.isDuplicated());
 				}
-				else if(e instanceof Dwarf) {
+				else if(e instanceof Elf) {
 					Elf elf = (Elf) e;
 					System.out.println("[" + Integer.parseInt(command[1]) + ":" + elf.getClass().getName() + "]");
 					System.out.println("lifePower: " + elf.getLifePower());
 					System.out.println("stepTime: " + elf.getStepTime());
 					System.out.println("pause: " + elf.getPause());
-					System.out.println("position: " + elf.getRoad().getPos());
+					System.out.println("position: (" + elf.getRoad().getPos().getX() + "," + elf.getRoad().getPos().getY() + ")");
 					System.out.println("isActive: " + elf.isActive());
 					System.out.println("isDuplicated: " + elf.isDuplicated());
 				}
@@ -147,7 +150,7 @@ public class Main implements Serializable {
 				FileReader fr = new FileReader(command[1].toString());
 				br = new BufferedReader(fr);
 				String row = br.readLine();
-				while(line!=null) {
+				while(row!=null) {
 					String[] word = row.split(" ");
 					if(word[0].equals("Tower")) {
 						Tower t = new Tower(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
@@ -162,30 +165,40 @@ public class Main implements Serializable {
 						engine.getPlayer().getArea().getSource().add(s);
 					}
 					else if(word[0].equals("Road")) {
-						Road r = new Road(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-						r.setNextRoad(new Road(new Position(Integer.parseInt(word[3]), Integer.parseInt(word[4]))));
-						engine.getPlayer().getArea().getRoad().add(r);
+						Road road1 = new Road(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
+						Road road2 = new Road(new Position(Integer.parseInt(word[3]), Integer.parseInt(word[4])));
+						road1.addRoad(road2);
+						engine.getPlayer().getArea().getRoad().add(road1);
+						engine.getPlayer().getArea().getRoad().add(road2);
 					}
 					else if(word[0].equals("Mountain")) {
 						Mountain m = new Mountain(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-						m.setNextRoad(new Road(new Position(-1, -1)));
+						//m.setNextRoad(new Road(new Position(-1, -1)));
 						engine.getPlayer().getArea().setMountain(m);
 					}
 					else if(word[0].equals("Hobbit")) {
 						Hobbit h = new Hobbit(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
 						engine.getFellowship().getActive().add(h);
+						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
 					}
 					else if(word[0].equals("Human")) {
 						Human h = new Human(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
 						engine.getFellowship().getActive().add(h);
+						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
 					}
 					else if(word[0].equals("Dwarf")) {
 						Dwarf d = new Dwarf(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
 						engine.getFellowship().getActive().add(d);
+						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
 					}
 					else if(word[0].equals("Elf")) {
 						Elf e = new Elf(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
 						engine.getFellowship().getActive().add(e);
+						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
+					}
+					else if(word[0].equals("Tile")){
+						Tile t = new Tile(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
+						engine.getPlayer().getArea().getGeometry().addTile(t);
 					}
 					row = br.readLine();
 				}
@@ -200,5 +213,14 @@ public class Main implements Serializable {
 			line = reader.readLine();
 		}
 		reader.close();
+	}
+	
+	public void writeOutputLanguage() throws IOException {
+		FileWriter fileWriter = new FileWriter("output.txt");
+		BufferedWriter writer = new BufferedWriter(fileWriter);
+		for(int i = 0; i < Writer.getWriteText().size(); i++) {
+			writer.write(Writer.getWriteText().get(i));
+		}
+		writer.close();
 	}
 }

@@ -11,7 +11,6 @@ public class Player {
 	
 	public Player(int magicPower) {
 		this.magicPower = magicPower;
-		area = new PlayingArea();
 	}
 	
 	public int getMagicPower() {
@@ -43,22 +42,25 @@ public class Player {
 	 */
 	public void chooseUpgrade(ArrayList<MagicRock> magicRockList, Defense defense) {
 		System.out.println("Select a number from the list!");
-		for(int i = 0; i<magicRockList.size(); i++) {
-			System.out.println(i + ": " + magicRockList.get(i).getName().get(magicRockList.get(i).getType()));   // hibalehetoseg
+		for(int i = 0; i < magicRockList.size(); i++) {
+			System.out.println(i + ": " + MagicRock.getName().get(magicRockList.get(i).getType())); 
 		}
 		InputStreamReader read = new InputStreamReader(System.in);
 		BufferedReader in = new BufferedReader(read);
 		int number = 0;
 		try {
 			number = Integer.parseInt(in.readLine());
-			if(number < 0 || number > 6) {        // meg nincs kesz
-				System.out.println("Wrong number");
+			for(int i = 0; i < magicRockList.size(); i++) {
+				if(number == magicRockList.get(i).getType()) {
+					if(magicPower < magicRockList.get(number).getPrice()) {
+						System.out.println("You don't have enough magicpower.");
+					}
+					magicPower = magicPower - magicRockList.get(number).getPrice();
+					defense.upgrade(magicRockList.get(number));
+				} else {
+					System.out.println("Wrong number.");
+				}
 			}
-			if(magicPower < magicRockList.get(number).getPrice()) {
-				System.out.println("You don't have enough magicpower.");
-			}
-			magicPower = magicPower - magicRockList.get(number).getPrice();
-			defense.upgrade( magicRockList.get(number));
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Not a number");
@@ -72,9 +74,8 @@ public class Player {
 	 * Jatekos elinditja a jatekot, ezzel egyutt inicializalodik a palya.
 	 */
 	public void startGame() {
-		Writer.entry();
-		playingArea.initialize();
-		Writer.asynchronexit();
+		area = new PlayingArea();
+		area.initialize();
 	}
 	
 	/**
@@ -82,8 +83,7 @@ public class Player {
 	 * @param price: megadja, hogy mennyivel csokkenti
 	 */
 	public void reduceMagicPower(int price) {
-		Writer.entry();
-		Writer.asynchronexit();
+		this.magicPower = this.magicPower - price;
 	}
 	
 }

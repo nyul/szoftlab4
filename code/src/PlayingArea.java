@@ -22,6 +22,7 @@ public class PlayingArea {
 		source = new ArrayList<Source>();
 		tower = new ArrayList<Tower>();
 		obstacle = new ArrayList<Obstacle>();
+		road = new ArrayList<Road>();
 		mountain = null;
 		geometry = new Geometry();
 	}
@@ -107,8 +108,7 @@ public class PlayingArea {
 	 * Hegy koordinatajanak megadasa, forras(ok) megadasa.
 	 */
 	public void initialize() {
-		Writer.entry();
-		Writer.asynchronexit();
+		// loadMap kell ide
 	}
 	
 	/**
@@ -116,8 +116,7 @@ public class PlayingArea {
 	 * @param t - a hozzaadni kivant torony referenciaja
 	 */
 	public void addTower(Tower t) {
-		Writer.entry();
-		Writer.asynchronexit();
+		this.tower.add(t);
 	}
 	
 	/**
@@ -125,8 +124,7 @@ public class PlayingArea {
 	 * @param o - a hozzaadni kivant akadaly referenciaja
 	 */	
 	public void addObstacle(Obstacle o) {
-		Writer.entry();
-		Writer.asynchronexit();
+		this.obstacle.add(o);
 	}
 	
 	/**
@@ -134,11 +132,11 @@ public class PlayingArea {
 	 * Ha igen akkor a parameterul kapott engine referencian meghivja a defeat() metodust tehat a jatek veget er.
 	 * @param e - az engine osztaly referenciaja
 	 */
-	public void isOnMountain(Engine e){
-		if(true){ 				// a szkeleton teszthez ennek igazat kell adnia,
-			Writer.entry();		// valojaban itt lesz implementalva a vizsgalat,
-			e.defeat(); 		// hogy valoban all-e a hegyen ellenseg.
-			Writer.asynchronexit();
+	public void isOnMountain(Engine engine){
+		for(int i = 0; i < engine.getFellowship().getActive().size(); i++) {
+			if(engine.getFellowship().getActive().get(i).getRoad().equals(mountain)) {
+				engine.defeat();
+			}
 		}						
 	}
 }

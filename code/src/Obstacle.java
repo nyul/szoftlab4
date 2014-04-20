@@ -12,8 +12,6 @@ public class Obstacle extends Road implements Defense{
 		super(pos);
 		slowingFactor = 1;
 		magicRock = new ArrayList<MagicRock>();
-		MagicRock magic = new MagicRock(0, 10);
-		magicRock.add(magic);
 		magicRockNumber = 0;
 		this.type = 3;
 	}
@@ -58,13 +56,10 @@ public class Obstacle extends Road implements Defense{
 		return price;
 	}
 
-
-
-	public Enemy attack(ArrayList<Enemy> enemies) {
-		Writer.entry();
-		Writer.synchronexit();		
-		return enemy;
+	public Enemy attack(ArrayList<Enemy> enemies, Geometry geometry) {	
+		return null;
 	}
+	
 	public void wantToUpgrade(Player player){
 		player.chooseUpgrade(magicRock, this);	
 	}
@@ -76,11 +71,10 @@ public class Obstacle extends Road implements Defense{
 	}
 
 	public void slowMe(Enemy e){
+<<<<<<< HEAD
 		e.increasePause(this.slowingFactor);
+=======
+		e.increasePause(slowingFactor);
+>>>>>>> 475fa6c8176a90b616be352e96a7b915241c9ea8
 	}
-	
-	public void setPos(Position pos){
-		Writer.entry();
-		Writer.asynchronexit();
-	};
 }

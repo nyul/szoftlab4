@@ -7,13 +7,20 @@ import java.util.ArrayList;
  */
 public class MagicRock {
 	
-	// 0 - tower range upgrade
-	// 1 - tower shootPeriod upgrade
-	// 2 - tower damagePowerHuman upgrade
-	// 3 - tower damagePowerHobbit upgrade
-	// 4 - tower damagePowerDwarf upgrade
-	// 5 - tower damagePowerElf upgrade
-	// 6 - obstacle slowingFactor upgrade
+	/**
+	 *  0 - tower range upgrade
+	 *  1 - tower shootPeriod upgrade
+	 *	2 - tower damagePowerHuman upgrade
+	 *  3 - tower damagePowerHobbit upgrade
+	 *  4 - tower damagePowerDwarf upgrade
+	 *  5 - tower damagePowerElf upgrade
+	 *  6 - obstacle slowingFactor upgrade
+	 */
+	/**
+	 * type - varazsko tipusat tarolja
+	 * price - varazsko arat tarolja
+	 * name - varazsko tipusanak nevet tarolja ugy, hogy lista i-dik eleme a varazsko i-dik tipusa
+	 */
 	private int type;
 	private int price;
 	private static ArrayList<String> name = new ArrayList<String>();
@@ -26,7 +33,10 @@ public class MagicRock {
 		name.add("damagePowerElf upgrade");
 		name.add("slowingFactor upgrade");
 	}
-	
+	/**
+	 * konstruktor
+	 * @param type
+	 */
 	public MagicRock(int type) {
 		this.type = type;
 		this.price = 10;
@@ -35,8 +45,6 @@ public class MagicRock {
 	public static ArrayList<String> getName() {
 		return name;
 	}
-
-
 
 	public int getType() {
 		return type;
@@ -50,7 +58,4 @@ public class MagicRock {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
-	
-	
 }
