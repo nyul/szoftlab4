@@ -198,7 +198,7 @@ public class Main implements Serializable {
 					}
 					else if(word[0].equals("Tile")){
 						Tile t = new Tile(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-						//engine.getPlayer().getArea().getGeometry().setTiles(tiles)
+						engine.getPlayer().getArea().getGeometry().addTile(t);
 					}
 					row = br.readLine();
 				}

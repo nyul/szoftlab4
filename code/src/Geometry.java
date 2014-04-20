@@ -20,6 +20,13 @@ public class Geometry {
 	public void setTiles(ArrayList<ArrayList<Tile>> tiles) {
 		this.tiles = tiles;
 	}
+	
+	public void addTile(Tile t){
+		ArrayList<Tile> toAdd = new ArrayList<Tile>();
+		toAdd.add(t);
+		tiles.add(toAdd);
+		
+		}
 
 	/**
 	 * Megadja, hogy a parameterul kapott ellenseg a torony hatotavolsagan belul
