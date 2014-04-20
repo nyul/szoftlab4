@@ -115,6 +115,14 @@ public class Fellowship {
 			enemy = (Dwarf) enemy;
 		}
 		
+		for(int i=0; i < this.active.size(); i++){
+			if(this.active.get(i).equals(enemy)){
+				this.active.remove(i);
+				this.number--;
+			}
+		}
+		
+		/*
 		for(Enemy e: this.active){
 			if (e.equals(enemy)){
 				this.active.remove(e);
@@ -122,6 +130,7 @@ public class Fellowship {
 				this.number--;
 			}
 		}
+		*/
 	}
 	
 	/**
