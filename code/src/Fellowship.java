@@ -101,6 +101,20 @@ public class Fellowship {
 	 * @param enemy A megsemmisitendo ellenseg referenciaja
 	 */
 	public void killEnemy(Enemy enemy){
+		
+		if(enemy instanceof Hobbit){
+			enemy = (Hobbit) enemy;
+		}
+		else if(enemy instanceof Human){
+			enemy = (Human) enemy;
+		}
+		else if(enemy instanceof Elf){
+			enemy = (Elf) enemy;
+		}
+		else if(enemy instanceof Dwarf){
+			enemy = (Dwarf) enemy;
+		}
+		
 		for(Enemy e: this.active){
 			if (e.equals(enemy)){
 				this.active.remove(e);
