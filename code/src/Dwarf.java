@@ -10,8 +10,8 @@ public class Dwarf extends Enemy{
 		super();
 	}
 	
-	public Dwarf(Position pos) {
-		super(pos);
+	public Dwarf(Road road) {
+		super(road);
 	}
 	/**
 	 * Torony tuzelese soran megsebzi a torpe ellenseget.

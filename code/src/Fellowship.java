@@ -142,7 +142,7 @@ public class Fellowship {
 	 */
 	public void addToActiveEnemyList(Enemy enemy) {
 		// ha a kettehasitott ellenseg ember volt, akkor egy uj embert hozunk letre
-		if(enemy instanceof Human) {
+		/*if(enemy instanceof Human) {
 			Human h = new Human(enemy.getRoad().getPos());
 			h.setLifePower(enemy.getLifePower());
 		}
@@ -160,7 +160,7 @@ public class Fellowship {
 		else if(enemy instanceof Elf) {
 			Elf elf = new Elf(enemy.getRoad().getPos());
 			elf.setLifePower(enemy.getLifePower());
-		}
+		}*/
 	}
 
 }

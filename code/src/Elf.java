@@ -10,8 +10,8 @@ public class Elf extends Enemy{
 		super();
 	}
 	
-	public Elf(Position pos) {
-		super(pos);
+	public Elf(Road road) {
+		super(road);
 	}
 	/**
 	 * Torony tuzelese soran megsebzi a tunde ellenseget.

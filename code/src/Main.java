@@ -33,7 +33,7 @@ public class Main implements Serializable {
 
 	public void loadInputLanguage() throws IOException {
 
-		FileReader fileReader = new FileReader("input06.txt");
+		FileReader fileReader = new FileReader("input.txt");
 
 		BufferedReader reader = new BufferedReader(fileReader);
 		String line = reader.readLine();
@@ -173,11 +173,13 @@ public class Main implements Serializable {
 						engine.getPlayer().getArea().getSource().add(s);
 					}
 					else if(word[0].equals("Road")) {
-						Road road1 = new Road(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-						Road road2 = new Road(new Position(Integer.parseInt(word[3]), Integer.parseInt(word[4])));
-						road1.addRoad(road2);
-						engine.getPlayer().getArea().getRoad().add(road1);
-						engine.getPlayer().getArea().getRoad().add(road2);
+						if(!word[1].equals("ref")) {
+							Road road = new Road(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
+							engine.getPlayer().getArea().getRoad().add(road);
+						}
+						else {
+							engine.getPlayer().getArea().addReferenceRoad(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])));
+						}
 					}
 					else if(word[0].equals("Mountain")) {
 						Mountain m = new Mountain(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
@@ -185,13 +187,15 @@ public class Main implements Serializable {
 						engine.getPlayer().getArea().setMountain(m);
 					}
 					else if(word[0].equals("Hobbit")) {
-						Hobbit h = new Hobbit(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-						/*if(word[3] != null)
-							h.setLifePower(Integer.parseInt(word[3]));*/
-						engine.getFellowship().getActive().add(h);
-						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
+						for(int i = 0; i < engine.getPlayer().getArea().getRoad().size(); i++) {
+							if(engine.getPlayer().getArea().getRoad().get(i).getPos().getX() == Integer.parseInt(word[1]) && engine.getPlayer().getArea().getRoad().get(i).getPos().getY() == Integer.parseInt(word[2])) {
+								Hobbit h = new Hobbit(engine.getPlayer().getArea().getRoad().get(i));
+								engine.getFellowship().getActive().add(h);
+								engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
+							}
+						}
 					}
-					else if(word[0].equals("Human")) {
+					/*else if(word[0].equals("Human")) {
 						Human h = new Human(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
 						engine.getFellowship().getActive().add(h);
 						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
@@ -205,7 +209,7 @@ public class Main implements Serializable {
 						Elf e = new Elf(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
 						engine.getFellowship().getActive().add(e);
 						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
-					}					
+					}					*/
 					row = br.readLine();
 				}
 				br.close();	

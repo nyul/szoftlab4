@@ -10,8 +10,8 @@ public class Hobbit extends Enemy{
 		super();
 	}
 	
-	public Hobbit(Position pos) {
-		super(pos);
+	public Hobbit(Road road) {
+		super(road);
 	}
 	
 	/**

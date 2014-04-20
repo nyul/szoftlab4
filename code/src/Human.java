@@ -10,8 +10,8 @@ public class Human extends Enemy{
 		super();
 	}
 	
-	public Human(Position pos) {
-		super(pos);
+	public Human(Road road) {
+		super(road);
 	}
 	
 	/**

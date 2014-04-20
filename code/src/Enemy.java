@@ -38,11 +38,11 @@ public abstract class Enemy {
 	 *  ellenseg lerakasa egy tetszoleges ut-csempere
 	 * @param pos
 	 */
-	public Enemy(Position pos) {
+	public Enemy(Road r) {
 		lifePower = 100;
 		stepTime = 10;
 		pause = 0;
-		road = new Road(pos);
+		road = r;
 		isActive = true;
 		isDuplicated = false;
 		counter = 1;

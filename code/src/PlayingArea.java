@@ -139,4 +139,16 @@ public class PlayingArea {
 			}
 		}						
 	}
+	
+	public void addReferenceRoad(Position pos1, Position pos2) {
+		for(int i = 0; i < road.size(); i++) {
+			if(road.get(i).getPos().getX() == pos1.getX() && road.get(i).getPos().getY() == pos1.getY()) {
+				for(int j = 0; j < road.size(); j++) {
+					if(road.get(j).getPos().getX() == pos2.getX() && road.get(j).getPos().getY() == pos2.getY()) {
+						road.get(i).nextRoad.add(road.get(j));
+					}
+				}
+			}
+		}
+	}
 }
