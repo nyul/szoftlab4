@@ -31,7 +31,7 @@ public class Main implements Serializable {
 	}
 	
 	public void loadInputLanguage() throws IOException {
-		FileReader fileReader = new FileReader("input04.txt");
+		FileReader fileReader = new FileReader("input06.txt");
 		BufferedReader reader = new BufferedReader(fileReader);
 		String line = reader.readLine();
 		while(line!=null) {
@@ -49,12 +49,12 @@ public class Main implements Serializable {
 			else if(command[0].equals("upgradeTower")) {
 				Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
 				t.upgrade(engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1])).getMagicRock().get(Integer.parseInt(command[2])));
-				System.out.println("[1:Player]" + " has been upgrade [" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
+				System.out.println("[1:Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 			}
 			else if(command[0].equals("upgradeObstacle")) {
 				Obstacle o = engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1]));
 				o.upgrade(engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1])).getMagicRock().get(Integer.parseInt(command[2])));
-				System.out.println("[1:Player]" + " has been upgrade [" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
+				System.out.println("[1:Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
 			}
 			else if(command[0].equals("step")) {
 				System.out.println("[Step: " + Integer.parseInt(command[1]) + "]");

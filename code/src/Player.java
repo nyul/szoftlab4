@@ -56,7 +56,7 @@ public class Player {
 						System.out.println("You don't have enough magicpower.");
 					}
 					magicPower = magicPower - magicRockList.get(number).getPrice();
-					defense.upgrade( magicRockList.get(number));
+					defense.upgrade(magicRockList.get(number));
 				} else {
 					System.out.println("Wrong number.");
 				}
