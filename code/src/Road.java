@@ -13,7 +13,7 @@ public class Road extends Tile{
 
 	public void addRoad(Road r) {
 		nextRoad.add(r);
-		System.out.println(nextRoad.size());
+		System.out.println("addRoad:" + nextRoad.size());
 	}
 	
 	/**
