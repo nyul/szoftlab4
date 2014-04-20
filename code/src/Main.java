@@ -31,12 +31,13 @@ public class Main implements Serializable {
 	}
 	
 	public void loadInputLanguage() throws IOException {
-		FileReader fileReader = new FileReader("input.txt");
+		FileReader fileReader = new FileReader("input04.txt");
 		BufferedReader reader = new BufferedReader(fileReader);
 		String line = reader.readLine();
 		while(line!=null) {
 			String[] command = line.split(" ");
 			if(command[0].equals("buildTower")) {
+				System.out.println(command[0] + " " + command[1] + " " + command[2]);
 				Tower t = engine.getPlayer().getArea().getGeometry().getTiles().get(Integer.parseInt(command[1])).get(Integer.parseInt(command[2])).buildTower(engine.getPlayer());
 				engine.getPlayer().getArea().addTower(t);
 				System.out.println("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "] has been built on the Tile(Position(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
@@ -194,6 +195,10 @@ public class Main implements Serializable {
 						Elf e = new Elf(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
 						engine.getFellowship().getActive().add(e);
 						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
+					}
+					else if(word[0].equals("Tile")){
+						Tile t = new Tile(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
+						//engine.getPlayer().getArea().getGeometry().setTiles(tiles)
 					}
 					row = br.readLine();
 				}
