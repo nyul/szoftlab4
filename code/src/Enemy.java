@@ -150,13 +150,6 @@ public abstract class Enemy {
 	 * megkotes nincs arra, hogy hany ellenseg allhat egy adott ut-csempen.
 	 * @param nextroad A kovetkezo ut-csempe, ahova lepnie kell 
 	 */
-<<<<<<< HEAD
-	public void setRoad(Road r) {
-		if(r instanceof (Obstacle)){
-			r = (Obstacle) r;
-			r.slowMe(this);
-		}
-=======
 	public void setRoad(Road nextRoad) {
 		// ha a kovetkezo ut-csempe egy akadaly-csempe, akkor az ellenseget le kell lassitani, amit a slowMe metodus hajt vegre
 		if(nextRoad instanceof Obstacle) {
@@ -164,6 +157,5 @@ public abstract class Enemy {
 			o.slowMe(this);
 		} 
 		road = nextRoad;
->>>>>>> 475fa6c8176a90b616be352e96a7b915241c9ea8
 	}
 }
