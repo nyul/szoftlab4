@@ -63,7 +63,7 @@ public class Main implements Serializable {
 				}
 			}
 			else if(command[0].equals("getTowerInfo")) {
-				Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
+				Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1])-1);
 				System.out.println("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 				System.out.println("range: " + t.getRange());
 				System.out.println("fogRange: " + t.getFogRange());
@@ -198,7 +198,7 @@ public class Main implements Serializable {
 					}
 					else if(word[0].equals("Tile")){
 						Tile t = new Tile(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-						//engine.getPlayer().getArea().getGeometry().setTiles(tiles)
+						engine.getPlayer().getArea().getGeometry().addTile(t);
 					}
 					row = br.readLine();
 				}
