@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Tower extends Tile implements Defense{
 	
+	private static int id = 0;
 	private int shootPeriod;
 	private int range;
 	private int fogRange;
@@ -20,6 +21,7 @@ public class Tower extends Tile implements Defense{
 	
 	public Tower(Position pos) {
 		super(pos);
+		id++;
 		shootPeriod = 10;
 		range = 3;
 		fogRange = range;
@@ -33,6 +35,24 @@ public class Tower extends Tile implements Defense{
 	
 	
 	
+	public static int getId() {
+		return id;
+	}
+
+
+
+	public static void setId(int id) {
+		Tower.id = id;
+	}
+
+
+
+	public static void setPrice(int price) {
+		Tower.price = price;
+	}
+
+
+
 	public int getShootPeriod() {
 		return shootPeriod;
 	}
