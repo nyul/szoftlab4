@@ -1,0 +1,5 @@
+loadMap map08.txt
+getTowerInfo 1
+fogOn
+getTowerInfo 1
+exit
