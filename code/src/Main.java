@@ -31,11 +31,7 @@ public class Main implements Serializable {
 	}
 	
 	public void loadInputLanguage() throws IOException {
-<<<<<<< HEAD
 		FileReader fileReader = new FileReader("input10.txt");
-=======
-		FileReader fileReader = new FileReader("input.txt");
->>>>>>> f287245b25db04bb7066a66c284a6a33b818ce9f
 		BufferedReader reader = new BufferedReader(fileReader);
 		String line = reader.readLine();
 		while(line!=null) {
@@ -46,11 +42,14 @@ public class Main implements Serializable {
 				engine.getPlayer().getArea().addTower(t);
 				System.out.println("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "] has been built on the Tile(Position(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
 			}
-			else if(command[0].equals("buildObstacle")) {
-				System.out.println(command[0] + " " + command[1] + " " + command[2]);
-				Obstacle o = engine.getPlayer().getArea().getGeometry().getTiles().get(Integer.parseInt(command[1])).get(Integer.parseInt(command[2])).buildObstacle(engine.getPlayer());
-				engine.getPlayer().getArea().addObstacle(o);
-				System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on the Road(Position(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
+			else if(command[0].equals("buildObstacle")) {			
+				for(int i = 0; i < engine.getPlayer().getArea().getRoad().size(); i++){
+					if(engine.getPlayer().getArea().getRoad().get(i).pos.getX() == Integer.parseInt(command[1]) && engine.getPlayer().getArea().getRoad().get(i).pos.getY() == Integer.parseInt(command[2])){
+						Obstacle o = engine.getPlayer().getArea().getRoad().get(i).buildObstacle(engine.getPlayer());
+						engine.getPlayer().getArea().addObstacle(o);
+						System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on the Road(Position(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
+					}
+				}				
 			}
 			else if(command[0].equals("upgradeTower")) {
 				Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
