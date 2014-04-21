@@ -3,6 +3,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -32,9 +33,11 @@ public class Main implements Serializable {
 
 
 	public void loadInputLanguage() throws IOException {
-
-
-		FileReader fileReader = new FileReader("input07.txt");
+		
+		System.out.println("Give the full input file name with extension!");
+		BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+	    String s = bufferRead.readLine();
+		FileReader fileReader = new FileReader(s);
 		BufferedReader reader = new BufferedReader(fileReader);
 		String line = reader.readLine();
 		while(line!=null) {
@@ -171,8 +174,8 @@ public class Main implements Serializable {
 						engine.getPlayer().getArea().addObstacle(o);
 					}
 					else if(word[0].equals("Source")) {
-						Source s = new Source(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-						engine.getPlayer().getArea().getSource().add(s);
+						/*Source s = new Source(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
+						engine.getPlayer().getArea().getSource().add(s);*/
 					}
 					else if(word[0].equals("Road")) {
 						if(!word[1].equals("ref")) {
