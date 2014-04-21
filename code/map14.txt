@@ -1,0 +1,4 @@
+Tower pos1
+Road pos2 pos3
+Road pos3 pos4
+Hobbit pos2

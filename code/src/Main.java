@@ -28,10 +28,19 @@ public class Main implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 	}
 	
 	public void loadInputLanguage() throws IOException {
 		FileReader fileReader = new FileReader("input10.txt");
+=======
+	}
+
+	public void loadInputLanguage() throws IOException {
+
+		FileReader fileReader = new FileReader("input10.txt");
+
+>>>>>>> cd5b70dabfda6d6dee334183e053c6477d179325
 		BufferedReader reader = new BufferedReader(fileReader);
 		String line = reader.readLine();
 		while(line!=null) {
