@@ -47,4 +47,13 @@ public class Geometry {
 		}
 		else return false;
 	}
+	
+	public void createAllTile(int row, int column) {
+		for(int i = 0; i < row; i++) {  
+			tiles.add(new ArrayList<Tile>());
+			for(int j = 0; j < column; j++) {
+				tiles.get(i).add(new Tile(new Position(i, j)));    
+			}
+		}
+	}
 }

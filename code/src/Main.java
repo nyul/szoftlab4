@@ -31,7 +31,11 @@ public class Main implements Serializable {
 	}
 	
 	public void loadInputLanguage() throws IOException {
+<<<<<<< HEAD
 		FileReader fileReader = new FileReader("input10.txt");
+=======
+		FileReader fileReader = new FileReader("input.txt");
+>>>>>>> f287245b25db04bb7066a66c284a6a33b818ce9f
 		BufferedReader reader = new BufferedReader(fileReader);
 		String line = reader.readLine();
 		while(line!=null) {
@@ -180,8 +184,8 @@ public class Main implements Serializable {
 					}
 					else if(word[0].equals("Hobbit")) {
 						Hobbit h = new Hobbit(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-						if(word[3] != null)
-							h.setLifePower(Integer.parseInt(word[3]));
+						/*if(word[3] != null)
+							h.setLifePower(Integer.parseInt(word[3]));*/
 						engine.getFellowship().getActive().add(h);
 						engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
 					}
