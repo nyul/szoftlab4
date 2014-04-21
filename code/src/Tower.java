@@ -30,6 +30,10 @@ public class Tower extends Tile implements Defense{
 		damagePowerHobbit = 10;
 		damagePowerHuman = 10;
 		magicRock = new ArrayList<MagicRock>();
+		for(int i = 0; i < 6; i++) {
+			MagicRock rock = new MagicRock(i);
+			magicRock.add(rock);
+		}
 		this.type = 1;
 	}
 	
