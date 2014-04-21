@@ -44,13 +44,6 @@ public class Tower extends Tile implements Defense{
 	}
 
 
-
-	public static void setId(int id) {
-		Tower.id = id;
-	}
-
-
-
 	public static void setPrice(int price) {
 		Tower.price = price;
 	}
@@ -175,7 +168,6 @@ public class Tower extends Tile implements Defense{
 	
 	public Enemy attack(ArrayList<Enemy> enemies, Geometry geometry) {
 		for(int i = 0; i < enemies.size(); i++) {
-			System.out.println("Hello");
 			if(geometry.isInRange(enemies.get(i),this)) {
 				if(enemies.get(i).hit(this) <= 0) {
 					enemies.get(i).setActivity(false);

@@ -25,13 +25,6 @@ public class Obstacle extends Road implements Defense{
 	}
 
 
-
-	public static void setId(int id) {
-		Obstacle.id = id;
-	}
-
-
-
 	public static void setPrice(int price) {
 		Obstacle.price = price;
 	}

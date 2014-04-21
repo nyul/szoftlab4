@@ -52,6 +52,10 @@ public abstract class Enemy {
 	}
 
 	
+	public static int getId() {
+		return id;
+	}
+	
 	public int getLifePower() {
 		return lifePower;
 	}
