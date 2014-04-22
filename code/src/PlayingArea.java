@@ -211,7 +211,7 @@ public class PlayingArea {
 		}
 	}
 	
-	public void isBuiltable(Tile tile) {
+	public void isBuildable(Tile tile) {
 		if(tile instanceof Road) {
 			Road r = (Road) tile;
 			for(int i = 0; i < geometry.getTiles().size(); i++) {

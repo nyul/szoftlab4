@@ -169,12 +169,12 @@ public class Main implements Serializable {
 						String[] word = row.split(" ");
 						if(word[0].equals("Tower")) {
 							Tower tower = new Tower(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-							engine.getPlayer().getArea().isBuiltable(tower);
+							engine.getPlayer().getArea().isBuildable(tower);
 						}
 						else if(word[0].equals("Obstacle")) {
 							if(!word[1].equals("ref")) {
 								Obstacle obst = new Obstacle(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-								engine.getPlayer().getArea().isBuiltable(obst);
+								engine.getPlayer().getArea().isBuildable(obst);
 							}
 							else {
 								engine.getPlayer().getArea().addReference(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])));
@@ -183,7 +183,7 @@ public class Main implements Serializable {
 						else if(word[0].equals("Source")) {
 							if(!word[1].equals("ref")) {
 								Source source = new Source(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-								engine.getPlayer().getArea().isBuiltable(source);
+								engine.getPlayer().getArea().isBuildable(source);
 								
 							}
 							else {
@@ -193,7 +193,7 @@ public class Main implements Serializable {
 						else if(word[0].equals("Road")) {
 							if(!word[1].equals("ref")) {
 								Road road = new Road(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-								engine.getPlayer().getArea().isBuiltable(road);
+								engine.getPlayer().getArea().isBuildable(road);
 							}
 							else {
 								engine.getPlayer().getArea().addReference(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])));
@@ -201,7 +201,7 @@ public class Main implements Serializable {
 						}
 						else if(word[0].equals("Mountain")) {
 							Mountain mountain = new Mountain(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-							engine.getPlayer().getArea().isBuiltable(mountain);
+							engine.getPlayer().getArea().isBuildable(mountain);
 						}
 						else if(word[0].equals("Hobbit")) {
 							for(int i = 0; i < engine.getPlayer().getArea().getRoad().size(); i++) {
