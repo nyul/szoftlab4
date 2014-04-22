@@ -122,16 +122,6 @@ public class Fellowship {
 				this.number--;
 			}
 		}
-		
-		/*
-		for(Enemy e: this.active){
-			if (e.equals(enemy)){
-				this.active.remove(e);
-				// 1-el csokkent az ellensegek szama
-				this.number--;
-			}
-		}
-		*/
 	}
 	
 	/**
@@ -166,25 +156,33 @@ public class Fellowship {
 	 */
 	public void addToActiveEnemyList(Enemy enemy) {
 		// ha a kettehasitott ellenseg ember volt, akkor egy uj embert hozunk letre
-		/*if(enemy instanceof Human) {
-			Human h = new Human(enemy.getRoad().getPos());
-			h.setLifePower(enemy.getLifePower());
+		if(enemy instanceof Human) {
+			Human hu = new Human(enemy.getRoad());
+			hu.setLifePower(enemy.getLifePower());
+			this.active.add(hu);
+			this.number++;
 		}
 		// ha a kettehasitott ellenseg hobbit volt, akkor egy uj hobbitot hozunk letre
 		else if(enemy instanceof Hobbit) {
-			Hobbit h = new Hobbit(enemy.getRoad().getPos());
-			h.setLifePower(enemy.getLifePower());
+			Hobbit ho = new Hobbit(enemy.getRoad());
+			ho.setLifePower(enemy.getLifePower());
+			this.active.add(ho);
+			this.number++;
 		}
 		// ha a kettehasitott ellenseg torp volt, akkor egy uj torpot hozunk letre
 		else if(enemy instanceof Dwarf) {
-			Dwarf d = new Dwarf(enemy.getRoad().getPos());
+			Dwarf d = new Dwarf(enemy.getRoad());
 			d.setLifePower(enemy.getLifePower());
+			this.active.add(d);
+			this.number++;			
 		}
 		// ha a kettehasitott ellenseg tunde volt, akkor egy uj tundet hozunk letre
 		else if(enemy instanceof Elf) {
-			Elf elf = new Elf(enemy.getRoad().getPos());
+			Elf elf = new Elf(enemy.getRoad());
 			elf.setLifePower(enemy.getLifePower());
-		}*/
+			this.active.add(elf);
+			this.number++;
+		}
 	}
 
 }
