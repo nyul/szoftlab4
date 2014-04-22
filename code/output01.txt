@@ -1,2 +1,0 @@
-Load map is unsuccessful.
-Error: (1,2) tile is unbuildable for an Obstacle.

@@ -1,8 +1,0 @@
-[Player]
-magicPower: 100
-[0:Obstacle] has been built on Road(0,0)
-[0:Obstacle]
-slowingFactor: 1
-magicRockNumber: 0
-[Player]
-magicPower: 95

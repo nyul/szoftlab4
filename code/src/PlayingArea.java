@@ -256,6 +256,11 @@ public class PlayingArea {
 					if(geometry.getTiles().get(i).get(j).getPos().getX() == o.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == o.getPos().getY()) {
 						if(geometry.getTiles().get(i).get(j).getType() == 2) {
 							obstacle.add(o);
+							for(int k = 0; k < road.size(); k++) {
+								if(road.get(k) == geometry.getTiles().get(i).get(j)) {
+									road.remove(k);
+								}
+							}
 							geometry.getTiles().get(i).set(j, o);
 						}
 						else {
