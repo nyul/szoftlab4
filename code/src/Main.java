@@ -47,7 +47,12 @@ public class Main implements Serializable {
 					for(int i = 0 ; i < engine.getPlayer().getArea().getTower().size(); i++){
 						engine.getPlayer().getArea().getTower().get(i).random = true;
 					}
-					
+					for(int i = 0 ; i < engine.getFellowship().getPassive().size(); i++){
+						engine.getFellowship().getPassive().get(i).random = true;
+					}
+					for(int i = 0 ; i < engine.getFellowship().getPassive().size(); i++){
+						engine.getFellowship().getActive().get(i).random = true;
+					}
 					System.out.println("Random Numbers Enabled!");
 				}
 				if(command[0].equals("buildTower")) {
@@ -100,7 +105,7 @@ public class Main implements Serializable {
 					System.out.println("magicRockNumber: " + o.getMagicRockNumber());
 				}
 				else if(command[0].equals("getEnemyInfo")) {
-					Enemy e = engine.getFellowship().getActiveEnemies().get(Integer.parseInt(command[1]));
+					Enemy e = engine.getFellowship().getActive().get(Integer.parseInt(command[1]));
 					if(e instanceof Human) {
 						Human h = (Human) e;
 						System.out.println("[" + h.getMyId() + ":" + h.getClass().getName() + "]");

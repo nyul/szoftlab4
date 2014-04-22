@@ -43,7 +43,7 @@ public class Engine extends Thread{
 			Enemy enemy = null;
 			for(int i = 0; i < player.getArea().getTower().size(); i++) {
 				// attack metodus visszadja azt az ellenseget, akit meglott, de ha nem lott senkire, akkor egy null-al ter vissza
-				enemy = player.getArea().getTower().get(i).attack(fellowship.getActiveEnemies(), player.getArea().getGeometry());
+				enemy = player.getArea().getTower().get(i).attack(fellowship.getActive(), player.getArea().getGeometry());
 				// megvizsgaljuk, hogy a megsebzett ellensegnek, aki biztosan aktiv volt sebzes elott, passziv lett-e
 				// ez csak akkor kovetkezhet be, ha a sebzes soran az ellenseg eletereje kisebb egyenlo lesz, mint 0
 				if(enemy != null) {

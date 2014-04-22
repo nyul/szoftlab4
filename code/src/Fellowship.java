@@ -23,6 +23,10 @@ public class Fellowship {
 		number = 0;
 	}
 	
+	/**
+	 * Megadja az aktiv ellensegek listajat.
+	 * @return Az aktiv ellensegek listája
+	 */
 	public ArrayList<Enemy> getActive() {
 		return active;
 	}
@@ -122,14 +126,6 @@ public class Fellowship {
 				this.number--;
 			}
 		}
-	}
-	
-	/**
-	 * Megadja az aktiv ellensegek listajat.
-	 * @return Az aktiv ellensegek listája
-	 */
-	public ArrayList<Enemy> getActiveEnemies(){
-		return active;
 	}
 
 	/**
