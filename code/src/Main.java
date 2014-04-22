@@ -43,7 +43,7 @@ public class Main implements Serializable {
 				if(command[0].equals("buildTower")) {
 					Tower t = engine.getPlayer().getArea().getGeometry().getTiles().get(Integer.parseInt(command[1])).get(Integer.parseInt(command[2])).buildTower(engine.getPlayer());
 					engine.getPlayer().getArea().addTower(t);
-					System.out.println("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "] has been built on the Tile(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
+					System.out.println("[" + t.getMyId() + ":" + t.getClass().getName() + "] has been built on the Tile(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
 				}
 				else if(command[0].equals("buildObstacle")) {			
 					for(int i = 0; i < engine.getPlayer().getArea().getRoad().size(); i++){
@@ -140,7 +140,7 @@ public class Main implements Serializable {
 				}
 				else if(command[0].equals("getPlayerInfo")) {
 					Player p = engine.getPlayer();
-					System.out.println("[1:" + p.getClass().getName() + "]");
+					System.out.println("[" + p.getClass().getName() + "]");
 					System.out.println("magicPower: " + p.getMagicPower());
 				}
 				else if(command[0].equals("fogOn")) {
