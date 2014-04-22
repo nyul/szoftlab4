@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Obstacle extends Road implements Defense{
 	
-	private static int id = 1;
+	private static int id = 0;
 	private int myId;
 	private int slowingFactor;
 	private ArrayList<MagicRock> magicRock;

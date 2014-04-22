@@ -169,42 +169,12 @@ public class Main implements Serializable {
 						String[] word = row.split(" ");
 						if(word[0].equals("Tower")) {
 							Tower tower = new Tower(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-							for(int i = 0; i < engine.getPlayer().getArea().getGeometry().getTiles().size(); i++) {
-								for(int j = 0; j < engine.getPlayer().getArea().getGeometry().getTiles().get(i).size(); j++) {
-									if(engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getType() == 0) {
-										if(engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getPos().getX() == Integer.parseInt(word[1])
-												&& engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getPos().getY() == Integer.parseInt(word[2])) {
-											engine.getPlayer().getArea().addTower(tower);
-											engine.getPlayer().getArea().getGeometry().getTiles().get(i).set(j, tower);
-										}
-									}
-									else {
-										System.out.println("Load map is unsuccessful.");
-										System.out.println("Error: (" + Integer.parseInt(word[1]) + "," + Integer.parseInt(word[2]) + ") tile is not a unbuiltable.");
-										System.exit(0);
-									}
-								}
-							}
+							engine.getPlayer().getArea().isBuiltable(tower);
 						}
 						else if(word[0].equals("Obstacle")) {
 							if(!word[1].equals("ref")) {
 								Obstacle obst = new Obstacle(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-								for(int i = 0; i < engine.getPlayer().getArea().getGeometry().getTiles().size(); i++) {
-									for(int j = 0; j < engine.getPlayer().getArea().getGeometry().getTiles().get(i).size(); j++) {
-										if(engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getType() == 2) {
-											if(engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getPos().getX() == Integer.parseInt(word[1])
-													&& engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getPos().getY() == Integer.parseInt(word[2])) {
-												engine.getPlayer().getArea().getObstacle().add(obst);
-												engine.getPlayer().getArea().getGeometry().getTiles().get(i).set(j, obst);
-											}
-										}
-										else {
-											System.out.println("Load map is unsuccessful.");
-											System.out.println("Error: (" + Integer.parseInt(word[1]) + "," + Integer.parseInt(word[2]) + ") tile is not a road.");
-											System.exit(0);
-										}
-									}
-								}
+								engine.getPlayer().getArea().isBuiltable(obst);
 							}
 							else {
 								engine.getPlayer().getArea().addReference(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])));
@@ -213,22 +183,8 @@ public class Main implements Serializable {
 						else if(word[0].equals("Source")) {
 							if(!word[1].equals("ref")) {
 								Source source = new Source(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-								for(int i = 0; i < engine.getPlayer().getArea().getGeometry().getTiles().size(); i++) {
-									for(int j = 0; j < engine.getPlayer().getArea().getGeometry().getTiles().get(i).size(); j++) {
-										if(engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getType() == 0) {
-											if(engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getPos().getX() == Integer.parseInt(word[1])
-													&& engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getPos().getY() == Integer.parseInt(word[2])) {
-												engine.getPlayer().getArea().getSource().add(source);
-												engine.getPlayer().getArea().getGeometry().getTiles().get(i).set(j, source);
-											}
-										}
-										else {
-											System.out.println("Load map is unsuccessful.");
-											System.out.println("Error: (" + Integer.parseInt(word[1]) + "," + Integer.parseInt(word[2]) + ") tile is unbuiltable.");
-											System.exit(0);
-										}
-									}
-								}
+								engine.getPlayer().getArea().isBuiltable(source);
+								
 							}
 							else {
 								engine.getPlayer().getArea().addReference(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])));
@@ -237,7 +193,7 @@ public class Main implements Serializable {
 						else if(word[0].equals("Road")) {
 							if(!word[1].equals("ref")) {
 								Road road = new Road(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-								
+								engine.getPlayer().getArea().isBuiltable(road);
 							}
 							else {
 								engine.getPlayer().getArea().addReference(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])));
@@ -245,22 +201,7 @@ public class Main implements Serializable {
 						}
 						else if(word[0].equals("Mountain")) {
 							Mountain mountain = new Mountain(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-							for(int i = 0; i < engine.getPlayer().getArea().getGeometry().getTiles().size(); i++) {
-								for(int j = 0; j < engine.getPlayer().getArea().getGeometry().getTiles().get(i).size(); j++) {
-									if(engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getType() == 0) {
-										if(engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getPos().getX() == Integer.parseInt(word[1])
-												&& engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getPos().getY() == Integer.parseInt(word[2])) {
-											engine.getPlayer().getArea().setMountain(mountain);
-											engine.getPlayer().getArea().getGeometry().getTiles().get(i).set(j, mountain);
-										}
-									}
-									else {
-										System.out.println("Load map is unsuccessful.");
-										System.out.println("Error: (" + Integer.parseInt(word[1]) + "," + Integer.parseInt(word[2]) + ") tile is unbuiltable.");
-										System.exit(0);
-									}
-								}
-							}
+							engine.getPlayer().getArea().isBuiltable(mountain);
 						}
 						else if(word[0].equals("Hobbit")) {
 							for(int i = 0; i < engine.getPlayer().getArea().getRoad().size(); i++) {

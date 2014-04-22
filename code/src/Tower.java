@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Tower extends Tile implements Defense{
 	
-	public static int id = 1;
+	public static int id = 0;
 	private int myId;
 	private int shootPeriod;
 	private int range;

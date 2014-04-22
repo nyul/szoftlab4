@@ -210,4 +210,97 @@ public class PlayingArea {
 			}
 		}
 	}
+	
+	public void isBuiltable(Tile tile) {
+		if(tile instanceof Road) {
+			Road r = (Road) tile;
+			for(int i = 0; i < geometry.getTiles().size(); i++) {
+				for(int j = 0; j < geometry.getTiles().get(i).size(); j++) {
+					if(geometry.getTiles().get(i).get(j).getPos().getX() == r.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == r.getPos().getY()) {
+						if(geometry.getTiles().get(i).get(j).getType() == 0) {
+							road.add(r);
+							geometry.getTiles().get(i).set(j, r);
+						}
+						else {
+							System.out.println("Load map is unsuccessful.");
+							System.out.println("Error: (" + r.getPos().getX() + "," + r.getPos().getY() + ") tile is unbuiltable.");
+							System.exit(0);
+						}
+					}
+				}
+			}
+		}
+		else if(tile instanceof Source) {
+			Source s = (Source) tile;
+			for(int i = 0; i < geometry.getTiles().size(); i++) {
+				for(int j = 0; j < geometry.getTiles().get(i).size(); j++) {
+					if(geometry.getTiles().get(i).get(j).getPos().getX() == s.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == s.getPos().getY()) {
+						if(geometry.getTiles().get(i).get(j).getType() == 0) {
+							source.add(s);
+							geometry.getTiles().get(i).set(j, s);
+						}
+						else {
+							System.out.println("Load map is unsuccessful.");
+							System.out.println("Error: (" + s.getPos().getX() + "," + s.getPos().getY() + ") tile is unbuiltable.");
+							System.exit(0);
+						}
+					}
+				}
+			}
+		}
+		else if(tile instanceof Mountain) {
+			Mountain m = (Mountain) tile;
+			for(int i = 0; i < geometry.getTiles().size(); i++) {
+				for(int j = 0; j < geometry.getTiles().get(i).size(); j++) {
+					if(geometry.getTiles().get(i).get(j).getPos().getX() == m.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == m.getPos().getY()) {
+						if(geometry.getTiles().get(i).get(j).getType() == 0) {
+							mountain = m;
+							geometry.getTiles().get(i).set(j, m);
+						}
+						else {
+							System.out.println("Load map is unsuccessful.");
+							System.out.println("Error: (" + m.getPos().getX() + "," + m.getPos().getY() + ") tile is unbuiltable.");
+							System.exit(0);
+						}
+					}
+				}
+			}
+		}
+		else if(tile instanceof Obstacle) {
+			Obstacle o = (Obstacle) tile;
+			for(int i = 0; i < geometry.getTiles().size(); i++) {
+				for(int j = 0; j < geometry.getTiles().get(i).size(); j++) {
+					if(geometry.getTiles().get(i).get(j).getPos().getX() == o.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == o.getPos().getY()) {
+						if(geometry.getTiles().get(i).get(j).getType() == 2) {
+							obstacle.add(o);
+							geometry.getTiles().get(i).set(j, o);
+						}
+						else {
+							System.out.println("Load map is unsuccessful.");
+							System.out.println("Error: (" + o.getPos().getX() + "," + o.getPos().getY() + ") tile is unbuiltable.");
+							System.exit(0);
+						}
+					}
+				}
+			}
+		}
+		else if(tile instanceof Tower) {
+			Tower t = (Tower) tile;
+			for(int i = 0; i < geometry.getTiles().size(); i++) {
+				for(int j = 0; j < geometry.getTiles().get(i).size(); j++) {
+					if(geometry.getTiles().get(i).get(j).getPos().getX() == t.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == t.getPos().getY()) {
+						if(geometry.getTiles().get(i).get(j).getType() == 0) {
+							tower.add(t);
+							geometry.getTiles().get(i).set(j, t);
+						}
+						else {
+							System.out.println("Load map is unsuccessful.");
+							System.out.println("Error: (" + t.getPos().getX() + "," + t.getPos().getY() + ") tile is unbuiltable.");
+							System.exit(0);
+						}
+					}
+				}
+			}
+		}
+	}
 }
