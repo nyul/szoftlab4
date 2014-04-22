@@ -16,6 +16,7 @@ public class Tower extends Tile implements Defense{
 	private int magicRockNumber;
 	private static int price = 10;
 	protected boolean random = false;
+	protected boolean split = false;
 	
 	/**
 	 * Tower konstruktor
@@ -177,6 +178,7 @@ public class Tower extends Tile implements Defense{
 					enemies.get(i).setActivity(false);
 				}
 				int duplicate = random == true ? (int)(Math.random()*enemies.size()) : 1;
+				duplicate = split == true ? 3 : duplicate;
 				if(duplicate == 3) {
 					enemies.get(i).setDuplicated(true);
 					enemies.get(i).setLifePower((int)(enemies.get(i).getLifePower() / 2));
