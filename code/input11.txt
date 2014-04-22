@@ -1,4 +1,4 @@
 loadMap map11.txt
-getEnemyInfo 1
+getEnemyInfo 0
 step 1
 exit
