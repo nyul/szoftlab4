@@ -1,9 +1,18 @@
-
+/**
+ * Pozicio osztaly - 
+ * Az osszes pozicioval rendelkezo Entitas a jatek soran ennek
+ * az osztalynak a felhasznalasaval kap poziciot.
+ */
 public class Position {
 	
 	private int x;
 	private int y;
 	
+	/**
+	 * Position konstruktor
+	 * @param x - x koordinata
+	 * @param y - y koordinata
+	 */
 	public Position(int x, int y) {
 		this.x = x;
 		this.y = y;

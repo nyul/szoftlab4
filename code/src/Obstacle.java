@@ -10,6 +10,10 @@ public class Obstacle extends Road implements Defense{
 	private int magicRockNumber;
 	private static int price = 5;
 	
+	/**
+	 * Akadaly konstruktor
+	 * @param pos - annak a csempenek a pozicioja amelyikre szeretnenk epiteni az akadalyt (csak utra helyezheto)
+	 */
 	public Obstacle(Position pos) {
 		super(pos);
 		myId=id;
@@ -29,37 +33,50 @@ public class Obstacle extends Road implements Defense{
 		return myId;
 	}
 
-
+	/**
+	 * az akadaly arat allitja be
+	 * @param price - a beallitando ar
+	 */
 	public static void setPrice(int price) {
 		Obstacle.price = price;
 	}
-
-
-
+	
+	/**
+	 * megadja mennyivel lassit az akadaly
+	 * @return - a lassitas merteke
+	 */
 	public int getSlowingFactor() {
 		return slowingFactor;
 	}
 
-
-
+	/**
+	 * az akadaly lassitasanak merteket allithatjuk be vele
+	 * @param slowingFactor - a lassitas merteke
+	 */
 	public void setSlowingFactor(int slowingFactor) {
 		this.slowingFactor = slowingFactor;
 	}
 
-
-
+	/**
+	 * az akadalyra elhelyezheto varazskovek listajat adja vissza
+	 * @return - az elhelyezheto varazskovek listaja
+	 */
 	public ArrayList<MagicRock> getMagicRock() {
 		return magicRock;
 	}
 
-
-
+	/**
+	 * az akadalyra elhelyezheto varazskovek listajat adhatjuk meg
+	 * @param magicRock - az elhelyezheto varazskovek listaja
+	 */
 	public void setMagicRock(ArrayList<MagicRock> magicRock) {
 		this.magicRock = magicRock;
 	}
 
-
-
+	/**
+	 * az elhelyezett varazskovek szamat adja meg
+	 * @return - az elhelyezett varazskovek szama
+	 */
 	public int getMagicRockNumber() {
 		return magicRockNumber;
 	}

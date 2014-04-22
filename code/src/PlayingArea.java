@@ -18,6 +18,9 @@ public class PlayingArea {
 	private Mountain mountain;
 	private Geometry geometry;
 	
+	/**
+	 * PlayingArea konstruktor
+	 */
 	public PlayingArea() {
 		source = new ArrayList<Source>();
 		tower = new ArrayList<Tower>();
@@ -27,79 +30,61 @@ public class PlayingArea {
 		geometry = new Geometry();
 	}
 	
-	
-	
 	public ArrayList<Source> getSource() {
 		return source;
 	}
-
-
-
+	
 	public void setSource(ArrayList<Source> source) {
 		this.source = source;
 	}
-
-
 
 	public ArrayList<Tower> getTower() {
 		return tower;
 	}
 
-
-
 	public void setTower(ArrayList<Tower> tower) {
 		this.tower = tower;
 	}
-
-
 
 	public ArrayList<Obstacle> getObstacle() {
 		return obstacle;
 	}
 
-
-
 	public void setObstacle(ArrayList<Obstacle> obstacle) {
 		this.obstacle = obstacle;
 	}
-
-	
 
 	public ArrayList<Road> getRoad() {
 		return road;
 	}
 
-
-
 	public void setRoad(ArrayList<Road> road) {
 		this.road = road;
 	}
 
-
-
+	/**
+	 * Visszaadja a hegy objektumot
+	 * @return - hegy objektum
+	 */
 	public Mountain getMountain() {
 		return mountain;
 	}
 
-
-
+	/**
+	 * Beallithatjuk a hegy poziciojat
+	 * @param mountain - egy Mountain peldany
+	 */
 	public void setMountain(Mountain mountain) {
 		this.mountain = mountain;
 	}
-
-
 
 	public Geometry getGeometry() {
 		return geometry;
 	}
 
-
-
 	public void setGeometry(Geometry geometry) {
 		this.geometry = geometry;
 	}
-
-
 
 	/**
 	 * A palyat inicializalja.
@@ -133,9 +118,9 @@ public class PlayingArea {
 	 * @param e - az engine osztaly referenciaja
 	 */
 	public void isOnMountain(Engine engine){
-		for(int i = 0; i < engine.getFellowship().getActive().size(); i++) {
-			if(engine.getFellowship().getActive().get(i).getRoad().equals(mountain)) {
-				engine.defeat();
+		for(int i = 0; i < engine.getFellowship().getActive().size(); i++) { //vegigiteral az aktiv ellensegek listajan
+			if(engine.getFellowship().getActive().get(i).getRoad().equals(mountain)) { // ha barmelyiknek megegyezik a pozicioja a heggyel
+				engine.defeat(); // vege a jateknak, elvesztettuk
 			}
 		}						
 	}

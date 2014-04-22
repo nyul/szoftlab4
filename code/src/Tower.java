@@ -44,115 +44,77 @@ public class Tower extends Tile implements Defense{
 		return myId;
 	}
 
-
-
 	public static void setPrice(int price) {
 		Tower.price = price;
 	}
-
-
 
 	public int getShootPeriod() {
 		return shootPeriod;
 	}
 
-
-
 	public void setShootPeriod(int shootPeriod) {
 		this.shootPeriod = shootPeriod;
 	}
-
-
 
 	public int getRange() {
 		return range;
 	}
 
-
-
 	public void setRange(int range) {
 		this.range = range;
 	}
-
-
 
 	public int getFogRange() {
 		return fogRange;
 	}
 
-
-
 	public void setFogRange(int fogRange) {
 		this.fogRange = fogRange;
 	}
-
-
 
 	public int getDamagePowerDwarf() {
 		return damagePowerDwarf;
 	}
 
-
-
 	public void setDamagePowerDwarf(int damagePowerDwarf) {
 		this.damagePowerDwarf = damagePowerDwarf;
 	}
-
-
 
 	public int getDamagePowerElf() {
 		return damagePowerElf;
 	}
 
-
-
 	public void setDamagePowerElf(int damagePowerElf) {
 		this.damagePowerElf = damagePowerElf;
 	}
-
-
-
+	
 	public int getDamagePowerHobbit() {
 		return damagePowerHobbit;
 	}
-
-
 
 	public void setDamagePowerHobbit(int damagePowerHobbit) {
 		this.damagePowerHobbit = damagePowerHobbit;
 	}
 
-
-
 	public int getDamagePowerHuman() {
 		return damagePowerHuman;
 	}
-
-
 
 	public void setDamagePowerHuman(int damagePowerHuman) {
 		this.damagePowerHuman = damagePowerHuman;
 	}
 
-
-
 	public ArrayList<MagicRock> getMagicRock() {
 		return magicRock;
 	}
-
-
 
 	public void setMagicRock(ArrayList<MagicRock> magicRock) {
 		this.magicRock = magicRock;
 	}
 
-
-
 	public int getMagicRockNumber() {
 		return magicRockNumber;
 	}
-
-
 
 	public void setMagicRockNumber(int magicRockNumber) {
 		this.magicRockNumber = magicRockNumber;
@@ -190,8 +152,6 @@ public class Tower extends Tile implements Defense{
 		return null;
 	}
 	
-	
-	
 	/*
 	 * (non-Javadoc)
 	 * @see Defense#wantToUpgrade(Player)
@@ -205,22 +165,22 @@ public class Tower extends Tile implements Defense{
 	 * @see Defense#upgrade(MagicRock)
 	 */
 	public void upgrade(MagicRock magicRock){
-		if(magicRock.getType() == 0) {
+		if(magicRock.getType() == 0) { // hatotavolsag novelo varazsko
 			this.range = this.range + 1;
 		}
-		else if(magicRock.getType() == 1) {
+		else if(magicRock.getType() == 1) { // lovesi gyakorisagot novelo varazsko
 			this.shootPeriod = this.shootPeriod + 1;
 		}
-		if(magicRock.getType() == 2) {
+		if(magicRock.getType() == 2) { // ember elleni sebzest novelo varazsko
 			this.damagePowerHuman = this.damagePowerHuman + 10;
 		}
-		else if(magicRock.getType() == 3) {
+		else if(magicRock.getType() == 3) { // hobbit elleni sebzest novelo varazsko
 			this.damagePowerHobbit = this.damagePowerHobbit + 10;
 		}
-		if(magicRock.getType() == 4) {
+		if(magicRock.getType() == 4) { // torpe elleni sebzest novelo varazsko
 			this.damagePowerDwarf = this.damagePowerDwarf + 10;
 		}
-		else if(magicRock.getType() == 5) {
+		else if(magicRock.getType() == 5) { // elf elleni sebzest novelo varazsko
 			this.damagePowerElf = this.damagePowerElf + 10;
 		}
 	}
@@ -229,7 +189,7 @@ public class Tower extends Tile implements Defense{
 	 * A kod bekapcsolasa a toronyra
 	 */
 	public void fogOn() {
-		this.fogRange = this.range;
+		this.fogRange = this.range; // elmenti a hatotavolsagot kod leereszkedesekor, hogy miutan elmult visszakapjuk az eredeti erteket
 		this.range = this.range - 1;
 		Writer.writeText.add("[Fog has been set on]");
 		System.out.println("[Fog has been set on]");
@@ -239,7 +199,7 @@ public class Tower extends Tile implements Defense{
 	 * Kod kikapcsolasa a tornyon
 	 */
 	public void fogOff() {
-		this.range = this.fogRange;
+		this.range = this.fogRange; // visszaallitja a kod elotti allapotra a hatotavolsagot
 		Writer.writeText.add("[Fog has been set off]");
 		System.out.println("[Fog has been set off]");
 	}
