@@ -102,7 +102,7 @@ public class Obstacle extends Road implements Defense{
 
 	/**
 	 * @param e
-	 * lassitast vegez az e enemyn
+	 * lassitast vegez az e parameterkent kapott enemy-n, beallitja a slowingfactort
 	 */
 	public void slowMe(Enemy e){
 		e.increasePause(this.slowingFactor);

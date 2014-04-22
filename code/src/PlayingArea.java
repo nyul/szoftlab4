@@ -141,6 +141,7 @@ public class PlayingArea {
 	}
 	/**
 	 * Ellenseg lepese a pos1-rol a pos2-re
+	 * Annak fuggvenyeben, hogy mi a forras-cel csempe
 	 * @param pos1 - start pos
 	 * @param pos2 - end pos
 	 */

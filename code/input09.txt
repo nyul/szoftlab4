@@ -1,4 +1,5 @@
 loadMap map09.txt
+SPLIT_ON
 getEnemyInfo 0
 getTowerInfo 0
 step 1

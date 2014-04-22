@@ -97,7 +97,6 @@ public class Main implements Serializable {
 							engine.getFellowship().getActive().get(i).random = true;
 						}
 					}
-					Writer.writeText.add("Random Numbers Enabled!");
 					System.out.println("Random Numbers Enabled!");
 				}
 				/**
