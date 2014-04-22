@@ -37,7 +37,6 @@ public class Obstacle extends Road implements Defense{
 		return myId;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * az akadaly arat allitja be
 	 * @param price - a beallitando ar
@@ -50,56 +49,38 @@ public class Obstacle extends Road implements Defense{
 	 * megadja mennyivel lassit az akadaly
 	 * @return - a lassitas merteke
 	 */
-=======
-	public static void setPrice(int price) {
-		Obstacle.price = price;
-	}
-
->>>>>>> ce25e84e39938877fa328312ded29d3d29fe3d33
 	public int getSlowingFactor() {
 		return slowingFactor;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * az akadaly lassitasanak merteket allithatjuk be vele
 	 * @param slowingFactor - a lassitas merteke
 	 */
-=======
->>>>>>> ce25e84e39938877fa328312ded29d3d29fe3d33
 	public void setSlowingFactor(int slowingFactor) {
 		this.slowingFactor = slowingFactor;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * az akadalyra elhelyezheto varazskovek listajat adja vissza
 	 * @return - az elhelyezheto varazskovek listaja
 	 */
-=======
->>>>>>> ce25e84e39938877fa328312ded29d3d29fe3d33
 	public ArrayList<MagicRock> getMagicRock() {
 		return magicRock;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * az akadalyra elhelyezheto varazskovek listajat adhatjuk meg
 	 * @param magicRock - az elhelyezheto varazskovek listaja
 	 */
-=======
->>>>>>> ce25e84e39938877fa328312ded29d3d29fe3d33
 	public void setMagicRock(ArrayList<MagicRock> magicRock) {
 		this.magicRock = magicRock;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * az elhelyezett varazskovek szamat adja meg
 	 * @return - az elhelyezett varazskovek szama
 	 */
-=======
->>>>>>> ce25e84e39938877fa328312ded29d3d29fe3d33
 	public int getMagicRockNumber() {
 		return magicRockNumber;
 	}
