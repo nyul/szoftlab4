@@ -17,7 +17,6 @@ public class Main implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Engine engine;
 	private BufferedReader br;
-	private boolean random = false;
 	
 	public Main() {
 		engine = new Engine();
@@ -42,8 +41,14 @@ public class Main implements Serializable {
 			while(line!=null) {			
 				String[] command = line.split(" ");
 				if(command[0].equals("RANDOM_ON")) {
+					for(int i = 0 ; i < engine.getPlayer().getArea().getRoad().size(); i++){
+						engine.getPlayer().getArea().getRoad().get(i).random = true;
+					}
+					for(int i = 0 ; i < engine.getPlayer().getArea().getTower().size(); i++){
+						engine.getPlayer().getArea().getTower().get(i).random = true;
+					}
+					
 					System.out.println("Random Numbers Enabled!");
-					random = true;
 				}
 				if(command[0].equals("buildTower")) {
 					Tower t = engine.getPlayer().getArea().getGeometry().getTiles().get(Integer.parseInt(command[1])).get(Integer.parseInt(command[2])).buildTower(engine.getPlayer());
