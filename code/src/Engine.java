@@ -40,25 +40,26 @@ public class Engine extends Thread{
 	 */
 	public void attackHandler() {
 		if(counter >= 10) {
-		Enemy enemy = null;
-		for(int i = 0; i < player.getArea().getTower().size(); i++) {
-			// attack metodus visszadja azt az ellenseget, akit meglott, de ha nem lott senkire, akkor egy null-al ter vissza
-			enemy = player.getArea().getTower().get(i).attack(fellowship.getActiveEnemies(), player.getArea().getGeometry());
-			// megvizsgaljuk, hogy a megsebzett ellensegnek, aki biztosan aktiv volt sebzes elott, passziv lett-e
-			// ez csak akkor kovetkezhet be, ha a sebzes soran az ellenseg eletereje kisebb egyenlo lesz, mint 0
-			if(enemy.isActive() == false) {
-				// ellenseget meg kell olnunk, azaz torolnunk kell az aktiv listabol
-				fellowship.killEnemy(enemy);
+			Enemy enemy = null;
+			for(int i = 0; i < player.getArea().getTower().size(); i++) {
+				// attack metodus visszadja azt az ellenseget, akit meglott, de ha nem lott senkire, akkor egy null-al ter vissza
+				enemy = player.getArea().getTower().get(i).attack(fellowship.getActiveEnemies(), player.getArea().getGeometry());
+				// megvizsgaljuk, hogy a megsebzett ellensegnek, aki biztosan aktiv volt sebzes elott, passziv lett-e
+				// ez csak akkor kovetkezhet be, ha a sebzes soran az ellenseg eletereje kisebb egyenlo lesz, mint 0
+				if(enemy.isActive() == false) {
+					// ellenseget meg kell olnunk, azaz torolnunk kell az aktiv listabol
+					fellowship.killEnemy(enemy);
+				}
+				// ellenseg sebzese soran kette lett-e hasitva, true ha igen
+				// fontos, hogy az ellenseget csak akkor lehet kettehasitani, ha aktiv, azaz sebzes utan maradt eleg eletereje
+				if(enemy.isDuplicated() == true && enemy.isActive == true) {
+					// klonozni kell a meglott ellenseget
+					fellowship.addToActiveEnemyList(enemy);
+					// isDuplicate valtozot vissza kell allitani false-ra, kulonben minden lepesben klonozas tortenne
+					enemy.setDuplicated(false);
+				}
+				counter = 1;
 			}
-			// ellenseg sebzese soran kette lett-e hasitva, true ha igen
-			// fontos, hogy az ellenseget csak akkor lehet kettehasitani, ha aktiv, azaz sebzes utan maradt eleg eletereje
-			if(enemy.isDuplicated() == true && enemy.isActive == true) {
-				// klonozni kell a meglott ellenseget
-				fellowship.addToActiveEnemyList(enemy);
-				// isDuplicate valtozot vissza kell allitani false-ra, kulonben minden lepesben klonozas tortenne
-				enemy.setDuplicated(false);
-			}
-		}
 		} else {
 			counter = counter + 1;
 		}

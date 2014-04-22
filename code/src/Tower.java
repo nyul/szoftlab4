@@ -25,7 +25,7 @@ public class Tower extends Tile implements Defense{
 		myId=id;
 		id++;
 		shootPeriod = 10;
-		range = 3;
+		range = 10;
 		fogRange = range;
 		damagePowerDwarf = 10;
 		damagePowerElf = 10;
