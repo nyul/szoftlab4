@@ -36,14 +36,12 @@ public class Tile {
 				Tower twr = new Tower(pos); 
 				player.reduceMagicPower(Tower.getPrice());
 				return twr;
-			} else { // ha nem beepitheto a csempe
-				System.out.println("Error: Tower building failed-unbuildable area");
-				System.exit(0);
+			} else {
+				Writer.writeText.add("Error: Tower building failed-unbuildable area");
 			}
 		}
-		else { // ha nincs eleg varazsero
-			System.out.println("Error: Tower building failed-you have not enough magicpower");
-			System.exit(0);
+		else {
+			Writer.writeText.add("Error: Tower building failed-you have not enough magicpower");
 		}
 		return null;
 	}
@@ -59,14 +57,12 @@ public class Tile {
 				Obstacle obst = new Obstacle(pos); 
 				player.reduceMagicPower(Obstacle.getPrice());
 				return obst;
-			} else { // ha nem beepitheto a csempe
-				System.out.println("Error: Obstacle building failed-unbuildable area");
-				System.exit(0);
+			} else {
+				Writer.writeText.add("Error: Obstacle building failed-unbuildable area");
 			}
 		}
-		else { // ha nincs eleg varazsero
-			System.out.println("Error: Obstacle building failed-you have not enough magicpower");
-			System.exit(0);
+		else {
+			Writer.writeText.add("Error: Obstacle building failed-you have not enough magicpower");
 		}
 		return null;
 	}

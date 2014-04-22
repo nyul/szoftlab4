@@ -4,6 +4,16 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
+/**
+ * A jatekost reprezentalo objektum. Tarolja a jatekos varazserejet, ami szukseges a
+tornyok es az akadalyok epitesehez. Felelos a tornyok es akadalyok epiteeseert, illetve
+kezdemenyezheti ezek elhelyezeset a jatekter megfelelo reszein, tovabba felelos a
+mar meglevo tornyok es akadalyok fejleszteesert varazskovek felhasznalasaval.
+felelos a kivalasztott epitesi terilet beepithetosegenek, valamint az epiteshez  
+szukgesges varazsero megallapitasaert, es player dolga tovabba a sajat
+varazserejenek folyamatos menedzselese. A Player objektum inditja a jatekot.
+ *
+ */
 public class Player {
 	
 	private int magicPower; // A jatekos varazsereje
@@ -31,9 +41,16 @@ public class Player {
 
 	/**
 	 * Egy listaban megkapja a jatekos, hogy egy toronyra vagy akadalyra milyen varazskoveket lehet rakni.
+<<<<<<< HEAD
 	 * Ezek kozul valaszthat
 	 * @param magicRockList - az adott Toronyra vagy Akadalyra helyezheto varazskovek listaja, amibol a Player valaszthat
 	 * @param defense - az aktualis Torony vagy Akadaly, amire el szeretnenek helyezni a varazskovet
+=======
+	 * Ezek kozul valaszthat,
+	 * hogy milyen fejlesztest akar vegezni az adott tornyon vagy akadalyon
+	 * @param magicRockList
+	 * @param defense
+>>>>>>> ce25e84e39938877fa328312ded29d3d29fe3d33
 	 */
 	public void chooseUpgrade(ArrayList<MagicRock> magicRockList, Defense defense) {
 		System.out.println("Select a number from the list!");
@@ -68,6 +85,7 @@ public class Player {
 	
 	/**
 	 * Jatekos elinditja a jatekot, ezzel egyutt inicializalodik a palya.
+	 * Ez a jatek kezdo lepese
 	 */
 	public void startGame() {
 		area = new PlayingArea();
@@ -76,7 +94,9 @@ public class Player {
 	
 	/**
 	 * Jatekos varazserejet csokkenti.
-	 * @param price: megadja, hogy mennyivel csokkenti
+	 * @param price: 
+	 * megadja, hogy mennyivel csokkenti a varazserot
+	 * A letrehozott objektum araval fog csokkenni
 	 */
 	public void reduceMagicPower(int price) {
 		this.magicPower = this.magicPower - price;

@@ -1,6 +1,12 @@
 import java.util.ArrayList;
 
 
+/**
+ * Ez egy akadaly objetum, ami lassitja az ellenseg haladasat az akadaly terueten
+ * belul. Tovabba tarolja a rahelyezheto varazskoveket es az akadalyon levo
+ * varazskovek szamat. 
+ *
+ */
 public class Obstacle extends Road implements Defense{
 	
 	private static int id = 0;
@@ -24,8 +30,6 @@ public class Obstacle extends Road implements Defense{
 		this.type = 3;
 	}
 	
-	
-	
 	/**
 	 * @return az akadaly ID-jet adja vissza
 	 */
@@ -33,6 +37,7 @@ public class Obstacle extends Road implements Defense{
 		return myId;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * az akadaly arat allitja be
 	 * @param price - a beallitando ar
@@ -45,43 +50,59 @@ public class Obstacle extends Road implements Defense{
 	 * megadja mennyivel lassit az akadaly
 	 * @return - a lassitas merteke
 	 */
+=======
+	public static void setPrice(int price) {
+		Obstacle.price = price;
+	}
+
+>>>>>>> ce25e84e39938877fa328312ded29d3d29fe3d33
 	public int getSlowingFactor() {
 		return slowingFactor;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * az akadaly lassitasanak merteket allithatjuk be vele
 	 * @param slowingFactor - a lassitas merteke
 	 */
+=======
+>>>>>>> ce25e84e39938877fa328312ded29d3d29fe3d33
 	public void setSlowingFactor(int slowingFactor) {
 		this.slowingFactor = slowingFactor;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * az akadalyra elhelyezheto varazskovek listajat adja vissza
 	 * @return - az elhelyezheto varazskovek listaja
 	 */
+=======
+>>>>>>> ce25e84e39938877fa328312ded29d3d29fe3d33
 	public ArrayList<MagicRock> getMagicRock() {
 		return magicRock;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * az akadalyra elhelyezheto varazskovek listajat adhatjuk meg
 	 * @param magicRock - az elhelyezheto varazskovek listaja
 	 */
+=======
+>>>>>>> ce25e84e39938877fa328312ded29d3d29fe3d33
 	public void setMagicRock(ArrayList<MagicRock> magicRock) {
 		this.magicRock = magicRock;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * az elhelyezett varazskovek szamat adja meg
 	 * @return - az elhelyezett varazskovek szama
 	 */
+=======
+>>>>>>> ce25e84e39938877fa328312ded29d3d29fe3d33
 	public int getMagicRockNumber() {
 		return magicRockNumber;
 	}
-
-
 
 	public void setMagicRockNumber(int magicRockNumber) {
 		this.magicRockNumber = magicRockNumber;
@@ -91,14 +112,20 @@ public class Obstacle extends Road implements Defense{
 		return price;
 	}
 
+	/* (non-Javadoc)
+	 * @see Defense#attack(java.util.ArrayList, Geometry)
+	 * az akadaly nem tamad, ezert ures a metodus hasa
+	 */
 	public Enemy attack(ArrayList<Enemy> enemies, Geometry geometry) {	
 		return null;
 	}
 	
 	/**
 	 * 
-	 * @param player a player ezen keresztul szol
-	 * hogy upgradelni akar valamit, es atadja magat
+	 * @param player 
+	 * a player ezen keresztul szol
+	 * hogy upgradelni akarja az akadalyt, es atadja magat,
+	 * hogy majd a varazsereje lecsokkentheto legyen
 	 */
 	
 	public void wantToUpgrade(Player player){
@@ -120,6 +147,7 @@ public class Obstacle extends Road implements Defense{
 	/**
 	 * @param e
 	 * lassitast vegez az e parameterkent kapott enemy-n, beallitja a slowingfactort
+	 * igy az adott enemy lassitva lesz, amig vissza nem allitju a slowingFactort
 	 */
 	public void slowMe(Enemy e){
 		e.increasePause(this.slowingFactor);
