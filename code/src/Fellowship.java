@@ -117,7 +117,11 @@ public class Fellowship {
 		
 		for(int i=0; i < this.active.size(); i++){
 			if(this.active.get(i).equals(enemy)){
+<<<<<<< HEAD
 				System.out.println("[" + active.get(i).getMyId() + ":" + enemy.getClass().getName() + "] has been deleted");
+=======
+				System.out.println("[" + active.get(i).getId() + ":" + enemy.getClass().getName() + "] has been deleted");
+>>>>>>> 66296f8bd5d09119ced204fcfba61b042db70f22
 				this.active.remove(i);				
 				this.number--;
 			}

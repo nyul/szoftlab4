@@ -3,4 +3,5 @@
 *.classpath
 *.class
 .settings/*
-/bin
+bin/*
+bin/
