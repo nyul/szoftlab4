@@ -23,6 +23,7 @@ public abstract class Enemy {
 	protected boolean isActive;
 	protected boolean isDuplicated;
 	protected int counter;
+	protected boolean random = false;
 	
 	/**
 	 *  palyara helyezeskor hivodik meg
@@ -129,7 +130,7 @@ public abstract class Enemy {
 	 * @param source - tobb forras kozul valamelyiket veletlenszeruen kisorsoljuk es erre helyezzuk ra az ellenseget
 	 */
 	public void goToSource(ArrayList<Source> source){
-		int randValue = (int)(Math.random()*source.size());   // forrasok szamatol fuggoen visszaad egy szamot, [0;forrasok szama-1]
+		int randValue = random == true ? (int)(Math.random()*source.size()) : 0;   // forrasok szamatol fuggoen visszaad egy szamot, [0;forrasok szama-1]
 		source.get(randValue).requestDestination(this);
 	}
 

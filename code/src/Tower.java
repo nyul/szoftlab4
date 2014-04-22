@@ -15,6 +15,8 @@ public class Tower extends Tile implements Defense{
 	private ArrayList<MagicRock> magicRock;
 	private int magicRockNumber;
 	private static int price = 10;
+	protected boolean random = false;
+	protected boolean split = false;
 	
 	/**
 	 * Tower konstruktor
@@ -175,7 +177,8 @@ public class Tower extends Tile implements Defense{
 				if(enemies.get(i).hit(this) <= 0) {
 					enemies.get(i).setActivity(false);
 				}
-				int duplicate = (int)(Math.random()*4);
+				int duplicate = random == true ? (int)(Math.random()*enemies.size()) : 1;
+				duplicate = split == true ? 3 : duplicate;
 				if(duplicate == 3) {
 					enemies.get(i).setDuplicated(true);
 					enemies.get(i).setLifePower((int)(enemies.get(i).getLifePower() / 2));
@@ -226,12 +229,18 @@ public class Tower extends Tile implements Defense{
 		}
 	}
 	
+	/**
+	 * A kod bekapcsolasa a toronyra
+	 */
 	public void fogOn() {
 		this.fogRange = this.range;
 		this.range = this.range - 1;
 		System.out.println("[Fog has been set on]");
 	}
 	
+	/**
+	 * Kod kikapcsolasa a tornyon
+	 */
 	public void fogOff() {
 		this.range = this.fogRange;
 		System.out.println("[Fog has been set off]");

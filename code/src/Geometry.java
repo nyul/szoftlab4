@@ -17,12 +17,6 @@ public class Geometry {
 		return tiles;
 	}
 
-	
-	
-	public void addTile(Tile t) {
-		//.. adott csempe törlése és az új hozzáadása
-	}
-
 	/**
 	 * Megadja, hogy a parameterul kapott ellenseg a torony hatotavolsagan belul
 	 * van-e.
@@ -43,6 +37,13 @@ public class Geometry {
 		else return false;
 	}
 	
+	/**
+	 * @param row: palya sorainak szama
+	 * @param column: palya oszlopainak szama
+	 *  
+	 *  A jatek inditasakor a megadott parameterekkel letrehozunk egy csak Tile-okbol allo palyat,
+	 *  kesobb erre helyezzuk el a Road es egyeb objektumokat
+	 */
 	public void createAllTile(int row, int column) {
 		for(int i = 0; i < row; i++) {  
 			tiles.add(new ArrayList<Tile>());

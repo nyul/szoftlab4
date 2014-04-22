@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-
 public class Road extends Tile{
 
 	protected ArrayList<Road> nextRoad;	// referencia a kovetkezo ut-csempe valamelyikere
+	protected boolean random = false;
 	
 	public Road(Position pos) {
 		super(pos);
@@ -16,7 +16,7 @@ public class Road extends Tile{
 	 * @param e A lepni kivano enemy referenciaja
 	 */
 	public void requestDestination(Enemy enemy) {
-		int randValue = (int)(Math.random()*nextRoad.size());
+		int randValue = random == true ? (int)(Math.random()*nextRoad.size()) : 0;
 		System.out.println("[" + enemy.getMyId() + ":" + enemy.getClass().getName() + "] has moved to " + nextRoad.get(randValue).getClass().getName() +  "(" + nextRoad.get(randValue).getPos().getX() + "," + nextRoad.get(randValue).getPos().getY() + ")");
 		enemy.setRoad(nextRoad.get(randValue));
 	}

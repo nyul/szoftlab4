@@ -42,13 +42,45 @@ public class Main implements Serializable {
 			String line = reader.readLine();
 			outputNumber = s.substring(5, 7);
 		
-			while(line!=null) {
+			while(line!=null) {			
 				String[] command = line.split(" ");
+				if(command[0].equals("RANDOM_ON")) {
+					if(!engine.getPlayer().getArea().getRoad().isEmpty()){
+						for(int i = 0 ; i < engine.getPlayer().getArea().getRoad().size(); i++){
+							engine.getPlayer().getArea().getRoad().get(i).random = true;
+						}
+					}
+					if(!engine.getPlayer().getArea().getTower().isEmpty()){
+						for(int i = 0 ; i < engine.getPlayer().getArea().getTower().size(); i++){
+							engine.getPlayer().getArea().getTower().get(i).random = true;
+						}
+					}
+					if(!engine.getFellowship().getPassive().isEmpty()){
+						for(int i = 0 ; i < engine.getFellowship().getPassive().size(); i++){
+							engine.getFellowship().getPassive().get(i).random = true;
+						}
+					}
+					if(!engine.getFellowship().getActive().isEmpty()){
+						for(int i = 0 ; i < engine.getFellowship().getActive().size(); i++){
+							engine.getFellowship().getActive().get(i).random = true;
+						}
+					}
+					System.out.println("Random Numbers Enabled!");
+				}
+				if(command[0].equals("SPLIT_ON")) {
+					if(!engine.getPlayer().getArea().getTower().isEmpty()){
+						for(int i = 0 ; i < engine.getPlayer().getArea().getTower().size(); i++){
+							engine.getPlayer().getArea().getTower().get(i).split = true;
+						}
+					}					
+				}
 				if(command[0].equals("buildTower")) {
 					Tower t = engine.getPlayer().getArea().getGeometry().getTiles().get(Integer.parseInt(command[1])).get(Integer.parseInt(command[2])).buildTower(engine.getPlayer());
 					engine.getPlayer().getArea().addTower(t);
-					writeText.add("[" + t.getMyId() + ":" + t.getClass().getName() + "] has been built on the Tile(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
-					System.out.println("[" + t.getMyId() + ":" + t.getClass().getName() + "] has been built on the Tile(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
+					
+					writeText.add("[" + t.getMyId() + ":" + t.getClass().getName() + "] has been built on Tile(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
+					System.out.println("[" + t.getMyId() + ":" + t.getClass().getName() + "] has been built on Tile(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
+
 				}
 				else if(command[0].equals("buildObstacle")) {			
 					for(int i = 0; i < engine.getPlayer().getArea().getRoad().size(); i++){
@@ -95,7 +127,7 @@ public class Main implements Serializable {
 					System.out.println("magicRockNumber: " + o.getMagicRockNumber());
 				}
 				else if(command[0].equals("getEnemyInfo")) {
-					Enemy e = engine.getFellowship().getActiveEnemies().get(Integer.parseInt(command[1]));
+					Enemy e = engine.getFellowship().getActive().get(Integer.parseInt(command[1]));
 					if(e instanceof Human) {
 						Human h = (Human) e;
 						System.out.println("[" + h.getMyId() + ":" + h.getClass().getName() + "]");
