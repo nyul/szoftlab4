@@ -56,14 +56,14 @@ public class Main implements Serializable {
 					}				
 				}
 				else if(command[0].equals("upgradeTower")) {
-					Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1])-1);
+					Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
 					System.out.println("Choose a magicrock from the list!");
 					for(int i = 0; i < MagicRock.getName().size(); i++) {
 						System.out.println(i + ": " + MagicRock.getName().get(i));
 					}
 					bufferRead = new BufferedReader(new InputStreamReader(System.in));
 				    s = bufferRead.readLine();
-					t.upgrade(engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1])-1).getMagicRock().get(Integer.parseInt(command[2])));
+					t.upgrade(engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1])).getMagicRock().get(Integer.parseInt(command[2])));
 					System.out.println("[1:Player]" + " has been upgrade [" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 				}
 				else if(command[0].equals("upgradeObstacle")) {
@@ -78,7 +78,7 @@ public class Main implements Serializable {
 					}
 				}
 				else if(command[0].equals("getTowerInfo")) {
-					Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1])-1);
+					Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
 					System.out.println("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 					System.out.println("range: " + t.getRange());
 					System.out.println("fogRange: " + t.getFogRange());
@@ -90,13 +90,13 @@ public class Main implements Serializable {
 					System.out.println("magicRockNumber: " + t.getMagicRockNumber());
 				}
 				else if(command[0].equals("getObstacleInfo")) {
-					Obstacle o = engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1])-1);
+					Obstacle o = engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1]));
 					System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
 					System.out.println("slowingFactor: " + o.getSlowingFactor());
 					System.out.println("magicRockNumber: " + o.getMagicRockNumber());
 				}
 				else if(command[0].equals("getEnemyInfo")) {
-					Enemy e = engine.getFellowship().getActiveEnemies().get(Integer.parseInt(command[1])-1);
+					Enemy e = engine.getFellowship().getActiveEnemies().get(Integer.parseInt(command[1]));
 					if(e instanceof Human) {
 						Human h = (Human) e;
 						System.out.println("[" + Integer.parseInt(command[1]) + ":" + h.getClass().getName() + "]");
