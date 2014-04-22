@@ -17,8 +17,6 @@ public class Tile {
 		pos = p;
 	};
 	
-	
-
 	public int getType() {
 		return type;
 	}
@@ -39,13 +37,11 @@ public class Tile {
 				player.reduceMagicPower(Tower.getPrice());
 				return twr;
 			} else {
-				System.out.println("Error: Tower building failed-unbuildable area");
-				System.exit(0);
+				Writer.writeText.add("Error: Tower building failed-unbuildable area");
 			}
 		}
 		else {
-			System.out.println("Error: Tower building failed-you have not enough magicpower");
-			System.exit(0);
+			Writer.writeText.add("Error: Tower building failed-you have not enough magicpower");
 		}
 		return null;
 	}
@@ -62,13 +58,11 @@ public class Tile {
 				player.reduceMagicPower(Obstacle.getPrice());
 				return obst;
 			} else {
-				System.out.println("Error: Obstacle building failed-unbuildable area");
-				System.exit(0);
+				Writer.writeText.add("Error: Obstacle building failed-unbuildable area");
 			}
 		}
 		else {
-			System.out.println("Error: Obstacle building failed-you have not enough magicpower");
-			System.exit(0);
+			Writer.writeText.add("Error: Obstacle building failed-you have not enough magicpower");
 		}
 		return null;
 	}

@@ -127,7 +127,6 @@ public class Engine extends Thread{
 		player.getArea().getSource().clear();
 		player.getArea().getTower().clear();
 		Writer.writeText.add("Defeat! :(");
-		System.out.println("Defeat! :(");
 	}
 	/**
 	 * Gyozelem
@@ -141,6 +140,5 @@ public class Engine extends Thread{
 		player.getArea().getSource().clear();
 		player.getArea().getTower().clear();
 		Writer.writeText.add("Victory! :)");
-		System.out.println("Victory! :)");
 	}
 }

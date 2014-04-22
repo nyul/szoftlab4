@@ -98,7 +98,6 @@ public class Main implements Serializable {
 						}
 					}
 					Writer.writeText.add("Random Numbers Enabled!");
-					System.out.println("Random Numbers Enabled!");
 				}
 				/**
 				 * ha sor elso szava SPLIT_ON
@@ -121,8 +120,6 @@ public class Main implements Serializable {
 					engine.getPlayer().getArea().addTower(t);
 					
 					Writer.writeText.add("[" + t.getMyId() + ":" + t.getClass().getName() + "] has been built on Tile(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
-					System.out.println("[" + t.getMyId() + ":" + t.getClass().getName() + "] has been built on Tile(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
-
 				}
 				/**
 				 * ha a sor elso szava buildObstacle
@@ -135,7 +132,6 @@ public class Main implements Serializable {
 							Obstacle o = engine.getPlayer().getArea().getRoad().get(i).buildObstacle(engine.getPlayer());
 							engine.getPlayer().getArea().addObstacle(o);
 							Writer.writeText.add("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on Road(" + o.getPos().getX() + "," + o.getPos().getY() + ")");
-							System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on Road(" + o.getPos().getX() + "," + o.getPos().getY() + ")");
 						}
 					}
 				}
@@ -147,7 +143,6 @@ public class Main implements Serializable {
 					Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
 					t.wantToUpgrade(engine.getPlayer());
 					Writer.writeText.add("[Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
-				    System.out.println("[Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 				}
 				/**
 				 * ha a sor elso szava upgradeObstacle
@@ -157,7 +152,6 @@ public class Main implements Serializable {
 					Obstacle o = engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1]));
 					o.upgrade(engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1])).getMagicRock().get(Integer.parseInt(command[2])));
 					Writer.writeText.add("[Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
-					System.out.println("[Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
 				}
 				/**
 				 * ha sor elso szava step
@@ -165,7 +159,6 @@ public class Main implements Serializable {
 				 */
 				else if(command[0].equals("step")) {
 					Writer.writeText.add("[Step:" + Integer.parseInt(command[1]) + "]");
-					System.out.println("[Step:" + Integer.parseInt(command[1]) + "]");
 					for(int i=0; i < 10*Integer.parseInt(command[1]); i++) {
 						engine.run();
 					}
@@ -183,15 +176,6 @@ public class Main implements Serializable {
 					Writer.writeText.add("damagePowerElf: " + t.getDamagePowerElf());
 					Writer.writeText.add("damagePowerDwarf: " + t.getDamagePowerDwarf());
 					Writer.writeText.add("magicRockNumber: " + t.getMagicRockNumber());
-					System.out.println("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
-					System.out.println("range: " + t.getRange());
-					System.out.println("fogRange: " + t.getFogRange());
-					System.out.println("shootPeriod: " + t.getShootPeriod());
-					System.out.println("damagePowerHuman: " + t.getDamagePowerHuman());
-					System.out.println("damagePowerHobbit: " + t.getDamagePowerHobbit());
-					System.out.println("damagePowerElf: " + t.getDamagePowerElf());
-					System.out.println("damagePowerDwarf: " + t.getDamagePowerDwarf());
-					System.out.println("magicRockNumber: " + t.getMagicRockNumber());
 				}
 				/**
 				 * adott id-ju akadaly adatainak kilistazasa
@@ -201,9 +185,6 @@ public class Main implements Serializable {
 					Writer.writeText.add("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
 					Writer.writeText.add("slowingFactor: " + o.getSlowingFactor());
 					Writer.writeText.add("magicRockNumber: " + o.getMagicRockNumber());
-					System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
-					System.out.println("slowingFactor: " + o.getSlowingFactor());
-					System.out.println("magicRockNumber: " + o.getMagicRockNumber());
 				}
 				/**
 				 * adott id-ju ellenseg adatainak kilistazasa
@@ -222,13 +203,6 @@ public class Main implements Serializable {
 						Writer.writeText.add("position: (" + h.getRoad().getPos().getX() + "," + h.getRoad().getPos().getY() + ")");
 						Writer.writeText.add("isActive: " + h.isActive());
 						Writer.writeText.add("isDuplicated: " + h.isDuplicated());
-						System.out.println("[" + h.getMyId() + ":" + h.getClass().getName() + "]");
-						System.out.println("lifePower: " + h.getLifePower());
-						System.out.println("stepTime: " + h.getStepTime());
-						System.out.println("pause: " + h.getPause());
-						System.out.println("position: (" + h.getRoad().getPos().getX() + "," + h.getRoad().getPos().getY() + ")");
-						System.out.println("isActive: " + h.isActive());
-						System.out.println("isDuplicated: " + h.isDuplicated());
 					}
 					/**
 					 * ha az ellenseg tipusa hobbit
@@ -242,13 +216,6 @@ public class Main implements Serializable {
 						Writer.writeText.add("position: (" + h.getRoad().getPos().getX() + "," + h.getRoad().getPos().getY() + ")");
 						Writer.writeText.add("isActive: " + h.isActive());
 						Writer.writeText.add("isDuplicated: " + h.isDuplicated());
-						System.out.println("[" + h.getMyId() + ":" + h.getClass().getName() + "]");
-						System.out.println("lifePower: " + h.getLifePower());
-						System.out.println("stepTime: " + h.getStepTime());
-						System.out.println("pause: " + h.getPause());
-						System.out.println("position: (" + h.getRoad().getPos().getX() + "," + h.getRoad().getPos().getY() + ")");
-						System.out.println("isActive: " + h.isActive());
-						System.out.println("isDuplicated: " + h.isDuplicated());
 					}
 					/**
 					 * ha ellenseg tipusa torpe
@@ -262,13 +229,6 @@ public class Main implements Serializable {
 						Writer.writeText.add("position: (" + d.getRoad().getPos().getX() + "," + d.getRoad().getPos().getY() + ")");
 						Writer.writeText.add("isActive: " + d.isActive());
 						Writer.writeText.add("isDuplicated: " + d.isDuplicated());
-						System.out.println("[" + d.getMyId() + ":" + d.getClass().getName() + "]");
-						System.out.println("lifePower: " + d.getLifePower());
-						System.out.println("stepTime: " + d.getStepTime());
-						System.out.println("pause: " + d.getPause());
-						System.out.println("position: (" + d.getRoad().getPos().getX() + "," + d.getRoad().getPos().getY() + ")");
-						System.out.println("isActive: " + d.isActive());
-						System.out.println("isDuplicated: " + d.isDuplicated());
 					}
 					/**
 					 * ha az ellenseg tipusa tunde
@@ -282,13 +242,6 @@ public class Main implements Serializable {
 						Writer.writeText.add("position: (" + elf.getRoad().getPos().getX() + "," + elf.getRoad().getPos().getY() + ")");
 						Writer.writeText.add("isActive: " + elf.isActive());
 						Writer.writeText.add("isDuplicated: " + elf.isDuplicated());
-						System.out.println("[" + elf.getMyId() + ":" + elf.getClass().getName() + "]");
-						System.out.println("lifePower: " + elf.getLifePower());
-						System.out.println("stepTime: " + elf.getStepTime());
-						System.out.println("pause: " + elf.getPause());
-						System.out.println("position: (" + elf.getRoad().getPos().getX() + "," + elf.getRoad().getPos().getY() + ")");
-						System.out.println("isActive: " + elf.isActive());
-						System.out.println("isDuplicated: " + elf.isDuplicated());
 					}
 				}
 				/**
@@ -298,8 +251,6 @@ public class Main implements Serializable {
 					Player p = engine.getPlayer();
 					Writer.writeText.add("[" + p.getClass().getName() + "]");
 					Writer.writeText.add("magicPower: " + p.getMagicPower());
-					System.out.println("[" + p.getClass().getName() + "]");
-					System.out.println("magicPower: " + p.getMagicPower());
 				}
 				/**
 				 * ha a sor elso szava fogOn

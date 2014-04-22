@@ -161,7 +161,6 @@ public abstract class Enemy {
 	public int hit(Tower t) {
 		this.lifePowerReduce(t);
 		Writer.writeText.add("[" + t.getMyId() + ":" + t.getClass().getName() + "] has shot [" + this.getMyId() + ":" + this.getClass().getName() + "]");
-		System.out.println("[" + t.getMyId() + ":" + t.getClass().getName() + "] has shot [" + this.getMyId() + ":" + this.getClass().getName() + "]");
 		return this.lifePower;
 	}
 	

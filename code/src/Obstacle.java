@@ -20,8 +20,6 @@ public class Obstacle extends Road implements Defense{
 		this.type = 3;
 	}
 	
-	
-	
 	/**
 	 * @return az akadaly ID-jet adja vissza
 	 */
@@ -29,42 +27,29 @@ public class Obstacle extends Road implements Defense{
 		return myId;
 	}
 
-
 	public static void setPrice(int price) {
 		Obstacle.price = price;
 	}
-
-
 
 	public int getSlowingFactor() {
 		return slowingFactor;
 	}
 
-
-
 	public void setSlowingFactor(int slowingFactor) {
 		this.slowingFactor = slowingFactor;
 	}
-
-
 
 	public ArrayList<MagicRock> getMagicRock() {
 		return magicRock;
 	}
 
-
-
 	public void setMagicRock(ArrayList<MagicRock> magicRock) {
 		this.magicRock = magicRock;
 	}
 
-
-
 	public int getMagicRockNumber() {
 		return magicRockNumber;
 	}
-
-
 
 	public void setMagicRockNumber(int magicRockNumber) {
 		this.magicRockNumber = magicRockNumber;
