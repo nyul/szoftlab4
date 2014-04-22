@@ -6,7 +6,7 @@ public class Obstacle extends Road implements Defense{
 	private int slowingFactor;
 	private ArrayList<MagicRock> magicRock;
 	private int magicRockNumber;
-	private static int price;
+	private static int price = 5;
 	
 	public Obstacle(Position pos) {
 		super(pos);
