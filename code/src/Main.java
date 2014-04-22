@@ -64,7 +64,6 @@ public class Main implements Serializable {
 							engine.getFellowship().getActive().get(i).random = true;
 						}
 					}
-					System.out.println("Random Numbers Enabled!");
 				}
 				else if(command[0].equals("SPLIT_ON")) {
 					if(!engine.getPlayer().getArea().getTower().isEmpty()){
