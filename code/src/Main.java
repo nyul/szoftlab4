@@ -57,19 +57,13 @@ public class Main implements Serializable {
 				}
 				else if(command[0].equals("upgradeTower")) {
 					Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
-					System.out.println("Choose a magicrock from the list!");
-					for(int i = 0; i < MagicRock.getName().size(); i++) {
-						System.out.println(i + ": " + MagicRock.getName().get(i));
-					}
-					bufferRead = new BufferedReader(new InputStreamReader(System.in));
-				    s = bufferRead.readLine();
-					t.upgrade(engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1])).getMagicRock().get(Integer.parseInt(s)));
-					System.out.println("[1:Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
+					t.wantToUpgrade(engine.getPlayer());
+				    System.out.println("[Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 				}
 				else if(command[0].equals("upgradeObstacle")) {
 					Obstacle o = engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1]));
 					o.upgrade(engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1])).getMagicRock().get(Integer.parseInt(command[2])));
-					System.out.println("[1:Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
+					System.out.println("[Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
 				}
 				else if(command[0].equals("step")) {
 					System.out.println("[Step:" + Integer.parseInt(command[1]) + "]");

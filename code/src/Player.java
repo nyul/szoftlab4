@@ -54,10 +54,11 @@ public class Player {
 				if(number == magicRockList.get(i).getType()) {
 					if(magicPower < magicRockList.get(number).getPrice()) {
 						System.out.println("You don't have enough magicpower.");
-					}
+					} else {
 					magicPower = magicPower - magicRockList.get(number).getPrice();
 					defense.upgrade(magicRockList.get(number));
-				} else {
+					}
+				} else if(number < 0 || number > 6) {
 					System.out.println("Wrong number.");
 				}
 			}
