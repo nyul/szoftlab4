@@ -60,8 +60,6 @@ public class Engine extends Thread{
 				}
 				counter = 1;
 			}
-<<<<<<< HEAD
-=======
 			// ellenseg sebzese soran kette lett-e hasitva, true ha igen
 			// fontos, hogy az ellenseget csak akkor lehet kettehasitani, ha aktiv, azaz sebzes utan maradt eleg eletereje
 			if(enemy.isDuplicated() == true && enemy.isActive == true) {
@@ -71,8 +69,6 @@ public class Engine extends Thread{
 				enemy.setDuplicated(false);
 			}
 			counter = 1;
-		}
->>>>>>> 4451aedb761dfdcded1c2b8c8cc2afca95368993
 		} else {
 			counter = counter + 1;
 		}
