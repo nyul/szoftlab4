@@ -17,9 +17,12 @@ public class Main implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Engine engine;
 	private BufferedReader br;
+	private static String outputNumber = "";
+	public static ArrayList<String> writeText;
 	
 	public Main() {
 		engine = new Engine();
+		writeText = new ArrayList<String>();
 	}
 	
 	public static void main(String[] args) {
@@ -37,23 +40,25 @@ public class Main implements Serializable {
 			FileReader fileReader = new FileReader(s);
 			BufferedReader reader = new BufferedReader(fileReader);
 			String line = reader.readLine();
+			outputNumber = s.substring(5, 7);
 		
 			while(line!=null) {
 				String[] command = line.split(" ");
 				if(command[0].equals("buildTower")) {
 					Tower t = engine.getPlayer().getArea().getGeometry().getTiles().get(Integer.parseInt(command[1])).get(Integer.parseInt(command[2])).buildTower(engine.getPlayer());
 					engine.getPlayer().getArea().addTower(t);
+					writeText.add("[" + t.getMyId() + ":" + t.getClass().getName() + "] has been built on the Tile(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
 					System.out.println("[" + t.getMyId() + ":" + t.getClass().getName() + "] has been built on the Tile(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
 				}
 				else if(command[0].equals("buildObstacle")) {			
 					for(int i = 0; i < engine.getPlayer().getArea().getRoad().size(); i++){
 						if(engine.getPlayer().getArea().getRoad().get(i).pos.getX() == Integer.parseInt(command[1]) && engine.getPlayer().getArea().getRoad().get(i).pos.getY() == Integer.parseInt(command[2])){
 							Obstacle o = engine.getPlayer().getArea().getRoad().get(i).buildObstacle(engine.getPlayer());
-							//engine.getPlayer().getArea().getGeometry().getTiles().get(Integer.parseInt(command[1])).get(Integer.parseInt(command[2])).buildObstacle(engine.getPlayer());
 							engine.getPlayer().getArea().addObstacle(o);
+							writeText.add("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on Road(" + o.getPos().getX() + "," + o.getPos().getY() + ")");
 							System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on Road(" + o.getPos().getX() + "," + o.getPos().getY() + ")");
 						}
-					}				
+					}
 				}
 				else if(command[0].equals("upgradeTower")) {
 					Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
@@ -253,6 +258,7 @@ public class Main implements Serializable {
 					//...
 				}
 				else if(command[0].equals("exit")) {
+					writeOutputLanguage("output" + outputNumber + ".txt");
 					System.exit(0);
 				}
 				line = reader.readLine();
@@ -264,16 +270,16 @@ public class Main implements Serializable {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
-	public void writeOutputLanguage() throws IOException {
-		FileWriter fileWriter = new FileWriter("output.txt");
-		BufferedWriter writer = new BufferedWriter(fileWriter);
-		for(int i = 0; i < Writer.getWriteText().size(); i++) {
-			writer.write(Writer.getWriteText().get(i));
+	public void writeOutputLanguage(String filename) throws IOException {
+		if(outputNumber != "") {
+			FileWriter fileWriter = new FileWriter(filename);
+			BufferedWriter writer = new BufferedWriter(fileWriter);
+			for(int i = 0; i < writeText.size(); i++) {
+				writer.write(writeText.get(i));
+			}
+			writer.close();
 		}
-		writer.close();
 	}
 }

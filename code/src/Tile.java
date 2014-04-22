@@ -56,6 +56,7 @@ public class Tile {
 	 * @return
 	 */
 	public Obstacle buildObstacle(Player player) {
+		System.out.println("Hello");
 		if(player.getMagicPower() > Obstacle.getPrice()) {   // van eleg varazsero
 			if(this.type == 2) {   // ures csempe
 				Obstacle obst = new Obstacle(pos); 
