@@ -16,8 +16,6 @@ public class Tile {
 	public void setPos(Position p){
 		pos = p;
 	};
-	
-	
 
 	public int getType() {
 		return type;
@@ -33,17 +31,17 @@ public class Tile {
 	 * @return
 	 */
 	public Tower buildTower(Player player) {
-		if(player.getMagicPower() > Tower.getPrice()) {   // van eleg varazsero
+		if(player.getMagicPower() > Tower.getPrice()) {   // van-e eleg varazsero
 			if(this.type == 0) {   // ures csempe
 				Tower twr = new Tower(pos); 
 				player.reduceMagicPower(Tower.getPrice());
 				return twr;
-			} else {
+			} else { // ha nem beepitheto a csempe
 				System.out.println("Error: Tower building failed-unbuildable area");
 				System.exit(0);
 			}
 		}
-		else {
+		else { // ha nincs eleg varazsero
 			System.out.println("Error: Tower building failed-you have not enough magicpower");
 			System.exit(0);
 		}
@@ -61,12 +59,12 @@ public class Tile {
 				Obstacle obst = new Obstacle(pos); 
 				player.reduceMagicPower(Obstacle.getPrice());
 				return obst;
-			} else {
+			} else { // ha nem beepitheto a csempe
 				System.out.println("Error: Obstacle building failed-unbuildable area");
 				System.exit(0);
 			}
 		}
-		else {
+		else { // ha nincs eleg varazsero
 			System.out.println("Error: Obstacle building failed-you have not enough magicpower");
 			System.exit(0);
 		}

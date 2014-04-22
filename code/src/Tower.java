@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 public class Tower extends Tile implements Defense{
 	
 	public static int id = 0;
@@ -20,8 +19,8 @@ public class Tower extends Tile implements Defense{
 	
 	/**
 	 * Tower konstruktor
+	 * @param pos - az a pozicio ahova a tornyot epiteni kivanjuk
 	 */
-	
 	public Tower(Position pos) {
 		super(pos);
 		myId=id;
@@ -165,28 +164,26 @@ public class Tower extends Tile implements Defense{
 
 	/**
 	 * A parameterul kapott enemy listara meghivja a tavolsag vizsgalatot, 
-	 * majd az enemy hit metodusat
-	 * ami csokkenti az enemy erejet
+	 * majd az enemy hit metodusat, ami csokkenti az enemy erejet
 	 */
-	
 	public Enemy attack(ArrayList<Enemy> enemies, Geometry geometry) {
 		boolean isRange = false;
 		for(int i = 0; i < enemies.size(); i++) {
-			if(geometry.isInRange(enemies.get(i),this)) {
+			if(geometry.isInRange(enemies.get(i),this)) { // ha hatotavolsagon belul van az ellenseg
 				isRange = true;
-				if(enemies.get(i).hit(this) <= 0) {
-					enemies.get(i).setActivity(false);
+				if(enemies.get(i).hit(this) <= 0) { // ha a megsebzett ellensegnek az elete 0-ra vagy az ala csokken
+					enemies.get(i).setActivity(false); // jelezzuk az engine-nek, hogy ot deaktivalni kell
 				}
-				int duplicate = random == true ? (int)(Math.random()*enemies.size()) : 1;
+				int duplicate = random == true ? (int)(Math.random()*enemies.size()) : 1; // megnezzuk random modon kell-e kivalasztanunk, hogy kettevaljon az ellenseg sebzodes utan
 				duplicate = split == true ? 3 : duplicate;
-				if(duplicate == 3) {
+				if(duplicate == 3) { // pseudo random modon "veletlenszeruen" kivalasztott eset amikor duplazodik az ellenseg
 					enemies.get(i).setDuplicated(true);
 					enemies.get(i).setLifePower((int)(enemies.get(i).getLifePower() / 2));
 				}
 				return enemies.get(i);
 			}
 		}	
-		if(isRange == false) {
+		if(isRange == false) { // ha hatotavolsagon kivul van az ellenseg
 			Writer.writeText.add("Nincs hatotavon beluli ellenseg.");
 			System.out.println("Nincs hatotavon beluli ellenseg.");
 		}
@@ -199,8 +196,6 @@ public class Tower extends Tile implements Defense{
 	 * (non-Javadoc)
 	 * @see Defense#wantToUpgrade(Player)
 	 */
-
-
 	public void wantToUpgrade(Player player){
 		player.chooseUpgrade(magicRock, this);	
 	}	
