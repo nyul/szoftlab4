@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Road extends Tile{
 
 	protected ArrayList<Road> nextRoad;	// referencia a kovetkezo ut-csempe valamelyikere
-	protected boolean random = false;
+	protected boolean random = false;	// az utvonalvalasztasnal megadja, hogy veletlenszeruen valasszon az enemy utat vagy fixen
 	
 	public Road(Position pos) {
 		super(pos);

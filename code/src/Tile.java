@@ -16,7 +16,7 @@ public class Tile {
 	public void setPos(Position p){
 		pos = p;
 	};
-	
+
 	public int getType() {
 		return type;
 	}
@@ -31,7 +31,7 @@ public class Tile {
 	 * @return
 	 */
 	public Tower buildTower(Player player) {
-		if(player.getMagicPower() > Tower.getPrice()) {   // van eleg varazsero
+		if(player.getMagicPower() > Tower.getPrice()) {   // van-e eleg varazsero
 			if(this.type == 0) {   // ures csempe
 				Tower twr = new Tower(pos); 
 				player.reduceMagicPower(Tower.getPrice());
