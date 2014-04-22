@@ -1,5 +1,6 @@
 loadMap map07.txt
 getEnemyInfo 1
+getEnemyInfo 2
 getTowerInfo 1
 step 1
 getEnemyInfo 1
