@@ -237,23 +237,7 @@ public class Main implements Serializable {
 						else if(word[0].equals("Road")) {
 							if(!word[1].equals("ref")) {
 								Road road = new Road(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-								for(int i = 0; i < engine.getPlayer().getArea().getGeometry().getTiles().size(); i++) {
-									for(int j = 0; j < engine.getPlayer().getArea().getGeometry().getTiles().get(i).size(); j++) {
-										System.out.println(i + "," + j + ":" + engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getType());
-											if(engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getPos().getX() == Integer.parseInt(word[1])
-													&& engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getPos().getY() == Integer.parseInt(word[2])) {
-												if(engine.getPlayer().getArea().getGeometry().getTiles().get(i).get(j).getType() == 0) {
-													engine.getPlayer().getArea().getRoad().add(road);
-													engine.getPlayer().getArea().getGeometry().getTiles().get(i).set(j, road);
-												}
-												else {
-													System.out.println("Load map is unsuccessful.");
-													System.out.println("Error Road: (" + Integer.parseInt(word[1]) + "," + Integer.parseInt(word[2]) + ") tile is unbuiltable.");
-													System.exit(0);
-												}
-										}
-									}
-								}
+								
 							}
 							else {
 								engine.getPlayer().getArea().addReference(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])));
