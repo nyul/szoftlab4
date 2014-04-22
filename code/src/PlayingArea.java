@@ -217,7 +217,6 @@ public class PlayingArea {
 			for(int i = 0; i < geometry.getTiles().size(); i++) {
 				for(int j = 0; j < geometry.getTiles().get(i).size(); j++) {
 					if(geometry.getTiles().get(i).get(j).getPos().getX() == r.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == r.getPos().getY()) {
-						System.out.println("Hello");
 						if(geometry.getTiles().get(i).get(j).getType() == 0) {
 							road.add(r);
 							geometry.getTiles().get(i).set(j, r);
