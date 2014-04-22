@@ -222,9 +222,10 @@ public class PlayingArea {
 							geometry.getTiles().get(i).set(j, r);
 						}
 						else {
+							Writer.writeText.add("Load map is unsuccessful.");
+							Writer.writeText.add("Error: (" + r.getPos().getX() + "," + r.getPos().getY() + ") tile is unbuildable for a Road.");
 							System.out.println("Load map is unsuccessful.");
-							System.out.println("Error: (" + r.getPos().getX() + "," + r.getPos().getY() + ") tile is unbuiltable.");
-							System.exit(0);
+							System.out.println("Error: (" + r.getPos().getX() + "," + r.getPos().getY() + ") tile is unbuildable for a Road.");
 						}
 					}
 				}
@@ -240,9 +241,10 @@ public class PlayingArea {
 							geometry.getTiles().get(i).set(j, s);
 						}
 						else {
+							Writer.writeText.add("Load map is unsuccessful.");
+							Writer.writeText.add("Error: (" + s.getPos().getX() + "," + s.getPos().getY() + ") tile is unbuildable for a Source.");
 							System.out.println("Load map is unsuccessful.");
-							System.out.println("Error: (" + s.getPos().getX() + "," + s.getPos().getY() + ") tile is unbuiltable.");
-							System.exit(0);
+							System.out.println("Error: (" + s.getPos().getX() + "," + s.getPos().getY() + ") tile is unbuildable for a Source.");
 						}
 					}
 				}
@@ -258,9 +260,10 @@ public class PlayingArea {
 							geometry.getTiles().get(i).set(j, m);
 						}
 						else {
+							Writer.writeText.add("Load map is unsuccessful.");
+							Writer.writeText.add("Error: (" + m.getPos().getX() + "," + m.getPos().getY() + ") tile is unbuildable for a Mountain.");
 							System.out.println("Load map is unsuccessful.");
-							System.out.println("Error: (" + m.getPos().getX() + "," + m.getPos().getY() + ") tile is unbuiltable.");
-							System.exit(0);
+							System.out.println("Error: (" + m.getPos().getX() + "," + m.getPos().getY() + ") tile is unbuildable for a Mountain.");
 						}
 					}
 				}
@@ -276,9 +279,10 @@ public class PlayingArea {
 							geometry.getTiles().get(i).set(j, o);
 						}
 						else {
+							Writer.writeText.add("Load map is unsuccessful.");
+							Writer.writeText.add("Error: (" + o.getPos().getX() + "," + o.getPos().getY() + ") tile is unbuildable for an Obstacle.");
 							System.out.println("Load map is unsuccessful.");
-							System.out.println("Error: (" + o.getPos().getX() + "," + o.getPos().getY() + ") tile is unbuiltable.");
-							System.exit(0);
+							System.out.println("Error: (" + o.getPos().getX() + "," + o.getPos().getY() + ") tile is unbuildable for an Obstacle.");
 						}
 					}
 				}
@@ -294,9 +298,10 @@ public class PlayingArea {
 							geometry.getTiles().get(i).set(j, t);
 						}
 						else {
+							Writer.writeText.add("Load map is unsuccessful.");
+							Writer.writeText.add("Error: (" + t.getPos().getX() + "," + t.getPos().getY() + ") tile is unbuildable for a Tower.");
 							System.out.println("Load map is unsuccessful.");
-							System.out.println("Error: (" + t.getPos().getX() + "," + t.getPos().getY() + ") tile is unbuiltable.");
-							System.exit(0);
+							System.out.println("Error: (" + t.getPos().getX() + "," + t.getPos().getY() + ") tile is unbuildable for a Tower.");
 						}
 					}
 				}

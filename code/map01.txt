@@ -1,0 +1,2 @@
+Road 1 1
+Obstacle 1 2
