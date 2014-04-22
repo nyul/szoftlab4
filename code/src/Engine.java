@@ -83,7 +83,10 @@ public class Engine extends Thread{
 		stepHandler();
 		attackHandler();
 		// ha nincs mar se passziv, se aktiv ellenseg, akkor gyozelem
-		if(fellowship.getNumber() == 0) victory();
+		if(fellowship.getNumber() == 0) {
+			victory();
+			System.exit(0);
+		}
 		// van-e a hegyen ellenseg, ha igen akkor vereseg
 		player.getArea().isOnMountain(this);
 		try {

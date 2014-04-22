@@ -17,16 +17,11 @@ public class Geometry {
 		return tiles;
 	}
 
-	public void setTiles(ArrayList<ArrayList<Tile>> tiles) {
-		this.tiles = tiles;
-	}
 	
-	public void addTile(Tile t){
-		ArrayList<Tile> toAdd = new ArrayList<Tile>();
-		toAdd.add(t);
-		tiles.add(toAdd);
-		
-		}
+	
+	public void addTile(Tile t) {
+		//.. adott csempe törlése és az új hozzáadása
+	}
 
 	/**
 	 * Megadja, hogy a parameterul kapott ellenseg a torony hatotavolsagan belul

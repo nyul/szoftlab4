@@ -14,7 +14,8 @@ public abstract class Enemy {
 	 * 			  ellensegeket lehet leptetni
 	 * isDuplicated - alapesetben false az erteke, true abban az esetben, ha az ellenseget a torony sebzese soran kettehasitotta
 	 */
-	private static int id = 0;
+	private static int id = 1;
+	private int myId;
 	protected int lifePower;
 	protected int stepTime;
 	protected int pause;
@@ -27,6 +28,7 @@ public abstract class Enemy {
 	 *  palyara helyezeskor hivodik meg
 	 */
 	public Enemy() {
+		myId = id;
 		id++;
 		lifePower = 100;
 		stepTime = 10;
@@ -41,6 +43,7 @@ public abstract class Enemy {
 	 * @param pos
 	 */
 	public Enemy(Road r) {
+		myId = id;
 		id++;
 		lifePower = 100;
 		stepTime = 10;
@@ -52,8 +55,8 @@ public abstract class Enemy {
 	}
 
 	
-	public static int getId() {
-		return id;
+	public int getMyId() {
+		return myId;
 	}
 	
 	public int getLifePower() {
@@ -101,7 +104,11 @@ public abstract class Enemy {
 	 */
 	public void move() {
 		if(counter >= stepTime) {
-			road.requestDestination(this);
+			if(pause == 0) {
+				road.requestDestination(this);
+			} else {
+				pause--;
+			}
 			counter = 1;
 		} else {
 			counter = counter + 1;

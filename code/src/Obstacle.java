@@ -3,7 +3,8 @@ import java.util.ArrayList;
 
 public class Obstacle extends Road implements Defense{
 	
-	private static int id = 0;
+	private static int id = 1;
+	private int myId;
 	private int slowingFactor;
 	private ArrayList<MagicRock> magicRock;
 	private int magicRockNumber;
@@ -11,6 +12,7 @@ public class Obstacle extends Road implements Defense{
 	
 	public Obstacle(Position pos) {
 		super(pos);
+		myId=id;
 		id++;
 		slowingFactor = 1;
 		magicRock = new ArrayList<MagicRock>();
@@ -20,8 +22,8 @@ public class Obstacle extends Road implements Defense{
 	
 	
 	
-	public static int getId() {
-		return id;
+	public int getMyId() {
+		return myId;
 	}
 
 
@@ -85,6 +87,5 @@ public class Obstacle extends Road implements Defense{
 
 	public void slowMe(Enemy e){
 		e.increasePause(this.slowingFactor);
-		e.increasePause(slowingFactor);
 	}
 }

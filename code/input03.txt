@@ -7,4 +7,7 @@ getObstacleInfo 1
 step 1
 getEnemyInfo 1
 getObstacleInfo 1
+step 1
+getEnemyInfo 1
+getObstacleInfo 1
 exit

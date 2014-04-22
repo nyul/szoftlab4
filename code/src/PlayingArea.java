@@ -23,7 +23,7 @@ public class PlayingArea {
 		tower = new ArrayList<Tower>();
 		obstacle = new ArrayList<Obstacle>();
 		road = new ArrayList<Road>();
-		mountain = null;
+		mountain = new Mountain(new Position(-1, -1));
 		geometry = new Geometry();
 	}
 	
@@ -108,7 +108,7 @@ public class PlayingArea {
 	 * Hegy koordinatajanak megadasa, forras(ok) megadasa.
 	 */
 	public void initialize() {
-		geometry.createAllTile(2, 3);
+		geometry.createAllTile(6, 6);
 	}
 	
 	/**
@@ -139,14 +139,73 @@ public class PlayingArea {
 			}
 		}						
 	}
-	
-	public void addReferenceRoad(Position pos1, Position pos2) {
+	/**
+	 * Ellenseg lepese a pos1-rol a pos2-re
+	 * @param pos1 - start pos
+	 * @param pos2 - end pos
+	 */
+	public void addReference(Position pos1, Position pos2) {
+		// if pos1 is road
 		for(int i = 0; i < road.size(); i++) {
 			if(road.get(i).getPos().getX() == pos1.getX() && road.get(i).getPos().getY() == pos1.getY()) {
+				// road to road
 				for(int j = 0; j < road.size(); j++) {
 					if(road.get(j).getPos().getX() == pos2.getX() && road.get(j).getPos().getY() == pos2.getY()) {
 						road.get(i).nextRoad.add(road.get(j));
 					}
+				}
+				// road to obstacle
+				for(int j = 0; j < obstacle.size(); j++) {
+					if(obstacle.get(j).getPos().getX() == pos2.getX() && obstacle.get(j).getPos().getY() == pos2.getY()) {
+						road.get(i).nextRoad.add(obstacle.get(j));
+					}
+				}
+				// road to mountain
+				if(mountain.getPos().getX() == pos2.getX() && mountain.getPos().getY() == pos2.getY()) {
+					road.get(i).nextRoad.add(mountain);
+				}
+			}
+		}
+		//if pos1 is obstacle
+		for(int i = 0 ; i < obstacle.size(); i++) {
+			if(obstacle.get(i).getPos().getX() == pos1.getX() && obstacle.get(i).getPos().getY() == pos1.getY()) {
+				// obstacle to road
+				for(int j = 0; j < road.size(); j++) {
+					if(road.get(j).getPos().getX() == pos2.getX() && road.get(j).getPos().getY() == pos2.getY()) {
+						obstacle.get(i).nextRoad.add(road.get(j));
+					}
+				}
+				// obstacle to obstacle
+				for(int j = 0; j < obstacle.size(); j++) {
+					if(obstacle.get(j).getPos().getX() == pos2.getX() && obstacle.get(j).getPos().getY() == pos2.getY()) {
+						obstacle.get(i).nextRoad.add(obstacle.get(j));
+					}
+				}
+				// obstacle to mountain
+				if(mountain.getPos().getX() == pos2.getX() && mountain.getPos().getY() == pos2.getY()) {
+					obstacle.get(i).nextRoad.add(mountain);
+				}
+			}
+		}
+		
+		//if pos1 is source
+		for(int i = 0 ; i < source.size(); i++) {
+			if(source.get(i).getPos().getX() == pos1.getX() && source.get(i).getPos().getY() == pos1.getY()) {
+				// source to road
+				for(int j = 0; j < road.size(); j++) {
+					if(road.get(j).getPos().getX() == pos2.getX() && road.get(j).getPos().getY() == pos2.getY()) {
+						source.get(i).nextRoad.add(road.get(j));
+					}
+				}
+				// source to obstacle
+				for(int j = 0; j < obstacle.size(); j++) {
+					if(obstacle.get(j).getPos().getX() == pos2.getX() && obstacle.get(j).getPos().getY() == pos2.getY()) {
+						source.get(i).nextRoad.add(obstacle.get(j));
+					}
+				}
+				// source to mountain
+				if(mountain.getPos().getX() == pos2.getX() && mountain.getPos().getY() == pos2.getY()) {
+					source.get(i).nextRoad.add(mountain);
 				}
 			}
 		}

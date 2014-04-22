@@ -40,10 +40,12 @@ public class Tile {
 				return twr;
 			} else {
 				System.out.println("Error: Tower building failed-unbuildable area");
+				System.exit(0);
 			}
 		}
 		else {
 			System.out.println("Error: Tower building failed-you have not enough magicpower");
+			System.exit(0);
 		}
 		return null;
 	}
