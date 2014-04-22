@@ -3,3 +3,4 @@ getPlayerInfo 0
 buildObstacle 0 0
 getObstacleInfo 0  
 getPlayerInfo 0
+exit

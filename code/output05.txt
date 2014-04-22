@@ -1,0 +1,33 @@
+[0:Hobbit]
+lifePower: 100
+stepTime: 10
+pause: 0
+position: (1,2)
+isActive: true
+isDuplicated: false
+[0:Tower]
+range: 3
+shootPeriod: 10
+damagePowerHuman: 10
+damagePowerHobbit: 10
+damagePowerElf: 10
+damagePowerDwarf: 10
+magicRockNumber: 0
+[Step:1]
+[0:Hobbit] has moved to Road(1,3)
+[0:Tower] has shot [0:Hobbit]
+[0:Hobbit]
+lifePower: 90
+stepTime: 10
+pause: 0
+position: (1,3)
+isActive: true
+isDuplicated: false
+[0:Tower]
+range: 3
+shootPeriod: 10
+damagePowerHuman: 10
+damagePowerHobbit: 10
+damagePowerElf: 10
+damagePowerDwarf: 10
+magicRockNumber: 0

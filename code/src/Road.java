@@ -17,6 +17,7 @@ public class Road extends Tile{
 	 */
 	public void requestDestination(Enemy enemy) {
 		int randValue = random == true ? (int)(Math.random()*nextRoad.size()) : 0;
+		Writer.writeText.add("[" + enemy.getMyId() + ":" + enemy.getClass().getName() + "] has moved to " + nextRoad.get(randValue).getClass().getName() +  "(" + nextRoad.get(randValue).getPos().getX() + "," + nextRoad.get(randValue).getPos().getY() + ")");
 		System.out.println("[" + enemy.getMyId() + ":" + enemy.getClass().getName() + "] has moved to " + nextRoad.get(randValue).getClass().getName() +  "(" + nextRoad.get(randValue).getPos().getX() + "," + nextRoad.get(randValue).getPos().getY() + ")");
 		enemy.setRoad(nextRoad.get(randValue));
 	}

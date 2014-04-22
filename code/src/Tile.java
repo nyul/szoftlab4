@@ -56,7 +56,6 @@ public class Tile {
 	 * @return
 	 */
 	public Obstacle buildObstacle(Player player) {
-		System.out.println("Hello");
 		if(player.getMagicPower() > Obstacle.getPrice()) {   // van eleg varazsero
 			if(this.type == 2) {   // ures csempe
 				Obstacle obst = new Obstacle(pos); 
@@ -64,10 +63,12 @@ public class Tile {
 				return obst;
 			} else {
 				System.out.println("Error: Obstacle building failed-unbuildable area");
+				System.exit(0);
 			}
 		}
 		else {
 			System.out.println("Error: Obstacle building failed-you have not enough magicpower");
+			System.exit(0);
 		}
 		return null;
 	}

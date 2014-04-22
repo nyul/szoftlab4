@@ -18,11 +18,10 @@ public class Main implements Serializable {
 	private Engine engine;
 	private BufferedReader br;
 	private static String outputNumber = "";
-	public static ArrayList<String> writeText;
 	
 	public Main() {
 		engine = new Engine();
-		writeText = new ArrayList<String>();
+		Writer.writeText = new ArrayList<String>();
 	}
 	
 	public static void main(String[] args) {
@@ -67,18 +66,18 @@ public class Main implements Serializable {
 					}
 					System.out.println("Random Numbers Enabled!");
 				}
-				if(command[0].equals("SPLIT_ON")) {
+				else if(command[0].equals("SPLIT_ON")) {
 					if(!engine.getPlayer().getArea().getTower().isEmpty()){
 						for(int i = 0 ; i < engine.getPlayer().getArea().getTower().size(); i++){
 							engine.getPlayer().getArea().getTower().get(i).split = true;
 						}
 					}					
 				}
-				if(command[0].equals("buildTower")) {
+				else if(command[0].equals("buildTower")) {
 					Tower t = engine.getPlayer().getArea().getGeometry().getTiles().get(Integer.parseInt(command[1])).get(Integer.parseInt(command[2])).buildTower(engine.getPlayer());
 					engine.getPlayer().getArea().addTower(t);
 					
-					writeText.add("[" + t.getMyId() + ":" + t.getClass().getName() + "] has been built on Tile(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
+					Writer.writeText.add("[" + t.getMyId() + ":" + t.getClass().getName() + "] has been built on Tile(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
 					System.out.println("[" + t.getMyId() + ":" + t.getClass().getName() + "] has been built on Tile(" + Integer.parseInt(command[1]) + "," + Integer.parseInt(command[2]) + ")");
 
 				}
@@ -87,7 +86,7 @@ public class Main implements Serializable {
 						if(engine.getPlayer().getArea().getRoad().get(i).pos.getX() == Integer.parseInt(command[1]) && engine.getPlayer().getArea().getRoad().get(i).pos.getY() == Integer.parseInt(command[2])){
 							Obstacle o = engine.getPlayer().getArea().getRoad().get(i).buildObstacle(engine.getPlayer());
 							engine.getPlayer().getArea().addObstacle(o);
-							writeText.add("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on Road(" + o.getPos().getX() + "," + o.getPos().getY() + ")");
+							Writer.writeText.add("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on Road(" + o.getPos().getX() + "," + o.getPos().getY() + ")");
 							System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on Road(" + o.getPos().getX() + "," + o.getPos().getY() + ")");
 						}
 					}
@@ -95,14 +94,17 @@ public class Main implements Serializable {
 				else if(command[0].equals("upgradeTower")) {
 					Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
 					t.wantToUpgrade(engine.getPlayer());
+					Writer.writeText.add("[Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 				    System.out.println("[Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 				}
 				else if(command[0].equals("upgradeObstacle")) {
 					Obstacle o = engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1]));
 					o.upgrade(engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1])).getMagicRock().get(Integer.parseInt(command[2])));
+					Writer.writeText.add("[Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
 					System.out.println("[Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
 				}
 				else if(command[0].equals("step")) {
+					Writer.writeText.add("[Step:" + Integer.parseInt(command[1]) + "]");
 					System.out.println("[Step:" + Integer.parseInt(command[1]) + "]");
 					for(int i=0; i < 10*Integer.parseInt(command[1]); i++) {
 						engine.run();
@@ -110,6 +112,14 @@ public class Main implements Serializable {
 				}
 				else if(command[0].equals("getTowerInfo")) {
 					Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
+					Writer.writeText.add("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
+					Writer.writeText.add("range: " + t.getRange());
+					Writer.writeText.add("shootPeriod: " + t.getShootPeriod());
+					Writer.writeText.add("damagePowerHuman: " + t.getDamagePowerHuman());
+					Writer.writeText.add("damagePowerHobbit: " + t.getDamagePowerHobbit());
+					Writer.writeText.add("damagePowerElf: " + t.getDamagePowerElf());
+					Writer.writeText.add("damagePowerDwarf: " + t.getDamagePowerDwarf());
+					Writer.writeText.add("magicRockNumber: " + t.getMagicRockNumber());
 					System.out.println("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 					System.out.println("range: " + t.getRange());
 					System.out.println("fogRange: " + t.getFogRange());
@@ -122,6 +132,9 @@ public class Main implements Serializable {
 				}
 				else if(command[0].equals("getObstacleInfo")) {
 					Obstacle o = engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1]));
+					Writer.writeText.add("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
+					Writer.writeText.add("slowingFactor: " + o.getSlowingFactor());
+					Writer.writeText.add("magicRockNumber: " + o.getMagicRockNumber());
 					System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
 					System.out.println("slowingFactor: " + o.getSlowingFactor());
 					System.out.println("magicRockNumber: " + o.getMagicRockNumber());
@@ -130,6 +143,13 @@ public class Main implements Serializable {
 					Enemy e = engine.getFellowship().getActive().get(Integer.parseInt(command[1]));
 					if(e instanceof Human) {
 						Human h = (Human) e;
+						Writer.writeText.add("[" + h.getMyId() + ":" + h.getClass().getName() + "]");
+						Writer.writeText.add("lifePower: " + h.getLifePower());
+						Writer.writeText.add("stepTime: " + h.getStepTime());
+						Writer.writeText.add("pause: " + h.getPause());
+						Writer.writeText.add("position: (" + h.getRoad().getPos().getX() + "," + h.getRoad().getPos().getY() + ")");
+						Writer.writeText.add("isActive: " + h.isActive());
+						Writer.writeText.add("isDuplicated: " + h.isDuplicated());
 						System.out.println("[" + h.getMyId() + ":" + h.getClass().getName() + "]");
 						System.out.println("lifePower: " + h.getLifePower());
 						System.out.println("stepTime: " + h.getStepTime());
@@ -140,6 +160,13 @@ public class Main implements Serializable {
 					}
 					else if(e instanceof Hobbit) {
 						Hobbit h = (Hobbit) e;
+						Writer.writeText.add("[" + h.getMyId() + ":" + h.getClass().getName() + "]");
+						Writer.writeText.add("lifePower: " + h.getLifePower());
+						Writer.writeText.add("stepTime: " + h.getStepTime());
+						Writer.writeText.add("pause: " + h.getPause());
+						Writer.writeText.add("position: (" + h.getRoad().getPos().getX() + "," + h.getRoad().getPos().getY() + ")");
+						Writer.writeText.add("isActive: " + h.isActive());
+						Writer.writeText.add("isDuplicated: " + h.isDuplicated());
 						System.out.println("[" + h.getMyId() + ":" + h.getClass().getName() + "]");
 						System.out.println("lifePower: " + h.getLifePower());
 						System.out.println("stepTime: " + h.getStepTime());
@@ -150,6 +177,13 @@ public class Main implements Serializable {
 					}
 					else if(e instanceof Dwarf) {
 						Dwarf d = (Dwarf) e;
+						Writer.writeText.add("[" + d.getMyId() + ":" + d.getClass().getName() + "]");
+						Writer.writeText.add("lifePower: " + d.getLifePower());
+						Writer.writeText.add("stepTime: " + d.getStepTime());
+						Writer.writeText.add("pause: " + d.getPause());
+						Writer.writeText.add("position: (" + d.getRoad().getPos().getX() + "," + d.getRoad().getPos().getY() + ")");
+						Writer.writeText.add("isActive: " + d.isActive());
+						Writer.writeText.add("isDuplicated: " + d.isDuplicated());
 						System.out.println("[" + d.getMyId() + ":" + d.getClass().getName() + "]");
 						System.out.println("lifePower: " + d.getLifePower());
 						System.out.println("stepTime: " + d.getStepTime());
@@ -160,6 +194,13 @@ public class Main implements Serializable {
 					}
 					else if(e instanceof Elf) {
 						Elf elf = (Elf) e;
+						Writer.writeText.add("[" + elf.getMyId() + ":" + elf.getClass().getName() + "]");
+						Writer.writeText.add("lifePower: " + elf.getLifePower());
+						Writer.writeText.add("stepTime: " + elf.getStepTime());
+						Writer.writeText.add("pause: " + elf.getPause());
+						Writer.writeText.add("position: (" + elf.getRoad().getPos().getX() + "," + elf.getRoad().getPos().getY() + ")");
+						Writer.writeText.add("isActive: " + elf.isActive());
+						Writer.writeText.add("isDuplicated: " + elf.isDuplicated());
 						System.out.println("[" + elf.getMyId() + ":" + elf.getClass().getName() + "]");
 						System.out.println("lifePower: " + elf.getLifePower());
 						System.out.println("stepTime: " + elf.getStepTime());
@@ -171,6 +212,8 @@ public class Main implements Serializable {
 				}
 				else if(command[0].equals("getPlayerInfo")) {
 					Player p = engine.getPlayer();
+					Writer.writeText.add("[" + p.getClass().getName() + "]");
+					Writer.writeText.add("magicPower: " + p.getMagicPower());
 					System.out.println("[" + p.getClass().getName() + "]");
 					System.out.println("magicPower: " + p.getMagicPower());
 				}
@@ -185,12 +228,6 @@ public class Main implements Serializable {
 					for(int i = 0; i < t.size(); i++) {
 						t.get(i).fogOff();
 					}
-				}
-				else if(command[0].equals("randomOn")) {
-					//...
-				}
-				else if(command[0].equals("randomOff")) {
-					//...
 				}
 				else if(command[0].equals("loadMap")) {
 					FileReader fr = new FileReader(command[1].toString());
@@ -286,9 +323,6 @@ public class Main implements Serializable {
 					}
 					br.close();	
 				}
-				else if(command[0].equals("getEntityInfo")) {
-					//...
-				}
 				else if(command[0].equals("exit")) {
 					writeOutputLanguage("output" + outputNumber + ".txt");
 					System.exit(0);
@@ -308,8 +342,8 @@ public class Main implements Serializable {
 		if(outputNumber != "") {
 			FileWriter fileWriter = new FileWriter(filename);
 			BufferedWriter writer = new BufferedWriter(fileWriter);
-			for(int i = 0; i < writeText.size(); i++) {
-				writer.write(writeText.get(i));
+			for(int i = 0; i < Writer.writeText.size(); i++) {
+				writer.write(Writer.writeText.get(i) + System.getProperty( "line.separator"));
 			}
 			writer.close();
 		}

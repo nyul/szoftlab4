@@ -88,7 +88,6 @@ public class Engine extends Thread{
 		// ha nincs mar se passziv, se aktiv ellenseg, akkor gyozelem
 		if(fellowship.getNumber() == 0) {
 			victory();
-			System.exit(0);
 		}
 		// van-e a hegyen ellenseg, ha igen akkor vereseg
 		player.getArea().isOnMountain(this);
@@ -109,6 +108,7 @@ public class Engine extends Thread{
 		player.getArea().getRoad().clear();
 		player.getArea().getSource().clear();
 		player.getArea().getTower().clear();
+		Writer.writeText.add("Defeat! :(");
 		System.out.println("Defeat! :(");
 	}
 	/**
@@ -122,6 +122,7 @@ public class Engine extends Thread{
 		player.getArea().getRoad().clear();
 		player.getArea().getSource().clear();
 		player.getArea().getTower().clear();
+		Writer.writeText.add("Victory! :)");
 		System.out.println("Victory! :)");
 	}
 }
