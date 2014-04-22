@@ -1,6 +1,6 @@
 loadMap map04.txt
-getPlayerInfo 1
+getPlayerInfo 0
 buildTower 1 1
-getTowerInfo 1
-getPlayerInfo 1
+getTowerInfo 0
+getPlayerInfo 0
 exit
