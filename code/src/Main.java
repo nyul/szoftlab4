@@ -51,7 +51,7 @@ public class Main implements Serializable {
 							Obstacle o = engine.getPlayer().getArea().getRoad().get(i).buildObstacle(engine.getPlayer());
 							//engine.getPlayer().getArea().getGeometry().getTiles().get(Integer.parseInt(command[1])).get(Integer.parseInt(command[2])).buildObstacle(engine.getPlayer());
 							engine.getPlayer().getArea().addObstacle(o);
-							System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on the Road(Position(" + o.getPos().getX() + "," + o.getPos().getY() + ")");
+							System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on Road(Position(" + o.getPos().getX() + "," + o.getPos().getY() + ")");
 						}
 					}				
 				}
@@ -63,13 +63,13 @@ public class Main implements Serializable {
 					}
 					bufferRead = new BufferedReader(new InputStreamReader(System.in));
 				    s = bufferRead.readLine();
-					t.upgrade(engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1])).getMagicRock().get(Integer.parseInt(command[2])));
-					System.out.println("[1:Player]" + " has been upgrade [" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
+					t.upgrade(engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1])).getMagicRock().get(Integer.parseInt(s)));
+					System.out.println("[1:Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 				}
 				else if(command[0].equals("upgradeObstacle")) {
 					Obstacle o = engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1]));
 					o.upgrade(engine.getPlayer().getArea().getObstacle().get(Integer.parseInt(command[1])).getMagicRock().get(Integer.parseInt(command[2])));
-					System.out.println("[1:Player]" + " has been upgrade [" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
+					System.out.println("[1:Player]" + " has upgraded [" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "]");
 				}
 				else if(command[0].equals("step")) {
 					System.out.println("[Step:" + Integer.parseInt(command[1]) + "]");

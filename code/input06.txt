@@ -1,10 +1,13 @@
 loadMap map06.txt
-getEnemyInfo 1
-getTowerInfo 1
-getPlayerInfo 1
-upgradeTower 1 1
+getEnemyInfo 0
+getTowerInfo 0
 step 1
-getEnemyInfo 1
-getTowerInfo 1
-getPlayerInfo 1
+getEnemyInfo 0
+getTowerInfo 0
+getPlayerInfo 0
+upgradeTower 0
+getTowerInfo 0
+getPlayerInfo 0
+step 1
+getEnemyInfo 0
 exit
