@@ -1,18 +1,7 @@
 loadMap map05.txt
 getEnemyInfo 0
-getEnemyInfo 1
-getEnemyInfo 2
 getTowerInfo 0
 step 1
 getEnemyInfo 0
-getEnemyInfo 1
-getEnemyInfo 2
-step 1
-getEnemyInfo 0
-getEnemyInfo 1
-getEnemyInfo 2
-step 1
-getEnemyInfo 0
-getEnemyInfo 1
-getEnemyInfo 2
+getTowerInfo 0
 exit
