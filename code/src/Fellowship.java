@@ -117,7 +117,7 @@ public class Fellowship {
 		
 		for(int i=0; i < this.active.size(); i++){
 			if(this.active.get(i).equals(enemy)){
-				System.out.println("[" + enemy.getId() + ":" + enemy.getClass().getName() + "] has been deleted");
+				System.out.println("[" + active.get(i).getId() + ":" + enemy.getClass().getName() + "] has been deleted");
 				this.active.remove(i);				
 				this.number--;
 			}
@@ -149,7 +149,6 @@ public class Fellowship {
 	public void moveAllActiveEnemy(){
 		for(int i = 0; i < active.size(); i++) {
 			active.get(i).move();
-			System.out.println("["+active.get(i).getId() + ":" + active.get(i).getClass() + "] has moved to Road(" + active.get(i).getRoad().getPos().getX() + "," +active.get(i).getRoad().getPos().getY() + ")" );
 		}
 	}
 	
