@@ -82,17 +82,27 @@ public class Fellowship {
 	 * @param number Ez a szam adja meg, hogy a kovetkezo hullam hany Enemy-bol fog allni
 	 */
 	public void startWave(int num, ArrayList<Source> source) {
-		// ha nincs annyi passziv ellenseg, amennyit palyara akarunk helyezni, akkor csak annyit rakunk le, amennyi rendelkezesre all
+		/**
+		 *  ha nincs annyi passziv ellenseg, amennyit palyara akarunk helyezni, akkor csak annyit rakunk le, amennyi rendelkezesre all
+		 */
 		int j = this.passive.size() > num ? num : this.passive.size();
 		for(int i = 0; i < j ; i++){
-			// eloszor is hozzadjuk az active listahoz a passive lista legelso ellenseget
+			/**
+			 *  eloszor is hozzadjuk az active listahoz a passive lista legelso ellenseget
+			 */
 			this.active.add(this.passive.get(0));
-			// A mar aktiv ellenseg pause-at beallitjuk ugy, hogy az elso berakott-nak 0, a masodiknak 1 es igy tovabb legyen a pause
-			// ertekuk. Ez azert lesz kójo, mert igy fokozatosan egymas utan lepnek majd palyara.
+			/**
+			 *  A mar aktiv ellenseg pause-at beallitjuk ugy, hogy az elso berakott-nak 0, a masodiknak 1 es igy tovabb legyen a pause
+			 *  ertekuk. Ez azert lesz kójo, mert igy fokozatosan egymas utan lepnek majd palyara.
+			 */
 			this.active.get(this.active.size()-1).setPause(i);
-			// rahelyezzuk valamelyik forrasra az aktiv ellenseget
+			/**
+			 * rahelyezzuk valamelyik forrasra az aktiv ellenseget
+			 */
 			this.active.get(this.active.size()-1).goToSource(source);
-			// toroljuk active listahoz hozzaadott ellenseget a passive listabol
+			/**
+			 *  toroljuk active listahoz hozzaadott ellenseget a passive listabol
+			 */
 			this.passive.remove(0);
 		}
 	}
@@ -152,28 +162,36 @@ public class Fellowship {
 	 * @param enemy Sebzes soran kettehasadt ellenseg referenciaja
 	 */
 	public void addToActiveEnemyList(Enemy enemy) {
-		// ha a kettehasitott ellenseg ember volt, akkor egy uj embert hozunk letre
+		/**
+		 *  ha a kettehasitott ellenseg ember volt, akkor egy uj embert hozunk letre
+		 */
 		if(enemy instanceof Human) {
 			Human hu = new Human(enemy.getRoad());
 			hu.setLifePower(enemy.getLifePower());
 			this.active.add(hu);
 			this.number++;
 		}
-		// ha a kettehasitott ellenseg hobbit volt, akkor egy uj hobbitot hozunk letre
+		/**
+		 *  ha a kettehasitott ellenseg hobbit volt, akkor egy uj hobbitot hozunk letre
+		 */
 		else if(enemy instanceof Hobbit) {
 			Hobbit ho = new Hobbit(enemy.getRoad());
 			ho.setLifePower(enemy.getLifePower());
 			this.active.add(ho);
 			this.number++;
 		}
-		// ha a kettehasitott ellenseg torp volt, akkor egy uj torpot hozunk letre
+		/**
+		 *  ha a kettehasitott ellenseg torp volt, akkor egy uj torpot hozunk letre
+		 */
 		else if(enemy instanceof Dwarf) {
 			Dwarf d = new Dwarf(enemy.getRoad());
 			d.setLifePower(enemy.getLifePower());
 			this.active.add(d);
 			this.number++;			
 		}
-		// ha a kettehasitott ellenseg tunde volt, akkor egy uj tundet hozunk letre
+		/**
+		 *  ha a kettehasitott ellenseg tunde volt, akkor egy uj tundet hozunk letre
+		 */
 		else if(enemy instanceof Elf) {
 			Elf elf = new Elf(enemy.getRoad());
 			elf.setLifePower(enemy.getLifePower());

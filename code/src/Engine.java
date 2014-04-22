@@ -6,6 +6,7 @@ public class Engine extends Thread{
 	/**
 	 * player - egy jatekosra mutato referencia
 	 * fellowship - egy szovetsegre mutato referencia
+	 * counter - lovesvizsgalat gyakorisagahoz szukseges
 	 */
 	private Player player;
 	private Fellowship fellowship;
@@ -42,22 +43,34 @@ public class Engine extends Thread{
 		if(counter >= 10) {
 			Enemy enemy = null;
 			for(int i = 0; i < player.getArea().getTower().size(); i++) {
-				// attack metodus visszadja azt az ellenseget, akit meglott, de ha nem lott senkire, akkor egy null-al ter vissza
+				/**
+				 *  attack metodus visszadja azt az ellenseget, akit meglott, de ha nem lott senkire, akkor egy null-al ter vissza
+				 */
 				enemy = player.getArea().getTower().get(i).attack(fellowship.getActive(), player.getArea().getGeometry());
-				// megvizsgaljuk, hogy a megsebzett ellensegnek, aki biztosan aktiv volt sebzes elott, passziv lett-e
-				// ez csak akkor kovetkezhet be, ha a sebzes soran az ellenseg eletereje kisebb egyenlo lesz, mint 0
 				if(enemy != null) {
+					/**
+					 *  megvizsgaljuk, hogy a megsebzett ellensegnek, aki biztosan aktiv volt sebzes elott, passziv lett-e
+					 *  ez csak akkor kovetkezhet be, ha a sebzes soran az ellenseg eletereje kisebb egyenlo lesz, mint 0
+					 */
 					if(enemy.isActive() == false) {
-						// ellenseget meg kell olnunk, azaz torolnunk kell az aktiv listabol
+						/**
+						 *  ellenseget meg kell olnunk, azaz torolnunk kell az aktiv listabol
+						 */
 						fellowship.killEnemy(enemy);
 						this.player.setMagicPower(this.player.getMagicPower()+10);
 					}
-					// ellenseg sebzese soran kette lett-e hasitva, true ha igen
-					// fontos, hogy az ellenseget csak akkor lehet kettehasitani, ha aktiv, azaz sebzes utan maradt eleg eletereje
+					/**
+					 *  ellenseg sebzese soran kette lett-e hasitva, true ha igen
+					 *  fontos, hogy az ellenseget csak akkor lehet kettehasitani, ha aktiv, azaz sebzes utan maradt eleg eletereje
+					 */
 					if(enemy.isDuplicated() == true && enemy.isActive == true) {
-						// klonozni kell a meglott ellenseget
+						/**
+						 *  klonozni kell a meglott ellenseget
+						 */
 						fellowship.addToActiveEnemyList(enemy);
-						// isDuplicate valtozot vissza kell allitani false-ra, kulonben minden lepesben klonozas tortenne
+						/**
+						 *  isDuplicate valtozot vissza kell allitani false-ra, kulonben minden lepesben klonozas tortenne
+						 */
 						enemy.setDuplicated(false);
 					}
 				}
@@ -86,11 +99,15 @@ public class Engine extends Thread{
 	public void run() {
 		stepHandler();
 		attackHandler();
-		// ha nincs mar se passziv, se aktiv ellenseg, akkor gyozelem
+		/**
+		 *  ha nincs mar se passziv, se aktiv ellenseg, akkor gyozelem
+		 */
 		if(fellowship.getNumber() == 0) {
 			victory();
 		}
-		// van-e a hegyen ellenseg, ha igen akkor vereseg
+		/**
+		 *  van-e a hegyen ellenseg, ha igen akkor vereseg
+		 */
 		player.getArea().isOnMountain(this);
 		try {
 			Thread.sleep(100);

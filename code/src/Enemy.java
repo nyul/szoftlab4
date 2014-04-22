@@ -6,6 +6,8 @@ import java.util.ArrayList;
  */
 public abstract class Enemy {
 	/**
+	 * id - osztalyszintu valtozo, amely 1-el novelodik minden egyes enemy letrehozaskor
+	 * myId - ellenseg azonositoja
 	 * lifePower - ellenseg eleterejet tarolja
 	 * stepTime - ellenseg haladasanak sebesseget tarolja
 	 * pause - tarolja, hogy egy ellenseg hany lepesbol marad ki
@@ -13,6 +15,8 @@ public abstract class Enemy {
 	 * isActive - ellenseg aktivitasat vizsgalja, ha egy ellenseg passziv, akkor addig nem helyezheto a palyara, csak az aktiv
 	 * 			  ellensegeket lehet leptetni
 	 * isDuplicated - alapesetben false az erteke, true abban az esetben, ha az ellenseget a torony sebzese soran kettehasitotta
+	 * counter - 1-tol stepTime-ig novelodik az erteke, ha eleri a stepTime erteket, akkor lep az ellenseg
+	 * random - random generator ki/be kapcsolasahoz szukseges
 	 */
 	private static int id = 0;
 	private int myId;
@@ -104,6 +108,9 @@ public abstract class Enemy {
 	 * Az ellenseget lepteteset kezdemenyezi, ugy hogy meghivja annak a road-nak a requestDestination metodusat, amelyiken eppen all. 
 	 */
 	public void move() {
+		/**
+		 *  counter minden tick-ben novelodik 1-el, ha eleri a stepTime-t, akkor leptetjuk az ellenseget
+		 */
 		if(counter >= stepTime) {
 			if(pause == 0) {
 				road.requestDestination(this);
@@ -129,8 +136,12 @@ public abstract class Enemy {
 	 * Ellenseg forras poticiora helyezese
 	 * @param source - tobb forras kozul valamelyiket veletlenszeruen kisorsoljuk es erre helyezzuk ra az ellenseget
 	 */
-	public void goToSource(ArrayList<Source> source){
-		int randValue = random == true ? (int)(Math.random()*source.size()) : 0;   // forrasok szamatol fuggoen visszaad egy szamot, [0;forrasok szama-1]
+	public void goToSource(ArrayList<Source> source) {
+		/**
+		 * forrasok szamatol fuggoen visszaad egy szamot, ha a randomgenerator be van kapcsolva [0;forrasok szama-1]
+		 * ha randomgenerator ki van kapcsolva, azaz random = false, akkor mindig a forras lista 0-dik elemere teszzük ra az ellenseget
+		 */
+		int randValue = random == true ? (int)(Math.random()*source.size()) : 0;
 		source.get(randValue).requestDestination(this);
 	}
 
@@ -168,7 +179,9 @@ public abstract class Enemy {
 	 * @param nextroad A kovetkezo ut-csempe, ahova lepnie kell 
 	 */
 	public void setRoad(Road nextRoad) {
-		// ha a kovetkezo ut-csempe egy akadaly-csempe, akkor az ellenseget le kell lassitani, amit a slowMe metodus hajt vegre
+		/**
+		 *  ha a kovetkezo ut-csempe egy akadaly-csempe, akkor az ellenseget le kell lassitani, amit a slowMe metodus hajt vegre
+		 */
 		if(nextRoad instanceof Obstacle) {
 			Obstacle o = (Obstacle) nextRoad;
 			o.slowMe(this);
