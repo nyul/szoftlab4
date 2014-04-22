@@ -33,8 +33,8 @@ public class Main implements Serializable {
 
 	public void loadInputLanguage() throws IOException {
 
-		FileReader fileReader = new FileReader("input10.txt");
 
+		FileReader fileReader = new FileReader("input10.txt");
 		BufferedReader reader = new BufferedReader(fileReader);
 		String line = reader.readLine();
 		while(line!=null) {
@@ -192,7 +192,7 @@ public class Main implements Serializable {
 						for(int i = 0; i < engine.getPlayer().getArea().getRoad().size(); i++) {
 							if(engine.getPlayer().getArea().getRoad().get(i).getPos().getX() == Integer.parseInt(word[1]) && engine.getPlayer().getArea().getRoad().get(i).getPos().getY() == Integer.parseInt(word[2])) {
 								Hobbit h = new Hobbit(engine.getPlayer().getArea().getRoad().get(i));
-								if(word[3] != null){
+								if( word.length > 3 ){
 									h.setLifePower(Integer.parseInt(word[3]));
 								}
 								engine.getFellowship().getActive().add(h);
