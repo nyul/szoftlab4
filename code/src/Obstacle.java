@@ -22,6 +22,9 @@ public class Obstacle extends Road implements Defense{
 	
 	
 	
+	/**
+	 * @return az akadaly ID-jet adja vissza
+	 */
 	public int getMyId() {
 		return myId;
 	}
@@ -75,9 +78,21 @@ public class Obstacle extends Road implements Defense{
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param player a player ezen keresztul szol
+	 * hogy upgradelni akar valamit, es atadja magat
+	 */
+	
 	public void wantToUpgrade(Player player){
 		player.chooseUpgrade(magicRock, this);	
 	}
+	
+	/**
+	 * fejlesztest vegzo fuggveny 
+	 * @param m parameterkent a varazskovet kapja meg
+	 * amivel a jatekos fejleszt
+	 */
 	
 	public void upgrade(MagicRock magicRock){
 		if(magicRock.getType() == 6) {
@@ -85,6 +100,10 @@ public class Obstacle extends Road implements Defense{
 		}
 	}
 
+	/**
+	 * @param e
+	 * lassitast vegez az e enemyn
+	 */
 	public void slowMe(Enemy e){
 		e.increasePause(this.slowingFactor);
 	}

@@ -226,12 +226,18 @@ public class Tower extends Tile implements Defense{
 		}
 	}
 	
+	/**
+	 * A kod bekapcsolasa a toronyra
+	 */
 	public void fogOn() {
 		this.fogRange = this.range;
 		this.range = this.range - 1;
 		System.out.println("[Fog has been set on]");
 	}
 	
+	/**
+	 * Kod kikapcsolasa a tornyon
+	 */
 	public void fogOff() {
 		this.range = this.fogRange;
 		System.out.println("[Fog has been set off]");
