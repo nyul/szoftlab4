@@ -37,6 +37,7 @@ public class Player {
 
 	/**
 	 * Egy listaban megkapja a jatekos, hogy egy toronyra vagy akadalyra milyen varazskoveket lehet rakni.
+	 * Ezek kozul valaszthat
 	 * @param magicRockList
 	 * @param defense
 	 */
@@ -80,7 +81,7 @@ public class Player {
 	}
 	
 	/**
-	 * Jatekos eleterejet csokkenti.
+	 * Jatekos varazserejet csokkenti.
 	 * @param price: megadja, hogy mennyivel csokkenti
 	 */
 	public void reduceMagicPower(int price) {
