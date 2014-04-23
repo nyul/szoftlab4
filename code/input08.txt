@@ -1,5 +1,5 @@
 loadMap map08.txt
-getTowerInfo 1
+getTowerInfo 0
 fogOn
-getTowerInfo 1
+getTowerInfo 0
 exit

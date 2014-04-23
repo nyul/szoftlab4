@@ -227,10 +227,12 @@ public class Tower extends Tile implements Defense{
 	public void fogOn() {
 		this.fogRange = this.range;
 		this.range = this.range - 1;
+		System.out.println("[Fog has been set on]");
 	}
 	
 	public void fogOff() {
 		this.range = this.fogRange;
+		System.out.println("[Fog has been set off]");
 	}
 }
 
