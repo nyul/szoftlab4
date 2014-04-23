@@ -1,1 +1,1 @@
-[0:Tower] has been built on the Tile(1,1)
+[0:Tower] has been built on Tile(1,1)
