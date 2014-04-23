@@ -58,6 +58,7 @@ public class Engine extends Thread{
 				// isDuplicate valtozot vissza kell allitani false-ra, kulonben minden lepesben klonozas tortenne
 				enemy.setDuplicated(false);
 			}
+			counter = 1;
 		}
 		} else {
 			counter = counter + 1;
