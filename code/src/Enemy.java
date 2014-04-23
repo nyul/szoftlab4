@@ -148,6 +148,7 @@ public abstract class Enemy {
 	 */
 	public int hit(Tower t){
 		this.lifePowerReduce(t);
+		System.out.println("[" + t.getMyId() + ":" + t.getClass().getName() + "] has shot [" + this.getMyId() + ":" + this.getClass().getName() + "]");
 		return this.lifePower;
 	}
 	

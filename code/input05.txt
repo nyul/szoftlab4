@@ -1,0 +1,6 @@
+loadMap map05.txt
+getEnemyInfo 0
+getTowerInfo 0
+step 1
+getEnemyInfo 0
+exit
