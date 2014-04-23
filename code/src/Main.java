@@ -99,7 +99,7 @@ public class Main implements Serializable {
 					Enemy e = engine.getFellowship().getActiveEnemies().get(Integer.parseInt(command[1]));
 					if(e instanceof Human) {
 						Human h = (Human) e;
-						System.out.println("[" + Integer.parseInt(command[1]) + ":" + h.getClass().getName() + "]");
+						System.out.println("[" + h.getMyId() + ":" + h.getClass().getName() + "]");
 						System.out.println("lifePower: " + h.getLifePower());
 						System.out.println("stepTime: " + h.getStepTime());
 						System.out.println("pause: " + h.getPause());
@@ -109,7 +109,7 @@ public class Main implements Serializable {
 					}
 					else if(e instanceof Hobbit) {
 						Hobbit h = (Hobbit) e;
-						System.out.println("[" + Integer.parseInt(command[1]) + ":" + h.getClass().getName() + "]");
+						System.out.println("[" + h.getMyId() + ":" + h.getClass().getName() + "]");
 						System.out.println("lifePower: " + h.getLifePower());
 						System.out.println("stepTime: " + h.getStepTime());
 						System.out.println("pause: " + h.getPause());
@@ -119,7 +119,7 @@ public class Main implements Serializable {
 					}
 					else if(e instanceof Dwarf) {
 						Dwarf d = (Dwarf) e;
-						System.out.println("[" + Integer.parseInt(command[1]) + ":" + d.getClass().getName() + "]");
+						System.out.println("[" + d.getMyId() + ":" + d.getClass().getName() + "]");
 						System.out.println("lifePower: " + d.getLifePower());
 						System.out.println("stepTime: " + d.getStepTime());
 						System.out.println("pause: " + d.getPause());
@@ -129,7 +129,7 @@ public class Main implements Serializable {
 					}
 					else if(e instanceof Elf) {
 						Elf elf = (Elf) e;
-						System.out.println("[" + Integer.parseInt(command[1]) + ":" + elf.getClass().getName() + "]");
+						System.out.println("[" + elf.getMyId() + ":" + elf.getClass().getName() + "]");
 						System.out.println("lifePower: " + elf.getLifePower());
 						System.out.println("stepTime: " + elf.getStepTime());
 						System.out.println("pause: " + elf.getPause());
