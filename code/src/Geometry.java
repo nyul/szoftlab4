@@ -17,12 +17,6 @@ public class Geometry {
 		return tiles;
 	}
 
-	
-	
-	public void addTile(Tile t) {
-		//.. adott csempe törlése és az új hozzáadása
-	}
-
 	/**
 	 * Megadja, hogy a parameterul kapott ellenseg a torony hatotavolsagan belul
 	 * van-e.
