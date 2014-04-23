@@ -1,13 +1,13 @@
 loadMap map03.txt
-getEnemyInfo 1
-getObstacleInfo 1
+getEnemyInfo 0
+getObstacleInfo 0
 step 1
-getEnemyInfo 1
-getObstacleInfo 1
+getEnemyInfo 0
+getObstacleInfo 0
 step 1
-getEnemyInfo 1
-getObstacleInfo 1
+getEnemyInfo 0
+getObstacleInfo 0
 step 1
-getEnemyInfo 1
-getObstacleInfo 1
+getEnemyInfo 0
+getObstacleInfo 0
 exit
