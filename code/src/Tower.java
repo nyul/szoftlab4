@@ -1,5 +1,12 @@
 import java.util.ArrayList;
 
+/**
+ * A jatekos altal elhelyezhet tornyot reprezentalo objektum. Tarolja a lovesre
+vonatkozo parametereket es a varazsko hasznalata eseten noveli is a
+hatekonysagukat. Tarolja meg a rahelyezheto varazskovek atkualis szamat. Felelos
+tovabba a kod le- es felszallasaert.
+ *
+ */
 public class Tower extends Tile implements Defense{
 	
 	public static int id = 0;
