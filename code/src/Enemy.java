@@ -14,7 +14,7 @@ public abstract class Enemy {
 	 * 			  ellensegeket lehet leptetni
 	 * isDuplicated - alapesetben false az erteke, true abban az esetben, ha az ellenseget a torony sebzese soran kettehasitotta
 	 */
-	private static int id = 1;
+	private static int id = 0;
 	private int myId;
 	protected int lifePower;
 	protected int stepTime;
