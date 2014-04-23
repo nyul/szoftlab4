@@ -25,7 +25,7 @@ public class Tower extends Tile implements Defense{
 		myId=id;
 		id++;
 		shootPeriod = 10;
-		range = 10;
+		range = 3;
 		fogRange = range;
 		damagePowerDwarf = 10;
 		damagePowerElf = 10;
@@ -168,8 +168,10 @@ public class Tower extends Tile implements Defense{
 	 */
 	
 	public Enemy attack(ArrayList<Enemy> enemies, Geometry geometry) {
+		boolean isRange = false;
 		for(int i = 0; i < enemies.size(); i++) {
 			if(geometry.isInRange(enemies.get(i),this)) {
+				isRange = true;
 				if(enemies.get(i).hit(this) <= 0) {
 					enemies.get(i).setActivity(false);
 				}
@@ -180,10 +182,10 @@ public class Tower extends Tile implements Defense{
 				}
 				return enemies.get(i);
 			}
-			else {
-				System.out.println("Nincs hatotavon beluli ellenseg.");
-			}
 		}	
+		if(isRange == false) {
+			System.out.println("Nincs hatotavon beluli ellenseg.");
+		}
 		return null;
 	}
 	

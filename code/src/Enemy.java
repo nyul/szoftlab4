@@ -146,7 +146,7 @@ public abstract class Enemy {
 	 * @param t - a torony ami sebzi az enemyt
 	 * @return - visszaadja a sebzes utani lifePower erteket
 	 */
-	public int hit(Tower t){
+	public int hit(Tower t) {
 		this.lifePowerReduce(t);
 		System.out.println("[" + t.getMyId() + ":" + t.getClass().getName() + "] has shot [" + this.getMyId() + ":" + this.getClass().getName() + "]");
 		return this.lifePower;

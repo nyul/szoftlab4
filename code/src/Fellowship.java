@@ -122,16 +122,6 @@ public class Fellowship {
 				this.number--;
 			}
 		}
-		
-		/*
-		for(Enemy e: this.active){
-			if (e.equals(enemy)){
-				this.active.remove(e);
-				// 1-el csokkent az ellensegek szama
-				this.number--;
-			}
-		}
-		*/
 	}
 	
 	/**
