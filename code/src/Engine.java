@@ -50,6 +50,7 @@ public class Engine extends Thread{
 					if(enemy.isActive() == false) {
 						// ellenseget meg kell olnunk, azaz torolnunk kell az aktiv listabol
 						fellowship.killEnemy(enemy);
+						this.player.setMagicPower(this.player.getMagicPower()+10);
 					}
 					// ellenseg sebzese soran kette lett-e hasitva, true ha igen
 					// fontos, hogy az ellenseget csak akkor lehet kettehasitani, ha aktiv, azaz sebzes utan maradt eleg eletereje
