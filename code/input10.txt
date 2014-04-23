@@ -1,5 +1,5 @@
 loadMap map10.txt 
-getPlayerInfo 1 
+getPlayerInfo 0 
 buildObstacle 0 0
-getObstacleInfo 1 
-getPlayerInfo 1
+getObstacleInfo 0 
+getPlayerInfo 0

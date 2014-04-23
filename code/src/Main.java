@@ -51,7 +51,7 @@ public class Main implements Serializable {
 							Obstacle o = engine.getPlayer().getArea().getRoad().get(i).buildObstacle(engine.getPlayer());
 							//engine.getPlayer().getArea().getGeometry().getTiles().get(Integer.parseInt(command[1])).get(Integer.parseInt(command[2])).buildObstacle(engine.getPlayer());
 							engine.getPlayer().getArea().addObstacle(o);
-							System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on Road(Position(" + o.getPos().getX() + "," + o.getPos().getY() + ")");
+							System.out.println("[" + Integer.parseInt(command[1]) + ":" + o.getClass().getName() + "] has been built on Road(" + o.getPos().getX() + "," + o.getPos().getY() + ")");
 						}
 					}				
 				}
