@@ -380,7 +380,7 @@ public class Main implements Serializable {
 										h.setLifePower(Integer.parseInt(word[3]));
 									}
 									engine.getFellowship().getActive().add(h);
-									engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
+									engine.getFellowship().increaseNumber(1);
 								}
 							}
 						}
@@ -395,7 +395,7 @@ public class Main implements Serializable {
 										h.setLifePower(Integer.parseInt(word[3]));
 									}
 									engine.getFellowship().getActive().add(h);
-									engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
+									engine.getFellowship().increaseNumber(1);
 								}
 							}
 						}
@@ -410,7 +410,7 @@ public class Main implements Serializable {
 										d.setLifePower(Integer.parseInt(word[3]));
 									}
 									engine.getFellowship().getActive().add(d);
-									engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
+									engine.getFellowship().increaseNumber(1);
 								}
 							}
 						}
@@ -425,7 +425,7 @@ public class Main implements Serializable {
 										elf.setLifePower(Integer.parseInt(word[3]));
 									}
 									engine.getFellowship().getActive().add(elf);
-									engine.getFellowship().setNumber(engine.getFellowship().getNumber()+1);
+									engine.getFellowship().increaseNumber(1);
 								}
 							}
 						}	

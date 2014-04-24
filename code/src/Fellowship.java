@@ -31,20 +31,48 @@ public class Fellowship {
 		return active;
 	}
 
-	public void setActive(ArrayList<Enemy> active) {
-		this.active = active;
-	}
-
 	public ArrayList<Enemy> getPassive() {
 		return passive;
 	}
-
-	public void setPassive(ArrayList<Enemy> passive) {
-		this.passive = passive;
+	
+	/**
+	 * Vissaadja a fennmarado ellensegek szamat (aktiv + passziv)
+	 * @return Ellensegek szama (aki meghalt azt nem szamoljuk)
+	 */
+	public int getNumber(){
+		return number;
 	}
 
-	public void setNumber(int number) {
-		this.number = number;
+	public void reduceNumber(int number) {
+		this.number -= number;
+	}
+	
+	public void increaseNumber(int number) {
+		this.number += number;
+	}
+	
+	public void addActive(Enemy enemy) {
+		this.active.add(enemy);
+		increaseNumber(1);
+	}
+	
+	public void removeActive(int index) {
+		if(this.active.size() > 0) {
+			this.active.remove(index);
+			reduceNumber(1);
+		}
+	}
+	
+	public void addPassive(Enemy enemy) {
+		this.passive.add(enemy);
+		increaseNumber(1);
+	}
+	
+	public void removePassive(int index) {
+		if(this.passive.size() > 0) {
+			this.passive.remove(index);
+			reduceNumber(1);
+		}
 	}
 
 	/**
@@ -71,7 +99,7 @@ public class Fellowship {
 				Elf elf = new Elf();
 				passive.add(elf);
 			}
-			number++;
+			increaseNumber(1);
 		}
 	}
 	
@@ -90,7 +118,7 @@ public class Fellowship {
 			/**
 			 *  eloszor is hozzadjuk az active listahoz a passive lista legelso ellenseget
 			 */
-			this.active.add(this.passive.get(0));
+			this.addActive(this.passive.get(0));
 			/**
 			 *  A mar aktiv ellenseg pause-at beallitjuk ugy, hogy az elso berakott-nak 0, a masodiknak 1 es igy tovabb legyen a pause
 			 *  ertekuk. Ez azert lesz kójo, mert igy fokozatosan egymas utan lepnek majd palyara.
@@ -103,7 +131,7 @@ public class Fellowship {
 			/**
 			 *  toroljuk active listahoz hozzaadott ellenseget a passive listabol
 			 */
-			this.passive.remove(0);
+			this.removePassive(0);
 		}
 	}
 	
@@ -132,8 +160,7 @@ public class Fellowship {
 		for(int i=0; i < this.active.size(); i++){
 			if(this.active.get(i).equals(enemy)) {
 				Writer.writeText.add("[" + active.get(i).getMyId() + ":" + enemy.getClass().getName() + "] has been deleted");
-				this.active.remove(i);				
-				this.number--;
+				this.removeActive(i);				
 			}
 		}
 	}
@@ -149,13 +176,6 @@ public class Fellowship {
 	}
 	
 	/**
-	 * Vissaadja a fennmarado ellensegek szamat (aktiv + passziv)
-	 * @return Ellensegek szama (aki meghalt azt nem szamoljuk)
-	 */
-	public int getNumber(){
-		return number;
-	}
-	/**
 	 * Ha sebzes soran ketteszakadt egy ellenfel, akkor letre kell hoznunk a klonjat, azonos eleterovel es ugyanarra az ut-csempere kell
 	 * helyezni, ahol az eredeti is van
 	 * @param enemy Sebzes soran kettehasadt ellenseg referenciaja
@@ -167,8 +187,7 @@ public class Fellowship {
 		if(enemy instanceof Human) {
 			Human hu = new Human(enemy.getRoad());
 			hu.setLifePower(enemy.getLifePower());
-			this.active.add(hu);
-			this.number++;
+			this.addActive(hu);
 		}
 		/**
 		 *  ha a kettehasitott ellenseg hobbit volt, akkor egy uj hobbitot hozunk letre
@@ -176,8 +195,7 @@ public class Fellowship {
 		else if(enemy instanceof Hobbit) {
 			Hobbit ho = new Hobbit(enemy.getRoad());
 			ho.setLifePower(enemy.getLifePower());
-			this.active.add(ho);
-			this.number++;
+			this.addActive(ho);
 		}
 		/**
 		 *  ha a kettehasitott ellenseg torp volt, akkor egy uj torpot hozunk letre
@@ -185,8 +203,7 @@ public class Fellowship {
 		else if(enemy instanceof Dwarf) {
 			Dwarf d = new Dwarf(enemy.getRoad());
 			d.setLifePower(enemy.getLifePower());
-			this.active.add(d);
-			this.number++;			
+			this.addActive(d);			
 		}
 		/**
 		 *  ha a kettehasitott ellenseg tunde volt, akkor egy uj tundet hozunk letre
@@ -194,8 +211,7 @@ public class Fellowship {
 		else if(enemy instanceof Elf) {
 			Elf elf = new Elf(enemy.getRoad());
 			elf.setLifePower(enemy.getLifePower());
-			this.active.add(elf);
-			this.number++;
+			this.addActive(elf);
 		}
 	}
 
