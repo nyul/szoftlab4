@@ -30,10 +30,6 @@ public class Player extends Observable {
 		return observers;
 	}
 
-	public void setObservers(ArrayList<Observer> observers) {
-		this.observers = observers;
-	}
-
 	public int getMagicPower() {
 		return magicPower;
 	}
@@ -44,21 +40,18 @@ public class Player extends Observable {
 
 	/**
 	 * Egy listaban megkapja a jatekos, hogy egy toronyra vagy akadalyra milyen varazskoveket lehet rakni.
-<<<<<<< HEAD
 	 * Ezek kozul valaszthat
 	 * @param magicRockList - az adott Toronyra vagy Akadalyra helyezheto varazskovek listaja, amibol a Player valaszthat
 	 * @param defense - az aktualis Torony vagy Akadaly, amire el szeretnenek helyezni a varazskovet
-=======
 	 * Ezek kozul valaszthat,
 	 * hogy milyen fejlesztest akar vegezni az adott tornyon vagy akadalyon
 	 * @param magicRockList
 	 * @param defense
->>>>>>> ce25e84e39938877fa328312ded29d3d29fe3d33
 	 */
 	public void chooseUpgrade(ArrayList<MagicRock> magicRockList, Defense defense) {
 		System.out.println("Select a number from the list!");
 		for(int i = 0; i < magicRockList.size(); i++) { // kilistazza az aktualis objektumon elerheto varazskoveket
-			System.out.println(i + ": " + MagicRock.getName().get(magicRockList.get(i).getType())); 
+			System.out.println(i + ": " + MagicRock.name.get(magicRockList.get(i).getType())); 
 		}
 		InputStreamReader read = new InputStreamReader(System.in);
 		BufferedReader in = new BufferedReader(read);
@@ -70,8 +63,16 @@ public class Player extends Observable {
 					if(magicPower < magicRockList.get(number).getPrice()) { // ha nincs eleg varazsero
 						System.out.println("You don't have enough magicpower.");
 					} else { // ha van eleg varazsero
-					magicPower = magicPower - magicRockList.get(number).getPrice(); // csokkenti a varazserot
-					defense.upgrade(magicRockList.get(number)); // es elhelyezi a varazskovet a tornyon vagy akadalyon
+						magicPower = magicPower - magicRockList.get(number).getPrice(); // csokkenti a varazserot
+						defense.upgrade(magicRockList.get(number)); // es elhelyezi a varazskovet a tornyon vagy akadalyon
+						if(defense instanceof Tower) {
+							Tower tower = (Tower) defense;
+							tower.increaseMagicRockNumber(1);
+						}
+						else if(defense instanceof Obstacle) {
+							Obstacle obst = (Obstacle) defense;
+							obst.increaseMagicRockNumber(1);
+						}
 					}
 				} else if(number < 0 || number > 6) { // ha helytelen szamot adott meg
 					System.out.println("Wrong number.");
@@ -102,7 +103,11 @@ public class Player extends Observable {
 	 * A letrehozott objektum araval fog csokkenni
 	 */
 	public void reduceMagicPower(int price) {
-		this.magicPower = this.magicPower - price;
+		if(this.magicPower - price < 0) {
+			this.magicPower = 0;
+		} else {
+			this.magicPower = this.magicPower - price;
+		}
 		setChanged();
 		notifyObservers(this, price);
 	}

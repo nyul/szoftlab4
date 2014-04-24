@@ -2,8 +2,8 @@
 magicPower: 100
 [0:Tower] has been built on Tile(1,1)
 [0:Tower]
-range: 3
-fogRange: 3
+range: 2
+fogRange: 2
 shootPeriod: 10
 damagePowerHuman: 10
 damagePowerHobbit: 10

@@ -1,20 +1,23 @@
 
 public class Tile {
-	
+	/**
+	 * pos - csempe pozicioja
+	 * type - csempe tipusa
+	 */
 	protected Position pos;
 	protected int type;
 	
 	public Tile(Position p) {
-		pos = p;
-		type = 0;
+		this.pos = p;
+		this.type = 0;
 	}
 	
 	public Position getPos() {
 		return pos;
 	}
 
-	public void setPos(Position p){
-		pos = p;
+	public void setPos(Position pos){
+		this.pos = pos;
 	};
 
 	public int getType() {
@@ -31,10 +34,10 @@ public class Tile {
 	 * @return
 	 */
 	public Tower buildTower(Player player) {
-		if(player.getMagicPower() > Tower.getPrice()) {   // van-e eleg varazsero
+		if(player.getMagicPower() >= Tower.price) {   // van-e eleg varazsero
 			if(this.type == 0) {   // ures csempe
 				Tower twr = new Tower(pos); 
-				player.reduceMagicPower(Tower.getPrice());
+				player.reduceMagicPower(Tower.price);
 				return twr;
 			} else {
 				Writer.writeText.add("Error: Tower building failed-unbuildable area");
@@ -52,10 +55,10 @@ public class Tile {
 	 * @return
 	 */
 	public Obstacle buildObstacle(Player player) {
-		if(player.getMagicPower() > Obstacle.getPrice()) {   // van eleg varazsero
-			if(this.type == 2) {   // ures csempe
+		if(player.getMagicPower() >= Obstacle.price) {   // van eleg varazsero
+			if(this.type == 2) {   // csak ut-csempere lehet lerakni
 				Obstacle obst = new Obstacle(pos); 
-				player.reduceMagicPower(Obstacle.getPrice());
+				player.reduceMagicPower(Obstacle.price);
 				return obst;
 			} else {
 				Writer.writeText.add("Error: Obstacle building failed-unbuildable area");

@@ -33,33 +33,17 @@ public class PlayingArea {
 	public ArrayList<Source> getSource() {
 		return source;
 	}
-	
-	public void setSource(ArrayList<Source> source) {
-		this.source = source;
-	}
 
 	public ArrayList<Tower> getTower() {
 		return tower;
-	}
-
-	public void setTower(ArrayList<Tower> tower) {
-		this.tower = tower;
 	}
 
 	public ArrayList<Obstacle> getObstacle() {
 		return obstacle;
 	}
 
-	public void setObstacle(ArrayList<Obstacle> obstacle) {
-		this.obstacle = obstacle;
-	}
-
 	public ArrayList<Road> getRoad() {
 		return road;
-	}
-
-	public void setRoad(ArrayList<Road> road) {
-		this.road = road;
 	}
 
 	/**
@@ -82,10 +66,6 @@ public class PlayingArea {
 		return geometry;
 	}
 
-	public void setGeometry(Geometry geometry) {
-		this.geometry = geometry;
-	}
-
 	/**
 	 * A palyat inicializalja.
 	 * 
@@ -96,6 +76,26 @@ public class PlayingArea {
 		geometry.createAllTile(10, 10);
 	}
 	
+	public void addRoad(Road r) {
+		this.road.add(r);
+	}
+	
+	public void removeRoad(int index) {
+		if(this.road.size() > 0) {
+			this.road.remove(index);
+		}
+	}
+	
+	public void addSource(Source s) {
+		this.source.add(s);
+	}
+	
+	public void removeSource(Source s) {
+		if(this.source.size() > 0) {
+			this.source.remove(s);
+		}
+	}
+	
 	/**
 	 * Hozzaad egy tornyot a tornyok listajahoz.
 	 * @param t - a hozzaadni kivant torony referenciaja
@@ -104,12 +104,24 @@ public class PlayingArea {
 		this.tower.add(t);
 	}
 	
+	public void removeTower(Tower t) {
+		if(tower.size() > 0) {
+			tower.remove(t);
+		}
+	}
+	
 	/**
 	 * Hozzaad egy akadalyt az akadalyok listajahoz.
 	 * @param o - a hozzaadni kivant akadaly referenciaja
 	 */	
 	public void addObstacle(Obstacle o) {
 		this.obstacle.add(o);
+	}
+	
+	public void removeObstacle(Obstacle o) {
+		if(obstacle.size() > 0) {
+			obstacle.remove(o);
+		}
 	}
 	
 	/**
@@ -137,18 +149,18 @@ public class PlayingArea {
 				// road to road
 				for(int j = 0; j < road.size(); j++) {
 					if(road.get(j).getPos().getX() == pos2.getX() && road.get(j).getPos().getY() == pos2.getY()) {
-						road.get(i).nextRoad.add(road.get(j));
+						road.get(i).addRoad(road.get(j));
 					}
 				}
 				// road to obstacle
 				for(int j = 0; j < obstacle.size(); j++) {
 					if(obstacle.get(j).getPos().getX() == pos2.getX() && obstacle.get(j).getPos().getY() == pos2.getY()) {
-						road.get(i).nextRoad.add(obstacle.get(j));
+						road.get(i).addRoad(obstacle.get(j));
 					}
 				}
 				// road to mountain
 				if(mountain.getPos().getX() == pos2.getX() && mountain.getPos().getY() == pos2.getY()) {
-					road.get(i).nextRoad.add(mountain);
+					road.get(i).addRoad(mountain);
 				}
 			}
 		}
@@ -158,18 +170,18 @@ public class PlayingArea {
 				// obstacle to road
 				for(int j = 0; j < road.size(); j++) {
 					if(road.get(j).getPos().getX() == pos2.getX() && road.get(j).getPos().getY() == pos2.getY()) {
-						obstacle.get(i).nextRoad.add(road.get(j));
+						obstacle.get(i).addRoad(road.get(j));
 					}
 				}
 				// obstacle to obstacle
 				for(int j = 0; j < obstacle.size(); j++) {
 					if(obstacle.get(j).getPos().getX() == pos2.getX() && obstacle.get(j).getPos().getY() == pos2.getY()) {
-						obstacle.get(i).nextRoad.add(obstacle.get(j));
+						obstacle.get(i).addRoad(obstacle.get(j));
 					}
 				}
 				// obstacle to mountain
 				if(mountain.getPos().getX() == pos2.getX() && mountain.getPos().getY() == pos2.getY()) {
-					obstacle.get(i).nextRoad.add(mountain);
+					obstacle.get(i).addRoad(mountain);
 				}
 			}
 		}
@@ -180,18 +192,18 @@ public class PlayingArea {
 				// source to road
 				for(int j = 0; j < road.size(); j++) {
 					if(road.get(j).getPos().getX() == pos2.getX() && road.get(j).getPos().getY() == pos2.getY()) {
-						source.get(i).nextRoad.add(road.get(j));
+						source.get(i).addRoad(road.get(j));
 					}
 				}
 				// source to obstacle
 				for(int j = 0; j < obstacle.size(); j++) {
 					if(obstacle.get(j).getPos().getX() == pos2.getX() && obstacle.get(j).getPos().getY() == pos2.getY()) {
-						source.get(i).nextRoad.add(obstacle.get(j));
+						source.get(i).addRoad(obstacle.get(j));
 					}
 				}
 				// source to mountain
 				if(mountain.getPos().getX() == pos2.getX() && mountain.getPos().getY() == pos2.getY()) {
-					source.get(i).nextRoad.add(mountain);
+					source.get(i).addRoad(mountain);
 				}
 			}
 		}
@@ -202,9 +214,10 @@ public class PlayingArea {
 			Road r = (Road) tile;
 			for(int i = 0; i < geometry.getTiles().size(); i++) {
 				for(int j = 0; j < geometry.getTiles().get(i).size(); j++) {
+					// megkeressuk ezt a csempet a tiles listaban
 					if(geometry.getTiles().get(i).get(j).getPos().getX() == r.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == r.getPos().getY()) {
-						if(geometry.getTiles().get(i).get(j).getType() == 0) {
-							road.add(r);
+						if(geometry.getTiles().get(i).get(j).getType() == 0) { // ha ures ez a csempe
+							addRoad(r);
 							geometry.getTiles().get(i).set(j, r);
 						}
 						else {
@@ -221,7 +234,7 @@ public class PlayingArea {
 				for(int j = 0; j < geometry.getTiles().get(i).size(); j++) {
 					if(geometry.getTiles().get(i).get(j).getPos().getX() == s.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == s.getPos().getY()) {
 						if(geometry.getTiles().get(i).get(j).getType() == 0) {
-							source.add(s);
+							addSource(s);
 							geometry.getTiles().get(i).set(j, s);
 						}
 						else {
@@ -255,10 +268,10 @@ public class PlayingArea {
 				for(int j = 0; j < geometry.getTiles().get(i).size(); j++) {
 					if(geometry.getTiles().get(i).get(j).getPos().getX() == o.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == o.getPos().getY()) {
 						if(geometry.getTiles().get(i).get(j).getType() == 2) {
-							obstacle.add(o);
+							addObstacle(o);
 							for(int k = 0; k < road.size(); k++) {
 								if(road.get(k) == geometry.getTiles().get(i).get(j)) {
-									road.remove(k);
+									removeRoad(k);
 								}
 							}
 							geometry.getTiles().get(i).set(j, o);
@@ -277,7 +290,7 @@ public class PlayingArea {
 				for(int j = 0; j < geometry.getTiles().get(i).size(); j++) {
 					if(geometry.getTiles().get(i).get(j).getPos().getX() == t.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == t.getPos().getY()) {
 						if(geometry.getTiles().get(i).get(j).getType() == 0) {
-							tower.add(t);
+							addTower(t);
 							geometry.getTiles().get(i).set(j, t);
 						}
 						else {

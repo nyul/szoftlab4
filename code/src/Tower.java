@@ -9,20 +9,20 @@ tovabba a kod le- es felszallasaert.
  */
 public class Tower extends Tile implements Defense{
 	
-	public static int id = 0;
-	private int myId;
-	private int shootPeriod;
-	private int range;
-	private int fogRange;
-	private int damagePowerDwarf;
-	private int damagePowerElf;
-	private int damagePowerHobbit;
-	private int damagePowerHuman;
-	private ArrayList<MagicRock> magicRock;
-	private int magicRockNumber;
-	private static int price = 10;
-	protected boolean random = false;
-	protected boolean split = false;
+	public static int id = 0;  // azonosito generalashoz szukseges
+	private int myId;  // azonosito
+	private int shootPeriod;  // tuzelesi gayakorisag
+	private int range;  // hatotavolsag
+	private int fogRange;  // kod leereszkedese elotti hatotavolsagot tarolja
+	private int damagePowerDwarf;  // Dwarf elleni sebzesi hatekonysag
+	private int damagePowerElf; // Elf elleni sebzesi hatekonysag
+	private int damagePowerHobbit; // Hobbit elleni sebzesi hatekonysag
+	private int damagePowerHuman; // Human elleni sebzesi hatekonysag
+	private ArrayList<MagicRock> magicRock;  // toronyra helyezheto varazskovek
+	private int magicRockNumber;  // tornyon levo varazskovek szama
+	public static final int price = 10;  // torony epitesi ara (globalis valtozo)
+	protected boolean random;  // random mod allitasa
+	protected boolean split;  // split mod, ha be van kapcsolva, akkor a megsebzett ellenseget mindig kettelovi
 	
 	/**
 	 * Tower konstruktor
@@ -33,7 +33,7 @@ public class Tower extends Tile implements Defense{
 		myId=id;
 		id++;
 		shootPeriod = 10;
-		range = 3;
+		range = 2;
 		fogRange = range;
 		damagePowerDwarf = 10;
 		damagePowerElf = 10;
@@ -45,14 +45,12 @@ public class Tower extends Tile implements Defense{
 			magicRock.add(rock);
 		}
 		this.type = 1;
+		random = false;
+		split = false;
 	}
 
 	public int getMyId() {
 		return myId;
-	}
-
-	public static void setPrice(int price) {
-		Tower.price = price;
 	}
 
 	public int getShootPeriod() {
@@ -73,10 +71,6 @@ public class Tower extends Tile implements Defense{
 
 	public int getFogRange() {
 		return fogRange;
-	}
-
-	public void setFogRange(int fogRange) {
-		this.fogRange = fogRange;
 	}
 
 	public int getDamagePowerDwarf() {
@@ -115,20 +109,12 @@ public class Tower extends Tile implements Defense{
 		return magicRock;
 	}
 
-	public void setMagicRock(ArrayList<MagicRock> magicRock) {
-		this.magicRock = magicRock;
-	}
-
 	public int getMagicRockNumber() {
 		return magicRockNumber;
 	}
 
-	public void setMagicRockNumber(int magicRockNumber) {
-		this.magicRockNumber = magicRockNumber;
-	}
-
-	public static int getPrice() {
-		return price;
+	public void increaseMagicRockNumber(int number) {
+		this.magicRockNumber += number;
 	}
 
 	/**
@@ -136,7 +122,7 @@ public class Tower extends Tile implements Defense{
 	 * majd az enemy hit metodusat, ami csokkenti az enemy erejet
 	 */
 	public Enemy attack(ArrayList<Enemy> enemies, Geometry geometry) {
-		boolean isRange = false;
+		boolean isRange = false; // van-e hatotavon beluli ellenseg
 		for(int i = 0; i < enemies.size(); i++) {
 			if(geometry.isInRange(enemies.get(i),this)) { // ha hatotavolsagon belul van az ellenseg
 				isRange = true;
@@ -154,7 +140,6 @@ public class Tower extends Tile implements Defense{
 		}	
 		if(isRange == false) { // ha hatotavolsagon kivul van az ellenseg
 			Writer.writeText.add("Nincs hatotavon beluli ellenseg.");
-			System.out.println("Nincs hatotavon beluli ellenseg.");
 		}
 		return null;
 	}
@@ -197,9 +182,8 @@ public class Tower extends Tile implements Defense{
 	 */
 	public void fogOn() {
 		this.fogRange = this.range; // elmenti a hatotavolsagot kod leereszkedesekor, hogy miutan elmult visszakapjuk az eredeti erteket
-		this.range = this.range - 1;
+		this.range--;
 		Writer.writeText.add("[Fog has been set on]");
-		System.out.println("[Fog has been set on]");
 	}
 	
 	/**
@@ -208,7 +192,6 @@ public class Tower extends Tile implements Defense{
 	public void fogOff() {
 		this.range = this.fogRange; // visszaallitja a kod elotti allapotra a hatotavolsagot
 		Writer.writeText.add("[Fog has been set off]");
-		System.out.println("[Fog has been set off]");
 	}
 }
 

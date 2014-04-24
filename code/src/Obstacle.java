@@ -9,12 +9,12 @@ import java.util.ArrayList;
  */
 public class Obstacle extends Road implements Defense{
 	
-	private static int id = 0;
-	private int myId;
-	private int slowingFactor;
-	private ArrayList<MagicRock> magicRock;
-	private int magicRockNumber;
-	private static int price = 5;
+	private static int id = 0;  // azonosito generalashoz szukseges
+	private int myId; // Obstacle azonositoja
+	private int slowingFactor;  // akadaly lassitasi faktora
+	private ArrayList<MagicRock> magicRock;  // akadalyra elhelyezheto varazskovek
+	private int magicRockNumber;  // akadalyon levo varazskovek szama
+	public static final int price = 5;  // akadaly epitesenek ara
 	
 	/**
 	 * Akadaly konstruktor
@@ -26,7 +26,9 @@ public class Obstacle extends Road implements Defense{
 		id++;
 		slowingFactor = 1;
 		magicRock = new ArrayList<MagicRock>();
-		magicRockNumber = 0;
+		MagicRock rock = new MagicRock(6);
+		magicRock.add(rock);  // egy fajta varazskovet lehet az akadalyra tenni
+		magicRockNumber = 0;   // alapbol nincs rajta varazsko
 		this.type = 3;
 	}
 	
@@ -35,14 +37,6 @@ public class Obstacle extends Road implements Defense{
 	 */
 	public int getMyId() {
 		return myId;
-	}
-
-	/**
-	 * az akadaly arat allitja be
-	 * @param price - a beallitando ar
-	 */
-	public static void setPrice(int price) {
-		Obstacle.price = price;
 	}
 	
 	/**
@@ -70,14 +64,6 @@ public class Obstacle extends Road implements Defense{
 	}
 
 	/**
-	 * az akadalyra elhelyezheto varazskovek listajat adhatjuk meg
-	 * @param magicRock - az elhelyezheto varazskovek listaja
-	 */
-	public void setMagicRock(ArrayList<MagicRock> magicRock) {
-		this.magicRock = magicRock;
-	}
-
-	/**
 	 * az elhelyezett varazskovek szamat adja meg
 	 * @return - az elhelyezett varazskovek szama
 	 */
@@ -85,12 +71,8 @@ public class Obstacle extends Road implements Defense{
 		return magicRockNumber;
 	}
 
-	public void setMagicRockNumber(int magicRockNumber) {
-		this.magicRockNumber = magicRockNumber;
-	}
-
-	public static int getPrice() {
-		return price;
+	public void increaseMagicRockNumber(int number) {
+		this.magicRockNumber += number;
 	}
 
 	/* (non-Javadoc)
@@ -130,7 +112,7 @@ public class Obstacle extends Road implements Defense{
 	 * lassitast vegez az e parameterkent kapott enemy-n, beallitja a slowingfactort
 	 * igy az adott enemy lassitva lesz, amig vissza nem allitju a slowingFactort
 	 */
-	public void slowMe(Enemy e){
-		e.increasePause(this.slowingFactor);
+	public void slowMe(Enemy enemy){
+		enemy.increasePause(this.slowingFactor);
 	}
 }

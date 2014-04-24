@@ -23,7 +23,7 @@ public class MagicRock {
 	 */
 	private int type;
 	private int price;
-	private static ArrayList<String> name = new ArrayList<String>();
+	public static ArrayList<String> name = new ArrayList<String>();
 	static {
 		name.add("range upgrade");
 		name.add("shootPeriod upgrade");
@@ -40,10 +40,6 @@ public class MagicRock {
 	public MagicRock(int type) {
 		this.type = type;
 		this.price = 10;
-	}
-	
-	public static ArrayList<String> getName() {
-		return name;
 	}
 
 	public int getType() {

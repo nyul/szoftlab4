@@ -2,8 +2,12 @@ import java.util.ArrayList;
 
 public class Road extends Tile{
 
-	protected ArrayList<Road> nextRoad;	// referencia a kovetkezo ut-csempe valamelyikere
-	protected boolean random = false;	// az utvonalvalasztasnal megadja, hogy veletlenszeruen valasszon az enemy utat vagy fixen
+	/**
+	 * referencia a kovetkezo ut-csempe valamelyikere
+	 * az utvonalvalasztasnal megadja, hogy veletlenszeruen valasszon az enemy utat vagy fixen
+	 */
+	protected ArrayList<Road> nextRoad;
+	protected boolean random;
 	
 	/**
 	 * Road konstruktor
@@ -13,8 +17,28 @@ public class Road extends Tile{
 		super(pos);
 		nextRoad = new ArrayList<Road>();
 		this.type = 2;
+		random = false;
 	}
 	
+	public boolean isRandom() {
+		return random;
+	}
+
+	public void setRandom(boolean random) {
+		this.random = random;
+	}
+
+	public ArrayList<Road> getNextRoad() {
+		return nextRoad;
+	}
+	/**
+	 * nextRoad listahoz hozzaadunk egy uj Road elemet
+	 * @param road
+	 */
+	public void addRoad(Road road) {
+		nextRoad.add(road);
+	}
+
 	/**
 	 * Atadja a hivonak az ut kovetkezo poziciojat (ahova lepnie kell).
 	 * Attol fuggoen fog eldolni, hogy tobb lehetseges ut eseten melyik elsz a kovetkezo csempe, hogy a bemeneti nyelvben volt-e RANDOM_ON hivas. 
