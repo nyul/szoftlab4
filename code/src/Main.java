@@ -19,6 +19,8 @@ public class Main implements Serializable {
 	private Engine engine;
 	private BufferedReader br;
 	private static String outputNumber = "";
+	PlayerDraw playerDraw;
+	Graphics graphics;
 	
 	public Main() {
 		engine = new Engine();
@@ -27,7 +29,15 @@ public class Main implements Serializable {
 	
 	public static void main(String[] args) {
 		Main main = new Main();
+		main.draw();
 		main.loadInputLanguage();
+	}
+	
+	void draw() {
+		graphics = new Graphics();
+		graphics.go();
+		PlayerDraw playerDraw = new PlayerDraw();
+		engine.getPlayer().registerObserver(playerDraw);
 	}
 
 	/**
@@ -170,6 +180,7 @@ public class Main implements Serializable {
 					Tower t = engine.getPlayer().getArea().getTower().get(Integer.parseInt(command[1]));
 					Writer.writeText.add("[" + Integer.parseInt(command[1]) + ":" + t.getClass().getName() + "]");
 					Writer.writeText.add("range: " + t.getRange());
+					Writer.writeText.add("fogRange: " + t.getFogRange());
 					Writer.writeText.add("shootPeriod: " + t.getShootPeriod());
 					Writer.writeText.add("damagePowerHuman: " + t.getDamagePowerHuman());
 					Writer.writeText.add("damagePowerHobbit: " + t.getDamagePowerHobbit());
@@ -435,7 +446,7 @@ public class Main implements Serializable {
 				 */
 				else if(command[0].equals("exit")) {
 					writeOutputLanguage("output" + outputNumber + ".txt");
-					System.exit(0);
+					//System.exit(0);
 				}
 				/**
 				 * kovetkezo sor
@@ -453,7 +464,7 @@ public class Main implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * kiirja az eredmenyt a megadott nevu fajlba
 	 * @param filename - kimeneti fajl neve

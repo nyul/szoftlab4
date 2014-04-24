@@ -176,7 +176,7 @@ public class Tower extends Tile implements Defense{
 			this.range = this.range + 1;
 		}
 		else if(magicRock.getType() == 1) { // lovesi gyakorisagot novelo varazsko
-			this.shootPeriod = this.shootPeriod + 1;
+			this.shootPeriod = this.shootPeriod - 3;
 		}
 		if(magicRock.getType() == 2) { // ember elleni sebzest novelo varazsko
 			this.damagePowerHuman = this.damagePowerHuman + 10;

@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 
 /**
@@ -14,8 +16,9 @@ szukgesges varazsero megallapitasaert, es player dolga tovabba a sajat
 varazserejenek folyamatos menedzselese. A Player objektum inditja a jatekot.
  *
  */
-public class Player {
+public class Player extends Observable {
 	
+	private ArrayList<Observer> observers = new ArrayList<Observer>();
 	private int magicPower; // A jatekos varazsereje
 	private PlayingArea area; // A jatekter
 	
@@ -23,12 +26,16 @@ public class Player {
 		this.magicPower = magicPower;
 	}
 	
-	public int getMagicPower() {
-		return magicPower;
+	public ArrayList<Observer> getObservers() {
+		return observers;
 	}
 
-	public void setMagicPower(int magicPower) {
-		this.magicPower = magicPower;
+	public void setObservers(ArrayList<Observer> observers) {
+		this.observers = observers;
+	}
+
+	public int getMagicPower() {
+		return magicPower;
 	}
 
 	public PlayingArea getArea() {
@@ -100,6 +107,29 @@ public class Player {
 	 */
 	public void reduceMagicPower(int price) {
 		this.magicPower = this.magicPower - price;
+		setChanged();
+		notifyObservers(this, price);
+	}
+	
+	public void notifyObservers(Observable observable, int price) {
+		System.out.println("Notifying to all the subscribers when product became available");
+		for(Observer ob : observers) {
+			ob.update(observable, this.magicPower);
+		}
+	}
+	/**
+	 * Beregisztrálunk egy observert erre az osztályra
+	 * @param observer
+	 */
+	public void registerObserver(Observer observer) {
+		observers.add(observer);
+	}
+	/**
+	 * Töröljük az adott observer-t a listából: már nem kell értesülnie a model állapot változásairól
+	 * @param observer
+	 */
+	public void removeObservers(Observer observer) {
+		observers.remove(observer);
 	}
 	
 }
