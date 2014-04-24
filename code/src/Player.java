@@ -42,10 +42,6 @@ public class Player extends Observable {
 		return area;
 	}
 
-	public void setArea(PlayingArea area) {
-		this.area = area;
-	}
-
 	/**
 	 * Egy listaban megkapja a jatekos, hogy egy toronyra vagy akadalyra milyen varazskoveket lehet rakni.
 <<<<<<< HEAD
