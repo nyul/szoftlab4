@@ -49,13 +49,9 @@ public class MagicRock {
 	public int getType() {
 		return type;
 	}
-	public void setType(int type) {
-		this.type = type;
-	}
+	
 	public int getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
+	
 }

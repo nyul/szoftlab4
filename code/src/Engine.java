@@ -23,16 +23,8 @@ public class Engine extends Thread{
 		return player;
 	}
 
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
-
 	public Fellowship getFellowship() {
 		return fellowship;
-	}
-
-	public void setFellowship(Fellowship fellowship) {
-		this.fellowship = fellowship;
 	}
 	
 	/**
