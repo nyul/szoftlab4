@@ -18,20 +18,30 @@ varazserejenek folyamatos menedzselese. A Player objektum inditja a jatekot.
  */
 public class Player extends Observable {
 	
-	private ArrayList<Observer> observers = new ArrayList<Observer>();
+	private ArrayList<PlayerDraw> observers = new ArrayList<PlayerDraw>();
 	private int magicPower; // A jatekos varazsereje
+	private int proxy;  //*************************
+	private boolean stateMagic;
+	private boolean stateProxy;
 	private PlayingArea area; // A jatekter
 	
 	public Player(int magicPower) {
 		this.magicPower = magicPower;
+		this.proxy = 50; //*********************
+		this.stateMagic = false;
+		this.stateProxy = false;
 	}
 	
-	public ArrayList<Observer> getObservers() {
+	public ArrayList<PlayerDraw> getObservers() {
 		return observers;
 	}
 
 	public int getMagicPower() {
 		return magicPower;
+	}
+	
+	public int getProxy() {
+		return proxy;
 	}
 
 	public PlayingArea getArea() {
@@ -108,29 +118,45 @@ public class Player extends Observable {
 		} else {
 			this.magicPower = this.magicPower - price;
 		}
+		stateMagic = true;
 		setChanged();
-		notifyObservers(this, price);
+		notifyObservers(this);
 	}
 	
-	public void notifyObservers(Observable observable, int price) {
+	public void changeProxy(int change) { //**********************
+		this.proxy = change;
+		stateProxy = true;
+		setChanged();
+		notifyObservers(this);
+	}
+	
+	public void notifyObservers(Observable observable) {
 		System.out.println("Notifying to all the subscribers when product became available");
 		for(Observer ob : observers) {
-			ob.update(observable, this.magicPower);
+			if(stateMagic == true) {
+				ob.update(observable, this.magicPower);
+				stateMagic = false;
+			}
+			if(stateProxy == true) {
+				ob.update(observable, this.proxy);
+				stateProxy = false;
+			}
 		}
 	}
+	
 	/**
 	 * Beregisztrálunk egy observert erre az osztályra
 	 * @param observer
 	 */
-	public void registerObserver(Observer observer) {
-		observers.add(observer);
+	public void registerObserver(PlayerDraw draw) {
+		observers.add(draw);
 	}
 	/**
 	 * Töröljük az adott observer-t a listából: már nem kell értesülnie a model állapot változásairól
 	 * @param observer
 	 */
-	public void removeObservers(Observer observer) {
-		observers.remove(observer);
+	public void removeObservers(PlayerDraw draw) {
+		observers.remove(draw);
 	}
 	
 }

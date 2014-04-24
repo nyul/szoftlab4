@@ -18,16 +18,16 @@ public abstract class Enemy {
 	 * counter - 1-tol stepTime-ig novelodik az erteke, ha eleri a stepTime erteket, akkor lep az ellenseg
 	 * random - random generator ki/be kapcsolasahoz szukseges
 	 */
-	private static int id = 0;
-	private int myId;
+	private static int id = 0;  // azonosito generalashoz kell
+	private int myId;  // azonosito  
 	protected int lifePower;
-	protected int stepTime;
-	protected int pause;
+	protected int stepTime;   
+	protected int pause; 
 	protected Road road;
 	protected boolean isActive;
 	protected boolean isDuplicated;
 	protected int counter;
-	protected boolean random = false;
+	protected boolean random;
 	
 	/**
 	 *  palyara helyezeskor hivodik meg
@@ -42,6 +42,7 @@ public abstract class Enemy {
 		isActive = false;
 		isDuplicated = false;
 		counter = 1;
+		random = false;
 	}
 	/**
 	 *  ellenseg lerakasa egy tetszoleges ut-csempere
@@ -57,6 +58,7 @@ public abstract class Enemy {
 		isActive = true;
 		isDuplicated = false;
 		counter = 1;
+		random = false;
 	}
 
 	
@@ -91,6 +93,14 @@ public abstract class Enemy {
 	public boolean isActive() {
 		return isActive;
 	}
+	
+	/**
+	 * Az ellenseg aktivitasat allitja (~kirajzolas)
+	 * @param a Ha true akkor aktiv lesz, ha false akkor passziv
+	 */
+	public void setActivity(boolean a) {
+		this.isActive = a;
+	}
 
 	public boolean isDuplicated() {
 		return isDuplicated;
@@ -102,6 +112,22 @@ public abstract class Enemy {
 
 	public Road getRoad() {
 		return road;
+	}
+	
+	/**
+	 * Ez mar a konkret leptetes a kovetkezo ut-csempere. Ha az ellenseg elott all valaki, akkor is tud lepni, ugyanis semmilyen 
+	 * megkotes nincs arra, hogy hany ellenseg allhat egy adott ut-csempen.
+	 * @param nextroad A kovetkezo ut-csempe, ahova lepnie kell 
+	 */
+	public void setRoad(Road nextRoad) {
+		/**
+		 *  ha a kovetkezo ut-csempe egy akadaly-csempe, akkor az ellenseget le kell lassitani, amit a slowMe metodus hajt vegre
+		 */
+		if(nextRoad instanceof Obstacle) {
+			Obstacle o = (Obstacle) nextRoad;
+			o.slowMe(this);
+		} 
+		road = nextRoad;
 	}
 
 	/**
@@ -162,29 +188,5 @@ public abstract class Enemy {
 		this.lifePowerReduce(t);
 		Writer.writeText.add("[" + t.getMyId() + ":" + t.getClass().getName() + "] has shot [" + this.getMyId() + ":" + this.getClass().getName() + "]");
 		return this.lifePower;
-	}
-	
-	/**
-	 * Az ellenseg aktivitasat allitja (~kirajzolas)
-	 * @param a Ha true akkor aktiv lesz, ha false akkor passziv
-	 */
-	public void setActivity(boolean a) {
-		this.isActive = a;
-	}
-	
-	/**
-	 * Ez mar a konkret leptetes a kovetkezo ut-csempere. Ha az ellenseg elott all valaki, akkor is tud lepni, ugyanis semmilyen 
-	 * megkotes nincs arra, hogy hany ellenseg allhat egy adott ut-csempen.
-	 * @param nextroad A kovetkezo ut-csempe, ahova lepnie kell 
-	 */
-	public void setRoad(Road nextRoad) {
-		/**
-		 *  ha a kovetkezo ut-csempe egy akadaly-csempe, akkor az ellenseget le kell lassitani, amit a slowMe metodus hajt vegre
-		 */
-		if(nextRoad instanceof Obstacle) {
-			Obstacle o = (Obstacle) nextRoad;
-			o.slowMe(this);
-		} 
-		road = nextRoad;
 	}
 }

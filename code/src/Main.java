@@ -36,8 +36,8 @@ public class Main implements Serializable {
 	void draw() {
 		graphics = new Graphics();
 		graphics.go();
-		PlayerDraw playerDraw = new PlayerDraw();
-		engine.getPlayer().registerObserver(playerDraw);
+		PlayerDraw player = new PlayerDraw();
+		engine.getPlayer().registerObserver(player);
 	}
 
 	/**
