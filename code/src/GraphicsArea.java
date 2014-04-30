@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
 
-public class Graphics {
+public class GraphicsArea {
 	
 	public static JTextArea text;
 	public static JPanel[][] tile;
@@ -42,6 +42,18 @@ public class Graphics {
 			}
 		}
 	}
+	
+	public static void addImageToTile(int row, int column, Enemy e) {
+		if(e instanceof Hobbit) {
+			Hobbit h = (Hobbit) e;
+			JLabel label = new JLabel();
+			label.setIcon(h.getImage());
+			tile[row][column].add(label);
+			System.out.println("hello");
+		}
+	}
+	
+	
 	
 	public static void addComponentsToPane(Container pane) {
         

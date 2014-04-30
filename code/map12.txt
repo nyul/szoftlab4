@@ -14,3 +14,4 @@ Road 7 6
 Road 8 6
 Mountain 9 6
 Tower 4 3
+Hobbit 3 6

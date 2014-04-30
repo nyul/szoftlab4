@@ -20,7 +20,7 @@ public class Main implements Serializable {
 	private BufferedReader br;
 	private static String outputNumber = "";
 	PlayerDraw playerDraw;
-	Graphics graphics;
+	GraphicsArea graphics;
 	
 	public Main() {
 		engine = new Engine();
@@ -36,7 +36,7 @@ public class Main implements Serializable {
 	void draw() {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                Graphics.createAndShowGUI(engine.getPlayer().getArea().getGeometry().getTiles());
+                GraphicsArea.createAndShowGUI(engine.getPlayer().getArea().getGeometry().getTiles());
             }
         });
 		PlayerDraw player = new PlayerDraw();
@@ -386,6 +386,7 @@ public class Main implements Serializable {
 									}
 									engine.getFellowship().getActive().add(h);
 									engine.getFellowship().increaseNumber(1);
+									GraphicsArea.addImageToTile(Integer.parseInt(word[1]), Integer.parseInt(word[2]), h);
 								}
 							}
 						}

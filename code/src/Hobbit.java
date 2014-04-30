@@ -1,3 +1,5 @@
+import javax.swing.ImageIcon;
+
 /**
  * Ez egy hobbit tipusu ellenseg. Az kulonbozteti meg a tobbi ellensegtol, hogy a torony tuzelese soran a sebzes merteke fugg
  * a torony specialis kepessegetol. Ha az adott toronynak olyan specialis kepessege van, hogy egy hobbit ellenseget jobban sebez, mint
@@ -6,6 +8,8 @@
  */
 public class Hobbit extends Enemy{
 
+    ImageIcon icon=new ImageIcon("human.png");
+	
 	public Hobbit() {
 		super();
 	}
@@ -14,6 +18,10 @@ public class Hobbit extends Enemy{
 		super(road);
 	}
 	
+	public ImageIcon getImage() {
+		return icon;
+	}
+
 	/**
 	 * Torony tuzelese soran megsebzi a hobbit ellenseget.
 	 */

@@ -21,10 +21,10 @@ public class PlayerDraw implements Observer {
 	}
 	
 	public void updateMagicPower(int magic) {
-		Graphics.text.append("Player magicPower has changed: " + magic + "\n");
+		GraphicsArea.text.append("Player magicPower has changed: " + magic + "\n");
 	}
 	
 	public void updateProxy(int proxy) {
-		Graphics.text.append("Player proxy has changed: " + proxy + "\n");
+		GraphicsArea.text.append("Player proxy has changed: " + proxy + "\n");
 	}
 }
