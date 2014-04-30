@@ -34,8 +34,11 @@ public class Main implements Serializable {
 	}
 	
 	void draw() {
-		graphics = new Graphics();
-		graphics.go();
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                Graphics.createAndShowGUI(engine.getPlayer().getArea().getGeometry().getTiles());
+            }
+        });
 		PlayerDraw player = new PlayerDraw();
 		engine.getPlayer().registerObserver(player);
 	}

@@ -218,7 +218,7 @@ public class PlayingArea {
 					if(geometry.getTiles().get(i).get(j).getPos().getX() == r.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == r.getPos().getY()) {
 						if(geometry.getTiles().get(i).get(j).getType() == 0) { // ha ures ez a csempe
 							addRoad(r);
-							geometry.getTiles().get(i).set(j, r);
+							geometry.setTile(i, j, r);
 						}
 						else {
 							Writer.writeText.add("Load map is unsuccessful.");
@@ -235,7 +235,7 @@ public class PlayingArea {
 					if(geometry.getTiles().get(i).get(j).getPos().getX() == s.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == s.getPos().getY()) {
 						if(geometry.getTiles().get(i).get(j).getType() == 0) {
 							addSource(s);
-							geometry.getTiles().get(i).set(j, s);
+							geometry.setTile(i, j, s);
 						}
 						else {
 							Writer.writeText.add("Load map is unsuccessful.");
@@ -252,7 +252,7 @@ public class PlayingArea {
 					if(geometry.getTiles().get(i).get(j).getPos().getX() == m.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == m.getPos().getY()) {
 						if(geometry.getTiles().get(i).get(j).getType() == 0) {
 							mountain = m;
-							geometry.getTiles().get(i).set(j, m);
+							geometry.setTile(i, j, m);
 						}
 						else {
 							Writer.writeText.add("Load map is unsuccessful.");
@@ -274,7 +274,7 @@ public class PlayingArea {
 									removeRoad(k);
 								}
 							}
-							geometry.getTiles().get(i).set(j, o);
+							geometry.setTile(i, j, o);
 						}
 						else {
 							Writer.writeText.add("Load map is unsuccessful.");
@@ -291,7 +291,7 @@ public class PlayingArea {
 					if(geometry.getTiles().get(i).get(j).getPos().getX() == t.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == t.getPos().getY()) {
 						if(geometry.getTiles().get(i).get(j).getType() == 0) {
 							addTower(t);
-							geometry.getTiles().get(i).set(j, t);
+							geometry.setTile(i, j, t);
 						}
 						else {
 							Writer.writeText.add("Load map is unsuccessful.");

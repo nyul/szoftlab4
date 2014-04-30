@@ -18,8 +18,8 @@ public abstract class Enemy {
 	 * counter - 1-tol stepTime-ig novelodik az erteke, ha eleri a stepTime erteket, akkor lep az ellenseg
 	 * random - random generator ki/be kapcsolasahoz szukseges
 	 */
-	private static int id = 0;  // azonosito generalashoz kell
-	private int myId;  // azonosito  
+	public static int id = 0;  // azonosito generalashoz kell
+	protected int myId;  // azonosito  
 	protected int lifePower;
 	protected int stepTime;   
 	protected int pause; 

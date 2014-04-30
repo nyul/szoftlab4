@@ -18,7 +18,7 @@ varazserejenek folyamatos menedzselese. A Player objektum inditja a jatekot.
  */
 public class Player extends Observable {
 	
-	private ArrayList<PlayerDraw> observers = new ArrayList<PlayerDraw>();
+	private ArrayList<PlayerDraw> observers;
 	private int magicPower; // A jatekos varazsereje
 	private int proxy;  //*************************
 	private boolean stateMagic;
@@ -26,6 +26,7 @@ public class Player extends Observable {
 	private PlayingArea area; // A jatekter
 	
 	public Player(int magicPower) {
+		observers = new ArrayList<PlayerDraw>();
 		this.magicPower = magicPower;
 		this.proxy = 50; //*********************
 		this.stateMagic = false;
@@ -155,7 +156,7 @@ public class Player extends Observable {
 	 * Töröljük az adott observer-t a listából: már nem kell értesülnie a model állapot változásairól
 	 * @param observer
 	 */
-	public void removeObservers(PlayerDraw draw) {
+	public void removeObserver(PlayerDraw draw) {
 		observers.remove(draw);
 	}
 	
