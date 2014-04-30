@@ -35,7 +35,7 @@ public class Graphics {
 			for (int j = 0; j < column; j ++) { 
 
 				tile[i][j] = new JPanel(); 
-				tile[i][j].setBackground(new Color(0, 200, 0));
+				tile[i][j].setBackground(new Color(0, 170, 0));
 				tile[i][j].setPreferredSize(new Dimension(50, 50));
 				tile[i][j].setBorder(BorderFactory.createLineBorder(Color.WHITE));
 				area.add(tile[i][j]);
@@ -44,10 +44,6 @@ public class Graphics {
 	}
 	
 	public static void addComponentsToPane(Container pane) {
-        if (!(pane.getLayout() instanceof BorderLayout)) {
-            pane.add(new JLabel("Container doesn't use BorderLayout!"));
-            return;
-        }
         
         area = new JPanel();
         pane.add(area, BorderLayout.PAGE_START);
@@ -55,19 +51,33 @@ public class Graphics {
         stateBarBottom = new JPanel();
         pane.add(stateBarBottom, BorderLayout.PAGE_END);
         
+        JPanel stateBarBottomLeft = new JPanel();
+        stateBarBottomLeft.setLayout(new BorderLayout());
+        
+        JPanel textBarOne = new JPanel();
+        textBarOne.setLayout(new BorderLayout());
         JLabel magicPower = new JLabel("magicPower: ");
-        stateBarBottom.add(magicPower);
+        textBarOne.add(magicPower, BorderLayout.WEST);
         JTextField magic = new JTextField(3);
+        magic.setBorder(BorderFactory.createEmptyBorder());
         magic.setEditable(false);
         magic.setText("100");
-        stateBarBottom.add(magic);
+        textBarOne.add(magic, BorderLayout.EAST);
         
-        JLabel aliveEnemies = new JLabel("Alive Enemies: ");
-        stateBarBottom.add(aliveEnemies);
+        JPanel textBarTwo = new JPanel();
+        textBarTwo.setLayout(new BorderLayout());
+        JLabel aliveEnemies = new JLabel("Alive enemies: ");
+        textBarTwo.add(aliveEnemies, BorderLayout.WEST);
         JTextField alive = new JTextField(3);
         alive.setEditable(false);
+        alive.setBorder(BorderFactory.createEmptyBorder());
         alive.setText("20");
-        stateBarBottom.add(alive);
+        textBarTwo.add(alive, BorderLayout.EAST);
+        
+        stateBarBottomLeft.add(textBarOne, BorderLayout.NORTH);
+        stateBarBottomLeft.add(textBarTwo, BorderLayout.SOUTH);
+        
+        stateBarBottom.add(stateBarBottomLeft);
         
         JTextArea stateConsole = new JTextArea(5, 30);
         stateConsole.setEditable(false);

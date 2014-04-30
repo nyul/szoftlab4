@@ -41,6 +41,8 @@ public class Main implements Serializable {
         });
 		PlayerDraw player = new PlayerDraw();
 		engine.getPlayer().registerObserver(player);
+		GeometryDraw geoDraw = new GeometryDraw();
+		engine.getPlayer().getArea().getGeometry().registerObserver(geoDraw);
 	}
 
 	/**

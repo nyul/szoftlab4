@@ -27,7 +27,7 @@ public class Geometry extends Observable {
 	}
 	
 	public void notifyObservers(Observable observable, int row, int column) {
-		System.out.println("Notifying to all the subscribers when product became available");
+		System.out.println("Geometry notify");
 		for(GeometryDraw ob : observers) {
 			ob.update(observable, this.tiles.get(row).get(column));
 		}

@@ -283,6 +283,11 @@ public class PlayingArea {
 					}
 				}
 			}
+			/*for(int i = 0; i < geometry.getTiles().size(); i++) {
+				for(int j = 0; j < geometry.getTiles().get(i).size(); j++) {
+					System.out.println(geometry.getTiles().get(i).get(j).getClass().getName());
+				}
+			}*/
 		}
 		else if(tile instanceof Tower) {
 			Tower t = (Tower) tile;
