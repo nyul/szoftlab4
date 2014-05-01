@@ -34,7 +34,7 @@ public class GeometryDraw implements Observer {
 				for(int i = 0; i < geo.getTiles().size(); i++) {
 					for(int j = 0; j < geo.getTiles().get(i).size(); j++) {
 						if(geo.getTiles().get(i).get(j).getPos().getX() == tow.getPos().getX() && geo.getTiles().get(i).get(j).getPos().getY() == tow.getPos().getY()) {
-							GraphicsArea.tile[i][j].setBackground(new Color(148, 0, 211));
+							GraphicsArea.tile[i][j].setBackground(new Color(0, 0, 0));
 						}
 					}
 				}

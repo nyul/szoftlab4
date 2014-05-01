@@ -38,8 +38,6 @@ public class Tile {
 			if(this.type == 0) {   // ures csempe
 				Tower twr = new Tower(pos); 
 				player.reduceMagicPower(Tower.price);
-				player.changeProxy(30);
-				player.changeProxy(200);
 				return twr;
 			} else {
 				Writer.writeText.add("Error: Tower building failed-unbuildable area");

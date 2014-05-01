@@ -13,18 +13,11 @@ public class PlayerDraw implements Observer {
 				if(value == player.getMagicPower()) {
 					updateMagicPower(value);
 				}
-				if(value == player.getProxy()) {
-					updateProxy(value);
-				}
 			}
 	    }
 	}
 	
-	public void updateMagicPower(int magic) {
-		GraphicsArea.text.append("Player magicPower has changed: " + magic + "\n");
-	}
-	
-	public void updateProxy(int proxy) {
-		GraphicsArea.text.append("Player proxy has changed: " + proxy + "\n");
+	public void updateMagicPower(int value) {
+		GraphicsArea.magic.setText(Integer.toString(value));
 	}
 }

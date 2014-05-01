@@ -2,13 +2,15 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -20,14 +22,18 @@ public class GraphicsArea {
 	
 	public static JTextArea text;
 	public static JPanel[][] tile;
-	JFrame frame;
+	static JFrame frame;
 	static JPanel area;
 	static JPanel stateBarRight;
 	static JPanel stateBarBottom;
+	public static JTextField magic;
+	static int row;
+	static int column;
+	static Main main;
 	
 	public static void tilesDraw(ArrayList<ArrayList<Tile>> tiles) {
-		int row = tiles.size();
-		int column = tiles.get(0).size();
+		row = tiles.size();
+		column = tiles.get(0).size();
 		
 		tile = new JPanel[row][column];
 		area.setLayout(new GridLayout(row, column));
@@ -73,7 +79,7 @@ public class GraphicsArea {
         textBarOne.setLayout(new BorderLayout());
         JLabel magicPower = new JLabel("magicPower: ");
         textBarOne.add(magicPower, BorderLayout.WEST);
-        JTextField magic = new JTextField(3);
+        magic = new JTextField(3);
         magic.setBorder(BorderFactory.createEmptyBorder());
         magic.setEditable(false);
         magic.setText("100");
@@ -104,13 +110,59 @@ public class GraphicsArea {
         stateBarBottom.add(stateConsole);
 	}
 	
+	public static void clickHandling(final ArrayList<ArrayList<Tile>> tiles) {
+		for (int i = 0; i < row; i ++) { 
+			for (int j = 0; j < column; j ++) {
+				final int ii = i;
+		        final int jj = j;
+				tile[ii][jj].addMouseListener(new MouseAdapter() {
+					public void mouseClicked(MouseEvent e) {
+						if(tiles.get(ii).get(jj).getType() == 0) {
+							String message = "Do you want to build a tower?";
+							Object[] options = { "Yes", "No" };
+							int number = JOptionPane.showOptionDialog(frame, message, "",
+						            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+							if(number == JOptionPane.OK_OPTION) {
+								Tower t = tiles.get(ii).get(jj).buildTower(main.getEngine().getPlayer());
+								main.getEngine().getPlayer().getArea().isBuildable(t);
+							}
+							if(number == JOptionPane.NO_OPTION) {
+								// close
+							}
+						}
+						else if(tiles.get(ii).get(jj).getType() == 1) {
+							String message = "Do you want to upgrade this tower?";
+							Object[] options = { "Yes", "No" };
+							int number = JOptionPane.showOptionDialog(frame, message, "",
+						            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+							if(number == JOptionPane.OK_OPTION) {
+								Tower t = (Tower) tiles.get(ii).get(jj);
+								t.wantToUpgrade(main.getEngine().getPlayer());
+							}
+							if(number == JOptionPane.NO_OPTION) {
+								// close
+							}
+						}
+					}
+				});	
+			}
+		}
+	}
+	
 	public static void createAndShowGUI(ArrayList<ArrayList<Tile>> tiles) {
         
-        JFrame frame = new JFrame("Tower defense");
+        frame = new JFrame("Tower defense");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addComponentsToPane(frame.getContentPane());
         tilesDraw(tiles);
+        clickHandling(tiles);
         frame.pack();
         frame.setVisible(true);
     }
+	
+	public static void main(String[] args) {
+		main = new Main();
+		main.draw();
+		main.loadInputLanguage();
+	}
 }

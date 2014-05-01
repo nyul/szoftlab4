@@ -27,12 +27,10 @@ public class Main implements Serializable {
 		Writer.writeText = new ArrayList<String>();
 	}
 	
-	public static void main(String[] args) {
-		Main main = new Main();
-		main.draw();
-		main.loadInputLanguage();
+	public Engine getEngine() {
+		return engine;
 	}
-	
+
 	void draw() {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {

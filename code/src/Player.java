@@ -20,17 +20,13 @@ public class Player extends Observable {
 	
 	private ArrayList<PlayerDraw> observers;
 	private int magicPower; // A jatekos varazsereje
-	private int proxy;  //*************************
 	private boolean stateMagic;
-	private boolean stateProxy;
 	private PlayingArea area; // A jatekter
 	
 	public Player(int magicPower) {
 		observers = new ArrayList<PlayerDraw>();
 		this.magicPower = magicPower;
-		this.proxy = 50; //*********************
 		this.stateMagic = false;
-		this.stateProxy = false;
 	}
 	
 	public ArrayList<PlayerDraw> getObservers() {
@@ -39,10 +35,6 @@ public class Player extends Observable {
 
 	public int getMagicPower() {
 		return magicPower;
-	}
-	
-	public int getProxy() {
-		return proxy;
 	}
 
 	public PlayingArea getArea() {
@@ -74,7 +66,7 @@ public class Player extends Observable {
 					if(magicPower < magicRockList.get(number).getPrice()) { // ha nincs eleg varazsero
 						System.out.println("You don't have enough magicpower.");
 					} else { // ha van eleg varazsero
-						magicPower = magicPower - magicRockList.get(number).getPrice(); // csokkenti a varazserot
+						reduceMagicPower(magicRockList.get(number).getPrice()); // csokkenti a varazserot
 						defense.upgrade(magicRockList.get(number)); // es elhelyezi a varazskovet a tornyon vagy akadalyon
 						if(defense instanceof Tower) {
 							Tower tower = (Tower) defense;
@@ -124,23 +116,12 @@ public class Player extends Observable {
 		notifyObservers(this);
 	}
 	
-	public void changeProxy(int change) { //**********************
-		this.proxy = change;
-		stateProxy = true;
-		setChanged();
-		notifyObservers(this);
-	}
-	
 	public void notifyObservers(Observable observable) {
 		System.out.println("Notifying to all the subscribers when product became available");
 		for(Observer ob : observers) {
 			if(stateMagic == true) {
 				ob.update(observable, this.magicPower);
 				stateMagic = false;
-			}
-			if(stateProxy == true) {
-				ob.update(observable, this.proxy);
-				stateProxy = false;
 			}
 		}
 	}
