@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -46,10 +47,12 @@ public class GraphicsArea {
 	public static void addImageToTile(int row, int column, Enemy e) {
 		if(e instanceof Hobbit) {
 			Hobbit h = (Hobbit) e;
-			JLabel label = new JLabel();
+			/*JLabel label = new JLabel();
 			label.setIcon(h.getImage());
 			tile[row][column].add(label);
-			System.out.println("hello");
+			System.out.println("hello");*/
+			ImagePanel impanel = new ImagePanel(h.getImage());
+			tile[row][column].add(impanel);
 		}
 	}
 	

@@ -1,4 +1,8 @@
-import javax.swing.ImageIcon;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 /**
  * Ez egy hobbit tipusu ellenseg. Az kulonbozteti meg a tobbi ellensegtol, hogy a torony tuzelese soran a sebzes merteke fugg
@@ -8,18 +12,29 @@ import javax.swing.ImageIcon;
  */
 public class Hobbit extends Enemy{
 
-    ImageIcon icon=new ImageIcon("human.png");
+	BufferedImage image = null;
 	
 	public Hobbit() {
 		super();
+		try {
+		    image = ImageIO.read(new File("human.jpg"));
+		} catch (IOException e) {
+			System.out.println("Sikertelen kep betoltes");
+		}
 	}
 	
 	public Hobbit(Road road) {
 		super(road);
+		try {
+		    image = ImageIO.read(new File("human.jpg"));
+		    System.out.println("hello");
+		} catch (IOException e) {
+			System.out.println("Sikertelen kep betoltes");
+		}
 	}
 	
-	public ImageIcon getImage() {
-		return icon;
+	public BufferedImage getImage() {
+		return image;
 	}
 
 	/**
