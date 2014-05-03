@@ -46,17 +46,13 @@ public class GeometryDraw implements Observer {
 							BufferedImage img;
 							try {
 								img = ImageIO.read(new File("tower.jpg"));
-								System.out.println(img);
 								ImageIcon  icon = new ImageIcon(img); 
-								 JLabel picLabel = new JLabel(icon);
-								 
-									GraphicsArea.tile[i][j].add(picLabel);
-									//GraphicsArea.tile[i][j].repaint();
-									System.out.println("Success");
+								JLabel picLabel = new JLabel(icon);								 
+								GraphicsArea.tile[i][j].add(picLabel);
+								GraphicsArea.tile[i][j].validate();
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
-								System.out.println("Cumi");
 							}
 							
 							
