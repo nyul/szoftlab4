@@ -60,8 +60,8 @@ public class GraphicsArea {
 			label.setIcon(h.getImage());
 			tile[row][column].add(label);
 			System.out.println("hello");*/
-			ImagePanel impanel = new ImagePanel(h.getImage());
-			tile[row][column].add(impanel);
+			//ImagePanel impanel = new ImagePanel(h.getImage());
+			//tile[row][column].add(impanel);
 		}
 	}
 	

@@ -23,7 +23,17 @@ public class GeometryDraw implements Observer {
 				for(int i = 0; i < geo.getTiles().size(); i++) {
 					for(int j = 0; j < geo.getTiles().get(i).size(); j++) {
 						if(geo.getTiles().get(i).get(j).getPos().getX() == road.getPos().getX() && geo.getTiles().get(i).get(j).getPos().getY() == road.getPos().getY()) {
-							GraphicsArea.tile[i][j].setBackground(new Color(0, 0, 255));
+							BufferedImage img;
+							try {
+								img = ImageIO.read(new File("img/road.png"));
+								ImageIcon  icon = new ImageIcon(img); 
+								JLabel picLabel = new JLabel(icon);								 
+								GraphicsArea.tile[i][j].add(picLabel);
+								//GraphicsArea.tile[i][j].validate();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+						}
 						}
 					}
 				}
@@ -109,7 +119,8 @@ public class GeometryDraw implements Observer {
 						}
 					}
 				}
-			}
+			}		
+			
 		}
 		
 	}

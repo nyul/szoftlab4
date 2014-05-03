@@ -295,6 +295,7 @@ public class Main implements Serializable {
 					 * sor masodik szava megadja a map nevet
 					 * map megnyitasa, palya statikus betoltese
 					 */
+		
 					FileReader fr = new FileReader(command[1].toString());
 					br = new BufferedReader(fr);
 					String row = br.readLine();
@@ -384,7 +385,7 @@ public class Main implements Serializable {
 									}
 									engine.getFellowship().getActive().add(h);
 									engine.getFellowship().increaseNumber(1);
-									GraphicsArea.addImageToTile(Integer.parseInt(word[1]), Integer.parseInt(word[2]), h);
+									//GraphicsArea.addImageToTile(Integer.parseInt(word[1]), Integer.parseInt(word[2]), h);
 								}
 							}
 						}
