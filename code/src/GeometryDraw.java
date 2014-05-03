@@ -1,6 +1,15 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 
 public class GeometryDraw implements Observer {
@@ -34,7 +43,23 @@ public class GeometryDraw implements Observer {
 				for(int i = 0; i < geo.getTiles().size(); i++) {
 					for(int j = 0; j < geo.getTiles().get(i).size(); j++) {
 						if(geo.getTiles().get(i).get(j).getPos().getX() == tow.getPos().getX() && geo.getTiles().get(i).get(j).getPos().getY() == tow.getPos().getY()) {
-							GraphicsArea.tile[i][j].setBackground(new Color(0, 0, 0));
+							BufferedImage img;
+							try {
+								img = ImageIO.read(new File("tower.jpg"));
+								System.out.println(img);
+								ImageIcon  icon = new ImageIcon(img); 
+								 JLabel picLabel = new JLabel(icon);
+								 
+									GraphicsArea.tile[i][j].add(picLabel);
+									//GraphicsArea.tile[i][j].repaint();
+									System.out.println("Success");
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+								System.out.println("Cumi");
+							}
+							
+							
 						}
 					}
 				}
