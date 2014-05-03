@@ -152,6 +152,35 @@ public class GraphicsArea {
 								// close
 							}
 						}
+						
+						else if(tiles.get(ii).get(jj).getType() == 2) {
+							String message = "Do you want to build an obstacle?";
+							Object[] options = { "Yes", "No" };
+							int number = JOptionPane.showOptionDialog(frame, message, "",
+						            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+							if(number == JOptionPane.OK_OPTION) {
+								Obstacle o = tiles.get(ii).get(jj).buildObstacle(main.getEngine().getPlayer());
+								main.getEngine().getPlayer().getArea().isBuildable(o);
+							}
+							if(number == JOptionPane.NO_OPTION) {
+								// close
+							}
+						}
+						
+						else if(tiles.get(ii).get(jj).getType() == 3) {
+							String message = "Do you want to upgrade this obstacle?";
+							Object[] options = { "Yes", "No" };
+							int number = JOptionPane.showOptionDialog(frame, message, "",
+						            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+							if(number == JOptionPane.OK_OPTION) {
+								Obstacle o = (Obstacle) tiles.get(ii).get(jj);
+								o.wantToUpgrade(main.getEngine().getPlayer());
+							}
+							if(number == JOptionPane.NO_OPTION) {
+								// close
+							}
+						}
+						
 					}
 				});	
 			}
