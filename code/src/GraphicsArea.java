@@ -41,8 +41,9 @@ public class GraphicsArea {
 		
 		for (int i = 0; i < row; i ++) { 
 			for (int j = 0; j < column; j ++) { 
-
+				
 				tile[i][j] = new JPanel(); 
+				tile[i][j].setLayout(new BorderLayout(0,0));
 				tile[i][j].setBackground(new Color(0, 170, 0));
 				tile[i][j].setPreferredSize(new Dimension(50, 50));
 				tile[i][j].setBorder( new EmptyBorder( 0, 0, 0, 0 ) );
