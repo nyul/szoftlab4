@@ -45,7 +45,7 @@ public class GeometryDraw implements Observer {
 						if(geo.getTiles().get(i).get(j).getPos().getX() == tow.getPos().getX() && geo.getTiles().get(i).get(j).getPos().getY() == tow.getPos().getY()) {
 							BufferedImage img;
 							try {
-								img = ImageIO.read(new File("tower.jpg"));
+								img = ImageIO.read(new File("img/human.png"));
 								ImageIcon  icon = new ImageIcon(img); 
 								JLabel picLabel = new JLabel(icon);								 
 								GraphicsArea.tile[i][j].add(picLabel);

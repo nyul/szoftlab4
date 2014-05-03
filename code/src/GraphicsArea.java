@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.border.EmptyBorder;
 
 
 public class GraphicsArea {
@@ -44,7 +45,8 @@ public class GraphicsArea {
 				tile[i][j] = new JPanel(); 
 				tile[i][j].setBackground(new Color(0, 170, 0));
 				tile[i][j].setPreferredSize(new Dimension(50, 50));
-				tile[i][j].setBorder(BorderFactory.createLineBorder(Color.WHITE));
+				tile[i][j].setBorder( new EmptyBorder( 0, 0, 0, 0 ) );
+				tile[i][j].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.WHITE));
 				area.add(tile[i][j]);
 			}
 		}
@@ -67,10 +69,16 @@ public class GraphicsArea {
 	public static void addComponentsToPane(Container pane) {
         
         area = new JPanel();
-        pane.add(area, BorderLayout.PAGE_START);
+        pane.add(area, BorderLayout.LINE_START);
+        
+        stateBarRight = new JPanel();
+        pane.add(stateBarRight,BorderLayout.LINE_END);
         
         stateBarBottom = new JPanel();
         pane.add(stateBarBottom, BorderLayout.PAGE_END);
+        
+        stateBarRight.setLayout(new BorderLayout());
+        JPanel textBarThree = new JPanel();
         
         JPanel stateBarBottomLeft = new JPanel();
         stateBarBottomLeft.setLayout(new BorderLayout());
