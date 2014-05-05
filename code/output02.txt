@@ -1,0 +1,16 @@
+[0:Hobbit]
+lifePower: 100
+stepTime: 10
+pause: 0
+position: (1,1)
+isActive: true
+isDuplicated: false
+[Step:1]
+[0:Hobbit] has moved to Road(1,2)
+[0:Hobbit]
+lifePower: 100
+stepTime: 10
+pause: 0
+position: (1,2)
+isActive: true
+isDuplicated: false

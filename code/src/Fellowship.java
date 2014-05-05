@@ -16,11 +16,13 @@ public class Fellowship {
 	private ArrayList<Enemy> active;
 	private ArrayList<Enemy> passive;
 	private int number;
+	EnemyDraw enemyDraw;
 	
 	public Fellowship() {
 		active = new ArrayList<Enemy>();
 		passive = new ArrayList<Enemy>();
 		number = 0;
+		enemyDraw = new EnemyDraw();
 	}
 	
 	/**
@@ -54,6 +56,7 @@ public class Fellowship {
 	public void addActive(Enemy enemy) {
 		this.active.add(enemy);
 		increaseNumber(1);
+		this.active.get(active.size()-1).registerObserver(enemyDraw);
 	}
 	
 	public void removeActive(int index) {
@@ -214,5 +217,4 @@ public class Fellowship {
 			this.addActive(elf);
 		}
 	}
-
 }

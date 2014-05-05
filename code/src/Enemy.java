@@ -1,10 +1,12 @@
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  *Ez egy absztrakt osztaly, ami arra jo, hogy tarolja az ellenseg allapotait illetve megszabja a viselkedesuket, ami minden egyes
  *ellenseg tipusra igaz. 
  */
-public abstract class Enemy {
+public abstract class Enemy extends Observable {
 	/**
 	 * id - osztalyszintu valtozo, amely 1-el novelodik minden egyes enemy letrehozaskor
 	 * myId - ellenseg azonositoja
@@ -18,6 +20,7 @@ public abstract class Enemy {
 	 * counter - 1-tol stepTime-ig novelodik az erteke, ha eleri a stepTime erteket, akkor lep az ellenseg
 	 * random - random generator ki/be kapcsolasahoz szukseges
 	 */
+	private ArrayList<EnemyDraw> observers;
 	public static int id = 0;  // azonosito generalashoz kell
 	protected int myId;  // azonosito  
 	protected int lifePower;
@@ -33,6 +36,7 @@ public abstract class Enemy {
 	 *  palyara helyezeskor hivodik meg
 	 */
 	public Enemy() {
+		observers = new ArrayList<EnemyDraw>();
 		myId = id;
 		id++;
 		lifePower = 100;
@@ -49,6 +53,7 @@ public abstract class Enemy {
 	 * @param pos
 	 */
 	public Enemy(Road r) {
+		observers = new ArrayList<EnemyDraw>();
 		myId = id;
 		id++;
 		lifePower = 100;
@@ -61,6 +66,9 @@ public abstract class Enemy {
 		random = false;
 	}
 
+	public ArrayList<EnemyDraw> getObservers() {
+		return observers;
+	}
 	
 	public int getMyId() {
 		return myId;
@@ -128,6 +136,8 @@ public abstract class Enemy {
 			o.slowMe(this);
 		} 
 		road = nextRoad;
+		setChanged();
+		notifyObservers(this);
 	}
 
 	/**
@@ -188,5 +198,28 @@ public abstract class Enemy {
 		this.lifePowerReduce(t);
 		Writer.writeText.add("[" + t.getMyId() + ":" + t.getClass().getName() + "] has shot [" + this.getMyId() + ":" + this.getClass().getName() + "]");
 		return this.lifePower;
+	}
+	
+	public void notifyObservers(Observable observable) {
+		System.out.println("Enemy move notify");
+		for(Observer ob : observers) {
+			System.out.println("Hello");
+			ob.update(observable, this.road);
+		}
+	}
+	
+	/**
+	 * Beregisztrálunk egy observert erre az osztályra
+	 * @param observer
+	 */
+	public void registerObserver(EnemyDraw draw) {
+		observers.add(draw);
+	}
+	/**
+	 * Töröljük az adott observer-t a listából: már nem kell értesülnie a model állapot változásairól
+	 * @param observer
+	 */
+	public void removeObserver(EnemyDraw draw) {
+		observers.remove(draw);
 	}
 }
