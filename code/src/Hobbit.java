@@ -17,7 +17,7 @@ public class Hobbit extends Enemy{
 	public Hobbit() {
 		super();
 		try {
-		    image = ImageIO.read(new File("human.jpg"));
+		    image = ImageIO.read(new File("img/hobbit.png"));
 		} catch (IOException e) {
 			System.out.println("Sikertelen kep betoltes");
 		}
@@ -26,8 +26,7 @@ public class Hobbit extends Enemy{
 	public Hobbit(Road road) {
 		super(road);
 		try {
-		    image = ImageIO.read(new File("human.jpg"));
-		    System.out.println("hello");
+		    image = ImageIO.read(new File("img/hobbit.png"));
 		} catch (IOException e) {
 			System.out.println("Sikertelen kep betoltes");
 		}

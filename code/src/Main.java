@@ -383,9 +383,7 @@ public class Main implements Serializable {
 									if( word.length == 4){
 										h.setLifePower(Integer.parseInt(word[3]));
 									}
-									engine.getFellowship().getActive().add(h);
-									engine.getFellowship().increaseNumber(1);
-									//GraphicsArea.addImageToTile(Integer.parseInt(word[1]), Integer.parseInt(word[2]), h);
+									engine.getFellowship().addActive(h);
 								}
 							}
 						}
@@ -399,8 +397,7 @@ public class Main implements Serializable {
 									if( word.length == 4){
 										h.setLifePower(Integer.parseInt(word[3]));
 									}
-									engine.getFellowship().getActive().add(h);
-									engine.getFellowship().increaseNumber(1);
+									engine.getFellowship().addActive(h);
 								}
 							}
 						}
@@ -414,8 +411,7 @@ public class Main implements Serializable {
 									if( word.length == 4){
 										d.setLifePower(Integer.parseInt(word[3]));
 									}
-									engine.getFellowship().getActive().add(d);
-									engine.getFellowship().increaseNumber(1);
+									engine.getFellowship().addActive(d);
 								}
 							}
 						}
@@ -429,8 +425,7 @@ public class Main implements Serializable {
 									if( word.length == 4){
 										elf.setLifePower(Integer.parseInt(word[3]));
 									}
-									engine.getFellowship().getActive().add(elf);
-									engine.getFellowship().increaseNumber(1);
+									engine.getFellowship().addActive(elf);
 								}
 							}
 						}	

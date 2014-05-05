@@ -45,8 +45,8 @@ public class GeometryDraw implements Observer {
 								img = ImageIO.read(new File("img/obstacle.png"));
 								ImageIcon  icon = new ImageIcon(img); 
 								JLabel picLabel = new JLabel(icon);								 
-								GraphicsArea.tile[i][j].remove(0);
-								GraphicsArea.tile[i][j].add(picLabel);
+								
+								GraphicsArea.tile[i][j].add(picLabel, 0);
 								GraphicsArea.tile[i][j].validate();
 							} catch (IOException e) {
 								// TODO Auto-generated catch block

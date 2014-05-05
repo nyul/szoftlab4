@@ -108,7 +108,8 @@ public class GraphicsArea {
         
         stateBarBottom.add(stateBarBottomLeft);
         
-        JTextArea stateConsole = new JTextArea(5, 30);
+        JTextArea stateConsole = new JTextArea(5, 33);
+        stateConsole.setBackground(new Color(200, 200, 200));
         stateConsole.setEditable(false);
         
         JScrollPane scroller = new JScrollPane(stateConsole);

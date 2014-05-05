@@ -203,7 +203,6 @@ public abstract class Enemy extends Observable {
 	public void notifyObservers(Observable observable) {
 		System.out.println("Enemy move notify");
 		for(Observer ob : observers) {
-			System.out.println("Hello");
 			ob.update(observable, this.road);
 		}
 	}
