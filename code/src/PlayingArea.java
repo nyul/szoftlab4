@@ -201,10 +201,6 @@ public class PlayingArea {
 						source.get(i).addRoad(obstacle.get(j));
 					}
 				}
-				// source to mountain
-				if(mountain.getPos().getX() == pos2.getX() && mountain.getPos().getY() == pos2.getY()) {
-					source.get(i).addRoad(mountain);
-				}
 			}
 		}
 	}

@@ -24,6 +24,7 @@ Road ref 4 6 5 6
 Road ref 5 6 6 6
 Road ref 6 6 7 6
 Road ref 7 6 8 6
+Road ref 8 6 9 6
 Tower 4 3
-Hobbit 3 1
+Hobbit 3 0
 Hobbit 3 6

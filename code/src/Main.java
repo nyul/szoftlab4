@@ -393,6 +393,19 @@ public class Main implements Serializable {
 									GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].validate();
 								}
 							}
+							for(int i = 0; i < engine.getPlayer().getArea().getSource().size(); i++) {
+								if(engine.getPlayer().getArea().getSource().get(i).getPos().getX() == Integer.parseInt(word[1]) && engine.getPlayer().getArea().getSource().get(i).getPos().getY() == Integer.parseInt(word[2])) {
+									Hobbit h = new Hobbit(engine.getPlayer().getArea().getSource().get(i));
+									if( word.length == 4){
+										h.setLifePower(Integer.parseInt(word[3]));
+									}
+									ImageIcon  icon = new ImageIcon(h.getImage()); 
+									JLabel picLabel = new JLabel(icon);
+									engine.getFellowship().addActive(h);
+									GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].add(picLabel, 0);
+									GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].validate();
+								}
+							}
 						}
 						/**
 						 * lerak egy embert a megadott pozicioju csempere
