@@ -1,23 +1,14 @@
-[Step:12]
-[10:Hobbit] has moved to Road(3,2)
-[0:Tower] has shot [10:Hobbit]
-[10:Hobbit] has moved to Obstacle(3,3)
-[0:Tower] has shot [10:Hobbit]
-[0:Tower] has shot [10:Hobbit]
-[10:Hobbit] has moved to Obstacle(3,4)
-[0:Tower] has shot [10:Hobbit]
-[0:Tower] has shot [10:Hobbit]
-[10:Hobbit] has moved to Road(3,5)
-Nincs hatotavon beluli ellenseg.
-[10:Hobbit] has moved to Road(3,6)
-Nincs hatotavon beluli ellenseg.
-[10:Hobbit] has moved to Road(4,6)
-Nincs hatotavon beluli ellenseg.
-[10:Hobbit] has moved to Road(5,6)
-Nincs hatotavon beluli ellenseg.
-[10:Hobbit] has moved to Road(6,6)
-Nincs hatotavon beluli ellenseg.
-[10:Hobbit] has moved to Road(7,6)
-Nincs hatotavon beluli ellenseg.
-[10:Hobbit] has moved to Road(8,6)
-Nincs hatotavon beluli ellenseg.
+[Step:5]
+[0:Hobbit] has moved to Road(3,2)
+[1:Hobbit] has moved to Road(4,6)
+[0:Tower] has shot [0:Hobbit]
+[0:Hobbit] has moved to Obstacle(3,3)
+[1:Hobbit] has moved to Road(5,6)
+[0:Tower] has shot [0:Hobbit]
+[1:Hobbit] has moved to Road(6,6)
+[0:Tower] has shot [0:Hobbit]
+[0:Hobbit] has moved to Obstacle(3,4)
+[1:Hobbit] has moved to Road(7,6)
+[0:Tower] has shot [0:Hobbit]
+[1:Hobbit] has moved to Road(8,6)
+[0:Tower] has shot [0:Hobbit]

@@ -27,6 +27,7 @@ public abstract class Enemy extends Observable {
 	protected int stepTime;   
 	protected int pause; 
 	protected Road road;
+	protected Road previousRoad;
 	protected boolean isActive;
 	protected boolean isDuplicated;
 	protected int counter;
@@ -43,6 +44,7 @@ public abstract class Enemy extends Observable {
 		stepTime = 10;
 		pause = 0;
 		road = new Road(new Position(-1, -1));  // meg nincs palyara helyezve (virtualis pozicio)
+		previousRoad = null;
 		isActive = false;
 		isDuplicated = false;
 		counter = 1;
@@ -60,6 +62,7 @@ public abstract class Enemy extends Observable {
 		stepTime = 10;
 		pause = 0;
 		road = r;
+		previousRoad = null;
 		isActive = true;
 		isDuplicated = false;
 		counter = 1;
@@ -135,9 +138,14 @@ public abstract class Enemy extends Observable {
 			Obstacle o = (Obstacle) nextRoad;
 			o.slowMe(this);
 		} 
+		previousRoad = road;
 		road = nextRoad;
 		setChanged();
 		notifyObservers(this);
+	}
+	
+	public Road getPreviousRoad() {
+		return previousRoad;
 	}
 
 	/**

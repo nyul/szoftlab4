@@ -15,7 +15,7 @@ public class Engine extends Thread{
 	public Engine() {
 		player = new Player(100);
 		fellowship = new Fellowship();
-		fellowship.produceAllEnemy();
+		//fellowship.produceAllEnemy();
 		player.startGame();
 		counter = 1;
 	}
