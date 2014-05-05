@@ -1,6 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -29,7 +26,7 @@ public class GeometryDraw implements Observer {
 								ImageIcon  icon = new ImageIcon(img); 
 								JLabel picLabel = new JLabel(icon);								 
 								GraphicsArea.tile[i][j].add(picLabel);
-								//GraphicsArea.tile[i][j].validate();
+								GraphicsArea.tile[i][j].validate();
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -48,6 +45,7 @@ public class GeometryDraw implements Observer {
 								img = ImageIO.read(new File("img/obstacle.png"));
 								ImageIcon  icon = new ImageIcon(img); 
 								JLabel picLabel = new JLabel(icon);								 
+								GraphicsArea.tile[i][j].remove(0);
 								GraphicsArea.tile[i][j].add(picLabel);
 								GraphicsArea.tile[i][j].validate();
 							} catch (IOException e) {

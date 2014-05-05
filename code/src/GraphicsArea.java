@@ -55,7 +55,7 @@ public class GraphicsArea {
 	
 	public static void addImageToTile(int row, int column, Enemy e) {
 		if(e instanceof Hobbit) {
-			Hobbit h = (Hobbit) e;
+			//Hobbit h = (Hobbit) e;
 			/*JLabel label = new JLabel();
 			label.setIcon(h.getImage());
 			tile[row][column].add(label);
@@ -79,7 +79,6 @@ public class GraphicsArea {
         pane.add(stateBarBottom, BorderLayout.PAGE_END);
         
         stateBarRight.setLayout(new BorderLayout());
-        JPanel textBarThree = new JPanel();
         
         JPanel stateBarBottomLeft = new JPanel();
         stateBarBottomLeft.setLayout(new BorderLayout());

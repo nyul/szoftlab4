@@ -44,6 +44,7 @@ public class Tower extends Tile implements Defense{
 			MagicRock rock = new MagicRock(i);
 			magicRock.add(rock);
 		}
+		magicRockNumber = 0;
 		this.type = 1;
 		random = false;
 		split = false;
