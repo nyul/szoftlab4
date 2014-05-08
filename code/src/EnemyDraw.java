@@ -18,7 +18,6 @@ public class EnemyDraw implements Observer {
 					Component[] comp = GraphicsArea.tile[hobbit.getPreviousRoad().getPos().getX()][hobbit.getPreviousRoad().getPos().getY()].getComponents();
 					for(int i = 0; i < comp.length; i++) {
 						if(comp[i] == hobbit.picLabel) {
-							System.out.println("hello");
 							GraphicsArea.tile[hobbit.getPreviousRoad().getPos().getX()][hobbit.getPreviousRoad().getPos().getY()].remove(i);
 							GraphicsArea.tile[hobbit.getPreviousRoad().getPos().getX()][hobbit.getPreviousRoad().getPos().getY()].repaint();
 						}
@@ -38,7 +37,6 @@ public class EnemyDraw implements Observer {
 					Component[] comp = GraphicsArea.tile[human.getPreviousRoad().getPos().getX()][human.getPreviousRoad().getPos().getY()].getComponents();
 					for(int i = 0; i < comp.length; i++) {
 						if(comp[i] == human.picLabel) {
-							System.out.println("hello");
 							GraphicsArea.tile[human.getPreviousRoad().getPos().getX()][human.getPreviousRoad().getPos().getY()].remove(i);
 							GraphicsArea.tile[human.getPreviousRoad().getPos().getX()][human.getPreviousRoad().getPos().getY()].repaint();
 						}

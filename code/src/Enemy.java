@@ -18,7 +18,6 @@ public abstract class Enemy extends Observable {
 	 * 			  ellensegeket lehet leptetni
 	 * isDuplicated - alapesetben false az erteke, true abban az esetben, ha az ellenseget a torony sebzese soran kettehasitotta
 	 * counter - 1-tol stepTime-ig novelodik az erteke, ha eleri a stepTime erteket, akkor lep az ellenseg
-	 * random - random generator ki/be kapcsolasahoz szukseges
 	 */
 	private ArrayList<EnemyDraw> observers;
 	public static int id = 0;  // azonosito generalashoz kell
@@ -31,7 +30,6 @@ public abstract class Enemy extends Observable {
 	protected boolean isActive;
 	protected boolean isDuplicated;
 	protected int counter;
-	protected boolean random;
 	
 	/**
 	 *  palyara helyezeskor hivodik meg
@@ -48,7 +46,6 @@ public abstract class Enemy extends Observable {
 		isActive = false;
 		isDuplicated = false;
 		counter = 1;
-		random = false;
 	}
 	/**
 	 *  ellenseg lerakasa egy tetszoleges ut-csempere
@@ -66,7 +63,6 @@ public abstract class Enemy extends Observable {
 		isActive = true;
 		isDuplicated = false;
 		counter = 1;
-		random = false;
 	}
 
 	public ArrayList<EnemyDraw> getObservers() {
@@ -185,7 +181,7 @@ public abstract class Enemy extends Observable {
 		 * forrasok szamatol fuggoen visszaad egy szamot, ha a randomgenerator be van kapcsolva [0;forrasok szama-1]
 		 * ha randomgenerator ki van kapcsolva, azaz random = false, akkor mindig a forras lista 0-dik elemere teszzük ra az ellenseget
 		 */
-		int randValue = random == true ? (int)(Math.random()*source.size()) : 0;
+		int randValue = (int)(Math.random()*source.size());
 		source.get(randValue).requestDestination(this);
 	}
 

@@ -78,45 +78,12 @@ public class Main implements Serializable {
 				 * egy sorban levo szoveget feldarabolja a szokozok menten es egy tombbe rakja (szavakra darabolas)
 				 */
 				String[] command = line.split(" ");
-				/**
-				 * ha egy sor elso szava RANDOM_ON
-				 */
-				if(command[0].equals("RANDOM_ON")) {
-					/**
-					 * road random attributumanak true-ra allitasa
-					 * ez az ut elagazas kezelesehez szukseges
-					 */
-					if(!engine.getPlayer().getArea().getRoad().isEmpty()){
-						for(int i = 0 ; i < engine.getPlayer().getArea().getRoad().size(); i++){
-							engine.getPlayer().getArea().getRoad().get(i).random = true;
-						}
-					}
-					/**
-					 * torony random attributumanak true-ra allitas
-					 * tuzeles soran a ketteszakitashoz kell
-					 */
-					if(!engine.getPlayer().getArea().getTower().isEmpty()){
-						for(int i = 0 ; i < engine.getPlayer().getArea().getTower().size(); i++){
-							engine.getPlayer().getArea().getTower().get(i).random = true;
-						}
-					}
-					if(!engine.getFellowship().getPassive().isEmpty()){
-						for(int i = 0 ; i < engine.getFellowship().getPassive().size(); i++){
-							engine.getFellowship().getPassive().get(i).random = true;
-						}
-					}
-					if(!engine.getFellowship().getActive().isEmpty()){
-						for(int i = 0 ; i < engine.getFellowship().getActive().size(); i++){
-							engine.getFellowship().getActive().get(i).random = true;
-						}
-					}
-					Writer.writeText.add("Random Numbers Enabled!");
-				}
+			
 				/**
 				 * ha sor elso szava SPLIT_ON
 				 * ellenseg ketteszakitasahoz szukseges
 				 */
-				else if(command[0].equals("SPLIT_ON")) {
+				if(command[0].equals("SPLIT_ON")) {
 					if(!engine.getPlayer().getArea().getTower().isEmpty()){
 						for(int i = 0 ; i < engine.getPlayer().getArea().getTower().size(); i++){
 							engine.getPlayer().getArea().getTower().get(i).split = true;
