@@ -3,6 +3,9 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -10,6 +13,9 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -53,23 +59,44 @@ public class GraphicsArea {
 		}
 	}
 	
-	public static void addImageToTile(int row, int column, Enemy e) {
-		if(e instanceof Hobbit) {
-			//Hobbit h = (Hobbit) e;
-			/*JLabel label = new JLabel();
-			label.setIcon(h.getImage());
-			tile[row][column].add(label);
-			System.out.println("hello");*/
-			//ImagePanel impanel = new ImagePanel(h.getImage());
-			//tile[row][column].add(impanel);
-		}
-	}
-	
-	
-	
 	public static void addComponentsToPane(Container pane) {
         
-        area = new JPanel();
+		 JMenuBar menubar = new JMenuBar();
+
+	        JMenu file = new JMenu("File");
+	        file.setMnemonic(KeyEvent.VK_F);
+
+	        JMenuItem startItem = new JMenuItem("Start");
+	        startItem.setMnemonic(KeyEvent.VK_S);
+	        startItem.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent event) {
+	            	String message = "Please load a map!";
+					String name = JOptionPane.showInputDialog(frame, message, null);
+					
+					if(name != null && name.startsWith("input") && name.endsWith(".txt")) {
+						main.loadInputLanguage();
+					}
+	            }
+	        });
+	        
+	        JMenuItem exitItem = new JMenuItem("Exit");
+	        exitItem.setMnemonic(KeyEvent.VK_E);
+	        exitItem.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent event) {
+	                System.exit(0);
+	            }
+	        });
+
+	        file.add(startItem);
+	        file.add(exitItem);
+
+	        menubar.add(file);
+
+	        frame.setJMenuBar(menubar);
+		
+		area = new JPanel();
         pane.add(area, BorderLayout.LINE_START);
         
         stateBarRight = new JPanel();
@@ -188,7 +215,6 @@ public class GraphicsArea {
 	}
 	
 	public static void createAndShowGUI(ArrayList<ArrayList<Tile>> tiles) {
-        
         frame = new JFrame("Tower defense");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addComponentsToPane(frame.getContentPane());

@@ -13,6 +13,12 @@ Road 6 6
 Road 7 6
 Road 8 6
 Mountain 9 6
+Road 4 2
+Road 5 2
+Road 6 2
+Road 6 3
+Road 6 4
+Road 6 5
 Source ref 3 0 3 1
 Road ref 3 1 3 2
 Road ref 3 2 3 3
@@ -25,6 +31,13 @@ Road ref 5 6 6 6
 Road ref 6 6 7 6
 Road ref 7 6 8 6
 Road ref 8 6 9 6
+Road ref 3 2 4 2
+Road ref 4 2 5 2
+Road ref 5 2 6 2
+Road ref 6 2 6 3
+Road ref 6 3 6 4
+Road ref 6 4 6 5
+Road ref 6 5 6 6
 Tower 4 3
 Hobbit 3 0
-Hobbit 3 6
+Human 3 1

@@ -46,7 +46,8 @@ public class Road extends Tile{
 	 * @param e - A lepni kivano enemy referenciaja
 	 */
 	public void requestDestination(Enemy enemy) {
-		int randValue = random == true ? (int)(Math.random()*nextRoad.size()) : 0;
+		//int randValue = random == true ? (int)(Math.random()*nextRoad.size()) : 0;
+		int randValue = (int)(Math.random()*nextRoad.size());
 		Writer.writeText.add("[" + enemy.getMyId() + ":" + enemy.getClass().getName() + "] has moved to " + nextRoad.get(randValue).getClass().getName() +  "(" + nextRoad.get(randValue).getPos().getX() + "," + nextRoad.get(randValue).getPos().getY() + ")");
 		enemy.setRoad(nextRoad.get(randValue));
 	}

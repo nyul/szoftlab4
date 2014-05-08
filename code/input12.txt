@@ -1,3 +1,3 @@
 loadMap map12.txt
-step 10
+step 15
 exit
