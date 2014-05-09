@@ -136,6 +136,39 @@ public class PlayingArea {
 			}
 		}						
 	}
+	
+	public void changeReferenceTo(Position pos1, Position pos2) {
+		// if pos1 is road
+		for(int i = 0; i < road.size(); i++) {
+			if(road.get(i).getPos().getX() == pos1.getX() && road.get(i).getPos().getY() == pos1.getY()) {
+				// road to obstacle
+				for(int j = 0; j < obstacle.size(); j++) {
+					if(obstacle.get(j).getPos().getX() == pos2.getX() && obstacle.get(j).getPos().getY() == pos2.getY()) {
+						// csak road-hoz kapcsolodhatott
+						for(int k = 0; k < road.get(i).getNextRoad().size(); k++) {
+							if(road.get(i).getNextRoad().get(k).getPos().getX() == obstacle.get(j).getPos().getX() && road.get(i).getNextRoad().get(k).getPos().getY() == obstacle.get(j).getPos().getY()) {
+								road.get(i).getNextRoad().remove(k);
+							}
+						}
+						road.get(i).addRoad(obstacle.get(j));
+					}
+				}
+			}
+		}
+	}
+	
+	public void changeReferenceFrom(Position pos1, ArrayList<Road> target) {
+		// pos1 is Obstacle
+		for(int i = 0; i < obstacle.size(); i++) {
+			if(obstacle.get(i).getPos().getX() == pos1.getX() && obstacle.get(i).getPos().getY() == pos1.getY()) {
+				for(int j = 0; j < target.size(); i++) {
+					obstacle.get(i).addRoad(target.get(j));
+				}
+			}
+		}
+	}
+	
+	
 	/**
 	 * Ellenseg lepese a pos1-rol a pos2-re
 	 * Annak fuggvenyeben, hogy mi a forras-cel csempe

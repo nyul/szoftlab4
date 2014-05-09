@@ -1,35 +1,208 @@
-[Step:15]
+[0:Hobbit]
+lifePower: 100
+stepTime: 10
+pause: 0
+position: (3,0)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 100
+stepTime: 10
+pause: 0
+position: (3,1)
+isActive: true
+isDuplicated: false
+[Step:1]
 [0:Hobbit] has moved to Road(3,1)
 [1:Human] has moved to Road(3,2)
 [0:Tower] has shot [1:Human]
+[0:Hobbit]
+lifePower: 100
+stepTime: 10
+pause: 0
+position: (3,1)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 0
+position: (3,2)
+isActive: true
+isDuplicated: false
+[Step:1]
 [0:Hobbit] has moved to Road(3,2)
-[1:Human] has moved to Road(4,2)
+[1:Human] has moved to Obstacle(3,3)
 [0:Tower] has shot [0:Hobbit]
-[0:Hobbit] has moved to Road(4,2)
-[1:Human] has moved to Road(5,2)
+[0:Hobbit]
+lifePower: 90
+stepTime: 10
+pause: 0
+position: (3,2)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 1
+position: (3,3)
+isActive: true
+isDuplicated: false
+[Step:1]
+[0:Hobbit] has moved to Obstacle(3,3)
 [0:Tower] has shot [0:Hobbit]
-[0:Hobbit] has moved to Road(5,2)
-[1:Human] has moved to Road(6,2)
+[0:Hobbit]
+lifePower: 80
+stepTime: 10
+pause: 1
+position: (3,3)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 0
+position: (3,3)
+isActive: true
+isDuplicated: false
+[Step:1]
+[1:Human] has moved to Obstacle(3,4)
 [0:Tower] has shot [0:Hobbit]
-[0:Hobbit] has moved to Road(6,2)
-[1:Human] has moved to Road(6,3)
+[0:Hobbit]
+lifePower: 70
+stepTime: 10
+pause: 0
+position: (3,3)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 1
+position: (3,4)
+isActive: true
+isDuplicated: false
+[Step:1]
+[0:Hobbit] has moved to Obstacle(3,4)
+[0:Tower] has shot [0:Hobbit]
+[0:Hobbit]
+lifePower: 60
+stepTime: 10
+pause: 1
+position: (3,4)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 0
+position: (3,4)
+isActive: true
+isDuplicated: false
+[Step:1]
+[1:Human] has moved to Road(3,5)
+[0:Tower] has shot [0:Hobbit]
+[0:Hobbit]
+lifePower: 50
+stepTime: 10
+pause: 0
+position: (3,4)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 0
+position: (3,5)
+isActive: true
+isDuplicated: false
+[Step:1]
+[0:Hobbit] has moved to Road(3,5)
+[1:Human] has moved to Road(3,6)
 Nincs hatotavon beluli ellenseg.
-[0:Hobbit] has moved to Road(6,3)
-[1:Human] has moved to Road(6,4)
+[0:Hobbit]
+lifePower: 50
+stepTime: 10
+pause: 0
+position: (3,5)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 0
+position: (3,6)
+isActive: true
+isDuplicated: false
+[Step:1]
+[0:Hobbit] has moved to Road(3,6)
+[1:Human] has moved to Road(4,6)
 Nincs hatotavon beluli ellenseg.
-[0:Hobbit] has moved to Road(6,4)
-[1:Human] has moved to Road(6,5)
+[0:Hobbit]
+lifePower: 50
+stepTime: 10
+pause: 0
+position: (3,6)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 0
+position: (4,6)
+isActive: true
+isDuplicated: false
+[Step:1]
+[0:Hobbit] has moved to Road(4,6)
+[1:Human] has moved to Road(5,6)
 Nincs hatotavon beluli ellenseg.
-[0:Hobbit] has moved to Road(6,5)
+[0:Hobbit]
+lifePower: 50
+stepTime: 10
+pause: 0
+position: (4,6)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 0
+position: (5,6)
+isActive: true
+isDuplicated: false
+[Step:1]
+[0:Hobbit] has moved to Road(5,6)
 [1:Human] has moved to Road(6,6)
 Nincs hatotavon beluli ellenseg.
+[0:Hobbit]
+lifePower: 50
+stepTime: 10
+pause: 0
+position: (5,6)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 0
+position: (6,6)
+isActive: true
+isDuplicated: false
+[Step:1]
 [0:Hobbit] has moved to Road(6,6)
 [1:Human] has moved to Road(7,6)
 Nincs hatotavon beluli ellenseg.
-[0:Hobbit] has moved to Road(7,6)
-[1:Human] has moved to Road(8,6)
-Nincs hatotavon beluli ellenseg.
-[0:Hobbit] has moved to Road(8,6)
-[1:Human] has moved to Mountain(9,6)
-Nincs hatotavon beluli ellenseg.
-Defeat! :(
+[0:Hobbit]
+lifePower: 50
+stepTime: 10
+pause: 0
+position: (6,6)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 0
+position: (7,6)
+isActive: true
+isDuplicated: false

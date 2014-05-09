@@ -117,7 +117,7 @@ public class Player extends Observable {
 	}
 	
 	public void notifyObservers(Observable observable) {
-		System.out.println("Notifying to all the subscribers when product became available");
+		System.out.println("Player magicPower changed notify");
 		for(Observer ob : observers) {
 			if(stateMagic == true) {
 				ob.update(observable, this.magicPower);

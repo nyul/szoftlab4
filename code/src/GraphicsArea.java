@@ -147,8 +147,8 @@ public class GraphicsArea {
 	}
 	
 	public static void clickHandling(final ArrayList<ArrayList<Tile>> tiles) {
-		for (int i = 0; i < row; i ++) { 
-			for (int j = 0; j < column; j ++) {
+		for (int i = 0; i < row; i++) { 
+			for (int j = 0; j < column; j++) {
 				final int ii = i;
 		        final int jj = j;
 				tile[ii][jj].addMouseListener(new MouseAdapter() {
@@ -183,11 +183,35 @@ public class GraphicsArea {
 						else if(tiles.get(ii).get(jj).getType() == 2) {
 							String message = "Do you want to build an obstacle?";
 							Object[] options = { "Yes", "No" };
-							int number = JOptionPane.showOptionDialog(frame, message, "",
-						            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+							int number = JOptionPane.showOptionDialog(frame, message, "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+							
 							if(number == JOptionPane.OK_OPTION) {
-								Obstacle o = tiles.get(ii).get(jj).buildObstacle(main.getEngine().getPlayer());
-								main.getEngine().getPlayer().getArea().isBuildable(o);
+								Obstacle obst = tiles.get(ii).get(jj).buildObstacle(main.getEngine().getPlayer());
+								System.out.println(ii+", " + jj);
+								if(obst == null) {
+									message = "You don't have enough magicpower.";
+									JOptionPane.showMessageDialog(frame, "You don't have enough magicpower.", "Warning", JOptionPane.WARNING_MESSAGE);
+								}
+								else {
+									System.out.println(obst.getPos().getX()+", " + obst.getPos().getY());
+									for(int i = 0; i < main.getEngine().getPlayer().getArea().getRoad().size(); i++) {
+										if(main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getX() == obst.getPos().getX() && main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getY() == obst.getPos().getY()) {
+											main.getEngine().getPlayer().getArea().isBuildable(obst);
+											System.out.println(main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getX() + ", " + main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getY());
+											//main.getEngine().getPlayer().getArea().changeReferenceFrom(obst.getPos(), main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad());
+											
+											main.getEngine().getPlayer().getArea().changeReferenceTo(main.getEngine().getPlayer().getArea().getRoad().get(i-1).getPos(), obst.getPos());
+										}
+									}
+								}
+								for(int i = 0; i < main.getEngine().getPlayer().getArea().getRoad().size(); i++) {
+									if(main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getX() == 6 && main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getY() == 3) {
+										for(int j = 0; j < main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().size(); j++) {
+											System.out.println(main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(j).getClass());
+											System.out.println(main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(j).getPos().getX() + ", " + main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(j).getPos().getY());
+										}
+									}
+								}
 							}
 							if(number == JOptionPane.NO_OPTION) {
 								// close
