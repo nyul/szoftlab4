@@ -161,8 +161,8 @@ public class PlayingArea {
 		// pos1 is Obstacle
 		for(int i = 0; i < obstacle.size(); i++) {
 			if(obstacle.get(i).getPos().getX() == pos1.getX() && obstacle.get(i).getPos().getY() == pos1.getY()) {
-				for(int j = 0; j < target.size(); i++) {
-					obstacle.get(i).addRoad(target.get(j));
+				for(int j = 0; j < target.size(); j++) {
+					obstacle.get(i).getNextRoad().add(target.get(j));
 				}
 			}
 		}
@@ -297,7 +297,7 @@ public class PlayingArea {
 				for(int j = 0; j < geometry.getTiles().get(i).size(); j++) {
 					if(geometry.getTiles().get(i).get(j).getPos().getX() == o.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == o.getPos().getY()) {
 						if(geometry.getTiles().get(i).get(j).getType() == 2) {
-							addObstacle(o);
+							//addObstacle(o);
 							for(int k = 0; k < road.size(); k++) {
 								if(road.get(k) == geometry.getTiles().get(i).get(j)) {
 									removeRoad(k);

@@ -187,19 +187,17 @@ public class GraphicsArea {
 							
 							if(number == JOptionPane.OK_OPTION) {
 								Obstacle obst = tiles.get(ii).get(jj).buildObstacle(main.getEngine().getPlayer());
-								System.out.println(ii+", " + jj);
 								if(obst == null) {
 									message = "You don't have enough magicpower.";
 									JOptionPane.showMessageDialog(frame, "You don't have enough magicpower.", "Warning", JOptionPane.WARNING_MESSAGE);
 								}
 								else {
-									System.out.println(obst.getPos().getX()+", " + obst.getPos().getY());
 									for(int i = 0; i < main.getEngine().getPlayer().getArea().getRoad().size(); i++) {
 										if(main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getX() == obst.getPos().getX() && main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getY() == obst.getPos().getY()) {
+											System.out.println(main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(0).getPos().getY());
+											main.getEngine().getPlayer().getArea().getObstacle().add(obst);
+											main.getEngine().getPlayer().getArea().changeReferenceFrom(obst.getPos(), main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad());
 											main.getEngine().getPlayer().getArea().isBuildable(obst);
-											System.out.println(main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getX() + ", " + main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getY());
-											//main.getEngine().getPlayer().getArea().changeReferenceFrom(obst.getPos(), main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad());
-											
 											main.getEngine().getPlayer().getArea().changeReferenceTo(main.getEngine().getPlayer().getArea().getRoad().get(i-1).getPos(), obst.getPos());
 										}
 									}
