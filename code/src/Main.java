@@ -12,8 +12,8 @@ import java.util.ArrayList;
 public class Main implements Serializable {
 	
 	/**
-	 * engine - engine osztály referenciája
-	 * outputNumber - azt tárolja, hogy melyik input fájlt töltöttük be
+	 * engine - engine osztaly referenciaja
+	 * outputNumber - azt tarolja, hogy melyik input fajlt toltottuk be
 	 */
 	private static final long serialVersionUID = 1L;
 	private Engine engine;
