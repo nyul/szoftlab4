@@ -54,15 +54,15 @@ public class Player extends Observable {
 	 * @param defense
 	 */
 	public void chooseUpgrade(ArrayList<MagicRock> magicRockList, Defense defense) {
-		System.out.println("Select a number from the list!");
+		//System.out.println("Select a number from the list!");
 		Object[] possibilities = new Object[6];
 		for(int i = 0; i < magicRockList.size(); i++) { // kilistazza az aktualis objektumon elerheto varazskoveket
 			possibilities[i] = MagicRock.name.get(magicRockList.get(i).getType());
 		}
 		String s = (String)JOptionPane.showInputDialog(
                 GraphicsArea.frame,
-                "Choose an upgrade",
-                "Customized Dialog",
+                "Choose an upgrade from the list!",
+                "Upgrade",
                 JOptionPane.PLAIN_MESSAGE,
                 null,
                 possibilities, possibilities[0]);
