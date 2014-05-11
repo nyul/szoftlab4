@@ -136,6 +136,7 @@ public class Tower extends Tile implements Defense{
 					enemies.get(i).setDuplicated(true);
 					enemies.get(i).setLifePower((int)(enemies.get(i).getLifePower() / 2));
 				}
+				System.out.println("Lottem");
 				return enemies.get(i);
 			}
 		}	
