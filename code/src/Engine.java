@@ -50,7 +50,8 @@ public class Engine extends Thread{
 						 *  ellenseget meg kell olnunk, azaz torolnunk kell az aktiv listabol
 						 */
 						fellowship.killEnemy(enemy);
-						this.player.reduceMagicPower(this.player.getMagicPower()+10);
+						this.player.escalateMagicPower(10);
+						//this.player.reduceMagicPower(this.player.getMagicPower()+10);
 					}
 					/**
 					 *  ellenseg sebzese soran kette lett-e hasitva, true ha igen

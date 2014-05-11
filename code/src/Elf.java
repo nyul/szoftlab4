@@ -39,6 +39,12 @@ public class Elf extends Enemy{
 			System.out.println("Sikertelen kep betoltes");
 		}
 	}
+	
+	public BufferedImage getImage() {
+		return image;
+	}
+
+	
 	/**
 	 * Torony tuzelese soran megsebzi a tunde ellenseget.
 	 */

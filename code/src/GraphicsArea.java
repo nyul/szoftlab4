@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -246,7 +247,7 @@ public class GraphicsArea {
         frame.setVisible(true);
     }
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		main = new Main();
 		main.draw();
 		main.loadInputLanguage();

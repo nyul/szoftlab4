@@ -143,6 +143,17 @@ public class Player extends Observable {
 		notifyObservers(this);
 	}
 	
+	public void escalateMagicPower(int price) {
+		if(this.magicPower + price > 100) {
+			this.magicPower = 100;
+		} else {
+			this.magicPower = this.magicPower + price;
+		}
+		stateMagic = true;
+		setChanged();
+		notifyObservers(this);
+	}
+	
 	public void notifyObservers(Observable observable) {
 		System.out.println("Player magicPower changed notify");
 		for(Observer ob : observers) {
