@@ -159,6 +159,7 @@ public class Tower extends Tile implements Defense{
 	 * @see Defense#upgrade(MagicRock)
 	 */
 	public void upgrade(MagicRock magicRock){
+		System.out.println("Upragedelem");
 		if(magicRock.getType() == 0) { // hatotavolsag novelo varazsko
 			this.range = this.range + 1;
 		}

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JOptionPane;
+
 
 /**
  * A jatekost reprezentalo objektum. Tarolja a jatekos varazserejet, ami szukseges a
@@ -53,15 +55,23 @@ public class Player extends Observable {
 	 */
 	public void chooseUpgrade(ArrayList<MagicRock> magicRockList, Defense defense) {
 		System.out.println("Select a number from the list!");
+		Object[] possibilities = new Object[6];
 		for(int i = 0; i < magicRockList.size(); i++) { // kilistazza az aktualis objektumon elerheto varazskoveket
-			System.out.println(i + ": " + MagicRock.name.get(magicRockList.get(i).getType())); 
+			possibilities[i] = MagicRock.name.get(magicRockList.get(i).getType());
 		}
-		InputStreamReader read = new InputStreamReader(System.in);
-		BufferedReader in = new BufferedReader(read);
-		int number = 0;
-		try {
-			number = Integer.parseInt(in.readLine()); // beolvassa a valasztott szamot
-			for(int i = 0; i < magicRockList.size(); i++) {
+		String s = (String)JOptionPane.showInputDialog(
+                GraphicsArea.frame,
+                "Choose an upgrade",
+                "Customized Dialog",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                possibilities, possibilities[0]);
+		//InputStreamReader read = new InputStreamReader(System.in);
+		//BufferedReader in = new BufferedReader(read);
+		//int number = 0;
+		//try {
+			//number = Integer.parseInt(in.readLine()); // beolvassa a valasztott szamot
+/*			for(int i = 0; i < magicRockList.size(); i++) {
 				if(number == magicRockList.get(i).getType()) {
 					if(magicPower < magicRockList.get(number).getPrice()) { // ha nincs eleg varazsero
 						System.out.println("You don't have enough magicpower.");
@@ -87,6 +97,23 @@ public class Player extends Observable {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}*/
+		
+		if(s != null){
+			if(magicPower < magicRockList.get(0).getPrice()) { // ha nincs eleg varazsero
+				System.out.println("You don't have enough magicpower.");
+			} else { // ha van eleg varazsero
+				reduceMagicPower(magicRockList.get(0).getPrice()); // csokkenti a varazserot
+				defense.upgrade(magicRockList.get(0)); // es elhelyezi a varazskovet a tornyon vagy akadalyon
+				if(defense instanceof Tower) {
+					Tower tower = (Tower) defense;
+					tower.increaseMagicRockNumber(1);
+				}
+				else if(defense instanceof Obstacle) {
+					Obstacle obst = (Obstacle) defense;
+					obst.increaseMagicRockNumber(1);
+				}
+			}
 		}
 	}
 	
