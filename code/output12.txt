@@ -68,7 +68,7 @@ isActive: true
 isDuplicated: false
 [Step:1]
 [0:Hobbit] has moved to Road(5,2)
-[1:Human] has moved to Obstacle(6,2)
+[1:Human] has moved to Road(6,2)
 [0:Tower] has shot [0:Hobbit]
 [0:Hobbit]
 lifePower: 70
@@ -80,35 +80,36 @@ isDuplicated: false
 [1:Human]
 lifePower: 90
 stepTime: 10
-pause: 1
+pause: 0
 position: (6,2)
 isActive: true
 isDuplicated: false
 [Step:1]
-[0:Hobbit] has moved to Obstacle(6,2)
+[0:Hobbit] has moved to Road(6,2)
+[1:Human] has moved to Obstacle(6,3)
 Nincs hatotavon beluli ellenseg.
 [0:Hobbit]
 lifePower: 70
 stepTime: 10
-pause: 1
+pause: 0
 position: (6,2)
 isActive: true
 isDuplicated: false
 [1:Human]
 lifePower: 90
 stepTime: 10
-pause: 0
-position: (6,2)
+pause: 1
+position: (6,3)
 isActive: true
 isDuplicated: false
 [Step:1]
-[1:Human] has moved to Road(6,3)
+[0:Hobbit] has moved to Obstacle(6,3)
 Nincs hatotavon beluli ellenseg.
 [0:Hobbit]
 lifePower: 70
 stepTime: 10
-pause: 0
-position: (6,2)
+pause: 1
+position: (6,3)
 isActive: true
 isDuplicated: false
 [1:Human]
@@ -119,8 +120,7 @@ position: (6,3)
 isActive: true
 isDuplicated: false
 [Step:1]
-[0:Hobbit] has moved to Road(6,3)
-[1:Human] has moved to Obstacle(6,4)
+[1:Human] has moved to Road(6,4)
 Nincs hatotavon beluli ellenseg.
 [0:Hobbit]
 lifePower: 70
@@ -132,28 +132,12 @@ isDuplicated: false
 [1:Human]
 lifePower: 90
 stepTime: 10
-pause: 1
-position: (6,4)
-isActive: true
-isDuplicated: false
-[Step:1]
-[0:Hobbit] has moved to Obstacle(6,4)
-Nincs hatotavon beluli ellenseg.
-[0:Hobbit]
-lifePower: 70
-stepTime: 10
-pause: 1
-position: (6,4)
-isActive: true
-isDuplicated: false
-[1:Human]
-lifePower: 90
-stepTime: 10
 pause: 0
 position: (6,4)
 isActive: true
 isDuplicated: false
 [Step:1]
+[0:Hobbit] has moved to Road(6,4)
 [1:Human] has moved to Road(6,5)
 Nincs hatotavon beluli ellenseg.
 [0:Hobbit]
@@ -190,13 +174,30 @@ isActive: true
 isDuplicated: false
 [Step:1]
 [0:Hobbit] has moved to Road(6,6)
-[1:Human] has moved to Road(7,6)
+[1:Human] has moved to Obstacle(7,6)
 Nincs hatotavon beluli ellenseg.
 [0:Hobbit]
 lifePower: 70
 stepTime: 10
 pause: 0
 position: (6,6)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 1
+position: (7,6)
+isActive: true
+isDuplicated: false
+[Step:1]
+[0:Hobbit] has moved to Obstacle(7,6)
+Nincs hatotavon beluli ellenseg.
+[0:Hobbit]
+lifePower: 70
+stepTime: 10
+pause: 1
+position: (7,6)
 isActive: true
 isDuplicated: false
 [1:Human]

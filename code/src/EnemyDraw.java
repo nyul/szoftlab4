@@ -8,7 +8,6 @@ public class EnemyDraw implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 		if(o instanceof Hobbit) {
 			Hobbit hobbit = (Hobbit) o;
 			if (arg instanceof Road) {
