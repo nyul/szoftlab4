@@ -1,2 +1,2 @@
 loadMap map12.txt
-step 30
+step 300
