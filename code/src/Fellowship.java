@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
  *  *
@@ -7,22 +8,28 @@ import java.util.ArrayList;
  * A Fellowship dolga a hullamok es azok szamanak nyilvantartasa, illetve az egyes hullamok kozotti idokozok beosztasa.
  *
  */
-public class Fellowship {	
+public class Fellowship extends Observable {	
 	/**
 	 * active - aktiv ellensegejet tarolja
 	 * passive - passziv ellensegeket tarolja
 	 * number - passziv + aktiv ellensegek aktualis szama egyuttesen
 	 */
+	private ArrayList<FellowshipDraw> observers;
 	private ArrayList<Enemy> active;
 	private ArrayList<Enemy> passive;
 	private int number;
 	EnemyDraw enemyDraw;
 	
 	public Fellowship() {
+		observers = new ArrayList<FellowshipDraw>();
 		active = new ArrayList<Enemy>();
 		passive = new ArrayList<Enemy>();
 		number = 0;
 		enemyDraw = new EnemyDraw();
+	}
+	
+	public ArrayList<FellowshipDraw> getObservers() {
+		return observers;
 	}
 	
 	/**
@@ -47,10 +54,14 @@ public class Fellowship {
 
 	public void reduceNumber(int number) {
 		this.number -= number;
+		setChanged();
+		notifyObservers(this);
 	}
 	
 	public void increaseNumber(int number) {
 		this.number += number;
+		setChanged();
+		notifyObservers(this);
 	}
 	
 	public void addActive(Enemy enemy) {
@@ -216,5 +227,26 @@ public class Fellowship {
 			elf.setLifePower(enemy.getLifePower());
 			this.addActive(elf);
 		}
+	}
+	
+	public void notifyObservers(Observable observable) {
+		for(FellowshipDraw ob : observers) {
+			ob.update(observable, this.number);
+		}
+	}
+	
+	/**
+	 * Beregisztrálunk egy observert erre az osztályra
+	 * @param observer
+	 */
+	public void registerObserver(FellowshipDraw draw) {
+		observers.add(draw);
+	}
+	/**
+	 * Töröljük az adott observer-t a listából: már nem kell értesülnie a model állapot változásairól
+	 * @param observer
+	 */
+	public void removeObserver(FellowshipDraw draw) {
+		observers.remove(draw);
 	}
 }

@@ -35,6 +35,7 @@ public class GraphicsArea {
 	static JPanel stateBarRight;
 	static JPanel stateBarBottom;
 	public static JTextField magic;
+	public static JTextField alive;
 	static int row;
 	static int column;
 	static Main main;
@@ -126,10 +127,10 @@ public class GraphicsArea {
         textBarTwo.setLayout(new BorderLayout());
         JLabel aliveEnemies = new JLabel("Alive enemies: ");
         textBarTwo.add(aliveEnemies, BorderLayout.WEST);
-        JTextField alive = new JTextField(3);
+        alive = new JTextField(3);
         alive.setEditable(false);
         alive.setBorder(BorderFactory.createEmptyBorder());
-        alive.setText("20");
+        //alive.setText("20");
         textBarTwo.add(alive, BorderLayout.EAST);
         
         stateBarBottomLeft.add(textBarOne, BorderLayout.NORTH);
@@ -162,6 +163,10 @@ public class GraphicsArea {
 						            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
 							if(number == JOptionPane.OK_OPTION) {
 								Tower t = tiles.get(ii).get(jj).buildTower(main.getEngine().getPlayer());
+								if(t == null) {
+									message = "You don't have enough magicpower.";
+									JOptionPane.showMessageDialog(frame, "You don't have enough magicpower.", "Warning", JOptionPane.WARNING_MESSAGE);
+								}
 								main.getEngine().getPlayer().getArea().isBuildable(t);
 							}
 							if(number == JOptionPane.NO_OPTION) {
@@ -205,14 +210,14 @@ public class GraphicsArea {
 											}
 										}
 									}
-									for(int i = 0; i < main.getEngine().getPlayer().getArea().getRoad().size(); i++) {
+									/*for(int i = 0; i < main.getEngine().getPlayer().getArea().getRoad().size(); i++) {
 										if(main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getX() == 6 && main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getY() == 3) {
 											for(int j = 0; j < main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().size(); j++) {
 												System.out.println(main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(j).getClass());
 												System.out.println(main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(j).getPos().getX() + ", " + main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(j).getPos().getY());
 											}
 										}
-									}
+									}*/
 								}
 								if(number == JOptionPane.NO_OPTION) {
 									// close
