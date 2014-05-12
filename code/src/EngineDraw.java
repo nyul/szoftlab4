@@ -7,20 +7,22 @@ public class EngineDraw implements Observer {
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
 		if (o instanceof Engine) {
-			Engine engine = (Engine) o;
-			if (arg instanceof Boolean) {
-				boolean value = (boolean)arg;
-				
-				if(engine.defeat() == value) {
-					GraphicsArea.end = false;
-				}				
-				else if(engine.victory() == value) {
-					GraphicsArea.end = true;
-				}
-				updateStatus();	
+			if(arg instanceof Player) {
+				updateVictory(o, arg);
 			}
-			
+			else if(arg instanceof Fellowship) {
+				updateDefeat(o, arg);
+			}
+			updateStatus();
 	    }
+	}
+	
+	public void updateVictory(Observable o, Object arg) {
+		GraphicsArea.end = false;
+	}
+	
+	public void updateDefeat(Observable o, Object arg) {
+		GraphicsArea.end = true;
 	}
 	
 	public void updateStatus() {

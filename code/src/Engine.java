@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Egesz jatek motorja, ami az idozitest es a leptetes utemezeset vegzi. Ezenfelul felelossege, hogy a gyozelem illetve vereseg
@@ -10,11 +12,17 @@ public class Engine extends Observable implements Runnable{
 	 * fellowship - egy szovetsegre mutato referencia
 	 * counter - lovesvizsgalat gyakorisagahoz szukseges
 	 */
+	private ArrayList<EngineDraw> observers;
+	private boolean isVictory;
+	private boolean isDefeat;
 	private Player player;
 	private Fellowship fellowship;
 	private int counter;
 	
 	public Engine() {
+		observers = new ArrayList<EngineDraw>();
+		isVictory = false;
+		isDefeat = false;
 		player = new Player(100);
 		fellowship = new Fellowship();
 		//fellowship.produceAllEnemy();
@@ -22,6 +30,10 @@ public class Engine extends Observable implements Runnable{
 		counter = 1;
 	}
 	
+	public ArrayList<EngineDraw> getObservers() {
+		return observers;
+	}
+
 	public Player getPlayer() {
 		return player;
 	}
@@ -100,6 +112,12 @@ public class Engine extends Observable implements Runnable{
 		 */
 		if(fellowship.getNumber() == 0) {
 			victory();
+			try {
+				Thread.sleep(1000);
+			} catch(Exception ex) {
+				ex.printStackTrace();
+			}
+			System.exit(0);
 		}
 		/**
 		 *  van-e a hegyen ellenseg, ha igen akkor vereseg
@@ -115,7 +133,7 @@ public class Engine extends Observable implements Runnable{
 	 * Vereseg
 	 * Osszes lefoglalt objektumot felszabaditjuk es kiiratjuk, hogy Vereseg
 	 */
-	public boolean defeat() {
+	public void defeat() {
 		fellowship.getActive().clear();
 		fellowship.getPassive().clear();
 		player.getArea().getObstacle().clear();
@@ -124,13 +142,15 @@ public class Engine extends Observable implements Runnable{
 		player.getArea().getTower().clear();
 		Writer.writeText.add("Defeat! :(");
 		
-		return true;
+		isDefeat = true;
+		setChanged();
+		notifyObservers(this);
 	}
 	/**
 	 * Gyozelem
 	 * Osszes lefoglalt objektumot felszabaditjuk es kiiratjuk, hogy Gyozelem
 	 */
-	public boolean victory() {
+	public void victory() {
 		fellowship.getActive().clear();
 		fellowship.getPassive().clear();
 		player.getArea().getObstacle().clear();
@@ -139,6 +159,36 @@ public class Engine extends Observable implements Runnable{
 		player.getArea().getTower().clear();
 		Writer.writeText.add("Victory! :)");
 		
-		return true;
+		isVictory = true;
+		setChanged();
+		notifyObservers(this);
+	}
+	
+	public void notifyObservers(Observable observable) {
+		for(Observer ob : observers) {
+			if(isVictory == true) {
+				ob.update(observable, this.getFellowship());
+				isVictory = false;
+			}
+			else if(isDefeat == true) {
+				ob.update(observable, this.getPlayer());
+				isDefeat = false;
+			}
+		}
+	}
+	
+	/**
+	 * Beregisztrálunk egy observert erre az osztályra
+	 * @param observer
+	 */
+	public void registerObserver(EngineDraw draw) {
+		observers.add(draw);
+	}
+	/**
+	 * Töröljük az adott observer-t a listából: már nem kell értesülnie a model állapot változásairól
+	 * @param observer
+	 */
+	public void removeObserver(EngineDraw draw) {
+		observers.remove(draw);
 	}
 }
