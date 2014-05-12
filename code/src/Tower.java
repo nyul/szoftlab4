@@ -24,7 +24,7 @@ public class Tower extends Tile implements Defense{
 	private int damagePowerHuman; // Human elleni sebzesi hatekonysag
 	private ArrayList<MagicRock> magicRock;  // toronyra helyezheto varazskovek
 	private int magicRockNumber;  // tornyon levo varazskovek szama
-	public static final int price = 10;  // torony epitesi ara (globalis valtozo)
+	public static final int price = 40;  // torony epitesi ara (globalis valtozo)
 	protected boolean random;  // random mod allitasa
 	protected boolean split;  // split mod, ha be van kapcsolva, akkor a megsebzett ellenseget mindig kettelovi
 	private int happened;
