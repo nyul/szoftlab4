@@ -354,8 +354,6 @@ public class Main implements Serializable {
 									if( word.length == 4){
 										h.setLifePower(Integer.parseInt(word[3]));
 									}
-									/*ImageIcon  icon = new ImageIcon(h.getImage()); 
-									JLabel picLabel = new JLabel(icon);*/
 									engine.getFellowship().addActive(h);
 									GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].add(h.picLabel, 0);
 									GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].validate();
@@ -367,8 +365,6 @@ public class Main implements Serializable {
 									if( word.length == 4){
 										h.setLifePower(Integer.parseInt(word[3]));
 									}
-									/*ImageIcon  icon = new ImageIcon(h.getImage()); 
-									JLabel picLabel = new JLabel(icon);*/
 									engine.getFellowship().addActive(h);
 									GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].add(h.picLabel, 0);
 									GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].validate();
@@ -385,8 +381,6 @@ public class Main implements Serializable {
 									if( word.length == 4){
 										h.setLifePower(Integer.parseInt(word[3]));
 									}
-									/*ImageIcon  icon = new ImageIcon(h.getImage()); 
-									JLabel picLabel = new JLabel(icon);*/
 									engine.getFellowship().addActive(h);
 									GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].add(h.picLabel, 0);
 									GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].validate();
@@ -398,8 +392,6 @@ public class Main implements Serializable {
 									if( word.length == 4){
 										h.setLifePower(Integer.parseInt(word[3]));
 									}
-									/*ImageIcon  icon = new ImageIcon(h.getImage()); 
-									JLabel picLabel = new JLabel(icon);*/
 									engine.getFellowship().addActive(h);
 									GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].add(h.picLabel, 0);
 									GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].validate();
@@ -417,6 +409,19 @@ public class Main implements Serializable {
 										d.setLifePower(Integer.parseInt(word[3]));
 									}
 									engine.getFellowship().addActive(d);
+									GraphicsArea.tile[d.getRoad().getPos().getX()][d.getRoad().getPos().getY()].add(d.picLabel, 0);
+									GraphicsArea.tile[d.getRoad().getPos().getX()][d.getRoad().getPos().getY()].validate();
+								}
+							}
+							for(int i = 0; i < engine.getPlayer().getArea().getSource().size(); i++) {
+								if(engine.getPlayer().getArea().getSource().get(i).getPos().getX() == Integer.parseInt(word[1]) && engine.getPlayer().getArea().getSource().get(i).getPos().getY() == Integer.parseInt(word[2])) {
+									Dwarf d = new Dwarf(engine.getPlayer().getArea().getRoad().get(i));
+									if( word.length == 4){
+										d.setLifePower(Integer.parseInt(word[3]));
+									}
+									engine.getFellowship().addActive(d);
+									GraphicsArea.tile[d.getRoad().getPos().getX()][d.getRoad().getPos().getY()].add(d.picLabel, 0);
+									GraphicsArea.tile[d.getRoad().getPos().getX()][d.getRoad().getPos().getY()].validate();
 								}
 							}
 						}
@@ -431,6 +436,19 @@ public class Main implements Serializable {
 										elf.setLifePower(Integer.parseInt(word[3]));
 									}
 									engine.getFellowship().addActive(elf);
+									GraphicsArea.tile[elf.getRoad().getPos().getX()][elf.getRoad().getPos().getY()].add(elf.picLabel, 0);
+									GraphicsArea.tile[elf.getRoad().getPos().getX()][elf.getRoad().getPos().getY()].validate();
+								}
+							}
+							for(int i = 0; i < engine.getPlayer().getArea().getSource().size(); i++) {
+								if(engine.getPlayer().getArea().getSource().get(i).getPos().getX() == Integer.parseInt(word[1]) && engine.getPlayer().getArea().getSource().get(i).getPos().getY() == Integer.parseInt(word[2])) {
+									Elf elf = new Elf(engine.getPlayer().getArea().getRoad().get(i));
+									if( word.length == 4){
+										elf.setLifePower(Integer.parseInt(word[3]));
+									}
+									engine.getFellowship().addActive(elf);
+									GraphicsArea.tile[elf.getRoad().getPos().getX()][elf.getRoad().getPos().getY()].add(elf.picLabel, 0);
+									GraphicsArea.tile[elf.getRoad().getPos().getX()][elf.getRoad().getPos().getY()].validate();
 								}
 							}
 						}	

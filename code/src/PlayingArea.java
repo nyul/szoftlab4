@@ -315,7 +315,8 @@ public class PlayingArea {
 				for(int j = 0; j < geometry.getTiles().get(i).size(); j++) {
 					if(geometry.getTiles().get(i).get(j).getPos().getX() == o.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == o.getPos().getY()) {
 						if(geometry.getTiles().get(i).get(j).getType() == 2) {
-							//addObstacle(o);
+							
+							addObstacle(o);
 							for(int k = 0; k < road.size(); k++) {
 								if(road.get(k) == geometry.getTiles().get(i).get(j)) {
 									removeRoad(k);

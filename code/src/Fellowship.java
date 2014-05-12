@@ -55,8 +55,15 @@ public class Fellowship extends Observable {
 	public int getNumber(){
 		return number;
 	}
+	
+	public void setNumber(int number) {
+		this.number = number;
+		numberWrite = true;
+		setChanged();
+		notifyObservers(this, null);
+	}
 
-	public void reduceNumber(int number) {
+	/*public void reduceNumber(int number) {
 		this.number -= number;
 		setChanged();
 		notifyObservers(this, null);
@@ -67,11 +74,11 @@ public class Fellowship extends Observable {
 		numberWrite = true;
 		setChanged();
 		notifyObservers(this, null);
-	}
+	}*/
 	
 	public void addActive(Enemy enemy) {
 		this.active.add(enemy);
-		increaseNumber(1);
+		setNumber(this.number+1);
 		this.active.get(active.size()-1).registerObserver(enemyDraw);
 	}
 	
@@ -79,19 +86,19 @@ public class Fellowship extends Observable {
 		if(this.active.size() > 0) {
 			this.active.get(index).removeObserver(enemyDraw);
 			this.active.remove(index);
-			reduceNumber(1);
+			setNumber(this.number-1);
 		}
 	}
 	
 	public void addPassive(Enemy enemy) {
 		this.passive.add(enemy);
-		increaseNumber(1);
+		setNumber(this.number+1);
 	}
 	
 	public void removePassive(int index) {
 		if(this.passive.size() > 0) {
 			this.passive.remove(index);
-			reduceNumber(1);
+			setNumber(this.number-1);
 		}
 	}
 
@@ -119,7 +126,7 @@ public class Fellowship extends Observable {
 				Elf elf = new Elf();
 				passive.add(elf);
 			}
-			increaseNumber(1);
+			setNumber(this.number+1);
 		}
 	}
 	
