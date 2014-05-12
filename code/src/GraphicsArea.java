@@ -179,9 +179,13 @@ public class GraphicsArea {
 								Object[] options = { "Yes", "No" };
 								int number = JOptionPane.showOptionDialog(frame, message, "",
 							            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
-								if(number == JOptionPane.OK_OPTION) {
+								if(number == JOptionPane.OK_OPTION && (main.getEngine().getPlayer().getMagicPower() >= 10)) {
 									Tower t = (Tower) tiles.get(ii).get(jj);
 									t.wantToUpgrade(main.getEngine().getPlayer());
+								}
+								if(main.getEngine().getPlayer().getMagicPower() < 10){
+									message = "You don't have enough magicpower.";
+									JOptionPane.showMessageDialog(frame, "You don't have enough magicpower.", "Warning", JOptionPane.WARNING_MESSAGE);
 								}
 								if(number == JOptionPane.NO_OPTION) {
 									// close
@@ -229,10 +233,16 @@ public class GraphicsArea {
 								Object[] options = { "Yes", "No" };
 								int number = JOptionPane.showOptionDialog(frame, message, "",
 							            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
-								if(number == JOptionPane.OK_OPTION) {
+								if(number == JOptionPane.OK_OPTION && (main.getEngine().getPlayer().getMagicPower() >= 10)) {
 									Obstacle o = (Obstacle) tiles.get(ii).get(jj);
 									o.wantToUpgrade(main.getEngine().getPlayer());
 								}
+								
+								if(main.getEngine().getPlayer().getMagicPower() < 10){
+									message = "You don't have enough magicpower.";
+									JOptionPane.showMessageDialog(frame, "You don't have enough magicpower.", "Warning", JOptionPane.WARNING_MESSAGE);
+								}
+								
 								if(number == JOptionPane.NO_OPTION) {
 									// close
 								}
