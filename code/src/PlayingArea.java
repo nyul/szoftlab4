@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class PlayingArea {
 	
+	TowerDraw towerDraw;
 	private ArrayList<Source> source;
 	private ArrayList<Tower> tower;
 	private ArrayList<Obstacle> obstacle;
@@ -22,6 +23,7 @@ public class PlayingArea {
 	 * PlayingArea konstruktor
 	 */
 	public PlayingArea() {
+		towerDraw = new TowerDraw();
 		source = new ArrayList<Source>();
 		tower = new ArrayList<Tower>();
 		obstacle = new ArrayList<Obstacle>();
@@ -336,6 +338,7 @@ public class PlayingArea {
 					if(geometry.getTiles().get(i).get(j).getPos().getX() == t.getPos().getX() && geometry.getTiles().get(i).get(j).getPos().getY() == t.getPos().getY()) {
 						if(geometry.getTiles().get(i).get(j).getType() == 0) {
 							addTower(t);
+							t.registerObserver(towerDraw);
 							geometry.setTile(i, j, t);
 						}
 						else {

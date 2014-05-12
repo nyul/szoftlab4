@@ -162,12 +162,12 @@ public class GraphicsArea {
 							int number = JOptionPane.showOptionDialog(frame, message, "",
 						            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
 							if(number == JOptionPane.OK_OPTION) {
-								Tower t = tiles.get(ii).get(jj).buildTower(main.getEngine().getPlayer());
-								if(t == null) {
+								Tower tower = tiles.get(ii).get(jj).buildTower(main.getEngine().getPlayer());
+								if(tower == null) {
 									message = "You don't have enough magicpower.";
 									JOptionPane.showMessageDialog(frame, "You don't have enough magicpower.", "Warning", JOptionPane.WARNING_MESSAGE);
 								}
-								main.getEngine().getPlayer().getArea().isBuildable(t);
+								main.getEngine().getPlayer().getArea().isBuildable(tower);
 							}
 							if(number == JOptionPane.NO_OPTION) {
 								// close
@@ -267,7 +267,6 @@ public class GraphicsArea {
         addComponentsToPane(frame.getContentPane());
         tilesDraw(tiles);
         clickHandling(tiles);
-     //   endGameMessage();
         frame.pack();
         frame.setVisible(true);
     }

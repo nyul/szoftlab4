@@ -1,5 +1,7 @@
+import java.util.Observable;
 
-public class Tile {
+
+public class Tile extends Observable {
 	/**
 	 * pos - csempe pozicioja
 	 * type - csempe tipusa

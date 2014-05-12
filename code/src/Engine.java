@@ -18,6 +18,7 @@ public class Engine extends Observable implements Runnable{
 	private Player player;
 	private Fellowship fellowship;
 	private int counter;
+	private int randValue;  //kod random mukodesehez
 	
 	public Engine() {
 		observers = new ArrayList<EngineDraw>();
@@ -28,6 +29,7 @@ public class Engine extends Observable implements Runnable{
 		//fellowship.produceAllEnemy();
 		player.startGame();
 		counter = 1;
+		randValue = 0;
 	}
 	
 	public ArrayList<EngineDraw> getObservers() {
@@ -49,7 +51,15 @@ public class Engine extends Observable implements Runnable{
 	public void attackHandler() {
 		if(counter >= 10) {
 			Enemy enemy = null;
+			randValue = (int)(Math.random() * player.getArea().getTower().size()*5);
 			for(int i = 0; i < player.getArea().getTower().size(); i++) {
+				if(randValue % 2 == 0) {
+					player.getArea().getTower().get(i).fogOn();
+				}
+				else if(randValue % 3 == 0) {
+					player.getArea().getTower().get(i).fogOff();
+				}
+				
 				/**
 				 *  attack metodus visszadja azt az ellenseget, akit meglott, de ha nem lott senkire, akkor egy null-al ter vissza
 				 */

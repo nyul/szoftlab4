@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
  * A jatekos altal elhelyezhet tornyot reprezentalo objektum. Tarolja a lovesre
@@ -9,6 +10,9 @@ tovabba a kod le- es felszallasaert.
  */
 public class Tower extends Tile implements Defense{
 	
+	private ArrayList<TowerDraw> observers;
+	private boolean fogOn;
+	private boolean fogOff;
 	public static int id = 0;  // azonosito generalashoz szukseges
 	private int myId;  // azonosito
 	private int shootPeriod;  // tuzelesi gayakorisag
@@ -23,6 +27,7 @@ public class Tower extends Tile implements Defense{
 	public static final int price = 10;  // torony epitesi ara (globalis valtozo)
 	protected boolean random;  // random mod allitasa
 	protected boolean split;  // split mod, ha be van kapcsolva, akkor a megsebzett ellenseget mindig kettelovi
+	private int happened;
 	
 	/**
 	 * Tower konstruktor
@@ -30,6 +35,9 @@ public class Tower extends Tile implements Defense{
 	 */
 	public Tower(Position pos) {
 		super(pos);
+		observers = new ArrayList<TowerDraw>();
+		fogOn = false;
+		fogOff = false;
 		myId=id;
 		id++;
 		shootPeriod = 10;
@@ -48,6 +56,27 @@ public class Tower extends Tile implements Defense{
 		this.type = 1;
 		random = false;
 		split = false;
+		happened = 0;
+	}
+	
+	public ArrayList<TowerDraw> getObservers() {
+		return observers;
+	}
+
+	public boolean isFogOn() {
+		return fogOn;
+	}
+
+	public void setFogOn(boolean fogOn) {
+		this.fogOn = fogOn;
+	}
+
+	public boolean isFogOff() {
+		return fogOff;
+	}
+
+	public void setFogOff(boolean fogOff) {
+		this.fogOff = fogOff;
 	}
 
 	public int getMyId() {
@@ -184,17 +213,58 @@ public class Tower extends Tile implements Defense{
 	 * A kod bekapcsolasa a toronyra
 	 */
 	public void fogOn() {
-		this.fogRange = this.range; // elmenti a hatotavolsagot kod leereszkedesekor, hogy miutan elmult visszakapjuk az eredeti erteket
-		this.range--;
-		Writer.writeText.add("[Fog has been set on]");
+		if(happened == 0) {
+			this.fogRange = this.range; // elmenti a hatotavolsagot kod leereszkedesekor, hogy miutan elmult visszakapjuk az eredeti erteket
+			this.range--;
+			fogOn = true;
+			happened = 1;
+			setChanged();
+			notifyObservers(this);
+			Writer.writeText.add("[Fog has been set on]");
+		}
 	}
 	
 	/**
 	 * Kod kikapcsolasa a tornyon
 	 */
 	public void fogOff() {
-		this.range = this.fogRange; // visszaallitja a kod elotti allapotra a hatotavolsagot
-		Writer.writeText.add("[Fog has been set off]");
+		if(happened == 1) {
+			this.range = this.fogRange; // visszaallitja a kod elotti allapotra a hatotavolsagot
+			fogOff = true;
+			happened = 0;
+			setChanged();
+			notifyObservers(this);
+			Writer.writeText.add("[Fog has been set off]");
+		}
+	}
+	
+	public void notifyObservers(Observable observable) {
+		for(TowerDraw ob : observers) {
+			if(fogOn == true) {
+				System.out.println("Hellonotify");
+				ob.update(observable, this.range);
+				//fogOn = false;
+			}
+			else if(fogOff == true) {
+				ob.update(observable, this.range);
+				//fogOff = false;
+			}
+		}
+	}
+	
+	/**
+	 * Beregisztrálunk egy observert erre az osztályra
+	 * @param observer
+	 */
+	public void registerObserver(TowerDraw draw) {
+		observers.add(draw);
+	}
+	/**
+	 * Töröljük az adott observer-t a listából: már nem kell értesülnie a model állapot változásairól
+	 * @param observer
+	 */
+	public void removeObserver(TowerDraw draw) {
+		observers.remove(draw);
 	}
 }
 
