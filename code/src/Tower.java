@@ -41,11 +41,11 @@ public class Tower extends Tile implements Defense{
 		myId=id;
 		id++;
 		shootPeriod = 10;
-		range = 4;
+		range = 2;
 		fogRange = range;
 		damagePowerDwarf = 10;
 		damagePowerElf = 10;
-		damagePowerHobbit = 30;
+		damagePowerHobbit = 10;
 		damagePowerHuman = 10;
 		magicRock = new ArrayList<MagicRock>();
 		for(int i = 0; i < 6; i++) {
@@ -156,16 +156,16 @@ public class Tower extends Tile implements Defense{
 		for(int i = 0; i < enemies.size(); i++) {
 			if(geometry.isInRange(enemies.get(i),this)) { // ha hatotavolsagon belul van az ellenseg
 				isRange = true;
+				System.out.println("shoot");
 				if(enemies.get(i).hit(this) <= 0) { // ha a megsebzett ellensegnek az elete 0-ra vagy az ala csokken
 					enemies.get(i).setActivity(false); // jelezzuk az engine-nek, hogy ot deaktivalni kell
 				}
-				int duplicate = random == true ? (int)(Math.random()*enemies.size()) : 1; // megnezzuk random modon kell-e kivalasztanunk, hogy kettevaljon az ellenseg sebzodes utan
-				duplicate = split == true ? 3 : duplicate;
+				int duplicate = (int)(Math.random()*enemies.size()); // megnezzuk random modon kell-e kivalasztanunk, hogy kettevaljon az ellenseg sebzodes utan
 				if(duplicate == 3) { // pseudo random modon "veletlenszeruen" kivalasztott eset amikor duplazodik az ellenseg
+					System.out.println("HelloDuplicate");
 					enemies.get(i).setDuplicated(true);
 					enemies.get(i).setLifePower((int)(enemies.get(i).getLifePower() / 2));
 				}
-				System.out.println("Lottem");
 				return enemies.get(i);
 			}
 		}	
@@ -243,11 +243,9 @@ public class Tower extends Tile implements Defense{
 			if(fogOn == true) {
 				System.out.println("Hellonotify");
 				ob.update(observable, this.range);
-				//fogOn = false;
 			}
 			else if(fogOff == true) {
 				ob.update(observable, this.range);
-				//fogOff = false;
 			}
 		}
 	}

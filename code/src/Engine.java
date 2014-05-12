@@ -19,6 +19,8 @@ public class Engine extends Observable implements Runnable{
 	private Fellowship fellowship;
 	private int counter;
 	private int randValue;  //kod random mukodesehez
+	private int tick;
+	private int waveCount;
 	
 	public Engine() {
 		observers = new ArrayList<EngineDraw>();
@@ -26,10 +28,12 @@ public class Engine extends Observable implements Runnable{
 		isDefeat = false;
 		player = new Player(100);
 		fellowship = new Fellowship();
-		//fellowship.produceAllEnemy();
+		fellowship.produceAllEnemy();
 		player.startGame();
 		counter = 1;
 		randValue = 0;
+		tick = 0;
+		waveCount = 3;
 	}
 	
 	public ArrayList<EngineDraw> getObservers() {
@@ -53,7 +57,7 @@ public class Engine extends Observable implements Runnable{
 			Enemy enemy = null;
 			randValue = (int)(Math.random() * player.getArea().getTower().size()*5);
 			for(int i = 0; i < player.getArea().getTower().size(); i++) {
-				if(randValue % 2 == 0) {
+				if(randValue % 4 == 0) {
 					player.getArea().getTower().get(i).fogOn();
 				}
 				else if(randValue % 3 == 0) {
@@ -75,7 +79,6 @@ public class Engine extends Observable implements Runnable{
 						 */
 						fellowship.killEnemy(enemy);
 						this.player.escalateMagicPower(10);
-						//this.player.reduceMagicPower(this.player.getMagicPower()+10);
 					}
 					/**
 					 *  ellenseg sebzese soran kette lett-e hasitva, true ha igen
@@ -102,6 +105,10 @@ public class Engine extends Observable implements Runnable{
 	 * Aktov ellensegek leptetesenek kezdemenyezese bizonyos idokozonkent
 	 */
 	public void stepHandler() {
+		if(tick % 100 == 0) {
+			fellowship.startWave(waveCount++, player.getArea().getSource());
+			tick = 1;
+		}
 		fellowship.moveAllActiveEnemy();
 	}
 	/**
@@ -115,29 +122,32 @@ public class Engine extends Observable implements Runnable{
 	 * Most meg a step number bemeneti parancs hatasara ez a fv. 10*number-szor fut le 100 ms-onkent
 	 */
 	public void run() {
-		stepHandler();
-		attackHandler();
-		/**
-		 *  ha nincs mar se passziv, se aktiv ellenseg, akkor gyozelem
-		 */
-		if(fellowship.getNumber() == 0) {
-			victory();
+		//while(true) {
+			stepHandler();
+			attackHandler();
+			/**
+			 *  ha nincs mar se passziv, se aktiv ellenseg, akkor gyozelem
+			 */
+			if(fellowship.getNumber() == 0) {
+				victory();
+				try {
+					Thread.sleep(1000);
+				} catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				System.exit(0);
+			}
+			/**
+			 *  van-e a hegyen ellenseg, ha igen akkor vereseg
+			 */
+			player.getArea().isOnMountain(this);
 			try {
-				Thread.sleep(1000);
+				tick += 1;
+				Thread.sleep(100);
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			}
-			System.exit(0);
-		}
-		/**
-		 *  van-e a hegyen ellenseg, ha igen akkor vereseg
-		 */
-		player.getArea().isOnMountain(this);
-		try {
-			Thread.sleep(100);
-		} catch(Exception ex) {
-			ex.printStackTrace();
-		}
+		//}
 	}
 	/**
 	 * Vereseg

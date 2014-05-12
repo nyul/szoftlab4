@@ -49,6 +49,8 @@ public class Human extends Enemy{
 	 */
 	@Override
 	public void lifePowerReduce(Tower t) {
+		System.out.println("Human before:" + this.lifePower);
 		this.lifePower = this.lifePower - t.getDamagePowerHuman();
+		System.out.println("Human after:" + this.lifePower);
 	}
 }

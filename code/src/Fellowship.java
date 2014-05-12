@@ -36,6 +36,14 @@ public class Fellowship extends Observable {
 		return observers;
 	}
 	
+	public boolean isKill() {
+		return kill;
+	}
+
+	public void setKill(boolean kill) {
+		this.kill = kill;
+	}
+
 	/**
 	 * Megadja az aktiv ellensegek listajat.
 	 * @return Az aktiv ellensegek listája
@@ -62,19 +70,6 @@ public class Fellowship extends Observable {
 		setChanged();
 		notifyObservers(this, null);
 	}
-
-	/*public void reduceNumber(int number) {
-		this.number -= number;
-		setChanged();
-		notifyObservers(this, null);
-	}
-	
-	public void increaseNumber(int number) {
-		this.number += number;
-		numberWrite = true;
-		setChanged();
-		notifyObservers(this, null);
-	}*/
 	
 	public void addActive(Enemy enemy) {
 		this.active.add(enemy);
@@ -141,7 +136,7 @@ public class Fellowship extends Observable {
 		 *  ha nincs annyi passziv ellenseg, amennyit palyara akarunk helyezni, akkor csak annyit rakunk le, amennyi rendelkezesre all
 		 */
 		int j = this.passive.size() > num ? num : this.passive.size();
-		for(int i = 0; i < j ; i++){
+		for(int i = 0; i < j ; i++) {
 			/**
 			 *  eloszor is hozzadjuk az active listahoz a passive lista legelso ellenseget
 			 */
@@ -151,6 +146,7 @@ public class Fellowship extends Observable {
 			 *  ertekuk. Ez azert lesz kójo, mert igy fokozatosan egymas utan lepnek majd palyara.
 			 */
 			this.active.get(this.active.size()-1).setPause(i);
+			this.active.get(this.active.size()-1).setActivity(true);
 			/**
 			 * rahelyezzuk valamelyik forrasra az aktiv ellenseget
 			 */
@@ -184,7 +180,7 @@ public class Fellowship extends Observable {
 			enemy = (Dwarf) enemy;
 		}
 		
-		for(int i=0; i < this.active.size(); i++){
+		for(int i=0; i < this.active.size(); i++) {
 			if(this.active.get(i).equals(enemy)) {
 				System.out.println("[" + active.get(i).getMyId() + ":" + enemy.getClass().getName() + "] has been deleted");
 				kill = true;
@@ -217,6 +213,7 @@ public class Fellowship extends Observable {
 		if(enemy instanceof Human) {
 			Human hu = new Human(enemy.getRoad());
 			hu.setLifePower(enemy.getLifePower());
+			hu.setPause(1);
 			this.addActive(hu);
 		}
 		/**
@@ -225,6 +222,7 @@ public class Fellowship extends Observable {
 		else if(enemy instanceof Hobbit) {
 			Hobbit ho = new Hobbit(enemy.getRoad());
 			ho.setLifePower(enemy.getLifePower());
+			ho.setPause(1);
 			this.addActive(ho);
 		}
 		/**
@@ -233,6 +231,7 @@ public class Fellowship extends Observable {
 		else if(enemy instanceof Dwarf) {
 			Dwarf d = new Dwarf(enemy.getRoad());
 			d.setLifePower(enemy.getLifePower());
+			d.setPause(1);
 			this.addActive(d);			
 		}
 		/**
@@ -241,6 +240,7 @@ public class Fellowship extends Observable {
 		else if(enemy instanceof Elf) {
 			Elf elf = new Elf(enemy.getRoad());
 			elf.setLifePower(enemy.getLifePower());
+			elf.setPause(1);
 			this.addActive(elf);
 		}
 	}
@@ -251,9 +251,8 @@ public class Fellowship extends Observable {
 				ob.update(observable, this.number);
 				numberWrite = false;
 			}
-			else if(kill == true) {
+			if(kill == true) {
 				ob.update(observable, enemy);
-				kill = false;
 			}
 		}
 	}

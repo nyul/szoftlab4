@@ -30,6 +30,7 @@ public abstract class Enemy extends Observable {
 	protected boolean isActive;
 	protected boolean isDuplicated;
 	protected int counter;
+	protected boolean isSource;
 	
 	/**
 	 *  palyara helyezeskor hivodik meg
@@ -41,11 +42,11 @@ public abstract class Enemy extends Observable {
 		lifePower = 100;
 		stepTime = 10;
 		pause = 0;
-		road = new Road(new Position(-1, -1));  // meg nincs palyara helyezve (virtualis pozicio)
 		previousRoad = null;
 		isActive = false;
 		isDuplicated = false;
 		counter = 1;
+		isSource = false;
 	}
 	/**
 	 *  ellenseg lerakasa egy tetszoleges ut-csempere
@@ -69,6 +70,12 @@ public abstract class Enemy extends Observable {
 		return observers;
 	}
 	
+	public boolean isSource() {
+		return isSource;
+	}
+	public void setSource(boolean isSource) {
+		this.isSource = isSource;
+	}
 	public int getMyId() {
 		return myId;
 	}
@@ -135,10 +142,18 @@ public abstract class Enemy extends Observable {
 			Obstacle o = (Obstacle) nextRoad;
 			o.slowMe(this);
 		} 
-		previousRoad = road;
-		road = nextRoad;
-		setChanged();
-		notifyObservers(this);
+		if(nextRoad instanceof Source) {
+			road = nextRoad;
+			isSource = true;
+			setChanged();
+			notifyObservers(this);
+		}
+		else {
+			previousRoad = road;
+			road = nextRoad;
+			setChanged();
+			notifyObservers(this);
+		}
 	}
 	
 	public Road getPreviousRoad() {
@@ -184,6 +199,7 @@ public abstract class Enemy extends Observable {
 		 */
 		int randValue = (int)(Math.random()*source.size());
 		source.get(randValue).requestDestination(this);
+		this.setRoad(source.get(randValue));
 	}
 
 	/**
@@ -207,7 +223,11 @@ public abstract class Enemy extends Observable {
 	
 	public void notifyObservers(Observable observable) {
 		for(Observer ob : observers) {
-			ob.update(observable, this.road);
+			if(isSource) {
+				ob.update(observable, this.road);
+			} else {
+				ob.update(observable, this.road);
+			}
 		}
 	}
 	

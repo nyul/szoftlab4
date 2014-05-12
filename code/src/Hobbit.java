@@ -49,6 +49,8 @@ public class Hobbit extends Enemy{
 	 */
 	@Override
 	public void lifePowerReduce(Tower t) {
+		System.out.println("Hobbit before:" + this.lifePower);
 		this.lifePower = this.lifePower - t.getDamagePowerHobbit();
+		System.out.println("Hobbit after:" + this.lifePower);
 	}
 }
