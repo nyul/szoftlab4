@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 loadMap map12.txt
+=======
+loadMap map12.txt
+step 300
+>>>>>>> 41d9d74dad794e249ef8751f5b4bcbb030b18788

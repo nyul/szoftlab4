@@ -14,7 +14,7 @@ public class Obstacle extends Road implements Defense{
 	private int slowingFactor;  // akadaly lassitasi faktora
 	private ArrayList<MagicRock> magicRock;  // akadalyra elhelyezheto varazskovek
 	private int magicRockNumber;  // akadalyon levo varazskovek szama
-	public static final int price = 50;  // akadaly epitesenek ara
+	public static final int price = 20;  // akadaly epitesenek ara
 	
 	/**
 	 * Akadaly konstruktor
