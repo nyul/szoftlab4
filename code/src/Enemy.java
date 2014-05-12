@@ -106,6 +106,7 @@ public abstract class Enemy extends Observable {
 	 * @param a Ha true akkor aktiv lesz, ha false akkor passziv
 	 */
 	public void setActivity(boolean a) {
+		if(a == false) notifyObservers(this);
 		this.isActive = a;
 	}
 

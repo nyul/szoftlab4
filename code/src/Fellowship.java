@@ -174,7 +174,8 @@ public class Fellowship extends Observable {
 		for(int i=0; i < this.active.size(); i++){
 			if(this.active.get(i).equals(enemy)) {
 				System.out.println("[" + active.get(i).getMyId() + ":" + enemy.getClass().getName() + "] has been deleted");
-				this.removeActive(i);				
+				this.removeActive(i);
+				
 			}
 		}
 	}

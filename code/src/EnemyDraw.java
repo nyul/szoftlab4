@@ -8,7 +8,9 @@ public class EnemyDraw implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
+		
 		if(o instanceof Hobbit) {
+			System.out.print(((Hobbit) o).getMyId());
 			Hobbit hobbit = (Hobbit) o;
 			if (arg instanceof Road) {
 				Road road = (Road)arg;
