@@ -155,6 +155,22 @@ public class PlayingArea {
 				}
 			}
 		}
+		// if pos1 is obstacle
+				for(int i = 0; i < obstacle.size(); i++) {
+					if(obstacle.get(i).getPos().getX() == pos1.getX() && obstacle.get(i).getPos().getY() == pos1.getY()) {
+						// obstacle to obstacle
+						for(int j = 0; j < obstacle.size(); j++) {
+							if(obstacle.get(j).getPos().getX() == pos2.getX() && obstacle.get(j).getPos().getY() == pos2.getY()) {
+								for(int k = 0; k < obstacle.get(i).getNextRoad().size(); k++) {
+									if(obstacle.get(i).getNextRoad().get(k).getPos().getX() == obstacle.get(j).getPos().getX() && obstacle.get(i).getNextRoad().get(k).getPos().getY() == obstacle.get(j).getPos().getY()) {
+										obstacle.get(i).getNextRoad().remove(k);
+									}
+								}
+								obstacle.get(i).addRoad(obstacle.get(j));
+							}
+						}
+					}
+				}
 	}
 	
 	public void changeReferenceFrom(Position pos1, ArrayList<Road> target) {
