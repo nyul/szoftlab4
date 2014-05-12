@@ -3,12 +3,15 @@ import java.util.Observable;
 import java.util.Observer;
 
 
-
+/**
+ * Az ellenseg kirajzolasaert felelos osztaly.
+ */
 public class EnemyDraw implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
 		
+		// Ha az parameterul kapott megfigyelheto objektum egy hobbit
 		if(o instanceof Hobbit) {
 			Hobbit hobbit = (Hobbit)o;
 			if(hobbit.isSource) {
@@ -38,6 +41,8 @@ public class EnemyDraw implements Observer {
 				}
 			}
 	    }
+
+		// Ha az parameterul kapott megfigyelheto objektum egy human
 		else if(o instanceof Human) {
 			Human human = (Human) o;
 			if(human.isSource) {
@@ -66,7 +71,8 @@ public class EnemyDraw implements Observer {
 				}
 			}
 	    }
-		
+
+		// Ha az parameterul kapott megfigyelheto objektum egy elf
 		else if(o instanceof Elf) {
 			Elf elf = (Elf) o;
 			if(elf.isSource) {
@@ -95,7 +101,8 @@ public class EnemyDraw implements Observer {
 				}
 			}
 	    }
-		
+
+		// Ha az parameterul kapott megfigyelheto objektum egy dwarf
 		else if(o instanceof Dwarf) {
 			Dwarf dwarf = (Dwarf) o;
 			if(dwarf.isSource) {
