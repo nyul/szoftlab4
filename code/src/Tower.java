@@ -41,7 +41,7 @@ public class Tower extends Tile implements Defense{
 		myId=id;
 		id++;
 		shootPeriod = 10;
-		range = 2;
+		range = 3;
 		fogRange = range;
 		damagePowerDwarf = 20;
 		damagePowerElf = 20;
@@ -156,13 +156,11 @@ public class Tower extends Tile implements Defense{
 		for(int i = 0; i < enemies.size(); i++) {
 			if(geometry.isInRange(enemies.get(i),this)) { // ha hatotavolsagon belul van az ellenseg
 				isRange = true;
-				System.out.println("shoot");
 				if(enemies.get(i).hit(this) <= 0) { // ha a megsebzett ellensegnek az elete 0-ra vagy az ala csokken
 					enemies.get(i).setActivity(false); // jelezzuk az engine-nek, hogy ot deaktivalni kell
 				}
 				int duplicate = (int)(Math.random()*enemies.size()); // megnezzuk random modon kell-e kivalasztanunk, hogy kettevaljon az ellenseg sebzodes utan
 				if(duplicate == 3) { // pseudo random modon "veletlenszeruen" kivalasztott eset amikor duplazodik az ellenseg
-					System.out.println("HelloDuplicate");
 					enemies.get(i).setDuplicated(true);
 					enemies.get(i).setLifePower((int)(enemies.get(i).getLifePower() / 2));
 				}
@@ -188,7 +186,6 @@ public class Tower extends Tile implements Defense{
 	 * @see Defense#upgrade(MagicRock)
 	 */
 	public void upgrade(MagicRock magicRock){
-		System.out.println("Upragedelem");
 		if(magicRock.getType() == 0) { // hatotavolsag novelo varazsko
 			this.range = this.range + 1;
 		}
@@ -196,16 +193,16 @@ public class Tower extends Tile implements Defense{
 			this.shootPeriod = this.shootPeriod - 3;
 		}
 		if(magicRock.getType() == 2) { // ember elleni sebzest novelo varazsko
-			this.damagePowerHuman = this.damagePowerHuman + 10;
+			this.damagePowerHuman = this.damagePowerHuman + 30;
 		}
 		else if(magicRock.getType() == 3) { // hobbit elleni sebzest novelo varazsko
-			this.damagePowerHobbit = this.damagePowerHobbit + 10;
+			this.damagePowerHobbit = this.damagePowerHobbit + 30;
 		}
 		if(magicRock.getType() == 4) { // torpe elleni sebzest novelo varazsko
-			this.damagePowerDwarf = this.damagePowerDwarf + 10;
+			this.damagePowerDwarf = this.damagePowerDwarf + 30;
 		}
 		else if(magicRock.getType() == 5) { // elf elleni sebzest novelo varazsko
-			this.damagePowerElf = this.damagePowerElf + 10;
+			this.damagePowerElf = this.damagePowerElf + 30;
 		}
 	}
 	
@@ -241,7 +238,6 @@ public class Tower extends Tile implements Defense{
 	public void notifyObservers(Observable observable) {
 		for(TowerDraw ob : observers) {
 			if(fogOn == true) {
-				System.out.println("Hellonotify");
 				ob.update(observable, this.range);
 			}
 			else if(fogOff == true) {

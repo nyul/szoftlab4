@@ -182,7 +182,6 @@ public class Fellowship extends Observable {
 		
 		for(int i=0; i < this.active.size(); i++) {
 			if(this.active.get(i).equals(enemy)) {
-				System.out.println("[" + active.get(i).getMyId() + ":" + enemy.getClass().getName() + "] has been deleted");
 				kill = true;
 				setChanged();
 				notifyObservers(this, this.active.get(i));
