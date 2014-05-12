@@ -33,11 +33,11 @@ public class Tower extends Tile implements Defense{
 		myId=id;
 		id++;
 		shootPeriod = 10;
-		range = 2;
+		range = 20;
 		fogRange = range;
 		damagePowerDwarf = 10;
 		damagePowerElf = 10;
-		damagePowerHobbit = 10;
+		damagePowerHobbit = 50;
 		damagePowerHuman = 10;
 		magicRock = new ArrayList<MagicRock>();
 		for(int i = 0; i < 6; i++) {
@@ -136,6 +136,7 @@ public class Tower extends Tile implements Defense{
 					enemies.get(i).setDuplicated(true);
 					enemies.get(i).setLifePower((int)(enemies.get(i).getLifePower() / 2));
 				}
+				System.out.println("Lottem");
 				return enemies.get(i);
 			}
 		}	
@@ -158,6 +159,7 @@ public class Tower extends Tile implements Defense{
 	 * @see Defense#upgrade(MagicRock)
 	 */
 	public void upgrade(MagicRock magicRock){
+		System.out.println("Upragedelem");
 		if(magicRock.getType() == 0) { // hatotavolsag novelo varazsko
 			this.range = this.range + 1;
 		}

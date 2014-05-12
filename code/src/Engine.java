@@ -1,8 +1,10 @@
+import java.util.Observable;
+
 /**
  * Egesz jatek motorja, ami az idozitest es a leptetes utemezeset vegzi. Ezenfelul felelossege, hogy a gyozelem illetve vereseg
  * felismerese. Player-on keresztul latja az egesz palyat, Fellowship-en keresztul pedig latja az osszes ellenseget.
  */
-public class Engine extends Thread{
+public class Engine extends Observable implements Runnable{
 	/**
 	 * player - egy jatekosra mutato referencia
 	 * fellowship - egy szovetsegre mutato referencia
@@ -50,7 +52,8 @@ public class Engine extends Thread{
 						 *  ellenseget meg kell olnunk, azaz torolnunk kell az aktiv listabol
 						 */
 						fellowship.killEnemy(enemy);
-						this.player.reduceMagicPower(this.player.getMagicPower()+10);
+						this.player.escalateMagicPower(10);
+						//this.player.reduceMagicPower(this.player.getMagicPower()+10);
 					}
 					/**
 					 *  ellenseg sebzese soran kette lett-e hasitva, true ha igen
@@ -112,7 +115,7 @@ public class Engine extends Thread{
 	 * Vereseg
 	 * Osszes lefoglalt objektumot felszabaditjuk es kiiratjuk, hogy Vereseg
 	 */
-	public void defeat() {
+	public boolean defeat() {
 		fellowship.getActive().clear();
 		fellowship.getPassive().clear();
 		player.getArea().getObstacle().clear();
@@ -120,12 +123,14 @@ public class Engine extends Thread{
 		player.getArea().getSource().clear();
 		player.getArea().getTower().clear();
 		Writer.writeText.add("Defeat! :(");
+		
+		return true;
 	}
 	/**
 	 * Gyozelem
 	 * Osszes lefoglalt objektumot felszabaditjuk es kiiratjuk, hogy Gyozelem
 	 */
-	public void victory() {
+	public boolean victory() {
 		fellowship.getActive().clear();
 		fellowship.getPassive().clear();
 		player.getArea().getObstacle().clear();
@@ -133,5 +138,7 @@ public class Engine extends Thread{
 		player.getArea().getSource().clear();
 		player.getArea().getTower().clear();
 		Writer.writeText.add("Victory! :)");
+		
+		return true;
 	}
 }

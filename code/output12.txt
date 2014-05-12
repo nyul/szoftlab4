@@ -15,6 +15,7 @@ isDuplicated: false
 [Step:1]
 [0:Hobbit] has moved to Road(3,1)
 [1:Human] has moved to Road(3,2)
+[2:Hobbit] has moved to Road(4,2)
 [0:Tower] has shot [1:Human]
 [0:Hobbit]
 lifePower: 100
@@ -33,6 +34,7 @@ isDuplicated: false
 [Step:1]
 [0:Hobbit] has moved to Road(3,2)
 [1:Human] has moved to Road(4,2)
+[2:Hobbit] has moved to Road(5,2)
 [0:Tower] has shot [0:Hobbit]
 [0:Hobbit]
 lifePower: 90
@@ -51,6 +53,7 @@ isDuplicated: false
 [Step:1]
 [0:Hobbit] has moved to Road(4,2)
 [1:Human] has moved to Road(5,2)
+[2:Hobbit] has moved to Road(6,2)
 [0:Tower] has shot [0:Hobbit]
 [0:Hobbit]
 lifePower: 80
@@ -69,6 +72,13 @@ isDuplicated: false
 [Step:1]
 [0:Hobbit] has moved to Road(5,2)
 [1:Human] has moved to Road(6,2)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+[2:Hobbit] has moved to Road(6,3)
+=======
+>>>>>>> 0f0b7b592abf8089c7a4907231cd4094f09882a1
+>>>>>>> 018c2209100d87b62a6434a5afca19091f97feed
 [0:Tower] has shot [0:Hobbit]
 [0:Hobbit]
 lifePower: 70
@@ -82,11 +92,23 @@ lifePower: 90
 stepTime: 10
 pause: 0
 position: (6,2)
+<<<<<<< HEAD
 isActive: true
 isDuplicated: false
 [Step:1]
 [0:Hobbit] has moved to Road(6,2)
 [1:Human] has moved to Road(6,3)
+[2:Hobbit] has moved to Obstacle(6,4)
+=======
+isActive: true
+isDuplicated: false
+[Step:1]
+[0:Hobbit] has moved to Road(6,2)
+<<<<<<< HEAD
+[1:Human] has moved to Road(6,3)
+=======
+[1:Human] has moved to Obstacle(6,3)
+>>>>>>> 018c2209100d87b62a6434a5afca19091f97feed
 Nincs hatotavon beluli ellenseg.
 [0:Hobbit]
 lifePower: 70
@@ -98,18 +120,31 @@ isDuplicated: false
 [1:Human]
 lifePower: 90
 stepTime: 10
+<<<<<<< HEAD
 pause: 0
+=======
+pause: 1
+>>>>>>> 018c2209100d87b62a6434a5afca19091f97feed
 position: (6,3)
 isActive: true
 isDuplicated: false
 [Step:1]
+<<<<<<< HEAD
 [0:Hobbit] has moved to Road(6,3)
 [1:Human] has moved to Road(6,4)
+=======
+[0:Hobbit] has moved to Obstacle(6,3)
+>>>>>>> 0f0b7b592abf8089c7a4907231cd4094f09882a1
+>>>>>>> 018c2209100d87b62a6434a5afca19091f97feed
 Nincs hatotavon beluli ellenseg.
 [0:Hobbit]
 lifePower: 70
 stepTime: 10
+<<<<<<< HEAD
 pause: 0
+=======
+pause: 1
+>>>>>>> 018c2209100d87b62a6434a5afca19091f97feed
 position: (6,3)
 isActive: true
 isDuplicated: false
@@ -121,8 +156,12 @@ position: (6,4)
 isActive: true
 isDuplicated: false
 [Step:1]
+<<<<<<< HEAD
 [0:Hobbit] has moved to Road(6,4)
 [1:Human] has moved to Obstacle(6,5)
+=======
+[1:Human] has moved to Road(6,4)
+>>>>>>> 018c2209100d87b62a6434a5afca19091f97feed
 Nincs hatotavon beluli ellenseg.
 [0:Hobbit]
 lifePower: 70
@@ -134,70 +173,146 @@ isDuplicated: false
 [1:Human]
 lifePower: 90
 stepTime: 10
+<<<<<<< HEAD
 pause: 1
 position: (6,5)
 isActive: true
 isDuplicated: false
 [Step:1]
 [0:Hobbit] has moved to Obstacle(6,5)
+=======
+pause: 0
+position: (6,4)
+isActive: true
+isDuplicated: false
+[Step:1]
+<<<<<<< HEAD
+[0:Hobbit] has moved to Obstacle(6,4)
+[2:Hobbit] has moved to Road(6,5)
+=======
+[0:Hobbit] has moved to Road(6,4)
+[1:Human] has moved to Road(6,5)
+>>>>>>> 0f0b7b592abf8089c7a4907231cd4094f09882a1
+>>>>>>> 018c2209100d87b62a6434a5afca19091f97feed
+Nincs hatotavon beluli ellenseg.
+[0:Hobbit]
+lifePower: 70
+stepTime: 10
+<<<<<<< HEAD
+pause: 1
+position: (6,5)
+=======
+pause: 0
+position: (6,4)
+>>>>>>> 018c2209100d87b62a6434a5afca19091f97feed
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 0
+position: (6,5)
+isActive: true
+isDuplicated: false
+[Step:1]
+<<<<<<< HEAD
+[1:Human] has moved to Road(6,6)
+=======
+<<<<<<< HEAD
+[1:Human] has moved to Road(6,5)
+[2:Hobbit] has moved to Road(6,6)
+=======
+[0:Hobbit] has moved to Road(6,5)
+[1:Human] has moved to Road(6,6)
+>>>>>>> 0f0b7b592abf8089c7a4907231cd4094f09882a1
+>>>>>>> 018c2209100d87b62a6434a5afca19091f97feed
+Nincs hatotavon beluli ellenseg.
+[0:Hobbit]
+lifePower: 70
+stepTime: 10
+pause: 0
+position: (6,5)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 0
+position: (6,6)
+isActive: true
+isDuplicated: false
+[Step:1]
+<<<<<<< HEAD
+[0:Hobbit] has moved to Road(6,6)
+[1:Human] has moved to Road(7,6)
+=======
+<<<<<<< HEAD
+[0:Hobbit] has moved to Road(6,5)
+[1:Human] has moved to Road(6,6)
+[2:Hobbit] has moved to Obstacle(7,6)
+=======
+[0:Hobbit] has moved to Road(6,6)
+[1:Human] has moved to Obstacle(7,6)
+>>>>>>> 0f0b7b592abf8089c7a4907231cd4094f09882a1
+>>>>>>> 018c2209100d87b62a6434a5afca19091f97feed
+Nincs hatotavon beluli ellenseg.
+[0:Hobbit]
+lifePower: 70
+stepTime: 10
+pause: 0
+position: (6,6)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+<<<<<<< HEAD
+pause: 0
+=======
+pause: 1
+>>>>>>> 018c2209100d87b62a6434a5afca19091f97feed
+position: (7,6)
+isActive: true
+isDuplicated: false
+[Step:1]
+<<<<<<< HEAD
+[0:Hobbit] has moved to Road(7,6)
+[1:Human] has moved to Road(8,6)
+=======
+<<<<<<< HEAD
+[0:Hobbit] has moved to Road(6,6)
+[1:Human] has moved to Obstacle(7,6)
+=======
+[0:Hobbit] has moved to Obstacle(7,6)
+>>>>>>> 0f0b7b592abf8089c7a4907231cd4094f09882a1
+>>>>>>> 018c2209100d87b62a6434a5afca19091f97feed
+Nincs hatotavon beluli ellenseg.
+[0:Hobbit]
+lifePower: 70
+stepTime: 10
+<<<<<<< HEAD
+pause: 0
+=======
+pause: 1
+position: (7,6)
+isActive: true
+isDuplicated: false
+[1:Human]
+lifePower: 90
+stepTime: 10
+pause: 1
+position: (7,6)
+isActive: true
+isDuplicated: false
+[Step:1]
+[0:Hobbit] has moved to Obstacle(7,6)
+[2:Hobbit] has moved to Road(8,6)
 Nincs hatotavon beluli ellenseg.
 [0:Hobbit]
 lifePower: 70
 stepTime: 10
 pause: 1
-position: (6,5)
-isActive: true
-isDuplicated: false
-[1:Human]
-lifePower: 90
-stepTime: 10
-pause: 0
-position: (6,5)
-isActive: true
-isDuplicated: false
-[Step:1]
-[1:Human] has moved to Road(6,6)
-Nincs hatotavon beluli ellenseg.
-[0:Hobbit]
-lifePower: 70
-stepTime: 10
-pause: 0
-position: (6,5)
-isActive: true
-isDuplicated: false
-[1:Human]
-lifePower: 90
-stepTime: 10
-pause: 0
-position: (6,6)
-isActive: true
-isDuplicated: false
-[Step:1]
-[0:Hobbit] has moved to Road(6,6)
-[1:Human] has moved to Road(7,6)
-Nincs hatotavon beluli ellenseg.
-[0:Hobbit]
-lifePower: 70
-stepTime: 10
-pause: 0
-position: (6,6)
-isActive: true
-isDuplicated: false
-[1:Human]
-lifePower: 90
-stepTime: 10
-pause: 0
-position: (7,6)
-isActive: true
-isDuplicated: false
-[Step:1]
-[0:Hobbit] has moved to Road(7,6)
-[1:Human] has moved to Road(8,6)
-Nincs hatotavon beluli ellenseg.
-[0:Hobbit]
-lifePower: 70
-stepTime: 10
-pause: 0
+>>>>>>> 018c2209100d87b62a6434a5afca19091f97feed
 position: (7,6)
 isActive: true
 isDuplicated: false

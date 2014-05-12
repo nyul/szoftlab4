@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -37,6 +38,7 @@ public class GraphicsArea {
 	static int row;
 	static int column;
 	static Main main;
+	public static boolean end;
 	
 	public static void tilesDraw(ArrayList<ArrayList<Tile>> tiles) {
 		row = tiles.size();
@@ -166,74 +168,82 @@ public class GraphicsArea {
 								// close
 							}
 						}
-						else if(tiles.get(ii).get(jj).getType() == 1) {
-							String message = "Do you want to upgrade this tower?";
-							Object[] options = { "Yes", "No" };
-							int number = JOptionPane.showOptionDialog(frame, message, "",
-						            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
-							if(number == JOptionPane.OK_OPTION) {
-								Tower t = (Tower) tiles.get(ii).get(jj);
-								t.wantToUpgrade(main.getEngine().getPlayer());
-							}
-							if(number == JOptionPane.NO_OPTION) {
-								// close
-							}
-						}
-						
-						else if(tiles.get(ii).get(jj).getType() == 2) {
-							String message = "Do you want to build an obstacle?";
-							Object[] options = { "Yes", "No" };
-							int number = JOptionPane.showOptionDialog(frame, message, "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
 							
-							if(number == JOptionPane.OK_OPTION) {
-								Obstacle obst = tiles.get(ii).get(jj).buildObstacle(main.getEngine().getPlayer());
-								if(obst == null) {
-									message = "You don't have enough magicpower.";
-									JOptionPane.showMessageDialog(frame, "You don't have enough ma"
-											+ "gicpower.", "Warning", JOptionPane.WARNING_MESSAGE);
+						else if(tiles.get(ii).get(jj).getType() == 1) {
+								String message = "Do you want to upgrade this tower?";
+								Object[] options = { "Yes", "No" };
+								int number = JOptionPane.showOptionDialog(frame, message, "",
+							            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+								if(number == JOptionPane.OK_OPTION) {
+									Tower t = (Tower) tiles.get(ii).get(jj);
+									t.wantToUpgrade(main.getEngine().getPlayer());
 								}
-								else {
+								if(number == JOptionPane.NO_OPTION) {
+									// close
+								}
+							}
+							
+							else if(tiles.get(ii).get(jj).getType() == 2) {
+								String message = "Do you want to build an obstacle?";
+								Object[] options = { "Yes", "No" };
+								int number = JOptionPane.showOptionDialog(frame, message, "", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+								
+								if(number == JOptionPane.OK_OPTION) {
+									Obstacle obst = tiles.get(ii).get(jj).buildObstacle(main.getEngine().getPlayer());
+									if(obst == null) {
+										message = "You don't have enough magicpower.";
+										JOptionPane.showMessageDialog(frame, "You don't have enough magicpower.", "Warning", JOptionPane.WARNING_MESSAGE);
+									}
+									else {
+										for(int i = 0; i < main.getEngine().getPlayer().getArea().getRoad().size(); i++) {
+											if(main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getX() == obst.getPos().getX() && main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getY() == obst.getPos().getY()) {
+												System.out.println(main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(0).getPos().getY());
+												main.getEngine().getPlayer().getArea().getObstacle().add(obst);
+												main.getEngine().getPlayer().getArea().changeReferenceFrom(obst.getPos(), main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad());
+												main.getEngine().getPlayer().getArea().isBuildable(obst);
+												main.getEngine().getPlayer().getArea().changeReferenceTo(main.getEngine().getPlayer().getArea().getRoad().get(i-1).getPos(), obst.getPos());
+											}
+										}
+									}
 									for(int i = 0; i < main.getEngine().getPlayer().getArea().getRoad().size(); i++) {
-										if(main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getX() == obst.getPos().getX() && main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getY() == obst.getPos().getY()) {
-											main.getEngine().getPlayer().getArea().getObstacle().add(obst);
-											main.getEngine().getPlayer().getArea().changeReferenceFrom(obst.getPos(), main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad());
-											main.getEngine().getPlayer().getArea().isBuildable(obst);
-											main.getEngine().getPlayer().getArea().changeReferenceTo(main.getEngine().getPlayer().getArea().getRoad().get(i-1).getPos(), obst.getPos());
+										if(main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getX() == 6 && main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getY() == 3) {
+											for(int j = 0; j < main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().size(); j++) {
+												System.out.println(main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(j).getClass());
+												System.out.println(main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(j).getPos().getX() + ", " + main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(j).getPos().getY());
+											}
 										}
 									}
 								}
-								/*for(int i = 0; i < main.getEngine().getPlayer().getArea().getRoad().size(); i++) {
-									if(main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getX() == 6 && main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getY() == 3) {
-										for(int j = 0; j < main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().size(); j++) {
-											System.out.println(main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(j).getClass());
-											System.out.println(main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(j).getPos().getX() + ", " + main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad().get(j).getPos().getY());
-										}
-									}
-								}*/
+								if(number == JOptionPane.NO_OPTION) {
+									// close
+								}
 							}
-							if(number == JOptionPane.NO_OPTION) {
-								// close
+							
+							else if(tiles.get(ii).get(jj).getType() == 3) {
+								String message = "Do you want to upgrade this obstacle?";
+								Object[] options = { "Yes", "No" };
+								int number = JOptionPane.showOptionDialog(frame, message, "",
+							            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+								if(number == JOptionPane.OK_OPTION) {
+									Obstacle o = (Obstacle) tiles.get(ii).get(jj);
+									o.wantToUpgrade(main.getEngine().getPlayer());
+								}
+								if(number == JOptionPane.NO_OPTION) {
+									// close
+								}
 							}
-						}
-						
-						else if(tiles.get(ii).get(jj).getType() == 3) {
-							String message = "Do you want to upgrade this obstacle?";
-							Object[] options = { "Yes", "No" };
-							int number = JOptionPane.showOptionDialog(frame, message, "",
-						            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
-							if(number == JOptionPane.OK_OPTION) {
-								Obstacle o = (Obstacle) tiles.get(ii).get(jj);
-								o.wantToUpgrade(main.getEngine().getPlayer());
-							}
-							if(number == JOptionPane.NO_OPTION) {
-								// close
-							}
-						}
 						
 					}
 				});	
 			}
 		}
+	}
+	
+	public static void endGameMessage(){
+		if(end == true)
+			JOptionPane.showMessageDialog(frame, "Victory!", "EndGame",JOptionPane.INFORMATION_MESSAGE);
+		else if(end == false)
+			JOptionPane.showMessageDialog(frame, "Defeat!", "EndGame",JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public static void createAndShowGUI(ArrayList<ArrayList<Tile>> tiles) {
@@ -242,11 +252,12 @@ public class GraphicsArea {
         addComponentsToPane(frame.getContentPane());
         tilesDraw(tiles);
         clickHandling(tiles);
+     //   endGameMessage();
         frame.pack();
         frame.setVisible(true);
     }
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		main = new Main();
 		main.draw();
 		main.loadInputLanguage();
