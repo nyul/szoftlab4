@@ -52,8 +52,6 @@ public class Dwarf extends Enemy{
 	 */
 	@Override
 	public void lifePowerReduce(Tower t) {
-		System.out.println("Dwarf before:" + this.lifePower);
 		this.lifePower = this.lifePower - t.getDamagePowerDwarf();
-		System.out.println("Dwarf after:" + this.lifePower);
 	}
 }

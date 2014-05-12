@@ -1,2 +1,1 @@
 loadMap map12.txt
-step 30

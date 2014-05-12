@@ -86,7 +86,7 @@ public class GraphicsArea {
 				String name = JOptionPane.showInputDialog(frame, message, null);
 				
 				if(name != null && name.startsWith("input") && name.endsWith(".txt")) {
-					main.loadInputLanguage();
+					main.loadMap();
 				}
             }
         });
@@ -303,6 +303,7 @@ public class GraphicsArea {
 	public static void main(String[] args) throws FileNotFoundException {
 		main = new Main();
 		main.draw();
-		main.loadInputLanguage();
+		main.loadMap();
+		main.getEngine().run();
 	}
 }

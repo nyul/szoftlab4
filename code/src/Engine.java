@@ -122,7 +122,7 @@ public class Engine extends Observable implements Runnable{
 	 * Most meg a step number bemeneti parancs hatasara ez a fv. 10*number-szor fut le 100 ms-onkent
 	 */
 	public void run() {
-		//while(true) {
+		while(true) {
 			stepHandler();
 			attackHandler();
 			/**
@@ -147,7 +147,7 @@ public class Engine extends Observable implements Runnable{
 			} catch(Exception ex) {
 				ex.printStackTrace();
 			}
-		//}
+		}
 	}
 	/**
 	 * Vereseg
