@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -20,6 +19,7 @@ public class Main implements Serializable {
 	PlayerDraw playerDraw;
 	GraphicsArea graphics;
 	private static String outputNumber = "";
+	BufferedReader reader;
 	
 	public Main() {
 		engine = new Engine();
@@ -46,27 +46,24 @@ public class Main implements Serializable {
 		engine.getFellowship().registerObserver(fellowshipDraw);
 	}
 
-	public void loadMap()  {
+	public void loadMap(String name)  {
 		/**
 		 * Egy inputxx.txt fajlt var a felhasznalotol
 		 * Ha olyan fajlt adunk meg, ami nem letezik, akkor egy invalid input filename szoveget dob a konzolra
 		 */
-		System.out.println("Give the full input file name with extension!");
-		BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
 		try  {
-			String s = bufferRead.readLine();
 			/**
 			 * Fajl megnyitasa
 			 */
-			FileReader fileReader = new FileReader(s);
-			BufferedReader reader = new BufferedReader(fileReader);
+			FileReader fileReader = new FileReader(name);
+			reader = new BufferedReader(fileReader);
 						
 			/**
 			 * fajl tartalmank sorokra tordelese
 			 */
 			String line = reader.readLine();
 			
-			outputNumber = s.substring(5, 7);
+			outputNumber = name.substring(5, 7);
 		
 			/**
 			 * amig van nem ures sor a fajlban, addig lepunk
@@ -146,15 +143,22 @@ public class Main implements Serializable {
 				*/
 				line = reader.readLine();
 			}	
-			/**
-			 * fajl bezarasa
-			 */
-			reader.close();
 		
 		} catch(FileNotFoundException e) {
 			System.out.println("Invalid input file name.");
 		} catch(Exception e) {
 			e.printStackTrace();
+		}
+		finally {
+			/**
+			 * fajl bezarasa
+			 */
+			try {
+				reader.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

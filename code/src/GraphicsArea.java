@@ -3,9 +3,6 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
@@ -14,9 +11,6 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -71,42 +65,6 @@ public class GraphicsArea {
 	 * @param pane - az ablak amihez az elemeket hozza a akarjuk adni
 	 */
 	public static void addComponentsToPane(Container pane) {
-        
-		JMenuBar menubar = new JMenuBar();
-
-        JMenu file = new JMenu("File");
-        file.setMnemonic(KeyEvent.VK_F);
-
-        JMenuItem startItem = new JMenuItem("Start");
-        startItem.setMnemonic(KeyEvent.VK_S);
-        startItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event) {
-            	String message = "Please load a map!";
-				String name = JOptionPane.showInputDialog(frame, message, null);
-				
-				if(name != null && name.startsWith("input") && name.endsWith(".txt")) {
-					main.loadMap();
-				}
-            }
-        });
-	        
-        JMenuItem exitItem = new JMenuItem("Exit");
-        exitItem.setMnemonic(KeyEvent.VK_E);
-        exitItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event) {
-                System.exit(0);
-            }
-        });
-
-        file.add(startItem);
-        file.add(exitItem);
-
-        menubar.add(file);
-
-        frame.setJMenuBar(menubar);
-		
 		area = new JPanel();
         pane.add(area, BorderLayout.LINE_START);
         
@@ -138,7 +96,7 @@ public class GraphicsArea {
         alive = new JTextField(3);
         alive.setEditable(false);
         alive.setBorder(BorderFactory.createEmptyBorder());
-        //alive.setText("20");
+        alive.setText("10");
         textBarTwo.add(alive, BorderLayout.EAST);
         
         stateBarBottomLeft.add(textBarOne, BorderLayout.NORTH);
@@ -155,6 +113,15 @@ public class GraphicsArea {
 		scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         
         stateBarBottom.add(stateConsole);
+	}
+	
+	public static void addMenu() {
+        String message = "Please load a map!";
+		String name = JOptionPane.showInputDialog(frame, message, null);
+				
+		if(name != null && name.startsWith("map") && name.endsWith(".txt")) {
+			main.loadMap(name);
+		}
 	}
 	
 	/**
@@ -294,7 +261,7 @@ public class GraphicsArea {
 	public static void main(String[] args) throws FileNotFoundException {
 		main = new Main();
 		main.draw();
-		main.loadMap();
+		addMenu();
 		main.getEngine().run();
 	}
 }
