@@ -1,6 +1,9 @@
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * A gyozelem es vereseg felugro ablakok miatt van szukseg erre az osztalyra
+ */
 public class EngineDraw implements Observer {
 	
 	@Override

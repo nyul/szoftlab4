@@ -41,6 +41,10 @@ public class GraphicsArea {
 	static Main main;
 	public static boolean end;
 	
+	/**
+	 * Kirajzolja a csempeket a gridre
+	 * @param tiles - a csempek arraylistje
+	 */
 	public static void tilesDraw(ArrayList<ArrayList<Tile>> tiles) {
 		row = tiles.size();
 		column = tiles.get(0).size();
@@ -62,42 +66,46 @@ public class GraphicsArea {
 		}
 	}
 	
+	/**
+	 * Letrehozza az ablakot es hozzaadja a menuket es a komponenseket
+	 * @param pane - az ablak amihez az elemeket hozza a akarjuk adni
+	 */
 	public static void addComponentsToPane(Container pane) {
         
-		 JMenuBar menubar = new JMenuBar();
+		JMenuBar menubar = new JMenuBar();
 
-	        JMenu file = new JMenu("File");
-	        file.setMnemonic(KeyEvent.VK_F);
+        JMenu file = new JMenu("File");
+        file.setMnemonic(KeyEvent.VK_F);
 
-	        JMenuItem startItem = new JMenuItem("Start");
-	        startItem.setMnemonic(KeyEvent.VK_S);
-	        startItem.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent event) {
-	            	String message = "Please load a map!";
-					String name = JOptionPane.showInputDialog(frame, message, null);
-					
-					if(name != null && name.startsWith("input") && name.endsWith(".txt")) {
-						main.loadInputLanguage();
-					}
-	            }
-	        });
+        JMenuItem startItem = new JMenuItem("Start");
+        startItem.setMnemonic(KeyEvent.VK_S);
+        startItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+            	String message = "Please load a map!";
+				String name = JOptionPane.showInputDialog(frame, message, null);
+				
+				if(name != null && name.startsWith("input") && name.endsWith(".txt")) {
+					main.loadInputLanguage();
+				}
+            }
+        });
 	        
-	        JMenuItem exitItem = new JMenuItem("Exit");
-	        exitItem.setMnemonic(KeyEvent.VK_E);
-	        exitItem.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent event) {
-	                System.exit(0);
-	            }
-	        });
+        JMenuItem exitItem = new JMenuItem("Exit");
+        exitItem.setMnemonic(KeyEvent.VK_E);
+        exitItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                System.exit(0);
+            }
+        });
 
-	        file.add(startItem);
-	        file.add(exitItem);
+        file.add(startItem);
+        file.add(exitItem);
 
-	        menubar.add(file);
+        menubar.add(file);
 
-	        frame.setJMenuBar(menubar);
+        frame.setJMenuBar(menubar);
 		
 		area = new JPanel();
         pane.add(area, BorderLayout.LINE_START);
@@ -149,6 +157,10 @@ public class GraphicsArea {
         stateBarBottom.add(stateConsole);
 	}
 	
+	/**
+	 * Katintas kezelo metodus, a csempere kattintas esemenyre reagalo funkciok vannak itt megvalositva
+	 * @param tiles - a csempek listaja
+	 */
 	public static void clickHandling(final ArrayList<ArrayList<Tile>> tiles) {
 		for (int i = 0; i < row; i++) { 
 			for (int j = 0; j < column; j++) {
@@ -156,6 +168,7 @@ public class GraphicsArea {
 		        final int jj = j;
 				tile[ii][jj].addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
+						// Torony epitesenel fut le
 						if(tiles.get(ii).get(jj).getType() == 0) {
 							String message = "Do you want to build a tower?";
 							Object[] options = { "Yes", "No" };
@@ -174,6 +187,7 @@ public class GraphicsArea {
 							}
 						}
 							
+						// Torony fejlesztesenel fut le
 						else if(tiles.get(ii).get(jj).getType() == 1) {
 								String message = "Do you want to upgrade this tower?";
 								Object[] options = { "Yes", "No" };
@@ -192,6 +206,7 @@ public class GraphicsArea {
 								}
 							}
 							
+						// Akadaly epitesenel fut le ez az ag
 							else if(tiles.get(ii).get(jj).getType() == 2) {
 								String message = "Do you want to build an obstacle?";
 								Object[] options = { "Yes", "No" };
@@ -199,7 +214,7 @@ public class GraphicsArea {
 								
 								if(number == JOptionPane.OK_OPTION) {
 									Obstacle obst = tiles.get(ii).get(jj).buildObstacle(main.getEngine().getPlayer());
-									if(obst == null) {
+									if(obst == null) { //Ha nincs eleg varazsero
 										message = "You don't have enough magicpower.";
 										JOptionPane.showMessageDialog(frame, "You don't have enough magicpower.", "Warning", JOptionPane.WARNING_MESSAGE);
 									}
@@ -228,6 +243,7 @@ public class GraphicsArea {
 								}
 							}
 							
+						// Akadaly fejlesztesenel fut le ez az ag
 							else if(tiles.get(ii).get(jj).getType() == 3) {
 								String message = "Do you want to upgrade this obstacle?";
 								Object[] options = { "Yes", "No" };
@@ -238,6 +254,7 @@ public class GraphicsArea {
 									o.wantToUpgrade(main.getEngine().getPlayer());
 								}
 								
+								// Ha nincs eleg varazsero
 								if(main.getEngine().getPlayer().getMagicPower() < 10){
 									message = "You don't have enough magicpower.";
 									JOptionPane.showMessageDialog(frame, "You don't have enough magicpower.", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -254,6 +271,9 @@ public class GraphicsArea {
 		}
 	}
 	
+	/**
+	 * Jatek vege uzenet. Ha egy ellensek elerte a hegyet akkor ugrik fel.
+	 */
 	public static void endGameMessage(){
 		if(end == true)
 			JOptionPane.showMessageDialog(frame, "Victory!", "EndGame",JOptionPane.INFORMATION_MESSAGE);
@@ -261,6 +281,10 @@ public class GraphicsArea {
 			JOptionPane.showMessageDialog(frame, "Defeat!", "EndGame",JOptionPane.INFORMATION_MESSAGE);
 	}
 	
+	/**
+	 * A felhasznaloi interfeszt hozza letre
+	 * @param tiles - a csempek listaja
+	 */
 	public static void createAndShowGUI(ArrayList<ArrayList<Tile>> tiles) {
         frame = new JFrame("Tower defense");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -271,6 +295,11 @@ public class GraphicsArea {
         frame.setVisible(true);
     }
 	
+	/**
+	 * A program belepesi pontja
+	 * @param args - parancssori argumentumok
+	 * @throws FileNotFoundException
+	 */
 	public static void main(String[] args) throws FileNotFoundException {
 		main = new Main();
 		main.draw();
