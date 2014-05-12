@@ -72,6 +72,7 @@ public class Fellowship extends Observable {
 	
 	public void removeActive(int index) {
 		if(this.active.size() > 0) {
+			this.active.get(index).removeObserver(enemyDraw);
 			this.active.remove(index);
 			reduceNumber(1);
 		}
