@@ -12,6 +12,11 @@ public class FellowshipDraw implements Observer {
 				int value = (Integer)arg;
 				GraphicsArea.alive.setText(Integer.toString(value));
 			}
+			else if(arg instanceof Hobbit) {
+				Hobbit h = (Hobbit)arg;
+				GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].remove(0);
+				GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].repaint();
+			}
 		}
 	}
 

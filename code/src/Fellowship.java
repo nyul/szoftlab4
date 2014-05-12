@@ -18,6 +18,8 @@ public class Fellowship extends Observable {
 	private ArrayList<Enemy> active;
 	private ArrayList<Enemy> passive;
 	private int number;
+	private boolean kill;     // ellenseg meghal observer
+	private boolean numberWrite;   // ellenseg szamanak kiiratasa observer
 	EnemyDraw enemyDraw;
 	
 	public Fellowship() {
@@ -25,6 +27,8 @@ public class Fellowship extends Observable {
 		active = new ArrayList<Enemy>();
 		passive = new ArrayList<Enemy>();
 		number = 0;
+		kill = false;
+		numberWrite = false;
 		enemyDraw = new EnemyDraw();
 	}
 	
@@ -55,13 +59,14 @@ public class Fellowship extends Observable {
 	public void reduceNumber(int number) {
 		this.number -= number;
 		setChanged();
-		notifyObservers(this);
+		notifyObservers(this, null);
 	}
 	
 	public void increaseNumber(int number) {
 		this.number += number;
+		numberWrite = true;
 		setChanged();
-		notifyObservers(this);
+		notifyObservers(this, null);
 	}
 	
 	public void addActive(Enemy enemy) {
@@ -175,8 +180,10 @@ public class Fellowship extends Observable {
 		for(int i=0; i < this.active.size(); i++){
 			if(this.active.get(i).equals(enemy)) {
 				System.out.println("[" + active.get(i).getMyId() + ":" + enemy.getClass().getName() + "] has been deleted");
+				kill = true;
+				setChanged();
+				notifyObservers(this, this.active.get(i));
 				this.removeActive(i);
-				
 			}
 		}
 	}
@@ -231,9 +238,16 @@ public class Fellowship extends Observable {
 		}
 	}
 	
-	public void notifyObservers(Observable observable) {
+	public void notifyObservers(Observable observable, Enemy enemy) {
 		for(FellowshipDraw ob : observers) {
-			ob.update(observable, this.number);
+			if(numberWrite == true) {
+				ob.update(observable, this.number);
+				numberWrite = false;
+			}
+			else if(kill == true) {
+				ob.update(observable, enemy);
+				kill = false;
+			}
 		}
 	}
 	
