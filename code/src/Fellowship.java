@@ -103,7 +103,7 @@ public class Fellowship extends Observable {
 	 */
 	public void produceAllEnemy(){
 		int rand = 0;
-		for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < 1; i++) {
 			rand = (int)(Math.random() * 4);
 			if(rand == 0) {
 				Human human = new Human();

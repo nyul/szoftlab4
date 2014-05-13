@@ -191,15 +191,11 @@ public class GraphicsArea {
 											if(main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getX() == obst.getPos().getX() && main.getEngine().getPlayer().getArea().getRoad().get(i).getPos().getY() == obst.getPos().getY()) {
 												main.getEngine().getPlayer().getArea().getObstacle().add(obst);
 												main.getEngine().getPlayer().getArea().changeReferenceFrom(obst.getPos(), main.getEngine().getPlayer().getArea().getRoad().get(i).getNextRoad());
+												System.out.println(main.getEngine().getPlayer().getArea().getRoad().get(i).getPreviousRoad().size());
 												main.getEngine().getPlayer().getArea().changeReferenceTo(main.getEngine().getPlayer().getArea().getRoad().get(i).getPreviousRoad(), obst.getPos());
 												main.getEngine().getPlayer().getArea().isBuildable(obst);
 											}
 										}
-										//for(int i = 0; i < main.getEngine().getPlayer().getArea().getObstacle().size(); i++) {
-											//if(main.getEngine().getPlayer().getArea().getObstacle().get(i).getPos().getX() == 6 && main.getEngine().getPlayer().getArea().getObstacle().get(i).getPos().getY() == 4) {
-												System.out.println(main.getEngine().getPlayer().getArea().getGeometry().getTiles().get(6).get(3).getClass().getName());
-											//}
-										//}
 									}
 								}
 								if(number == JOptionPane.NO_OPTION) {

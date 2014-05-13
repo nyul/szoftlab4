@@ -174,7 +174,7 @@ public class PlayingArea {
 					}
 				}*/
 		
-		
+		System.out.println(start.size());
 		for(int i = 0; i < obstacle.size(); i++) {
 			if(obstacle.get(i).getPos().getX() == pos2.getX() && obstacle.get(i).getPos().getY() == pos2.getY()) {
 				// previous is road
@@ -228,11 +228,12 @@ public class PlayingArea {
 		// if pos1 is road
 		for(int i = 0; i < road.size(); i++) {
 			if(road.get(i).getPos().getX() == pos1.getX() && road.get(i).getPos().getY() == pos1.getY()) {
-				// road to road
 				for(int j = 0; j < road.size(); j++) {
+					// road to road
 					if(road.get(j).getPos().getX() == pos2.getX() && road.get(j).getPos().getY() == pos2.getY()) {
 						road.get(i).addRoad(road.get(j));
 					}
+					// road from road
 					if(road.get(j).getPos().getX() == pos3.getX() && road.get(j).getPos().getY() == pos3.getY()) {
 						road.get(i).getPreviousRoad().add(road.get(j));
 					}

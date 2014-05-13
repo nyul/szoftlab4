@@ -41,12 +41,12 @@ public class Tower extends Tile implements Defense{
 		myId=id;
 		id++;
 		shootPeriod = 10;
-		range = 3;
+		range = 2;
 		fogRange = range;
-		damagePowerDwarf = 30;
-		damagePowerElf = 30;
-		damagePowerHobbit = 30;
-		damagePowerHuman = 30;
+		damagePowerDwarf = 20;
+		damagePowerElf = 20;
+		damagePowerHobbit = 20;
+		damagePowerHuman = 20;
 		magicRock = new ArrayList<MagicRock>();
 		for(int i = 0; i < 6; i++) {
 			MagicRock rock = new MagicRock(i);
