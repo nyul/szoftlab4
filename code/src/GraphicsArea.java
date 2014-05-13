@@ -22,6 +22,11 @@ import javax.swing.border.EmptyBorder;
  * A program inditoresze, ebben az osztalyban van peldanyositva a main metodus.
  * Itt születnek meg a grafikus elemek, az ablak, illetve az ablakon elhelyezett panelek
  * Itt generalodnak le a jatekteret reprezentalo csempek
+ * Itt szuletnek meg a jatek soran a felhasznalo informalasara
+ * felugro ablakok, a gyozelem illetve a vereseg
+ * kezeli az egerkattintast es annak megfeleloen
+ * ajanlja fel a felhasznalonak torony vagy akadaly epiteset
+ * illetve annak fejleszteset
  * 
  */
 
