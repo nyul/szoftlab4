@@ -24,8 +24,12 @@ public class EnemyDraw implements Observer {
 	public void update(Observable o, Object arg) {
 		
 		// Ha az parameterul kapott megfigyelheto objektum egy hobbit
+		//toroljuk az eloz csempet
+		//athelyezzuk az ujra
+		//es ujrafestjuk
 		if(o instanceof Hobbit) {
 			Hobbit hobbit = (Hobbit)o;
+			//ha a hobbit eppen forrason all
 			if(hobbit.isSource) {
 				if (arg instanceof Road) {
 					Road road = (Road)arg;
@@ -55,8 +59,12 @@ public class EnemyDraw implements Observer {
 	    }
 
 		// Ha az parameterul kapott megfigyelheto objektum egy human
+		//toroljuk az eloz csempet
+		//athelyezzuk az ujra
+		//es ujrafestjuk
 		else if(o instanceof Human) {
 			Human human = (Human) o;
+			//ha a human eppen forrason all
 			if(human.isSource) {
 				if (arg instanceof Road) {
 					Road road = (Road)arg;
@@ -85,8 +93,12 @@ public class EnemyDraw implements Observer {
 	    }
 
 		// Ha az parameterul kapott megfigyelheto objektum egy elf
+		//toroljuk az eloz csempet
+		//athelyezzuk az ujra
+		//es ujrafestjuk
 		else if(o instanceof Elf) {
 			Elf elf = (Elf) o;
+			//ha az elf eppen forrason all
 			if(elf.isSource) {
 				if (arg instanceof Road) {
 					Road road = (Road)arg;
@@ -115,8 +127,12 @@ public class EnemyDraw implements Observer {
 	    }
 
 		// Ha az parameterul kapott megfigyelheto objektum egy dwarf
+		//toroljuk az eloz csempet
+		//athelyezzuk az ujra
+		//es ujrafestjuk
 		else if(o instanceof Dwarf) {
 			Dwarf dwarf = (Dwarf) o;
+			//ha a dwarf eppen forrason all
 			if(dwarf.isSource) {
 				if (arg instanceof Road) {
 					Road road = (Road)arg;
