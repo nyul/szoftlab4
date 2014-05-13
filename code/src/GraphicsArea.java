@@ -18,7 +18,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
-
+/*
+ * A program inditoresze, ebben az osztalyban van peldanyositva a main metodus.
+ * Itt születnek meg a grafikus elemek, az ablak, illetve az ablakon elhelyezett panelek
+ * Itt generalodnak le a jatekteret reprezentalo csempek
+ * 
+ */
 
 public class GraphicsArea {
 	
@@ -37,6 +42,7 @@ public class GraphicsArea {
 	
 	/**
 	 * Kirajzolja a csempeket a gridre
+	 * itt születik meg a teljes jatekter
 	 * @param tiles - a csempek arraylistje
 	 */
 	public static void tilesDraw(ArrayList<ArrayList<Tile>> tiles) {
@@ -62,6 +68,9 @@ public class GraphicsArea {
 	
 	/**
 	 * Letrehozza az ablakot es hozzaadja a menuket es a komponenseket
+	 * Felepiti az elrendezest, megadja hogy melyik panel hova keruljon
+	 * beallitja a kiirando ertekek helyet es szoveget
+	 * illetve elhelyezi a konzolst
 	 * @param pane - az ablak amihez az elemeket hozza a akarjuk adni
 	 */
 	public static void addComponentsToPane(Container pane) {
@@ -114,7 +123,11 @@ public class GraphicsArea {
         
         stateBarBottom.add(stateConsole);
 	}
-	
+	/*
+	 * Itt jon letre az az ablak, ami a jatek indulasakor bekeri
+	 * a mapot a felhasznalotol.
+	 * E nelkul nem lehetne elinditani a jatekot
+	 */
 	public static void addMenu() {
         String message = "Please load a map!";
 		String name = JOptionPane.showInputDialog(frame, message, null);
@@ -126,6 +139,8 @@ public class GraphicsArea {
 	
 	/**
 	 * Katintas kezelo metodus, a csempere kattintas esemenyre reagalo funkciok vannak itt megvalositva
+	 * vizsgalja, hogy miylen tipusu csempere kattintott a user
+	 * ennek megfeleloen fogja kezelni az akadaly/torony epiteset illetve fejleszteset
 	 * @param tiles - a csempek listaja
 	 */
 	public static void clickHandling(final ArrayList<ArrayList<Tile>> tiles) {
@@ -232,6 +247,8 @@ public class GraphicsArea {
 	
 	/**
 	 * Jatek vege uzenet. Ha egy ellensek elerte a hegyet akkor ugrik fel.
+	 * Akkor is lefut, ha minden ellenseg elpusztult, ekkor nyert a jatekos
+	 * 
 	 */
 	public static void endGameMessage(){
 		if(end == true)
@@ -242,6 +259,9 @@ public class GraphicsArea {
 	
 	/**
 	 * A felhasznaloi interfeszt hozza letre
+	 * illetve kezeli a kilepes esemenyt,
+	 * meghivja a csempek kirajzolasat
+	 * es eindija a kattintas kezeles metodust
 	 * @param tiles - a csempek listaja
 	 */
 	public static void createAndShowGUI(ArrayList<ArrayList<Tile>> tiles) {
