@@ -16,14 +16,14 @@ import java.util.Observer;
  */
 public class EnemyDraw implements Observer {
 	
-	@Override
+	
 	/**
 	 * Enemy notifyObservers() metodusanak hatasara hivokdik meg a fuggveny.
 	 * Attol fuggoen, hogy milyen bemeneti parametert kapott a meghivasakor,
 	 * azaz parameterul kapott megfigyelheto objektum milyen tipusu ellenseg.
 	 * Igy 4 nagy if-es reszre bonthato az update metodus.
 	 */
-	
+	@Override
 	public void update(Observable o, Object arg) {
 		
 		// Ha az parameterul kapott megfigyelheto objektum egy hobbit
