@@ -132,6 +132,8 @@ public class GraphicsArea {
 	 * Itt jon letre az az ablak, ami a jatek indulasakor bekeri
 	 * a mapot a felhasznalotol.
 	 * E nelkul nem lehetne elinditani a jatekot
+	 * A map betoltese utan atadja a fajlnevet a 
+	 * betolto fuggvenynek
 	 */
 	public static void addMenu() {
         String message = "Please load a map!";
