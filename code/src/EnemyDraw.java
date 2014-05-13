@@ -17,9 +17,12 @@ import java.util.Observer;
 public class EnemyDraw implements Observer {
 	
 	@Override
-	//az observer update metodusat irjuk folul, hogy
-	//az altalunk meghatarozott funkciot vegezze el
-	//azaz mindig ujrarajzolja az adott csempet
+	/**
+	 * Enemy notifyObservers() metodusanak hatasara hivokdik meg a fuggveny.
+	 * Attol fuggoen, hogy milyen bemeneti parametert kapott a meghivasakor,
+	 * azaz parameterul kapott megfigyelheto objektum milyen tipusu ellenseg.
+	 * Igy 4 nagy if-es reszre bonthato az update metodus.
+	 */
 	
 	public void update(Observable o, Object arg) {
 		
@@ -29,7 +32,15 @@ public class EnemyDraw implements Observer {
 		//es ujrafestjuk
 		if(o instanceof Hobbit) {
 			Hobbit hobbit = (Hobbit)o;
-			//ha a hobbit eppen forrason all
+			/**
+			 * ... akkor a Road poziciojara rajzolodjon ki az adott elleseg, melyet
+			 * a GraphicsArea osztaly tile (JPanel tomb) valzotojanak megfelelo ertekehez valo
+			 * hozzaadassal erunk el, ezutan validalnunk, azaz ervenyesiteni kell az eddigi
+			 * kirajzolast, igy fogja tudni a GraphicsArea osztaly, hogy az ellenseg ki kell
+			 * kirajzolni. 
+			 * A kapott objektum Road tipusu, ebbol adodoan az ellenseg mar nem a Forrason fog 
+			 * allni, igy az ellenseg objektum isSource tagvaltozojat hamisra allitjuk.
+			 */
 			if(hobbit.isSource) {
 				if (arg instanceof Road) {
 					Road road = (Road)arg;
@@ -38,7 +49,14 @@ public class EnemyDraw implements Observer {
 					hobbit.setSource(false);
 				}
 			}
+			/**
+			 * Ha az ellenseg a Uton allo es van kovetkezo Ut
+			 */
 			else {
+				/**
+				 * ... akkor a Road poziciojara rajzolodjon ki az adott elleseg, a regi helyerol torolje
+				 * majd az ujonnan kapott ut poziciojara rajzolodjon ki ujra
+				 */
 				if (arg instanceof Road) {
 					Road road = (Road)arg;
 							
@@ -58,14 +76,25 @@ public class EnemyDraw implements Observer {
 			}
 	    }
 
-		// Ha az parameterul kapott megfigyelheto objektum egy human
-		//toroljuk az eloz csempet
-		//athelyezzuk az ujra
-		//es ujrafestjuk
+		/**
+		 * Ha az parameterul kapott megfigyelheto objektum egy human, akkor
+		  * a masik parameterben kapott objektum, ez esetben Road...
+		 */
 		else if(o instanceof Human) {
 			Human human = (Human) o;
-			//ha a human eppen forrason all
+			/**
+			 * Ha az ellenseg a Forrason all
+			 */
 			if(human.isSource) {
+				/**
+				 * ... akkor a Road poziciojara rajzolodjon ki az adott elleseg, melyet
+				 * a GraphicsArea osztaly tile (JPanel tomb) valzotojanak megfelelo ertekehez valo
+				 * hozzaadassal erunk el, ezutan validalnunk, azaz ervenyesiteni kell a 
+				 * kirajzolast, igy fogja tudni a GraphicsArea osztaly, hogy az ellenseg ki kell
+				 * kirajzolni. 
+				 * Mivel a kapott objektum Road tipusu, ebbol adodoan az ellenseg mar nem a Forrason fog 
+				 * allni, igy az ellenseg objektum isSource tagvaltozojat hamisra allitjuk.
+				 */
 				if (arg instanceof Road) {
 					Road road = (Road)arg;
 					GraphicsArea.tile[road.getPos().getX()][road.getPos().getY()].add(human.picLabel, 0);
@@ -74,7 +103,14 @@ public class EnemyDraw implements Observer {
 				}
 			}
 			else {
+				/**
+				 * Ha az ellenseg a Uton allo
+				 */
 				if (arg instanceof Road) {
+					/**
+					 * ... akkor a Road poziciojara rajzolodjon ki az adott elleseg, a regi helyerol torolje
+					 * majd az ujonnan kapott ut poziciojara rajzolodjon ki ujra
+					 */
 					Road road = (Road)arg;
 					
 					if(human.getPreviousRoad() != null) {
@@ -92,14 +128,25 @@ public class EnemyDraw implements Observer {
 			}
 	    }
 
-		// Ha az parameterul kapott megfigyelheto objektum egy elf
-		//toroljuk az eloz csempet
-		//athelyezzuk az ujra
-		//es ujrafestjuk
+		/**
+		 * Ha az parameterul kapott megfigyelheto objektum egy elf, akkor
+		  * a masik parameterben kapott objektum, ez esetben Road...
+		 */
 		else if(o instanceof Elf) {
 			Elf elf = (Elf) o;
-			//ha az elf eppen forrason all
+			/**
+			 * Ha az ellenseg a Forrason all
+			 */
 			if(elf.isSource) {
+				/**
+				 * ... akkor a Road poziciojara rajzolodjon ki az adott elleseg, melyet
+				 * a GraphicsArea osztaly tile (JPanel tomb) valzotojanak megfelelo ertekehez valo
+				 * hozzaadassal erunk el, ezutan validalnunk, azaz ervenyesiteni kell a 
+				 * kirajzolast, igy fogja tudni a GraphicsArea osztaly, hogy az ellenseg ki kell
+				 * kirajzolni. 
+				 * Mivel a kapott objektum Road tipusu, ebbol adodoan az ellenseg mar nem a Forrason fog 
+				 * allni, igy az ellenseg objektum isSource tagvaltozojat hamisra allitjuk.
+				 */
 				if (arg instanceof Road) {
 					Road road = (Road)arg;
 					GraphicsArea.tile[road.getPos().getX()][road.getPos().getY()].add(elf.picLabel, 0);
@@ -108,7 +155,14 @@ public class EnemyDraw implements Observer {
 				}
 			}
 			else {
+				/**
+				 * Ha az ellenseg a Uton allo
+				 */
 				if (arg instanceof Road) {
+					/**
+					 * ... akkor a Road poziciojara rajzolodjon ki az adott elleseg, a regi helyerol torolje
+					 * majd az ujonnan kapott ut poziciojara rajzolodjon ki ujra
+					 */
 					Road road = (Road)arg;
 					
 					if(elf.getPreviousRoad() != null) {
@@ -126,15 +180,26 @@ public class EnemyDraw implements Observer {
 			}
 	    }
 
-		// Ha az parameterul kapott megfigyelheto objektum egy dwarf
-		//toroljuk az eloz csempet
-		//athelyezzuk az ujra
-		//es ujrafestjuk
+		/**
+		 * Ha az parameterul kapott megfigyelheto objektum egy dwarf, akkor
+		  * a masik parameterben kapott objektum, ez esetben Road...
+		 */
 		else if(o instanceof Dwarf) {
 			Dwarf dwarf = (Dwarf) o;
-			//ha a dwarf eppen forrason all
+			/**
+			 * Ha az ellenseg a Forrason all
+			 */
 			if(dwarf.isSource) {
 				if (arg instanceof Road) {
+					/**
+					 * ... akkor a Road poziciojara rajzolodjon ki az adott elleseg, melyet
+					 * a GraphicsArea osztaly tile (JPanel tomb) valzotojanak megfelelo ertekehez valo
+					 * hozzaadassal erunk el, ezutan validalnunk, azaz ervenyesiteni kell a 
+					 * kirajzolast, igy fogja tudni a GraphicsArea osztaly, hogy az ellenseg ki kell
+					 * kirajzolni. 
+					 * Mivel a kapott objektum Road tipusu, ebbol adodoan az ellenseg mar nem a Forrason fog 
+					 * allni, igy az ellenseg objektum isSource tagvaltozojat hamisra allitjuk.
+					 */
 					Road road = (Road)arg;
 					GraphicsArea.tile[road.getPos().getX()][road.getPos().getY()].add(dwarf.picLabel, 0);
 					GraphicsArea.tile[road.getPos().getX()][road.getPos().getY()].validate();
@@ -142,7 +207,14 @@ public class EnemyDraw implements Observer {
 				}
 			}
 			else {
-				if (arg instanceof Road) {
+				/**
+				 * Ha az ellenseg a Uton allo
+				 */
+				if (arg instanceof Road) {					
+					/**
+					 * ... akkor a Road poziciojara rajzolodjon ki az adott elleseg, a regi helyerol torolje
+					 * majd az ujonnan kapott ut poziciojara rajzolodjon ki ujra
+					 */
 					Road road = (Road)arg;
 					
 					if(dwarf.getPreviousRoad() != null) {
