@@ -10,7 +10,9 @@ import java.util.ArrayList;
  * vagy az ellenseg informalasa az ut következo mezojerol.
  */
 public class PlayingArea {
-	
+	/**
+	 * objektumok listakban tarolasa
+	 */
 	TowerDraw towerDraw;
 	private ArrayList<Source> source;
 	private ArrayList<Tower> tower;
@@ -77,21 +79,33 @@ public class PlayingArea {
 	public void initialize() {
 		geometry.createAllTile(10, 10);
 	}
-	
+	/**
+	 * egy Road hozzaadasa a road listahoz
+	 * @param r
+	 */
 	public void addRoad(Road r) {
 		this.road.add(r);
 	}
-	
+	/**
+	 * road torlese a listabol
+	 * @param index
+	 */
 	public void removeRoad(int index) {
 		if(this.road.size() > 0) {
 			this.road.remove(index);
 		}
 	}
-	
+	/**
+	 * forras hozzaadasa a source listahoz
+	 * @param s
+	 */
 	public void addSource(Source s) {
 		this.source.add(s);
 	}
-	
+	/**
+	 * forras torlese a source listabol
+	 * @param s
+	 */
 	public void removeSource(Source s) {
 		if(this.source.size() > 0) {
 			this.source.remove(s);
@@ -105,7 +119,10 @@ public class PlayingArea {
 	public void addTower(Tower t) {
 		this.tower.add(t);
 	}
-	
+	/**
+	 * adott torony torlese a tower listabol
+	 * @param t
+	 */
 	public void removeTower(Tower t) {
 		if(tower.size() > 0) {
 			tower.remove(t);
@@ -138,7 +155,12 @@ public class PlayingArea {
 			}
 		}						
 	}
-	
+	/**
+	 * start-ban levo road-okat kapcsolja ossze a pos2-vel megadott road-dal
+	 * akadaly lehelyezesekor van ra szukseg a leptetes miatt
+	 * @param start
+	 * @param pos2
+	 */
 	public void changeReferenceTo(ArrayList<Road> start, Position pos2) {
 		for(int i = 0; i < obstacle.size(); i++) {
 			if(obstacle.get(i).getPos().getX() == pos2.getX() && obstacle.get(i).getPos().getY() == pos2.getY()) {
@@ -170,7 +192,12 @@ public class PlayingArea {
 		}
 		
 	}
-	
+	/**
+	 * pos1-et koti ossze a target listaban levo road-okkal
+	 * akadaly lehelyezesekor van ra szukseg a leptetes miatt
+	 * @param pos1
+	 * @param target
+	 */
 	public void changeReferenceFrom(Position pos1, ArrayList<Road> target) {
 		// pos1 is Obstacle
 		for(int i = 0; i < obstacle.size(); i++) {
