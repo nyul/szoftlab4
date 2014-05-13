@@ -50,7 +50,7 @@ public abstract class Enemy extends Observable {
 	}
 	/**
 	 *  ellenseg lerakasa egy tetszoleges ut-csempere
-	 * @param pos
+	 * @param r - pozicio
 	 */
 	public Enemy(Road r) {
 		observers = new ArrayList<EnemyDraw>();
@@ -110,7 +110,7 @@ public abstract class Enemy extends Observable {
 	
 	/**
 	 * Az ellenseg aktivitasat allitja (~kirajzolas)
-	 * @param a Ha true akkor aktiv lesz, ha false akkor passziv
+	 * @param a - Ha true akkor aktiv lesz, ha false akkor passziv
 	 */
 	public void setActivity(boolean a) {
 		if(a == false) notifyObservers(this);
@@ -184,7 +184,7 @@ public abstract class Enemy extends Observable {
 	 * erre az ellenseg tipusra vonatkozo sebzes erteket
 	 * levonja az aktualis eleterobol.
 	 * 
-	 * @param t A torony amelyik eppen lo erre az ellensegre
+	 * @param t - a torony amelyik eppen lo erre az ellensegre
 	 */
 	public abstract void lifePowerReduce(Tower t);
 
@@ -204,7 +204,7 @@ public abstract class Enemy extends Observable {
 
 	/**
 	 * A varakozas ertekenek novelese (palyara helyezeskor vagy lassitaskor fordul elo)
-	 * @param slowingFactor Az akadaly lassito tenyezoje
+	 * @param slowingFactor - Az akadaly lassito tenyezoje
 	 */
 	public void increasePause(int slowingFactor){
 		pause = pause + slowingFactor;
@@ -233,14 +233,14 @@ public abstract class Enemy extends Observable {
 	
 	/**
 	 * Beregisztrálunk egy observert erre az osztályra
-	 * @param observer
+	 * @param draw - observer
 	 */
 	public void registerObserver(EnemyDraw draw) {
 		observers.add(draw);
 	}
 	/**
 	 * Töröljük az adott observer-t a listából: már nem kell értesülnie a model állapot változásairól
-	 * @param observer
+	 * @param draw - observer
 	 */
 	public void removeObserver(EnemyDraw draw) {
 		observers.remove(draw);
