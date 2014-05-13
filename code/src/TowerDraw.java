@@ -8,12 +8,18 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-
+/**
+ * TowerDraw osztaly ami a torony kirajzoltatasaert felelos.
+ * Implementalja az Observer interfeszt, ami a
+ * kirajzolasert felelos osztalyt ertesiti ha
+ * valtozas tortenik, es akkor ujrarajzolas kovetkezik.
+ */
 public class TowerDraw implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
+		// vizsgalja, hogy a parameterul kapott
+		// objektum egy torony-e
 		if(o instanceof Tower) {
 			Tower tower = (Tower)o;
 			if(arg instanceof Integer) {
@@ -26,9 +32,10 @@ public class TowerDraw implements Observer {
 						GraphicsArea.tile[tower.getPos().getX()][tower.getPos().getY()].add(picLabel, 0);
 						GraphicsArea.tile[tower.getPos().getX()][tower.getPos().getY()].validate();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
+						// kivetelek kezelese
 						e.printStackTrace();
 					}
+					// a ko¨do¨t kikapcsolja
 					tower.setFogOn(false);
 				}
 				else if(tower.isFogOff()) {
