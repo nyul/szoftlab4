@@ -35,7 +35,6 @@ public class Dwarf extends Enemy{
 	public BufferedImage getImage() {
 		return image;
 	}
-
 	
 	public Dwarf(Road road) {
 		super(road);

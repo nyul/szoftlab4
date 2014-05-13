@@ -36,6 +36,29 @@ public class FellowshipDraw implements Observer {
 				}
 				fellow.setKill(false);
 			}
+			if(fellow.isDuplicate()) {
+				if(arg instanceof Hobbit) {
+					Hobbit h = (Hobbit)arg;
+					GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].add(h.picLabel, 1);
+					GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].validate();
+				}
+				else if(arg instanceof Human) {
+					Human h = (Human)arg;
+					GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].add(h.picLabel, 1);
+					GraphicsArea.tile[h.getRoad().getPos().getX()][h.getRoad().getPos().getY()].validate();
+				}
+				else if(arg instanceof Dwarf) {
+					Dwarf d = (Dwarf)arg;
+					GraphicsArea.tile[d.getRoad().getPos().getX()][d.getRoad().getPos().getY()].add(d.picLabel, 1);
+					GraphicsArea.tile[d.getRoad().getPos().getX()][d.getRoad().getPos().getY()].validate();
+				}
+				else if(arg instanceof Elf) {
+					Elf elf = (Elf)arg;
+					GraphicsArea.tile[elf.getRoad().getPos().getX()][elf.getRoad().getPos().getY()].add(elf.picLabel, 1);
+					GraphicsArea.tile[elf.getRoad().getPos().getX()][elf.getRoad().getPos().getY()].validate();
+				}
+				fellow.setDuplicate(false);
+			}
 		}
 	}
 }

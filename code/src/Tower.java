@@ -41,12 +41,12 @@ public class Tower extends Tile implements Defense{
 		myId=id;
 		id++;
 		shootPeriod = 10;
-		range = 2;
+		range = 3;
 		fogRange = range;
-		damagePowerDwarf = 20;
-		damagePowerElf = 20;
-		damagePowerHobbit = 20;
-		damagePowerHuman = 20;
+		damagePowerDwarf = 30;
+		damagePowerElf = 30;
+		damagePowerHobbit = 30;
+		damagePowerHuman = 30;
 		magicRock = new ArrayList<MagicRock>();
 		for(int i = 0; i < 6; i++) {
 			MagicRock rock = new MagicRock(i);
@@ -160,7 +160,7 @@ public class Tower extends Tile implements Defense{
 					enemies.get(i).setActivity(false); // jelezzuk az engine-nek, hogy ot deaktivalni kell
 				}
 				int duplicate = (int)(Math.random()*enemies.size()); // megnezzuk random modon kell-e kivalasztanunk, hogy kettevaljon az ellenseg sebzodes utan
-				if(duplicate == 3) { // pseudo random modon "veletlenszeruen" kivalasztott eset amikor duplazodik az ellenseg
+				if(duplicate % 5 == 0) { // pseudo random modon "veletlenszeruen" kivalasztott eset amikor duplazodik az ellenseg
 					enemies.get(i).setDuplicated(true);
 					enemies.get(i).setLifePower((int)(enemies.get(i).getLifePower() / 2));
 				}

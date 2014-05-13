@@ -140,41 +140,6 @@ public class PlayingArea {
 	}
 	
 	public void changeReferenceTo(ArrayList<Road> start, Position pos2) {
-		/*// if pos1 is road
-		for(int i = 0; i < road.size(); i++) {
-			if(road.get(i).getPos().getX() == pos1.getX() && road.get(i).getPos().getY() == pos1.getY()) {
-				// road to obstacle
-				for(int j = 0; j < obstacle.size(); j++) {
-					if(obstacle.get(j).getPos().getX() == pos2.getX() && obstacle.get(j).getPos().getY() == pos2.getY()) {
-						// csak road-hoz kapcsolodhatott
-						for(int k = 0; k < road.get(i).getNextRoad().size(); k++) {
-							if(road.get(i).getNextRoad().get(k).getPos().getX() == obstacle.get(j).getPos().getX() && road.get(i).getNextRoad().get(k).getPos().getY() == obstacle.get(j).getPos().getY()) {
-								road.get(i).getNextRoad().remove(k);
-							}
-						}
-						road.get(i).addRoad(obstacle.get(j));
-					}
-				}
-			}
-		}
-		// if pos1 is obstacle
-				for(int i = 0; i < obstacle.size(); i++) {
-					if(obstacle.get(i).getPos().getX() == pos1.getX() && obstacle.get(i).getPos().getY() == pos1.getY()) {
-						// obstacle to obstacle
-						for(int j = 0; j < obstacle.size(); j++) {
-							if(obstacle.get(j).getPos().getX() == pos2.getX() && obstacle.get(j).getPos().getY() == pos2.getY()) {
-								for(int k = 0; k < obstacle.get(i).getNextRoad().size(); k++) {
-									if(obstacle.get(i).getNextRoad().get(k).getPos().getX() == obstacle.get(j).getPos().getX() && obstacle.get(i).getNextRoad().get(k).getPos().getY() == obstacle.get(j).getPos().getY()) {
-										obstacle.get(i).getNextRoad().remove(k);
-									}
-								}
-								obstacle.get(i).addRoad(obstacle.get(j));
-							}
-						}
-					}
-				}*/
-		
-		System.out.println(start.size());
 		for(int i = 0; i < obstacle.size(); i++) {
 			if(obstacle.get(i).getPos().getX() == pos2.getX() && obstacle.get(i).getPos().getY() == pos2.getY()) {
 				// previous is road

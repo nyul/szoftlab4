@@ -20,6 +20,7 @@ public class Fellowship extends Observable {
 	private int number;
 	private boolean kill;     // ellenseg meghal observer
 	private boolean numberWrite;   // ellenseg szamanak kiiratasa observer
+	private boolean duplicate;
 	EnemyDraw enemyDraw;
 	
 	public Fellowship() {
@@ -29,6 +30,7 @@ public class Fellowship extends Observable {
 		number = 0;
 		kill = false;
 		numberWrite = false;
+		duplicate = true;
 		enemyDraw = new EnemyDraw();
 	}
 	
@@ -42,6 +44,14 @@ public class Fellowship extends Observable {
 
 	public void setKill(boolean kill) {
 		this.kill = kill;
+	}
+
+	public boolean isDuplicate() {
+		return duplicate;
+	}
+
+	public void setDuplicate(boolean duplicate) {
+		this.duplicate = duplicate;
 	}
 
 	/**
@@ -103,7 +113,7 @@ public class Fellowship extends Observable {
 	 */
 	public void produceAllEnemy(){
 		int rand = 0;
-		for(int i = 0; i < 1; i++) {
+		for(int i = 0; i < 10; i++) {
 			rand = (int)(Math.random() * 4);
 			if(rand == 0) {
 				Human human = new Human();
@@ -214,6 +224,9 @@ public class Fellowship extends Observable {
 			hu.setLifePower(enemy.getLifePower());
 			hu.setPause(1);
 			this.addActive(hu);
+			duplicate = true;
+			setChanged();
+			notifyObservers(this, hu);
 		}
 		/**
 		 *  ha a kettehasitott ellenseg hobbit volt, akkor egy uj hobbitot hozunk letre
@@ -223,6 +236,9 @@ public class Fellowship extends Observable {
 			ho.setLifePower(enemy.getLifePower());
 			ho.setPause(1);
 			this.addActive(ho);
+			duplicate = true;
+			setChanged();
+			notifyObservers(this, ho);
 		}
 		/**
 		 *  ha a kettehasitott ellenseg torp volt, akkor egy uj torpot hozunk letre
@@ -231,7 +247,10 @@ public class Fellowship extends Observable {
 			Dwarf d = new Dwarf(enemy.getRoad());
 			d.setLifePower(enemy.getLifePower());
 			d.setPause(1);
-			this.addActive(d);			
+			this.addActive(d);	
+			duplicate = true;
+			setChanged();
+			notifyObservers(this, d);
 		}
 		/**
 		 *  ha a kettehasitott ellenseg tunde volt, akkor egy uj tundet hozunk letre
@@ -241,6 +260,9 @@ public class Fellowship extends Observable {
 			elf.setLifePower(enemy.getLifePower());
 			elf.setPause(1);
 			this.addActive(elf);
+			duplicate = true;
+			setChanged();
+			notifyObservers(this, elf);
 		}
 	}
 	
@@ -251,6 +273,9 @@ public class Fellowship extends Observable {
 				numberWrite = false;
 			}
 			if(kill == true) {
+				ob.update(observable, enemy);
+			}
+			if(duplicate == true) {
 				ob.update(observable, enemy);
 			}
 		}
