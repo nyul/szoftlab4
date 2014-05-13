@@ -193,16 +193,16 @@ public class Tower extends Tile implements Defense{
 			this.shootPeriod = this.shootPeriod - 3;
 		}
 		if(magicRock.getType() == 2) { // ember elleni sebzest novelo varazsko
-			this.damagePowerHuman = this.damagePowerHuman + 30;
+			this.damagePowerHuman = this.damagePowerHuman + 20;
 		}
 		else if(magicRock.getType() == 3) { // hobbit elleni sebzest novelo varazsko
-			this.damagePowerHobbit = this.damagePowerHobbit + 30;
+			this.damagePowerHobbit = this.damagePowerHobbit + 20;
 		}
 		if(magicRock.getType() == 4) { // torpe elleni sebzest novelo varazsko
-			this.damagePowerDwarf = this.damagePowerDwarf + 30;
+			this.damagePowerDwarf = this.damagePowerDwarf + 20;
 		}
 		else if(magicRock.getType() == 5) { // elf elleni sebzest novelo varazsko
-			this.damagePowerElf = this.damagePowerElf + 30;
+			this.damagePowerElf = this.damagePowerElf + 20;
 		}
 	}
 	
