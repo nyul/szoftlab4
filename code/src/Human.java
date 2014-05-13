@@ -17,7 +17,9 @@ public class Human extends Enemy{
 	BufferedImage image = null;
 	ImageIcon  icon = null;
 	JLabel picLabel = null;
-	
+	/**
+	 * A Human grafikus megjelenitese miatt, a kep betoltese 
+	 */
 	public Human() {
 		super();
 		try {
@@ -28,7 +30,9 @@ public class Human extends Enemy{
 			System.out.println("Sikertelen kep betoltes");
 		}
 	}
-	
+	/**
+	 * A Human grafikus megjelenitese miatt, a kep betoltese 
+	 */
 	public Human(Road road) {
 		super(road);
 		try {

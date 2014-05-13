@@ -17,7 +17,9 @@ public class Hobbit extends Enemy{
 	BufferedImage image = null;
 	ImageIcon  icon = null;
 	JLabel picLabel = null;
-	
+	/**
+	 * A Hobbit grafikus megjelenitese miatt, a kep betoltese 
+	 */
 	public Hobbit() {
 		super();
 		try {
@@ -28,7 +30,9 @@ public class Hobbit extends Enemy{
 			System.out.println("Sikertelen kep betoltes");
 		}
 	}
-	
+	/**
+	 * A Hobbit grafikus megjelenitese miatt, a kep betoltese 
+	 */
 	public Hobbit(Road road) {
 		super(road);
 		try {

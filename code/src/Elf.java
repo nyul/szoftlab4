@@ -17,7 +17,9 @@ public class Elf extends Enemy{
 	BufferedImage image = null;
 	ImageIcon  icon = null;
 	JLabel picLabel = null;
-	
+	/**
+	 * A Elf grafikus megjelenitese miatt, a kep betoltese 
+	 */
 	public Elf() {
 		super();
 		try {
@@ -28,7 +30,9 @@ public class Elf extends Enemy{
 			System.out.println("Sikertelen kep betoltes");
 		}
 	}
-	
+	/**
+	 * A Elf grafikus megjelenitese miatt, a kep betoltese 
+	 */
 	public Elf(Road road) {
 		super(road);
 		try {

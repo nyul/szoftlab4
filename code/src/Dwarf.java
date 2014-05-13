@@ -19,8 +19,10 @@ public class Dwarf extends Enemy{
 
 	BufferedImage image = null;
 	ImageIcon  icon = null;
-	JLabel picLabel = null;
-	
+	JLabel picLabel = null;	
+	/**
+	 * A dwarf grafikus megjelenitese miatt, a kep betoltese 
+	 */
 	public Dwarf() {
 		super();
 		try {
@@ -36,6 +38,9 @@ public class Dwarf extends Enemy{
 		return image;
 	}
 	
+	/**
+	 * A dwarf grafikus megjelenitese miatt, a kep betoltese 
+	 */
 	public Dwarf(Road road) {
 		super(road);
 		try {
