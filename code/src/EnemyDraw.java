@@ -5,10 +5,22 @@ import java.util.Observer;
 
 /**
  * Az ellenseg kirajzolasaert felelos osztaly.
+ * Egy observert valosit meg
+ * Ez az osztaly fog ertesulni minden egyes enemy valtozasarol
+ * Amikor egy enemy lep, az osztaly ujra rajzolja a jatekteren
+ * az adott ellenseget
+ * Ha az adott ellenseg eppen a forrasrol erkezik
+ * akkor azt kulon agban fogjok kezelni
+ * mivel ilyenkor nem kell az ellenseget az elozo
+ * poziciojarol letorolni
  */
 public class EnemyDraw implements Observer {
 	
 	@Override
+	//az observer update metodusat irjuk folul, hogy
+	//az altalunk meghatarozott funkciot vegezze el
+	//azaz mindig ujrarajzolja az adott csempet
+	
 	public void update(Observable o, Object arg) {
 		
 		// Ha az parameterul kapott megfigyelheto objektum egy hobbit
