@@ -95,7 +95,7 @@ public class Main implements Serializable {
 						engine.getPlayer().getArea().isBuildable(obst);
 					}
 					else {
-						engine.getPlayer().getArea().addReference(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])));
+						engine.getPlayer().getArea().addReference(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])), new Position(Integer.parseInt(word[6]), Integer.parseInt(word[7])));
 					}
 				}
 				/**
@@ -110,7 +110,7 @@ public class Main implements Serializable {
 						engine.getPlayer().getArea().isBuildable(source);	
 					}
 					else {
-						engine.getPlayer().getArea().addReference(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])));
+						engine.getPlayer().getArea().addReference(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])), new Position(Integer.parseInt(word[6]), Integer.parseInt(word[7])));
 					}
 				}
 				/**
@@ -125,18 +125,23 @@ public class Main implements Serializable {
 						engine.getPlayer().getArea().isBuildable(road);
 					}
 					else {
-						engine.getPlayer().getArea().addReference(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])));
+						engine.getPlayer().getArea().addReference(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])), new Position(Integer.parseInt(word[6]), Integer.parseInt(word[7])));
 					}
 				}
 				/**
 				* letesz egy hegyet a megadott pozicioju csempere
 				*/
 				else if(word[0].equals("Mountain")) {
-					Mountain mountain = new Mountain(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
-					/**
-					* megvizsgalja, hogy lerakhato-e a hegy a megadott csempere
-					*/
-					engine.getPlayer().getArea().isBuildable(mountain);
+					if(!word[1].equals("ref")) {
+						Mountain mountain = new Mountain(new Position(Integer.parseInt(word[1]), Integer.parseInt(word[2])));
+						/**
+						 * megvizsgalja, hogy lerakhato-e a hegy a megadott csempere
+						 */
+						engine.getPlayer().getArea().isBuildable(mountain);
+					}
+					else {
+						engine.getPlayer().getArea().addReference(new Position(Integer.parseInt(word[2]), Integer.parseInt(word[3])), new Position(Integer.parseInt(word[4]), Integer.parseInt(word[5])), new Position(Integer.parseInt(word[6]), Integer.parseInt(word[7])));
+					}
 				}
 				/**
 				* kovetkezo sor

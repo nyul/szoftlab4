@@ -7,6 +7,7 @@ public class Road extends Tile{
 	 * az utvonalvalasztasnal megadja, hogy veletlenszeruen valasszon az enemy utat vagy fixen
 	 */
 	protected ArrayList<Road> nextRoad;
+	protected ArrayList<Road> previousRoad;
 	protected boolean random;
 	
 	/**
@@ -16,6 +17,7 @@ public class Road extends Tile{
 	public Road(Position pos) {
 		super(pos);
 		nextRoad = new ArrayList<Road>();
+		previousRoad = new ArrayList<Road>();
 		this.type = 2;
 		random = false;
 	}
@@ -31,6 +33,11 @@ public class Road extends Tile{
 	public ArrayList<Road> getNextRoad() {
 		return nextRoad;
 	}
+	
+	public ArrayList<Road> getPreviousRoad() {
+		return previousRoad;
+	}
+	
 	/**
 	 * nextRoad listahoz hozzaadunk egy uj Road elemet
 	 * @param road
