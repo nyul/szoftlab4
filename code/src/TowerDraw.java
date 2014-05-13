@@ -24,8 +24,10 @@ public class TowerDraw implements Observer {
 			Tower tower = (Tower)o;
 			if(arg instanceof Integer) {
 				if(tower.isFogOn()) {
+					// ha kod van
 					BufferedImage img;
 					try {
+						// kep betoltese
 						img = ImageIO.read(new File("img/fog.png"));
 						ImageIcon  icon = new ImageIcon(img); 
 						JLabel picLabel = new JLabel(icon);								 
@@ -35,7 +37,7 @@ public class TowerDraw implements Observer {
 						// kivetelek kezelese
 						e.printStackTrace();
 					}
-					// a ko¨do¨t kikapcsolja
+					// a kodot kikapcsolja
 					tower.setFogOn(false);
 				}
 				else if(tower.isFogOff()) {
